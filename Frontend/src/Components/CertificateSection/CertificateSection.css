@@ -1,0 +1,73 @@
+.certificate-section {
+  background: #f8fbfc;
+  padding: 100px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+}
+
+.certificate-content h2 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #0c0c0c;
+  margin-bottom: 30px;
+  line-height: 1.4;
+}
+
+.certificate-content h2 span {
+  color: #ff4a6b;
+}
+
+.cta-btn {
+  background: #10b981;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  background: #0e9a6c;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* 🔹 RESPONSIVE BREAKPOINTS */
+@media (max-width: 1024px) {
+  .certificate-content h2 {
+    font-size: 34px;
+  }
+  .cta-btn {
+    font-size: 16px;
+    padding: 14px 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .certificate-section {
+    padding: 80px 15px;
+  }
+  .certificate-content h2 {
+    font-size: 28px;
+  }
+  .cta-btn {
+    font-size: 15px;
+    padding: 12px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .certificate-content h2 {
+    font-size: 22px;
+  }
+  .cta-btn {
+    width: 100%;
+    padding: 14px 0;
+    font-size: 16px;
+  }
+}

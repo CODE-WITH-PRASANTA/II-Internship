@@ -1,0 +1,204 @@
+/* ---------- About Section ---------- */
+.about-section {
+  padding: 80px 20px;
+  background: #fff;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+/* ---------- Left Image Area ---------- */
+.about-image-area {
+  position: relative;
+  flex: 1 1 400px;
+  max-width: 500px;
+}
+
+.about-main-image {
+  width: 100%;
+  border-radius: 15px;
+  display: block;
+  object-fit: cover;
+}
+
+/* Video Play Overlay */
+.about-video-overlay {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  padding: 15px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.about-video-overlay:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+.play-icon {
+  font-size: 2.5rem;
+  color: #ff3b6c;
+}
+
+/* Awards Badge */
+.about-award-badge {
+  position: absolute;
+  bottom: -10px;
+  left: 10px;
+  background: #e6f7f0;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+.about-award-badge:hover {
+  transform: scale(1.05);
+}
+.award-icon {
+  font-size: 1.8rem;
+  color: #00c49f;
+  margin-right: 10px;
+}
+.award-text h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #00c49f;
+}
+.award-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Decorative Dots */
+.dots-red, .dots-green {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  z-index: 0;
+}
+.dots-red {
+  background: rgba(255, 59, 108, 0.1);
+  top: -20px;
+  left: -20px;
+}
+.dots-green {
+  background: rgba(0, 196, 159, 0.1);
+  bottom: -20px;
+  right: -20px;
+}
+
+/* ---------- Right Text Area ---------- */
+.about-text-area {
+  flex: 1 1 400px;
+  max-width: 600px;
+  text-align: left;
+}
+
+.about-small-title {
+  font-size: 0.9rem;
+  color: #888;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.about-title {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #111;
+}
+
+.highlight {
+  color: #ff3b6c;
+  position: relative;
+}
+.highlight::after {
+  content: "";
+  width: 50%;
+  height: 4px;
+  background: #00c49f;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  border-radius: 2px;
+}
+
+/* Description */
+.about-description {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+/* Features List */
+.about-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.about-features li {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #111;
+  margin-bottom: 12px;
+}
+.check-icon {
+  color: #ffbc42;
+  margin-right: 10px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .about-container {
+    gap: 30px;
+  }
+  .about-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .about-text-area {
+    max-width: 100%;
+  }
+  .highlight::after {
+    width: 60%;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-title {
+    font-size: 1.6rem;
+  }
+  .about-description {
+    font-size: 0.9rem;
+  }
+  .award-text h3 {
+    font-size: 1rem;
+  }
+  .award-text p {
+    font-size: 0.8rem;
+  }
+  .play-icon {
+    font-size: 2rem;
+  }
+}

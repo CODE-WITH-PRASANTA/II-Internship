@@ -1,0 +1,121 @@
+.info {
+  background: #f4f8f9;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-box {
+  background: #fff;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  max-width: 1100px;
+  padding: 40px 20px;
+  text-align: center;
+  gap: 30px 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(30px);
+  opacity: 0;
+  animation: slideUp 1s forwards;
+}
+
+.info-item:nth-child(1) { animation-delay: 0.2s; }
+.info-item:nth-child(2) { animation-delay: 0.4s; }
+.info-item:nth-child(3) { animation-delay: 0.6s; }
+.info-item:nth-child(4) { animation-delay: 0.8s; }
+
+.info-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  transition: transform 0.3s ease;
+}
+
+.info-text {
+  font-size: 0.95rem;
+  color: #333;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Hover effect */
+.info-item:hover .info-number {
+  transform: scale(1.2);
+}
+
+/* Colors */
+.green { color: #00b894; }
+.red { color: #e84362; }
+.orange { color: #f39c12; }
+.purple { color: #9b59b6; }
+
+/* Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+  .info-box {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 90%;
+    padding: 30px 15px;
+    gap: 25px 15px;
+  }
+
+  .info-number {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .info-box {
+    grid-template-columns: 1fr;
+    width: 100%;
+    padding: 25px 10px;
+    gap: 20px;
+  }
+
+  .info-number {
+    font-size: 2rem;
+  }
+
+  .info-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .info {
+    padding: 40px 10px;
+  }
+
+  .info-box {
+    padding: 20px 12px;
+    gap: 15px;
+  }
+
+  .info-number {
+    font-size: 1.8rem;
+  }
+
+  .info-text {
+    font-size: 0.85rem;
+  }
+}

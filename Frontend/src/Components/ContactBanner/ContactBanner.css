@@ -1,0 +1,180 @@
+.contact-banner {
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.9s ease-in-out;
+}
+
+.contact-banner.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-content {
+  background: linear-gradient(135deg, #7b2ff7, #f107a3, #ff6a00);
+  background-size: 300% 300%;
+  animation: gradientShift 8s ease infinite;
+  color: #fff;
+  border-radius: 16px;
+  padding: 40px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+
+  /* 🔹 Width Control */
+  max-width: 900px;   /* reduced width */
+  margin: 0 auto;     /* center align */
+  width: 90%;         /* responsive shrink */
+  text-align: center;
+  flex-wrap: wrap;
+  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Text */
+.contact-item p {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+  opacity: 0.9;
+}
+
+.contact-item h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+
+.contact-item h3 a {
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.contact-item h3 a:hover {
+  color: #ffe600;
+  text-shadow: 0px 0px 10px rgba(255, 230, 0, 0.8);
+}
+
+/* Divider Circle */
+.divider {
+  background: #fff;
+  color: #f107a3;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 50%;
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  min-height: 48px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  animation: pulse 1.8s infinite;
+}
+
+/* Decorative Dots */
+.contact-banner::before,
+.contact-banner::after {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  background-image: radial-gradient(#ffffff55 2px, transparent 2px);
+  background-size: 16px 16px;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.contact-banner::before {
+  top: -30px;
+  left: -60px;
+}
+
+.contact-banner::after {
+  bottom: -30px;
+  right: -60px;
+  background-image: radial-gradient(#ff6a0066 2px, transparent 2px);
+}
+
+/* Animations */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .contact-content {
+    gap: 40px;
+    padding: 40px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 25px;
+    padding: 30px 20px;
+  }
+
+  .contact-item h3 {
+    font-size: 1.3rem;
+  }
+
+  .divider {
+    min-width: 40px;
+    min-height: 40px;
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-content {
+    gap: 20px;
+    padding: 25px 15px;
+  }
+
+  .contact-item p {
+    font-size: 0.9rem;
+  }
+
+  .contact-item h3 {
+    font-size: 1.1rem;
+  }
+
+  .divider {
+    min-width: 34px;
+    min-height: 34px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,250 @@
+/* Footer.css - accurate design + responsive */
+
+/* --- base --- */
+.footer {
+  background: #eef6f5; /* light mint from screenshot */
+  padding: 72px 18px 32px;
+  font-family: "Poppins", sans-serif;
+  color: #24333a;
+  position: relative;
+  overflow: hidden;
+}
+
+/* faint decorative top-left topo lines */
+.footer::before {
+  content: "";
+  position: absolute;
+  left: -120px;
+  top: -60px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle at 20% 20%, rgba(0,0,0,0.02) 1px, transparent 1px);
+  opacity: 0.12;
+  transform: scale(1.1);
+  pointer-events: none;
+}
+
+/* inner grid */
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 360px 1fr 1fr 360px; /* left + 2 middle cols + right */
+  gap: 36px;
+  align-items: start;
+}
+
+/* ----- LEFT: brand & address ----- */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.brand-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #10b981;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 20px;
+  box-shadow: 0 6px 18px rgba(16,185,129,0.12);
+}
+
+.brand-name { display:flex; flex-direction:column; }
+.brand-title { font-weight:700; color:#0f1720; font-size:18px; }
+.brand-sub { color:#0f1720; opacity:0.85; font-size:16px; margin-top:-2px; }
+
+/* about */
+.about-text {
+  color: #4b6160;
+  margin-bottom: 18px;
+  line-height: 1.65;
+  font-size: 15px;
+}
+
+.contact-lines p {
+  margin: 8px 0;
+  color: #223a39;
+  font-size: 15px;
+}
+
+/* ----- COLUMN HEADINGS ----- */
+.col-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f1720;
+  margin: 0 0 18px;
+  text-align: center; /* heading centered above its column */
+}
+
+/* list container centers the UL but the items stay left aligned */
+.col-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: inline-block; /* allows centering the group under heading */
+  text-align: left;
+}
+
+.col-list li {
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: #435e5c;
+}
+
+.col-list li a {
+  text-decoration: none;
+  color: inherit;
+  transition: color .22s ease, transform .22s ease;
+}
+.col-list li a:hover {
+  color: #10b981;
+  transform: translateX(6px);
+}
+
+/* ----- SUBSCRIBE (single box: input + button aligned) ----- */
+.subscribe-note {
+  color: #4b6160;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+/* The white box that contains input and button together */
+.subscribe-box {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 6px;
+  border: 1px solid rgba(34,51,48,0.06);
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 6px 18px rgba(23,44,41,0.04);
+}
+
+/* input style */
+.subscribe-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 14px 16px;
+  font-size: 15px;
+  color: #233d3b;
+  border-radius: 8px;
+  background: transparent;
+}
+
+/* green call-to-action button inside same box */
+.subscribe-btn {
+  background: #10b981;
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  margin-left: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.subscribe-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(16,185,129,0.14);
+}
+
+/* ----- social icons row: single line ----- */
+.social-row {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.social {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+  color: #2b4b4a;
+  font-size: 14px;
+  background: transparent;
+  transition: transform .18s ease, background .18s ease, color .18s ease;
+}
+
+/* brand hover */
+.social.facebook:hover { color:#1877f2; background: rgba(24,119,242,0.06); transform: translateY(-4px); }
+.social.linkedin:hover  { color:#0a66c2; background: rgba(10,102,194,0.06); transform: translateY(-4px); }
+.social.instagram:hover { color:#e4405f; background: rgba(228,64,95,0.06); transform: translateY(-4px); }
+.social.twitter:hover  { color:#1da1f2; background: rgba(29,161,242,0.06); transform: translateY(-4px); }
+.social.youtube:hover  { color:#ff0000; background: rgba(255,0,0,0.06); transform: translateY(-4px); }
+
+/* ----- bottom copyright ----- */
+.footer-bottom {
+  border-top: 1px solid rgba(34,51,48,0.06);
+  margin-top: 30px;
+  padding-top: 18px;
+  text-align: center;
+  color: #425d5a;
+  font-size: 14px;
+}
+.footer-bottom a { color: #10b981; text-decoration: none; font-weight: 600; }
+
+/* floating back-to-top (styled like screenshot: white center, red stroke) */
+.back-to-top {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2px solid #ff5b6b;
+  background: #fff;
+  color: #ff5b6b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 26px rgba(16,24,24,0.06);
+  cursor: pointer;
+  z-index: 60;
+  transition: transform .18s ease;
+}
+.back-to-top:hover { transform: translateY(-6px); }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1100px) {
+  .footer-inner { grid-template-columns: 320px 1fr 1fr 1fr; gap: 28px; }
+  .subscribe-box { max-width: 360px; }
+}
+
+@media (max-width: 880px) {
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 30px; }
+  .col-title { text-align: left; } /* headings left on smaller widths */
+  .col-list { display:block; text-align: left; }
+  .social-row { justify-content: flex-start; }
+}
+
+@media (max-width: 560px) {
+  .footer {
+    padding: 40px 14px 28px;
+  }
+  .footer-inner { grid-template-columns: 1fr; gap: 22px; text-align: center; }
+  .col-title { text-align: center; }
+  .col-list { margin: 0 auto; display: inline-block; text-align: left; }
+  .contact-lines p { text-align: center; }
+  .social-row { justify-content: center; }
+  .subscribe-box {
+    width: 100%;
+    flex-direction: row; /* keep input+button inline if possible */
+  }
+  .subscribe-input { padding: 12px; }
+  .subscribe-btn { padding: 12px 14px; margin-left: 6px; }
+}
