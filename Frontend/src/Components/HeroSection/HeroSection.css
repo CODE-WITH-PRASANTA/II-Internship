@@ -5,7 +5,7 @@
   background: linear-gradient(135deg, #f0f8ff, #e0f2ff);
   position: relative;
   overflow: hidden;
-  border-bottom: 6px solid #e94e77;
+ 
   box-shadow: 0 5px 35px rgba(0, 0, 0, 0.08);
   border-radius: 0 0 28px 28px;
   transition: all 0.3s ease-in-out;

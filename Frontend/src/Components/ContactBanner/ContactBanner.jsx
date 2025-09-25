@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./ContactBanner.css";
 
+// Assets
+import ContactBg from "../../assets/contact-bg.webp";
+import dotshape from "../../assets/shape-2.png";
+
 const ContactBanner = () => {
   const bannerRef = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -25,10 +29,16 @@ const ContactBanner = () => {
   }, []);
 
   return (
-    <section
-      ref={bannerRef}
-      className={`contact-banner ${visible ? "show" : ""}`}
-    >
+   <section
+  ref={bannerRef}
+  className={`contact-banner ${visible ? "show" : ""}`}
+>
+
+      {/* Left decorative dot */}
+      <img src={dotshape} alt="dotshape" className="dot-shape left" />
+      {/* Right decorative dot */}
+      <img src={dotshape} alt="dotshape" className="dot-shape right" />
+
       <div className="contact-content">
         <div className="contact-item">
           <p>Get In Touch:</p>

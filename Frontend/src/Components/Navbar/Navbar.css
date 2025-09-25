@@ -3,8 +3,6 @@
   width: 100%;
   font-family: 'Poppins', sans-serif;
 }
-
-
 /* ===== Top Bar ===== */
 .topbar {
   background: linear-gradient(90deg, #1a1a1a, #333, #111, #444, #1a1a1a);
@@ -18,7 +16,9 @@
   animation: gradientShift 15s ease infinite;
   position: sticky;
   top: 0;
-  z-index: 10000; /* always above navbar */
+  position: sticky;   /* or use fixed */
+  top: 0;
+  z-index: 1000; /* ensure it stays above content */
 }
 
 .topbar-container {
@@ -116,12 +116,12 @@
 .Nav-navbar {
   position: sticky;   /* or use fixed */
   top: 0;
+  z-index: 1000; /* ensure it stays above content */
   width: 100%;
   background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+  transition: all 0.3s ease-in-out;
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.5);
   border-bottom: 1px solid rgba(255,255,255,0.1);
-  transition: all 0.3s ease-in-out;
-  z-index: 1000; /* ensure it stays above content */
 }
 
 /* Navbar wrapper with hide/show */

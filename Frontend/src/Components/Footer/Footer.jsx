@@ -10,36 +10,39 @@ import {
 } from "react-icons/fa";
 
 const Footer = () => {
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const Footer_scrollToTop = () =>
+    window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer className="footer">
-      <div className="footer-inner">
+    <footer className="Footer-section">
+      <div className="Footer-inner">
 
-        {/* LEFT: logo + about */}
-        <div className="footer-col footer-about">
-          <div className="brand">
-            <div className="brand-circle">e</div>
-            <div className="brand-name">
-              <span className="brand-title">Edu</span><span className="brand-sub">Blink</span>
-            </div>
-          </div>
+       <div className="Footer-col Footer-about">
+  <div className="Footer-brand">
+    <div className="Footer-brand-circle">I</div>
+    <div className="Footer-brand-name">
+      <span className="Footer-brand-title">International</span>
+      <span className="Footer-brand-sub">Institute of Internship</span>
+    </div>
+  </div>
 
-          <p className="about-text">
-            Lorem ipsum dolor amet consecto adi pisicing elit sed eiusmod tempor incidid unt labore dolore.
-          </p>
+  <p className="Footer-about-text">
+    The International Institute of Internship is your ultimate platform for modern learning, internship opportunities, updates on programs, and connecting with top mentors globally.
+  </p>
 
-          <div className="contact-lines">
-            <p><strong>Add:</strong> 70-80 Upper St Norwich NR2</p>
-            <p><strong>Call:</strong> +01 123 5641 231</p>
-            <p><strong>Email:</strong> info@edublink.co</p>
-          </div>
-        </div>
+  <div className="Footer-contact-lines">
+    <p><strong>Address:</strong> 70-80 Upper St Norwich NR2</p>
+    <p><strong>Call:</strong> +01 123 5641 231</p>
+    <p><strong>Email:</strong> info@eduinternship.co</p>
+  </div>
+</div>
 
-        {/* MIDDLE: Online Platform */}
-        <div className="footer-col footer-links">
-          <h3 className="col-title">Online Platform</h3>
-          <ul className="col-list">
+
+
+        {/* MIDDLE: Platform Links */}
+        <div className="Footer-col Footer-links">
+          <h3 className="Footer-col-title">Online Platform</h3>
+          <ul className="Footer-col-list">
             <li><a href="#">About</a></li>
             <li><a href="#">Course</a></li>
             <li><a href="#">Instructor</a></li>
@@ -49,10 +52,10 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* MIDDLE: Links */}
-        <div className="footer-col footer-links">
-          <h3 className="col-title">Links</h3>
-          <ul className="col-list">
+        {/* MIDDLE: Useful Links */}
+        <div className="Footer-col Footer-links">
+          <h3 className="Footer-col-title">Useful Links</h3>
+          <ul className="Footer-col-list">
             <li><a href="#">Contact Us</a></li>
             <li><a href="#">Gallery</a></li>
             <li><a href="#">News & Articles</a></li>
@@ -62,39 +65,41 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* RIGHT: Subscribe + social */}
-        <div className="footer-col footer-subscribe">
-          <h3 className="col-title">Contacts</h3>
-          <p className="subscribe-note">
-            Enter your email address to register to our newsletter subscription
+        {/* RIGHT: Subscribe + Social */}
+        <div className="Footer-col Footer-subscribe">
+          <h3 className="Footer-col-title">Subscribe</h3>
+          <p className="Footer-subscribe-note">
+            Enter your email address to get the latest updates from EduBlink
           </p>
 
-          {/* single inline box: input + button */}
-          <div className="subscribe-box">
-            <input className="subscribe-input" type="email" placeholder="Your email" />
-            <button className="subscribe-btn">Subscribe →</button>
+          <div className="Footer-subscribe-box">
+            <input
+              className="Footer-subscribe-input"
+              type="email"
+              placeholder="Your email"
+            />
+            <button className="Footer-subscribe-btn">Subscribe</button>
           </div>
 
-          {/* social icons inline */}
-          <div className="social-row">
-            <a href="#" className="social facebook" aria-label="facebook"><FaFacebookF /></a>
-            <a href="#" className="social linkedin" aria-label="linkedin"><FaLinkedinIn /></a>
-            <a href="#" className="social instagram" aria-label="instagram"><FaInstagram /></a>
-            <a href="#" className="social twitter" aria-label="twitter"><FaTwitter /></a>
-            <a href="#" className="social youtube" aria-label="youtube"><FaYoutube /></a>
+          <div className="Footer-social-row">
+            <a href="#" className="Footer-social facebook" aria-label="facebook"><FaFacebookF /></a>
+            <a href="#" className="Footer-social linkedin" aria-label="linkedin"><FaLinkedinIn /></a>
+            <a href="#" className="Footer-social instagram" aria-label="instagram"><FaInstagram /></a>
+            <a href="#" className="Footer-social twitter" aria-label="twitter"><FaTwitter /></a>
+            <a href="#" className="Footer-social youtube" aria-label="youtube"><FaYoutube /></a>
           </div>
         </div>
       </div>
 
-      {/* bottom */}
-      <div className="footer-bottom">
-        <p>Copyright 2025 <a href="#">EduBlink</a> | Developed By <a href="#">DevsBlink</a>. All Rights Reserved</p>
+      {/* Bottom copyright */}
+          
+      <div className="Footer-bottom">
+        <p>
+          Copyright © 2025. Powered by: <strong>DPKHRC Trust</strong> | Design & Develop | ♡ <strong>PR Webstock</strong>
+        </p>
       </div>
 
-      {/* back to top (floating) */}
-      <button className="back-to-top" onClick={scrollToTop} aria-label="Back to top">
-        <FaChevronUp />
-      </button>
+
     </footer>
   );
 };

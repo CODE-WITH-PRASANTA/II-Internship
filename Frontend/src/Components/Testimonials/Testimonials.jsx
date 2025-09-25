@@ -1,59 +1,82 @@
 import React from "react";
 import "./Testimonials.css";
 
+import Profilepic from "../../assets/Profile 0001.webp";
+import DotShape from "../../assets/shape-2.png";
+
 const testimonialsData = [
   {
     id: 1,
-    name: "Bob Limones",
-    role: "Student",
-    img: "https://via.placeholder.com/60", // replace with actual image
+    name: "Thomas Lopez",
+    role: "Designer",
+    img: Profilepic,
     rating: 5,
     review:
-      "Lorem ipsum dolor amet consectetur elit adicing sed do usmod zx tempor enim minim veniam quis nostrud exer citation.",
+      "Lorem ipsum dolor sit amet consectetur elit adicing sed do usmod zx tempor enim minim veniam quis nostrud exer citation.",
   },
   {
     id: 2,
-    name: "David Owens",
-    role: "Designer",
-    img: "https://via.placeholder.com/60", // replace with actual image
+    name: "Amber Page",
+    role: "Developer",
+    img: Profilepic,
     rating: 5,
     review:
-      "Lorem ipsum dolor amet consectetur elit adicing sed do usmod zx tempor enim minim veniam quis nostrud exer citation.",
+      "Lorem ipsum dolor sit amet consectetur elit adicing sed do usmod zx tempor enim minim veniam quis nostrud exer citation.",
+  },
+  {
+    id: 3,
+    name: "John Doe",
+    role: "Designer",
+    img: Profilepic,
+    rating: 5,
+    review:
+      "Lorem ipsum dolor sit amet consectetur elit adicing sed do usmod zx tempor enim minim veniam quis nostrud exer citation.",
+  },
+  {
+    id: 4,
+    name: "Jane Smith",
+    role: "Developer",
+    img: Profilepic,
+    rating: 5,
+    review:
+      "Lorem ipsum dolor sit amet consectetur elit adicing sed do usmod zx tempor enim minim veniam quis nostrud exer citation.",
   },
 ];
 
 const Testimonials = () => {
   return (
-    <section className="testimonials">
-      <div className="testimonials-left">
-        <p className="sub-title">TESTIMONIALS</p>
-        <h2 className="title">What Our Students Have To Say</h2>
-        <div className="underline"></div>
-        <p className="description">
-          Lorem ipsum dolor sit amet consectetur adipiscing elit sed eiusmod
-          tempor incididunt labore dolore magna aliqua enim minim ve.
+    <section className="testimonial-section">
+      <div className="testimonial-left">
+        <p className="testimonial-subtitle">TESTIMONIALS</p>
+        <h2 className="testimonial-title">What Our Students Say</h2>
+        <div className="testimonial-underline"></div>
+        <p className="testimonial-description">
+          Hear from our students who have transformed their skills and careers
+          through our courses.
         </p>
-        <button className="view-btn">
+        <button className="testimonial-btn">
           View All <span>→</span>
         </button>
       </div>
 
-      <div className="testimonials-right">
-        {testimonialsData.map((item) => (
-          <div className="testimonial-card" key={item.id}>
-            <div className="testimonial-header">
-              <img src={item.img} alt={item.name} className="avatar" />
-              <span className="badge">99</span>
-            </div>
-            <p className="review">{item.review}</p>
-            <div className="stars">
-              {"★".repeat(item.rating)}
-            </div>
-            <h3 className="name">{item.name}</h3>
-            <p className="role">{item.role}</p>
-          </div>
-        ))}
+     <div className="testimonial-right">
+  <div className="testimonial-slider">
+    {testimonialsData.map((item) => (
+      <div className="testimonial-card" key={item.id}>
+        <img src={DotShape} alt="dots" className="testimonial-dot" />
+        <div className="testimonial-header">
+          <img src={item.img} alt={item.name} className="testimonial-avatar" />
+          <span className="testimonial-quote">"</span>
+        </div>
+        <p className="testimonial-review">{item.review}</p>
+        <div className="testimonial-stars">{"★".repeat(item.rating)}</div>
+        <h3 className="testimonial-name">{item.name}</h3>
+        <p className="testimonial-role">{item.role}</p>
       </div>
+    ))}
+  </div>
+</div>
+
     </section>
   );
 };

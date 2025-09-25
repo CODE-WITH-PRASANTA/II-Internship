@@ -46,13 +46,11 @@ const TopCategory = () => {
   return (
     <>
       {/* Stats Section */}
-<section className="stats-section">
-  <div className="stats-row">
-    {stats.map((stat, i) => <StatCard key={i} {...stat} />)}
-  </div>
-</section>
-
-
+      <section className="stats-section">
+        <div className="stats-row">
+          {stats.map((stat, i) => <StatCard key={i} {...stat} />)}
+        </div>
+      </section>
       {/* Categories Section */}
       <section className="categories-section">
         <h2 className="section-title">Top Categories</h2>
