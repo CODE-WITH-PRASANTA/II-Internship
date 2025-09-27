@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom"; // ✅ Import Link
 import "./Navbar.css";
 import logo from "../../assets/IIIT LOGO (2).png";
 
@@ -9,22 +10,19 @@ const Navbar = () => {
   const menuRef = useRef();
   const lastScrollY = useRef(0);
 
-  // Detect scroll for Navbar only
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > lastScrollY.current) {
-        setShowNavbar(false); // hide when scrolling down
+        setShowNavbar(false);
       } else {
-        setShowNavbar(true); // show when scrolling up
+        setShowNavbar(true);
       }
       lastScrollY.current = window.scrollY;
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -40,23 +38,45 @@ const Navbar = () => {
     setMobileDropdownOpen(mobileDropdownOpen === index ? null : index);
   };
 
+  // Define menu items with route paths
   const menuItems = [
-    { name: "Home" },
-    { name: "About Us", sub: ["Organization History", "Vision & Mission", "Team Members", "What is Internship"] },
-    { name: "Notice" },
-    { name: "Internships Program", sub: ["On Campus Internships", "Virtual Internships"] },
-    { name: "Our Partners", sub: ["Educational Institutes", "Job Placement Companies", "Training & Technical Support"] },
-    { name: "Media", sub: ["Video", "Photo", "Online Media", "News Paper"] },
-    { name: "Success Story" },
-    { name: "Recruitment" },
-    { name: "Faq" },
-    { name: "Contact Us" },
-    { name: "Donate" },
+    { name: "Home", path: "/" },
+    { name: "About Us", sub: [
+        { name: "Organization History", path: "/OrganisationHistory" },
+        { name: "Vision & Mission", path: "/VisionMission" },
+        { name: "Team Members", path: "/TeamMembers" },
+        { name: "What is Internship", path: "/WhatIsInternship" },
+      ] 
+    },
+    { name: "Notice", path: "/Notice" },
+    { name: "Internships Program", sub: [
+        { name: "On Campus Internships", path: "/OnCampusInternships" },
+        { name: "Virtual Internships", path: "/VirtualInternships" },
+      ] 
+    },
+    { name: "Our Partners", sub: [
+        { name: "Educational Institutes", path: "/EducationalInstitutes" },
+        { name: "Job Placement Companies", path: "/JobPlacementCompanies" },
+        { name: "Training & Technical Support", path: "/TrainingTechnicalSupport" },
+      ] 
+    },
+    { name: "Media", sub: [
+        { name: "Video", path: "/MediaVideo" },
+        { name: "Photo", path: "/MediaPhoto" },
+        { name: "Online Media", path: "/MediaOnline" },
+        { name: "News Paper", path: "/MediaNews" },
+      ] 
+    },
+    { name: "Success Story", path: "/SuccessStory" },
+    { name: "Recruitment", path: "/Recruitment" },
+    { name: "Faq", path: "/Faq" },
+    { name: "Contact Us", path: "/ContactUs" },
+    { name: "Donate", path: "/Donate" },
   ];
 
   return (
     <>
-      {/* ===== Top Bar (Always Visible) ===== */}
+      {/* Top Bar */}
       <div className="topbar">
         <div className="topbar-container">
           <div className="topbar-content">
@@ -65,38 +85,41 @@ const Navbar = () => {
               <a href="mailto:info@IIInternship.co" className="topbar-item">✉ <span>info@IIInternship.co</span></a>
             </div>
             <div className="topbar-right">
-              <a href="#" className="topbar-login">🔑 Login / Register</a>
-              <a href="#" className="topbar-cta">🚀 Apply Now</a>
+              <Link to="/Login" className="topbar-login">🔑 Login / Register</Link>
+              <Link to="/Apply" className="topbar-cta">🚀 Apply Now</Link>
             </div>
           </div>
         </div>
       </div>
 
-      {/* ===== Navbar (Hide/Show on Scroll) ===== */}
+      {/* Navbar */}
       <header className={`Nav-navbar-wrapper ${showNavbar ? "show" : "hide"}`}>
         <nav className="Nav-navbar">
           <div className="Nav-container Nav-navbar-inner">
             <div className="Nav-logo-wrapper">
-              <a href="#" className="Nav-logo"><img src={logo} alt="EduBlink" /></a>
+              <Link to="/" className="Nav-logo"><img src={logo} alt="EduBlink" /></Link>
             </div>
             <button className="Nav-toggler" onClick={() => setMobileMenuOpen(true)}>☰</button>
 
+            {/* Desktop Menu */}
             <ul className="Nav-menu">
               {menuItems.map((item, i) => (
                 <li className="Nav-item dropdown" key={i}>
-                  {item.name === "Donate" ? (
-                    <a className="Nav-donate-btn" href="#">{item.name}</a>
-                  ) : (
+                  {item.sub ? (
                     <>
-                      <a className="Nav-link" href="#">{item.name}</a>
-                      {item.sub && (
-                        <ul className="Nav-dropdown">
-                          {item.sub.map((sub, idx) => (
-                            <li key={idx}><a href="#">{sub}</a></li>
-                          ))}
-                        </ul>
-                      )}
+                      <span className="Nav-link">{item.name}</span>
+                      <ul className="Nav-dropdown">
+                        {item.sub.map((sub, idx) => (
+                          <li key={idx}>
+                            <Link to={sub.path}>{sub.name}</Link>
+                          </li>
+                        ))}
+                      </ul>
                     </>
+                  ) : item.name === "Donate" ? (
+                    <Link className="Nav-donate-btn" to={item.path}>{item.name}</Link>
+                  ) : (
+                    <Link className="Nav-link" to={item.path}>{item.name}</Link>
                   )}
                 </li>
               ))}
@@ -104,7 +127,7 @@ const Navbar = () => {
           </div>
         </nav>
 
-        {/* ===== Mobile Menu ===== */}
+        {/* Mobile Menu */}
         <div className={`Nav-mobile-menu ${mobileMenuOpen ? "open" : ""}`} ref={menuRef}>
           <div className="Nav-mobile-wrapper">
             <div className="Nav-mobile-top">
@@ -114,30 +137,40 @@ const Navbar = () => {
             <ul className="Nav-mobile-list">
               {menuItems.map((item, i) => (
                 <li key={i}>
-                  {item.name === "Donate" ? (
-                    <a
-                      href="#"
+                  {item.sub ? (
+                    <>
+                      <div className="mobile-link" onClick={() => toggleDropdown(i)}>
+                        {item.name} <span className="arrow">{mobileDropdownOpen === i ? "▲" : "▼"}</span>
+                      </div>
+                      <ul className={`mobile-dropdown ${mobileDropdownOpen === i ? "open" : ""}`}>
+                        {item.sub.map((sub, idx) => (
+                          <li key={idx}>
+                            <Link
+                              to={sub.path}
+                              onClick={() => setMobileMenuOpen(false)}
+                            >
+                              {sub.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  ) : item.name === "Donate" ? (
+                    <Link
+                      to={item.path}
                       className="Nav-mobile-donate-btn"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   ) : (
-                    <>
-                      <div
-                        className="mobile-link"
-                        onClick={() => toggleDropdown(i)}
-                      >
-                        {item.name} {item.sub && <span className="arrow">{mobileDropdownOpen === i ? "▲" : "▼"}</span>}
-                      </div>
-                      {item.sub && (
-                        <ul className={`mobile-dropdown ${mobileDropdownOpen === i ? "open" : ""}`}>
-                          {item.sub.map((sub, idx) => (
-                            <li key={idx}><a href="#" onClick={() => setMobileMenuOpen(false)}>{sub}</a></li>
-                          ))}
-                        </ul>
-                      )}
-                    </>
+                    <Link
+                      to={item.path}
+                      className="mobile-link"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
                   )}
                 </li>
               ))}
