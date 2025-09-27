@@ -1,0 +1,116 @@
+.stats-section {
+  position: relative;
+  padding: 60px 20px;
+  background: linear-gradient(to bottom, #f2f5f7, #d9e2ec);
+  overflow: hidden;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.stats-card {
+  position: relative;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 30px 20px;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  animation: fadeInUp 1.2s;
+  animation-fill-mode: both;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.stats-card:hover {
+  transform: scale(1.05);
+}
+
+.stats-bg-glow {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.2;
+  filter: blur(50px);
+}
+
+.teal .stats-bg-glow { background-color: #0097a7; }
+.coral .stats-bg-glow { background-color: #ff6f61; }
+.lime .stats-bg-glow { background-color: #32cd32; }
+.amber .stats-bg-glow { background-color: #ffc107; }
+
+.stats-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+  animation: float 5s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+.stats-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 5px;
+}
+
+.stats-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.particles-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #0097a7;
+  opacity: 0.3;
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 0.3; }
+  50% { opacity: 0.8; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
