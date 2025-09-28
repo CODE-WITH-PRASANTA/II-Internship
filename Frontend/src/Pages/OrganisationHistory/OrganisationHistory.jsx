@@ -6,7 +6,8 @@ import BenefitsSection from '../../Components/BenefitsSection/BenefitsSection'
 import ContactBanner from '../../Components/ContactBanner/ContactBanner'
 import CourseInstructors from '../../Components/CourseInstructors/CourseInstructors'
 import Footer from '../../Components/Footer/Footer'
-import Testimonials from '../../Components/Testimonials/Testimonials'
+import AboutTestimonials from '../../Components/AboutTestimonials/AboutTestimonials'
+import AboutCourseInstructors from '../../Components/AboutCourseInstructors/AboutCourseInstructors'
 
 const OrganisationHistory = () => {
   return (
@@ -15,8 +16,9 @@ const OrganisationHistory = () => {
       <StatsSection/>
       <BenefitsSection/>
       <ContactBanner/>
-      <CourseInstructors/>
-      <Testimonials/>
+      <AboutCourseInstructors/>
+      <AboutTestimonials/>
+      
       <Footer/>
         
     </div>

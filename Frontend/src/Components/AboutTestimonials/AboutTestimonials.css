@@ -1,0 +1,334 @@
+.abouttestmonials {
+  padding: 60px 20px;
+  background: #f9f9f9;
+  overflow: hidden;
+}
+
+.abouttestmonials-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Left Section */
+.abouttestmonials-left {
+  flex: 1 1 500px;
+  animation: slideInLeft 1s ease;
+}
+
+.section-subtitle {
+  font-size: 14px;
+  font-weight: bold;
+  color: #ff4d4d;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  animation: fadeIn 1s ease;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #222;
+  animation: fadeIn 1.5s ease;
+}
+
+.underline {
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #ff4d4d;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  animation: pulse-underline 2s infinite;
+}
+
+.stars {
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease;
+}
+
+.star {
+  color: #ffcc00;
+  font-size: 20px;
+  margin-right: 4px;
+  transition: transform 0.3s;
+}
+
+.star:hover {
+  transform: scale(1.2);
+}
+
+/* Slider */
+.testimonial-slider {
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.testimonial-track {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+}
+
+.testimonial-slide {
+  flex: 0 0 100%;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  animation: fadeIn 1s ease;
+}
+
+.testimonial-text {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.profile-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.profile-img:hover {
+  transform: scale(1.1);
+}
+
+.profile-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #222;
+}
+
+.profile-role {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Dots */
+.dots {
+  text-align: center;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 4px;
+  background: #bbb;
+  display: inline-block;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dot.active {
+  background: #ff4d4d;
+  animation: pulse-dot 2s infinite;
+}
+
+/* Right Section */
+.abouttestmonials-right {
+  flex: 1 1 450px;
+  text-align: center;
+  animation: slideInRight 1s ease;
+}
+
+.video-card {
+  position: relative;
+  display: inline-block;
+}
+
+.video-img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  transition: transform 0.3s;
+}
+
+.video-img:hover {
+  transform: scale(1.05);
+}
+
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ff4d4d;
+  color: #fff;
+  font-size: 24px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+  animation: pulse 2s infinite, rotate 5s linear infinite, scale 3s ease-in-out infinite;
+  box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.7);
+}
+
+.play-btn:hover {
+  background: #e63939;
+  animation: pulse-hover 2s infinite, rotate 5s linear infinite, scale-hover 3s ease-in-out infinite;
+}
+
+.video-caption {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #666;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.8;
+  letter-spacing: 0.5px;
+  animation: fadeInUp 1s ease;
+  transition: color 0.3s ease;
+}
+
+.video-caption:hover {
+  color: #ff4d4d;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-100px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(100px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 77, 77, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 77, 77, 0);
+  }
+}
+
+@keyframes pulse-hover {
+  0% {
+    box-shadow: 0 0 0 0 rgba(230, 57, 57, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(230, 57, 57, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(230, 57, 57, 0);
+  }
+}
+
+@keyframes pulse-underline {
+  0% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(1.1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes pulse-dot {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes scale {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes scale-hover {
+  0% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .abouttestmonials-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .abouttestmonials-left {
+    order: 2;
+  }
+
+  .abouttestmonials-right {
+    order: 1;
+  }
+
+  .testimonial-slide {
+    text-align: left;
+  }
+}
