@@ -27,7 +27,6 @@ const Home = () => {
         <CertificateSection/>
         <Partners/>
         <News/>
-        <Footer/>
     </div>
   )
 }
