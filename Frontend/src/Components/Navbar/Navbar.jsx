@@ -39,40 +39,41 @@ const Navbar = () => {
   };
 
   // Define menu items with route paths
-  const menuItems = [
-    { name: "Home", path: "/" },
-    { name: "About Us", sub: [
-        { name: "Organization History", path: "/OrganisationHistory" },
-        { name: "Vision & Mission", path: "/VisionMission" },
-        { name: "Team Members", path: "/TeamMembers" },
-        { name: "What is Internship", path: "/WhatIsInternship" },
-      ] 
-    },
-    { name: "Notice", path: "/Notice" },
-    { name: "Internships Program", sub: [
-        { name: "On Campus Internships", path: "/OnCampusInternships" },
-        { name: "Virtual Internships", path: "/VirtualInternships" },
-      ] 
-    },
-    { name: "Our Partners", sub: [
-        { name: "Educational Institutes", path: "/EducationalInstitutes" },
-        { name: "Job Placement Companies", path: "/JobPlacementCompanies" },
-        { name: "Training & Technical Support", path: "/TrainingTechnicalSupport" },
-      ] 
-    },
-    { name: "Media", sub: [
-        { name: "Video", path: "/MediaVideo" },
-        { name: "Photo", path: "/MediaPhoto" },
-        { name: "Online Media", path: "/MediaOnline" },
-        { name: "News Paper", path: "/MediaNews" },
-      ] 
-    },
-    { name: "Success Story", path: "/SuccessStory" },
-    { name: "Recruitment", path: "/Recruitment" },
-    { name: "Faq", path: "/Faq" },
-    { name: "Contact Us", path: "/ContactUs" },
-    { name: "Donate", path: "/Donate" },
-  ];
+ const menuItems = [
+  { name: "Home", path: "/" }, // real
+  { name: "About Us", sub: [
+      { name: "Organization History", path: "/OrganisationHistory" }, // real
+      { name: "Vision & Mission", path: "/ComingSoon" },
+      { name: "Team Members", path: "/ComingSoon" },
+      { name: "What is Internship", path: "/ComingSoon" },
+    ] 
+  },
+  { name: "Notice", path: "/Notice" }, // real
+  { name: "Internships Program", sub: [
+      { name: "On Campus Internships", path: "/ComingSoon" },
+      { name: "Virtual Internships", path: "/ComingSoon" },
+    ] 
+  },
+  { name: "Our Partners", sub: [
+      { name: "Educational Institutes", path: "/ComingSoon" },
+      { name: "Job Placement Companies", path: "/ComingSoon" },
+      { name: "Training & Technical Support", path: "/ComingSoon" },
+    ] 
+  },
+  { name: "Media", sub: [
+      { name: "Video", path: "/ComingSoon" },
+      { name: "Photo", path: "/ComingSoon" },
+      { name: "Online Media", path: "/ComingSoon" },
+      { name: "News Paper", path: "/ComingSoon" },
+    ] 
+  },
+  { name: "Success Story", path: "/ComingSoon" },
+  { name: "Recruitment", path: "/ComingSoon" },
+  { name: "Faq", path: "/ComingSoon" },
+  { name: "Contact Us", path: "/ComingSoon" },
+  { name: "Donate", path: "/ComingSoon" },
+];
+
 
   return (
     <>
