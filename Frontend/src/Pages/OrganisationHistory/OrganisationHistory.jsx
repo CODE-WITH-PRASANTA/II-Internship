@@ -7,7 +7,7 @@ import ContactBanner from '../../Components/ContactBanner/ContactBanner'
 import CourseInstructors from '../../Components/CourseInstructors/CourseInstructors'
 import Footer from '../../Components/Footer/Footer'
 import AboutTestimonials from '../../Components/AboutTestimonials/AboutTestimonials'
-import AboutCourseInstructors from '../../Components/AboutCourseInstructors/AboutCourseInstructors'
+import AboutTeam from '../../Components/AboutTeam/AboutTeam'
 
 const OrganisationHistory = () => {
   return (
@@ -15,12 +15,9 @@ const OrganisationHistory = () => {
       <AboutUs/>
       <StatsSection/>
       <BenefitsSection/>
+      <AboutTeam/>
       <ContactBanner/>
-      <AboutCourseInstructors/>
       <AboutTestimonials/>
-      
-      <Footer/>
-        
     </div>
   )
 }

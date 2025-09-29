@@ -8,40 +8,45 @@ const benefits = [
     icon: <FaGraduationCap />,
     title: "High Quality Courses",
     description: "Lorem ipsum dolor sit amet conset ur elit sed eiusmod ex tempor inc labore",
-    colorClass: "green",
+    colorClass: "BenefitSec-green",
   },
   {
     id: 2,
     icon: <FaKey />,
     title: "Life Time Access",
     description: "Lorem ipsum dolor sit amet conset ur elit sed eiusmod ex tempor inc labore",
-    colorClass: "pink",
+    colorClass: "BenefitSec-pink",
   },
   {
     id: 3,
     icon: <FaChalkboardTeacher />,
     title: "Expert Instructors",
     description: "Lorem ipsum dolor sit amet conset ur elit sed eiusmod ex tempor inc labore",
-    colorClass: "blue",
+    colorClass: "BenefitSec-blue",
   },
 ];
 
 const BenefitsSection = () => {
   return (
-    <section className="benefits-section">
-      <div className="benefits-header">
-        <p className="subtitle">WHY CHOOSE EDUBLINK</p>
-        <h2 className="title">
-          The Best <span>Beneficial</span> Side of EduBlink
+    <section className="BenefitSec-container">
+      <div className="BenefitSec-header">
+        <p className="BenefitSec-subtitle">WHY CHOOSE IIInternship</p>
+        <h2 className="BenefitSec-title">
+          The Best <span>Beneficial</span> Side of IIInternship
         </h2>
-        <div className="underline"></div>
+        <div className="BenefitSec-underline"></div>
       </div>
-      <div className="benefits-grid">
+
+      <div className="BenefitSec-grid">
         {benefits.map((item, index) => (
-          <div key={item.id} className="benefit-card" style={{ animationDelay: `${index * 0.2}s` }}>
-            <div className={`benefit-icon ${item.colorClass}`}>{item.icon}</div>
-            <h3 className="benefit-title">{item.title}</h3>
-            <p className="benefit-description">{item.description}</p>
+          <div
+            key={item.id}
+            className={`BenefitSec-card ${item.colorClass}`}
+            style={{ animationDelay: `${index * 0.3}s` }}
+          >
+            <div className={`BenefitSec-icon ${item.colorClass}`}>{item.icon}</div>
+            <h3 className="BenefitSec-cardTitle">{item.title}</h3>
+            <p className="BenefitSec-cardDesc">{item.description}</p>
           </div>
         ))}
       </div>
