@@ -1,0 +1,219 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.serviceblogs {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.serviceblogs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* CARD */
+.serviceblogs-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.serviceblogs-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* TITLE */
+.serviceblogs-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  line-height: 1.3;
+}
+
+.serviceblogs-title:hover {
+  text-decoration: underline;
+  text-decoration-color: #d35400;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 3px;
+  color: #d35400;
+}
+
+/* IMAGE */
+.serviceblogs-img-wrap {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.serviceblogs-img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  transition: transform 1.2s ease;
+}
+
+.serviceblogs-card:hover .serviceblogs-img {
+  transform: scale(1.05);
+}
+
+/* Play Overlay */
+.play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.6);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.play-overlay:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* DESCRIPTION */
+.serviceblogs-desc {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+}
+
+/* FOOTER */
+.serviceblogs-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #444;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.author-name {
+  font-weight: 600;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  background: #888;
+  border-radius: 50%;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* ===================================== */
+/* RESPONSIVE BREAKPOINTS */
+/* ===================================== */
+
+/* Large Tablets */
+@media (max-width: 1200px) {
+  .serviceblogs-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .serviceblogs-img {
+    height: 240px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+  .serviceblogs {
+    padding: 1.5rem;
+  }
+  .serviceblogs-grid {
+    grid-template-columns: 1fr;
+  }
+  .serviceblogs-img {
+    height: 220px;
+  }
+  .serviceblogs-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* Large Phones */
+@media (max-width: 768px) {
+  .serviceblogs {
+    padding: 1.2rem;
+  }
+  .serviceblogs-card {
+    padding: 1rem;
+    border-radius: 14px;
+  }
+  .serviceblogs-title {
+    font-size: 1.2rem;
+  }
+  .serviceblogs-img {
+    height: 200px;
+  }
+  .serviceblogs-desc {
+    font-size: 0.9rem;
+  }
+  .play-overlay {
+    width: 50px;
+    height: 50px;
+    font-size: 1rem;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 576px) {
+  .serviceblogs {
+    padding: 1rem;
+  }
+  .serviceblogs-card {
+    padding: 0.8rem;
+  }
+  .serviceblogs-title {
+    font-size: 1.05rem;
+  }
+  .serviceblogs-img {
+    height: 180px;
+  }
+  .serviceblogs-desc {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+  .serviceblogs-footer {
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: flex-start;
+  }
+}

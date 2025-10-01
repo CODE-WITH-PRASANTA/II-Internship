@@ -1,0 +1,217 @@
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea, #764ba2);
+  --accent-gradient: linear-gradient(45deg, #ff6b81, #ff758c, #ff85a1, #ff9ab3);
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --text-color: #fff;
+  --subtext-color: #fff;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #1c1c1c, #2c2c2c);
+}
+
+.staff-picks-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+/* === HEADER === */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--primary-gradient);
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  animation: fadeInHeader 1s ease forwards;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.star-icon {
+  font-size: 24px;
+  animation: starPulse 2s infinite alternate;
+}
+
+.header h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowText 2s ease-in-out infinite alternate;
+}
+
+.subtext {
+  font-size: 14px;
+  color: white;
+  opacity: 0;
+  animation: fadeInHeaderText 1.4s ease forwards;
+}
+
+.view-more {
+  background: white;
+  color: var(--accent-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.view-more:hover {
+  background: var(--accent-gradient);
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--accent-color);
+}
+
+/* === PICKS GRID === */
+.picks-grid {
+  display: grid;
+  gap: 25px;
+  padding: 20px 0;
+}
+
+@media (min-width: 1025px) {
+  .picks-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .picks-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .picks-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === PICK CARD === */
+.pick-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeInCard 1s ease forwards;
+}
+
+.pick-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 30px var(--accent-color);
+}
+
+.pick-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.pick-card:hover img {
+  transform: scale(1.1);
+}
+
+.pick-category {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--accent-gradient);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  animation: fadeInCategory 1.2s ease forwards;
+  background-size: 200% 200%;
+  animation: gradientMove 3s ease infinite;
+}
+
+.pick-card h3 {
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color);
+  line-height: 1.4;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.arrow-icon {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  font-size: 20px;
+  color: var(--accent-color);
+  transition: transform 0.3s ease;
+}
+
+.pick-card:hover .arrow-icon {
+  transform: translateX(5px);
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeInHeader {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInHeaderText {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes starPulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.2); }
+}
+
+@keyframes fadeInCategory {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInCard {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowText {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
