@@ -1,0 +1,388 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ican Section */
+.ican-section {
+  padding: 3rem 2rem 4rem;
+  text-align: center;
+  font-family: "Helvetica Neue", sans-serif;
+  background: linear-gradient(180deg, #2a4c55 0%, #7f9a99 100%);
+  color: #fff;
+  min-height: 100vh;
+}
+
+.ican-title {
+  font-size: 2.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.ican-subtitle {
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-bottom: 3.5rem;
+  opacity: 0.8;
+}
+
+/* Grid Layout */
+.ican-grid-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 300px 300px;
+  gap: 1rem;
+  position: relative;
+}
+
+/* Big icon boxes */
+.ican-box-left,
+.ican-box-right {
+  border: 2px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ican-box-left {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.ican-box-right {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+}
+
+/* Center top text box */
+.ican-box-center-top {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #fff;
+  background: rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
+.ican-box-center-top h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.ican-box-center-top p {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.5;
+  margin-bottom: 1.8rem;
+  opacity: 0.9;
+}
+
+/* Read more button */
+.ican-read-more {
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 0.2rem;
+  align-self: center;
+  width: max-content;
+  transition: color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.ican-read-more:hover {
+  color: #a0e9ff;
+  border-color: #a0e9ff;
+}
+
+/* Bottom Boxes */
+.ican-box-bottom-left,
+.ican-box-bottom-right {
+  padding: 1.6rem;
+  text-align: left;
+  font-weight: 300;
+  font-size: 1rem;
+  opacity: 0.9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ican-box-bottom-left {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.ican-box-bottom-right {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+}
+
+.ican-box-bottom-left h3,
+.ican-box-bottom-right h3 {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  color: #fff;
+}
+
+/* Bottom center icon box */
+.ican-box-bottom-center {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #fff;
+}
+
+/* Image styles */
+.ican-image {
+  max-width: 130px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* FAQ Section */
+.faq-section {
+  max-width: 700px;
+  margin: 5rem auto 6rem;
+  padding: 0 1rem;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  color: #111;
+}
+
+.faq-title {
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.faq-subtitle {
+  font-weight: 400;
+  font-size: 1rem;
+  color: #999;
+  margin-bottom: 3rem;
+}
+
+.faq-container {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.faq-item {
+  border-bottom: 1px solid #ddd;
+  padding: 1.3rem 0;
+}
+
+.faq-question {
+  background: none;
+  border: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: #111;
+  padding: 0;
+}
+
+.faq-question strong {
+  font-weight: 700;
+}
+
+.faq-question .arrow {
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.faq-answer {
+  margin-top: 1rem;
+  color: #888;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Clean Help Section */
+.clean-help-section {
+  padding: 4rem 1.5rem;
+  text-align: center;
+  background-color: #fff;
+  color: #111;
+}
+
+.clean-help-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.clean-help-subtitle {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #777;
+  margin-bottom: 3.5rem;
+}
+
+.clean-help-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.clean-help-box {
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.clean-help-box h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.clean-help-box p {
+  font-size: 1rem;
+  color: #888;
+  line-height: 1.6;
+}
+
+.clean-read-more {
+  background: none;
+  border: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #111;
+  border-bottom: 2px solid #111;
+  padding-bottom: 0.2rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.clean-read-more:hover {
+  color: #007bff;
+  border-color: #007bff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .ican-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 2rem;
+  }
+
+  .ican-box-left,
+  .ican-box-right,
+  .ican-box-center-top,
+  .ican-box-bottom-left,
+  .ican-box-bottom-center,
+  .ican-box-bottom-right {
+    border: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .ican-grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(auto-fit, minmax(200px, auto));
+    gap: 2rem;
+  }
+
+  .ican-box-left,
+  .ican-box-center-top,
+  .ican-box-right,
+  .ican-box-bottom-left,
+  .ican-box-bottom-center,
+  .ican-box-bottom-right {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+    border: none;
+    padding: 1.5rem 0;
+    background: transparent;
+    text-align: center;
+  }
+
+  .ican-box-center-top {
+    border: none;
+  }
+
+  .ican-box-left,
+  .ican-box-right {
+    justify-content: center;
+  }
+
+  .ican-box-bottom-left h3,
+  .ican-box-bottom-right h3 {
+    font-size: 1.1rem;
+  }
+
+  .ican-image {
+    max-width: 110px;
+  }
+
+  .clean-help-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ican-title {
+    font-size: 2rem;
+  }
+
+  .ican-subtitle {
+    font-size: 1rem;
+  }
+
+  .ican-box-center-top h3,
+  .ican-box-bottom-left h3,
+  .ican-box-bottom-right h3 {
+    font-size: 1.1rem;
+  }
+
+  .ican-box-center-top p,
+  .ican-box-bottom-left p,
+  .ican-box-bottom-right p {
+    font-size: 0.9rem;
+  }
+
+  .ican-image {
+    max-width: 90px;
+  }
+
+  .clean-help-title {
+    font-size: 2rem;
+  }
+
+  .clean-help-subtitle {
+    font-size: 1rem;
+  }
+
+  .clean-help-box h3 {
+    font-size: 1.1rem;
+  }
+}
