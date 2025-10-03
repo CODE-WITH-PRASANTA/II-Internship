@@ -7,21 +7,23 @@ import PageWrapper from "./Components/PageWrapper";
 import './App.css'
 import Notice from "./Pages/Notice/Notice";
 import ComingSoon from "./Components/ComingSoon/ComingSoon";
+import WhatIsInternship from "./Pages/WhatIsInternship/WhatIsInternship";
 
 function App() {
   return (
     <Router>
-      <Navbar />
       {/* Wrap the routes inside PageWrapper */}
       <PageWrapper>
+      <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/OrganisationHistory" element={<OrganisationHistory />} />
           <Route path="/Notice" element={<Notice />} />
           <Route path="/ComingSoon" element={<ComingSoon />} />
+          <Route path="/WhatIsInternship" element={<WhatIsInternship />} />
         </Routes>
-      </PageWrapper>
       <Footer />
+      </PageWrapper>
     </Router>
   );
 }

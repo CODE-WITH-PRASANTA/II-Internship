@@ -45,7 +45,7 @@ const Navbar = () => {
       { name: "Organization History", path: "/OrganisationHistory" }, // real
       { name: "Vision & Mission", path: "/ComingSoon" },
       { name: "Team Members", path: "/ComingSoon" },
-      { name: "What is Internship", path: "/ComingSoon" },
+      { name: "What is Internship", path: "/WhatIsInternship" },
     ] 
   },
   { name: "Notice", path: "/Notice" }, // real

@@ -1,57 +1,40 @@
 import React, { useEffect, useRef } from "react";
-import { FaRegComment, FaRegBookmark } from "react-icons/fa";
-import { FiEye } from "react-icons/fi";
 import { HiArrowUpRight } from "react-icons/hi2";
+import { FaRegFileAlt } from "react-icons/fa"; // Notice icon
+import { MdOutlineAdminPanelSettings } from "react-icons/md"; // Admin icon
 import "./NoticeSection.css";
-import i1 from "../../assets/img-1.webp"
+import i1 from "../../assets/img-1.webp";
 import i2 from "../../assets/img-2.webp";
-import i3 from "../../assets/img-3.webp"
+import i3 from "../../assets/img-3.webp";
 
 const NoticeSection = () => {
-  const slides = [
+  const notices = [
     {
-      id: 1,
-      category: "Lifestyle",
-      date: "Jun 13, 2025",
-      read: "6 mins read",
-      title: "Textile Storytelling in Modern Fashion",
-      desc: "In today’s fashion landscape, textiles are more than just fabric — they’re...",
+      id: "NTC-101",
+      category: "General Notice",
+      date: "Oct 02, 2025",
+      postedBy: "Admin Office",
+      title: "Semester Examination Schedule Released",
+      desc: "The final semester examination timetable has been released. Students are advised to check the exam portal for subject-wise dates.",
       img: i1,
-      comments: 98,
-      views: 162,
     },
     {
-      id: 2,
-      category: "Culture",
-      date: "Jun 13, 2025",
-      read: "6 mins read",
-      title: "Museums x Couture: A New Collaboration",
-      desc: "Where history meets high fashion, a new wave of collaboration is...",
+      id: "NTC-102",
+      category: "Holiday",
+      date: "Oct 05, 2025",
+      postedBy: "Principal",
+      title: "University Closed for Festival",
+      desc: "The institution will remain closed on account of the upcoming festival. Regular classes will resume from Oct 07, 2025.",
       img: i2,
-      comments: 98,
-      views: 162,
     },
     {
-      id: 3,
-      category: "Tech",
-      date: "Jun 13, 2025",
-      read: "7 mins read",
-      title: "Futuristic Streetwear & Tech Fashion",
-      desc: "Streetwear meets technology, shaping the next-gen fashion scene…",
+      id: "NTC-103",
+      category: "Important Update",
+      date: "Oct 10, 2025",
+      postedBy: "Admin Office",
+      title: "Scholarship Application Deadline Extended",
+      desc: "The deadline for applying for scholarships has been extended to Oct 20, 2025. Students are encouraged to apply before the new deadline.",
       img: i3,
-      comments: 102,
-      views: 210,
-    },
-    {
-      id: 4,
-      category: "AI",
-      date: "Jun 13, 2025",
-      read: "5 mins read",
-      title: "AI & Fashion: The Creative Future",
-      desc: "Artificial intelligence is changing the way fashion is designed and consumed…",
-      img: i1,
-      comments: 120,
-      views: 350,
     },
   ];
 
@@ -69,7 +52,7 @@ const NoticeSection = () => {
         scrollAmount += slideWidth;
       }
       slider.scrollTo({ left: scrollAmount, behavior: "smooth" });
-    }, 3000);
+    }, 3500);
 
     return () => clearInterval(autoSlide);
   }, []);
@@ -77,27 +60,26 @@ const NoticeSection = () => {
   return (
     <section className="noticesection">
       <div className="noticesection-header">
-        <h2>Your Gateway to Global News</h2>
-        <p>Breaking Stories from Every Corner of the Globe</p>
+        <h2>📢 Official Notice Board</h2>
+        <p>Stay Updated with the Latest Announcements</p>
       </div>
 
       <div className="noticesection-slider" ref={sliderRef}>
-        {slides.map((item) => (
+        {notices.map((item) => (
           <div key={item.id} className="noticesection-card">
             <img src={item.img} alt={item.title} className="noticesection-img" />
             <div className="noticesection-overlay">
               <span className="noticesection-category">{item.category}</span>
               <div className="noticesection-meta">
-                <span>• {item.date}</span>
-                <span>• {item.read}</span>
+                <span>🆔 {item.id}</span>
+                <span>📅 {item.date}</span>
               </div>
               <h3 className="noticesection-title">{item.title}</h3>
               <p className="noticesection-desc">{item.desc}</p>
               <div className="noticesection-footer">
-                <FaRegBookmark className="icon bookmark" />
-                <div className="noticesection-stats">
-                  <span><FaRegComment /> {item.comments}</span>
-                  <span><FiEye /> {item.views}</span>
+                <div className="noticesection-posted">
+                  <MdOutlineAdminPanelSettings className="admin-icon" />
+                  <span>{item.postedBy}</span>
                 </div>
                 <div className="noticesection-arrow">
                   <HiArrowUpRight />

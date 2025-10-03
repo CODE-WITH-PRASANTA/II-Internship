@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import "./HotTopics.css";
+
 import ht1 from "../../assets/ht1.webp";
 import ht2 from "../../assets/ht2.webp";
 import ht3 from "../../assets/ht3.webp";
@@ -13,9 +14,6 @@ const topics = [
   { name: "Fashion", posts: 170, img: ht2 },
   { name: "Science", posts: 53, img: ht3 },
   { name: "Lifestyle", posts: 58, img: ht4 },
-];
-
-const topicsBottom = [
   { name: "Art", posts: 65, img: ht5 },
   { name: "Crafts", posts: 125, img: ht5 },
   { name: "Travel", posts: 125, img: ht6 },
@@ -24,33 +22,29 @@ const topicsBottom = [
 ];
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   visible: (i) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15 },
+    transition: { delay: i * 0.15, type: "spring", stiffness: 80 },
   }),
-  hover: { scale: 1.05, transition: { duration: 0.3 } },
+  hover: { scale: 1.07, boxShadow: "0 12px 25px rgba(0,0,0,0.3)" },
 };
 
 const HotTopics = () => {
   return (
     <div className="hot-topics-container">
-      {/* Header */}
+      {/* HEADER */}
       <motion.div
         className="hot-topics-header"
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.7 }}
       >
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-        >
+        <div>
           <h2>Hot Topics</h2>
-          <p>Based on your interests</p>
-        </motion.div>
+          <p>Trending based on your interests</p>
+        </div>
         <motion.button
           className="discover-more"
           whileHover={{ scale: 1.1, x: 5 }}
@@ -60,67 +54,31 @@ const HotTopics = () => {
         </motion.button>
       </motion.div>
 
-      {/* Top Grid */}
-      <motion.div
-        className="topics-grid top-grid"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        {topics.map((topic, index) => (
-          <motion.div
-            className="topic-card"
-            key={index}
-            custom={index}
-            variants={cardVariants}
-            whileHover="hover"
-          >
-            <motion.img
-              src={topic.img}
-              alt={topic.name}
-              whileHover={{ scale: 1.1, rotate: 1 }}
-              transition={{ duration: 0.4 }}
-            />
+      {/* CAROUSEL */}
+      <motion.div className="topics-carousel">
+        <motion.div
+          className="carousel-track"
+          drag="x"
+          dragConstraints={{ left: -1600, right: 0 }}
+        >
+          {topics.map((topic, index) => (
             <motion.div
-              className="topic-info"
-              initial={{ opacity: 0, y: 20 }}
-              whileHover={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
+              className="topic-card"
+              key={index}
+              custom={index}
+              variants={cardVariants}
+              initial="hidden"
+              animate="visible"
+              whileHover="hover"
             >
-              <h3>{topic.name}</h3>
-              <p>{topic.posts} posts</p>
+              <img src={topic.img} alt={topic.name} />
+              <div className="topic-info">
+                <h3>{topic.name}</h3>
+                <p>{topic.posts} posts</p>
+              </div>
             </motion.div>
-          </motion.div>
-        ))}
-      </motion.div>
-
-      {/* Bottom Grid */}
-      <motion.div className="topics-grid bottom-grid">
-        {topicsBottom.map((topic, index) => (
-          <motion.div
-            className="topic-card"
-            key={index}
-            custom={index}
-            variants={cardVariants}
-            whileHover="hover"
-          >
-            <motion.img
-              src={topic.img}
-              alt={topic.name}
-              whileHover={{ scale: 1.1, rotate: 1 }}
-              transition={{ duration: 0.4 }}
-            />
-            <motion.div
-              className="topic-info"
-              initial={{ opacity: 0, y: 20 }}
-              whileHover={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-            >
-              <h3>{topic.name}</h3>
-              <p>{topic.posts} posts</p>
-            </motion.div>
-          </motion.div>
-        ))}
+          ))}
+        </motion.div>
       </motion.div>
     </div>
   );

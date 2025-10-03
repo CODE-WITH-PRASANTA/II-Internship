@@ -1,111 +1,214 @@
+/* =========================
+   Notice Section
+========================= */
 .noticesection {
-  padding: 40px 20px;
+  padding: 20px 20px;
   overflow: hidden;
-  background: #f5f7fa;
+  background: linear-gradient(135deg, #f9fbff 0%, #eef3ff 100%);
+  font-family: "Poppins", sans-serif;
+  position: relative;
+
+  /* New border styles */
+  border: 2px solid #ff5e62;       /* Main border color */
+  border-radius: 16px;             /* Smooth rounded corners */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08); /* Soft shadow for depth */
 }
 
+/* Floating gradient background effect */
+.noticesection::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle at center, rgba(255, 94, 98, 0.2), transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+  animation: float 8s infinite ease-in-out alternate;
+}
+.noticesection::after {
+  content: "";
+  position: absolute;
+  bottom: -120px;
+  right: -120px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle at center, rgba(255, 126, 179, 0.15), transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+  animation: float 10s infinite ease-in-out alternate-reverse;
+}
+
+@keyframes float {
+  from { transform: translateY(0) scale(1); }
+  to { transform: translateY(-20px) scale(1.05); }
+}
+
+/* =========================
+   Header
+========================= */
 .noticesection-header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   animation: fadeInDown 1s ease forwards;
+  position: relative;
+  z-index: 1;
 }
 
 .noticesection-header h2 {
-  font-size: 2.2rem;
-  font-weight: 700;
+  font-size: 2.8rem;
+  font-weight: 800;
   color: #ff5e62;
   background: linear-gradient(90deg, #ff758c, #ff7eb3);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
 }
 
 .noticesection-header p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #555;
   margin-top: 8px;
+  line-height: 1.5;
+  opacity: 0.85;
 }
 
 @keyframes fadeInDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0% { opacity: 0; transform: translateY(-30px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
+/* =========================
+   Slider
+========================= */
 .noticesection-slider {
   display: flex;
   gap: 25px;
   overflow-x: auto;
   scroll-behavior: smooth;
   padding-bottom: 10px;
+  position: relative;
+  z-index: 1;
 }
 
+.noticesection-slider::-webkit-scrollbar {
+  height: 6px;
+}
+.noticesection-slider::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #ff758c, #ff7eb3);
+  border-radius: 10px;
+}
+
+/* =========================
+   Card
+========================= */
 .noticesection-card {
   flex: 0 0 320px;
   border-radius: 20px;
   overflow: hidden;
   background: #fff;
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeUp 1s ease both;
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 .noticesection-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.18);
 }
 
+/* Card Image */
 .noticesection-img {
   width: 100%;
-  height: 200px;
+  height: 210px;
   object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.noticesection-card:hover .noticesection-img {
+  transform: scale(1.1);
 }
 
+/* =========================
+   Overlay Content
+========================= */
 .noticesection-overlay {
   position: relative;
   margin-top: -50px;
-  margin-left: 10px;
-  margin-right: 10px;
-  background: rgba(255,255,255,0.8);
-  backdrop-filter: blur(12px);
-  padding: 18px;
+  margin-left: 12px;
+  margin-right: 12px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(14px);
+  padding: 20px;
   border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  transform: translateY(20px);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.noticesection-card:hover .noticesection-overlay {
+  transform: translateY(0);
+  opacity: 1;
 }
 
+/* Category */
 .noticesection-category {
   display: inline-block;
   background: linear-gradient(135deg, #ff9966, #ff5e62);
   color: #fff;
-  padding: 4px 12px;
+  padding: 5px 14px;
   border-radius: 30px;
   font-size: 13px;
   font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 3px 6px rgba(255,94,98,0.3);
+  animation: pop 0.6s ease forwards;
+}
+@keyframes pop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
+/* Meta Info */
 .noticesection-meta {
   font-size: 12px;
-  color: #666;
-  margin: 8px 0 10px;
+  color: #777;
+  margin: 10px 0 12px;
   display: flex;
-  gap: 8px;
+  gap: 12px;
+  font-weight: 500;
+  opacity: 0.85;
 }
 
+/* Title */
 .noticesection-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
-  margin-bottom: 6px;
-  color: #333;
+  margin-bottom: 8px;
+  color: #222;
+  transition: color 0.3s ease;
+}
+.noticesection-title:hover {
+  color: #ff5e62;
 }
 
+/* Description */
 .noticesection-desc {
   font-size: 14px;
   color: #444;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  line-height: 1.5;
+  opacity: 0.95;
 }
 
+/* =========================
+   Footer
+========================= */
 .noticesection-footer {
   display: flex;
   align-items: center;
@@ -120,59 +223,132 @@
 }
 .noticesection-footer .icon:hover {
   color: #ff5e62;
-  transform: scale(1.15);
+  transform: scale(1.2) rotate(-10deg);
 }
 
 .noticesection-stats {
   display: flex;
-  gap: 12px;
+  gap: 14px;
   align-items: center;
   font-size: 13px;
   color: #444;
 }
-
 .noticesection-stats svg {
   margin-right: 4px;
 }
 
+/* Arrow CTA */
 .noticesection-arrow {
-  background: #ff5e62;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
   color: #fff;
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  transition: transform 0.3s ease, background 0.3s ease;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
 }
 .noticesection-arrow:hover {
-  transform: rotate(45deg) scale(1.1);
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  transform: rotate(45deg) scale(1.15);
+  box-shadow: 0 6px 18px rgba(255,126,179,0.5);
 }
 
-/* RESPONSIVE */
-@media (max-width: 1200px) {
+/* =========================
+   Responsive Design
+========================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .noticesection-header h2 {
+    font-size: 2.2rem;
+  }
+  .noticesection-header p {
+    font-size: 1rem;
+  }
   .noticesection-card {
     flex: 0 0 280px;
   }
-}
-@media (max-width: 992px) {
-  .noticesection-card {
-    flex: 0 0 240px;
+  .noticesection-title {
+    font-size: 18px;
+  }
+  .noticesection-desc {
+    font-size: 13px;
   }
 }
+
+/* Large Mobile */
 @media (max-width: 768px) {
-  .noticesection-card {
-    flex: 0 0 200px;
+  .noticesection {
+    padding: 15px;
   }
-  .noticesection-img {
-    height: 160px;
+  .noticesection-header h2 {
+    margin-bottom: 10px;
+    font-size: 2rem;
+  }
+  .noticesection-header p {
+    font-size: 0.95rem;
+  }
+  .noticesection-slider {
+    gap: 18px;
+  }
+  .noticesection-card {
+    flex: 0 0 260px;
+    border-radius: 16px;
+  }
+  .noticesection-title {
+    font-size: 17px;
+  }
+  .noticesection-desc {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .noticesection-arrow {
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
   }
 }
+
+/* Small Mobile */
 @media (max-width: 480px) {
+  .noticesection {
+    padding: 12px;
+  }
+  .noticesection-header{
+    margin-bottom: 10px;
+  }
+  .noticesection-header h2 {
+    font-size: 1.6rem;
+    line-height: 1.3;
+  }
+  .noticesection-header p {
+    font-size: 0.9rem;
+  }
+  .noticesection-slider {
+    gap: 14px;
+  }
   .noticesection-card {
-    flex: 0 0 85%;
+    flex: 0 0 90%;
+    margin: 0 auto;
+    border-radius: 14px;
+  }
+  .noticesection-title {
+    font-size: 16px;
+  }
+  .noticesection-desc {
+    font-size: 12px;
+  }
+  .noticesection-footer {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .noticesection-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 15px;
+    align-self: flex-end;
   }
 }

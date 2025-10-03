@@ -42,19 +42,24 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-/* Infinite loop animation */
+/* Infinite loop animation for desktop */
 @keyframes scrollLeft {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
-/* Responsive */
+/* ✅ Mobile responsive swipe (disable infinite scroll, allow touch swipe) */
 @media (max-width: 768px) {
-  .category-pill {
-    font-size: 13px;
-    padding: 8px 14px;
+  .category-track {
+    animation: none;              /* stop auto scroll */
+    overflow-x: auto;             /* allow manual swipe */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 10px;
   }
-  .category-pill .count {
-    font-size: 12px;
+
+  .category-pill {
+    scroll-snap-align: start;    /* smooth snap effect */
+    flex-shrink: 0;
   }
 }

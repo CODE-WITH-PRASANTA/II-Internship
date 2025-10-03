@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import "./TopAuthors.css";
 
@@ -12,53 +12,63 @@ const authors = [
   { name: "Liam Carter", title: "Tech Blogger", image: ta2 },
   { name: "Noah Martinez", title: "Lifestyle & Wellness", image: ta3 },
   { name: "Maya Patel", title: "Nutrition Blogger", image: ta4 },
+  { name: "Olivia Brown", title: "Fashion Blogger", image: ta1 },
+  { name: "Ethan Wilson", title: "Food Blogger", image: ta2 },
 ];
 
 const TopAuthors = () => {
+  const sliderRef = useRef(null);
+
+  const scrollLeft = () => {
+    sliderRef.current.scrollBy({ left: -300, behavior: "smooth" });
+  };
+  const scrollRight = () => {
+    sliderRef.current.scrollBy({ left: 300, behavior: "smooth" });
+  };
+
   return (
-    <div className="TopAuthors">
-      {/* Header Section */}
-      <div className="top-authors-header">
-        <div className="header-left">
+    <section className="top-authors">
+      {/* HEADER */}
+      <div className="top-authors__header">
+        <div className="top-authors__header-left">
           <motion.span
-            className="icon"
+            className="top-authors__icon"
             animate={{ rotate: [0, 360] }}
             transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
           >
             ✦
           </motion.span>
           <div>
-            <motion.div
-              className="title"
+            <motion.h3
+              className="top-authors__title"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
               Top Authors
-            </motion.div>
-            <motion.div
-              className="subtitle"
+            </motion.h3>
+            <motion.p
+              className="top-authors__subtitle"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             >
               Writers You’ll Want to Follow
-            </motion.div>
+            </motion.p>
           </div>
         </div>
-
         <motion.button
-          className="view-more"
+          className="top-authors__view-more"
           whileHover={{ scale: 1.08, boxShadow: "0 0 18px rgba(0,0,0,0.25)" }}
           whileTap={{ scale: 0.95 }}
         >
-          View More <span className="arrow">→</span>
+          View More <span className="top-authors__arrow">→</span>
         </motion.button>
       </div>
 
-      {/* Main Heading */}
+      {/* MAIN HEADING */}
       <motion.h2
-        className="main-heading"
+        className="top-authors__main-heading"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -68,55 +78,61 @@ const TopAuthors = () => {
         provide you with in-depth knowledge
       </motion.h2>
 
-      {/* Author Cards */}
-      <div className="authors-wrapper">
-        <div className="arrow-buttons">
-          <button className="arrow-btn">←</button>
-          <button className="arrow-btn">→</button>
-        </div>
-        <div className="author-cards">
+      {/* AUTHOR CARDS SLIDER */}
+      <div className="top-authors__slider-wrapper">
+        <button className="top-authors__slider-btn left" onClick={scrollLeft}>
+          ←
+        </button>
+        <div className="top-authors__slider" ref={sliderRef}>
           {authors.map((author, index) => (
             <motion.div
-              className="author-card"
+              className="top-authors__card"
               key={index}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <img src={author.image} alt={author.name} />
-              <div className="author-details">
-                <div className="author-name">{author.name}</div>
-                <div className="author-title">{author.title}</div>
+              <img
+                src={author.image}
+                alt={author.name}
+                className="top-authors__card-img"
+              />
+              <div className="top-authors__card-details">
+                <div className="top-authors__card-name">{author.name}</div>
+                <div className="top-authors__card-title">{author.title}</div>
               </div>
             </motion.div>
           ))}
         </div>
+        <button className="top-authors__slider-btn right" onClick={scrollRight}>
+          →
+        </button>
       </div>
 
-      {/* Call to Action Section */}
-      <div className="cta-section">
-        <hr className="cta-divider" />
+      {/* CTA SECTION */}
+      <div className="top-authors__cta">
+        <hr className="top-authors__divider" />
         <motion.div
-          className="cta-gradient"
+          className="top-authors__cta-gradient"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
           <motion.button
-            className="cta-button"
+            className="top-authors__cta-button"
             whileHover={{ scale: 1.05, backgroundColor: "#333" }}
             whileTap={{ scale: 0.95 }}
           >
-            Become an author
+            Become an Author
           </motion.button>
-          <p className="cta-text">
+          <p className="top-authors__cta-text">
             Join the content creation community and earn income
           </p>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

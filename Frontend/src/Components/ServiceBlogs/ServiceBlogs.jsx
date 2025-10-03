@@ -4,9 +4,8 @@ import { FaRegComment } from "react-icons/fa";
 import { FiEye } from "react-icons/fi";
 import { FaPlay } from "react-icons/fa";
 
-import ln4 from "../../assets/ln4.webp"; 
-import ln5 from "../../assets/ln5.webp"; 
-
+import ln4 from "../../assets/ln4.webp";
+import ln5 from "../../assets/ln5.webp";
 
 const blogs = [
   {
@@ -33,16 +32,27 @@ const blogs = [
     views: 162,
     video: false,
   },
+  {
+    id: 3,
+    title: "Tech for Tomorrow: AI in Daily Life",
+    image: ln4,
+    description:
+      "Artificial Intelligence is shaping our routines—from smart homes to predictive healthcare—transforming how we live and work.",
+    author: "John Carter",
+    date: "Jul 05, 2025",
+    comments: 124,
+    views: 230,
+    video: true,
+  },
 ];
 
 export default function ServiceBlogs() {
   return (
     <section className="serviceblogs">
-      <div className="serviceblogs-grid">
+      <h2 className="section-heading">Latest Insights & Stories</h2>
+      <div className="serviceblogs-slider">
         {blogs.map((blog) => (
           <div className="serviceblogs-card" key={blog.id}>
-            <h2 className="serviceblogs-title">{blog.title}</h2>
-
             <div className="serviceblogs-img-wrap">
               <img src={blog.image} alt={blog.title} className="serviceblogs-img" />
               {blog.video && (
@@ -50,23 +60,29 @@ export default function ServiceBlogs() {
                   <FaPlay />
                 </div>
               )}
+              <div className="overlay-gradient"></div>
+              <h3 className="card-overlay-title">{blog.title}</h3>
             </div>
 
-            <p className="serviceblogs-desc">{blog.description}</p>
+            <div className="card-content">
+              <p className="serviceblogs-desc">{blog.description}</p>
 
-            <div className="serviceblogs-footer">
-              <div className="author">
-                <span className="author-name">{blog.author}</span>
-                <span className="dot"></span>
-                <span className="date">{blog.date}</span>
+              <div className="serviceblogs-footer">
+                <div className="author">
+                  <span className="author-name">{blog.author}</span>
+                  <span className="dot"></span>
+                  <span className="date">{blog.date}</span>
+                </div>
+
+                <div className="stats">
+                  <FaRegComment />
+                  <span>{blog.comments}</span>
+                  <FiEye />
+                  <span>{blog.views}</span>
+                </div>
               </div>
 
-              <div className="stats">
-                <FaRegComment />
-                <span>{blog.comments}</span>
-                <FiEye />
-                <span>{blog.views}</span>
-              </div>
+              <button className="read-more">Read More →</button>
             </div>
           </div>
         ))}
