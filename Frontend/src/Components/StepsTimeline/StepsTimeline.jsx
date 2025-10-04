@@ -1,39 +1,39 @@
 import React, { useEffect } from "react";
 import "./StepsTimeline.css";
-import { FaCheck, FaCalendarAlt, FaHandsHelping, FaStar } from "react-icons/fa";
+import { FaUserGraduate, FaCalendarAlt, FaLaptopCode, FaAward } from "react-icons/fa";
 
 const StepsTimeline = () => {
   const steps = [
     {
-      title: "You Really Decide to Improve Yourself",
+      title: "Enroll & Begin Your Learning Journey",
       description:
-        "Lorem ipsum dolor sit amet, mea ei viderer probatus consequuntur, sonet vocibus lobortis has ad. Eos erant indoctum an.",
-      icon: <FaCheck />,
-      label: "AWAKENING",
+        "Start by enrolling in our internship or coaching program designed to boost your skills and confidence. Get access to structured modules and mentor guidance.",
+      icon: <FaUserGraduate />,
+      label: "STEP 1 — ENROLLMENT",
       active: true,
     },
     {
-      title: "Book an Appointment",
+      title: "Attend Training & Hands-on Sessions",
       description:
-        "Lorem ipsum dolor sit amet, mea ei viderer probatus consequuntur, sonet vocibus lobortis has ad.",
+        "Join live mentor-led sessions, complete interactive tasks, and gain real-world project exposure through structured learning paths.",
       icon: <FaCalendarAlt />,
-      label: "SCHEDULE A MEETING",
+      label: "STEP 2 — TRAINING PHASE",
       active: false,
     },
     {
-      title: "Follow My Instructions",
+      title: "Work on Real Projects & Build Your Portfolio",
       description:
-        "Nostro aperiam petentium eu nam, mel debet urbanitas ad, idque complectitur eu quo. An sea autem dolore dolores.",
-      icon: <FaHandsHelping />,
-      label: "SHOW COMMITMENT",
+        "Apply your skills to actual client and in-house projects. Gain valuable experience and learn professional workflow management.",
+      icon: <FaLaptopCode />,
+      label: "STEP 3 — PRACTICAL EXPERIENCE",
       active: false,
     },
     {
-      title: "Voilà! Meet with new you!",
+      title: "Get Certified & Kickstart Your Career",
       description:
-        "Voilà! Meet with your new self. Dictas invidunt est ex, et sea consulatu torquatos.",
-      icon: <FaStar />,
-      label: "TRANSFORMATION COMPLETED",
+        "Complete your final evaluation and earn a recognized certificate. Get placement assistance and career guidance from our mentors.",
+      icon: <FaAward />,
+      label: "STEP 4 — SUCCESS & CERTIFICATION",
       active: false,
     },
   ];
@@ -56,7 +56,11 @@ const StepsTimeline = () => {
 
   return (
     <section className="timeline-section">
-      <h2 className="timeline-title">Simple Steps to Success</h2>
+      <h2 className="timeline-title">🚀 Your Path to Internship Success</h2>
+      <p className="timeline-subtitle">
+        From enrollment to certification — experience the professional growth you deserve.
+      </p>
+
       <div className="timeline-container">
         {steps.map((step, index) => (
           <div

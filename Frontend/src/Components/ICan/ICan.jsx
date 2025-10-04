@@ -6,24 +6,24 @@ import "./ICan.css";
 
 const faqItems = [
   {
-    title: "1:1 Coaching",
+    title: "Technical Skill Training",
     content:
-      "I am item content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar leo.",
+      "Our internship programs focus on hands-on training in modern technologies like React.js, Node.js, and MongoDB. Students gain real-world experience by working on live projects and industry-level assignments.",
   },
   {
-    title: "Personal Development",
+    title: "Soft Skills & Career Guidance",
     content:
-      "I am item content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar leo.",
+      "We provide personalized mentorship, resume building, interview preparation, and communication skill training to help students confidently face campus interviews and job placements.",
   },
   {
-    title: "Self Oriented Life Programs",
+    title: "Project-Based Learning",
     content:
-      "I am item content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar leo.",
+      "Students work on live projects, simulating real-world scenarios, enhancing problem-solving skills, teamwork, and project management experience to become job-ready.",
   },
   {
-    title: "Marriage Consulting",
+    title: "Campus Placement Assistance",
     content:
-      "I am item content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar leo.",
+      "We collaborate with top companies to provide placement opportunities for our interns. Students get guidance, mock interviews, and placement support to kickstart their careers.",
   },
 ];
 
@@ -36,62 +36,67 @@ const ICan = () => {
 
   return (
     <>
+      {/* Main Section */}
       <section className="ican-section">
         <h2 className="ican-title">I can help you with</h2>
-        <p className="ican-subtitle">Most frequent questions and answers</p>
+        <p className="ican-subtitle">
+          Explore our training, internship programs, and campus placement support
+        </p>
 
         <div className="ican-grid-container">
           {/* Left box with image */}
           <div className="ican-box ican-box-left">
-            <img src={y1} alt="Rocket icon" className="ican-image" />
+            <img src={y1} alt="Training icon" className="ican-image" />
           </div>
 
           {/* Center top text box */}
           <div className="ican-box ican-box-center-top">
-            <h3>1:1 Coaching</h3>
+            <h3>Technical Skill Training</h3>
             <p>
-              Magnetized strongly enough pre vending domain overeus all initial
-              results to estimate the in the big bang contradicted.
+              Gain hands-on experience with industry-relevant technologies
+              through structured internship programs designed to make you job-ready.
             </p>
             <button className="ican-read-more">READ MORE</button>
           </div>
 
           {/* Right box with image */}
           <div className="ican-box ican-box-right">
-            <img src={y2} alt="Medal icon" className="ican-image" />
+            <img src={y2} alt="Mentorship icon" className="ican-image" />
           </div>
 
           {/* Bottom left text box */}
           <div className="ican-box ican-box-bottom-left">
-            <h3>Self Development</h3>
+            <h3>Soft Skills & Career Guidance</h3>
             <p>
-              Magnetized strongly enough pre vending domain overeus all initial
-              results to estimate the in the big bang contradicted.
+              Get personalized mentorship, resume building, interview preparation,
+              and soft skill training to excel in campus interviews.
             </p>
             <button className="ican-read-more">READ MORE</button>
           </div>
 
           {/* Bottom center with image */}
           <div className="ican-box ican-box-bottom-center">
-            <img src={y3} alt="Heart icon" className="ican-image" />
+            <img src={y3} alt="Project icon" className="ican-image" />
           </div>
 
           {/* Bottom right text box */}
           <div className="ican-box ican-box-bottom-right">
-            <h3>Life Programs</h3>
+            <h3>Project-Based Learning & Placement Support</h3>
             <p>
-              Magnetized strongly enough pre vending domain overeus all initial
-              results to estimate the in the big bang contradicted.
+              Work on live projects, gain practical experience, and get
+              placement assistance with our campus partner companies.
             </p>
             <button className="ican-read-more">READ MORE</button>
           </div>
         </div>
       </section>
 
-      {/* New FAQ Accordion Section */}
+      {/* FAQ Accordion Section */}
       <section className="faq-section">
-        <h2 className="faq-title">I can help you with</h2>
-        <p className="faq-subtitle">Most frequent questions and answers</p>
+        <h2 className="faq-title">Frequently Asked Questions</h2>
+        <p className="faq-subtitle">
+          Everything you need to know about our internships and training programs
+        </p>
 
         <div className="faq-container">
           {faqItems.map((item, index) => (
@@ -137,54 +142,57 @@ const ICan = () => {
                   )}
                 </span>
               </button>
-              {openIndex === index && (
-                <div
-                  className="faq-answer"
-                  id={`faq-content-${index}`}
-                  aria-labelledby={`faq-question-${index}`}
-                >
+
+              <div
+                className={`faq-answer-wrapper ${
+                  openIndex === index ? "open" : ""
+                }`}
+                id={`faq-content-${index}`}
+                aria-labelledby={`faq-question-${index}`}
+              >
+                <div className="faq-answer">
                   <p>{item.content}</p>
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-
-            {/* Clean Text-Based Section After FAQ */}
+      {/* Clean Help Section */}
       <section className="clean-help-section">
-        <h2 className="clean-help-title">I can help you with</h2>
-        <p className="clean-help-subtitle">Most frequent questions and answers</p>
+        <h2 className="clean-help-title">Our Internship Programs</h2>
+        <p className="clean-help-subtitle">
+          Practical learning, skill enhancement, and career support
+        </p>
 
         <div className="clean-help-grid">
           <div className="clean-help-box">
-            <h3>1:1 COACHING</h3>
+            <h3>Technical Training</h3>
             <p>
-              Magnetized strongly enough pre vending domain overeus all initial
-              results to estimate the in the big bang contradicted.
+              Learn full-stack development, backend systems, and modern technologies
+              with hands-on guidance from experts.
             </p>
             <button className="clean-read-more">READ MORE</button>
           </div>
           <div className="clean-help-box">
-            <h3>PERSONAL DEVELOPMENT</h3>
+            <h3>Soft Skills & Guidance</h3>
             <p>
-              Magnetized strongly enough pre vending domain overeus all initial
-              results to estimate the in the big bang contradicted.
+              Enhance communication, resume building, and interview skills for
+              campus and corporate opportunities.
             </p>
             <button className="clean-read-more">READ MORE</button>
           </div>
           <div className="clean-help-box">
-            <h3>LIFE PROGRAMS</h3>
+            <h3>Project & Placement Support</h3>
             <p>
-              Magnetized strongly enough pre vending domain overeus all initial
-              results to estimate the in the big bang contradicted.
+              Work on live projects, gain practical experience, and get placement
+              assistance with partner companies.
             </p>
             <button className="clean-read-more">READ MORE</button>
           </div>
         </div>
       </section>
-
     </>
   );
 };

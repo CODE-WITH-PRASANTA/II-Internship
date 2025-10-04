@@ -1,114 +1,120 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import newsletterImage from "../../assets/newsletter.webp";
 import "./CanNewsLetter.css";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faTwitter, faGooglePlusG, faInstagram } from '@fortawesome/free-brands-svg-icons';
-
 export default function CanNewsLetter() {
+  // Motion variants for staggered entrance
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.2 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
   return (
     <section className="cannewsletter-section">
       <div className="cannewsletter-container">
-        <div className="cannewsletter-left">
-          <div className="cannewsletter-circle-wrap">
-            <svg
-              className="cannewsletter-circle-svg"
-              viewBox="0 0 300 150"
-              width="300"
-              height="150"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <defs>
-                <path
-                  id="circlePath"
-                  d="M20,130 A130,130 0 0,1 280,130"
-                />
-              </defs>
-              <text
-                className="cannewsletter-circle-text"
-                fontSize="12"
-                letterSpacing="1.5"
-                fill="#111"
-                fontWeight="400"
-              >
-                <textPath
-                  xlinkHref="#circlePath"
-                  startOffset="50%"
-                  textAnchor="middle"
-                >
-                  SUBSCRIBE TO THE WEEKLY NEWSLETTER
-                </textPath>
-              </text>
-            </svg>
-            <button className="cannewsletter-badge">Weekly Newsletter</button>
-          </div>
+        {/* Left Content */}
+        <motion.div
+          className="cannewsletter-left"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.h2 className="cannewsletter-heading" variants={itemVariants}>
+            Join Our Newsletter
+          </motion.h2>
+          <motion.p className="cannewsletter-text" variants={itemVariants}>
+            Stay updated with the latest tips, articles, and insights delivered straight to your inbox every Monday morning. No spam, just valuable content.
+          </motion.p>
 
-          <h1 className="cannewsletter-title">
-            Get my tips directly into your inbox every Monday morning.
-          </h1>
-          <p className="cannewsletter-subtitle">Yes, I hate spam too!</p>
-
-          <form
+          <motion.form
             className="cannewsletter-form"
             onSubmit={(e) => e.preventDefault()}
-            aria-label="Subscribe to newsletter"
+            variants={itemVariants}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             <input
               type="email"
               className="cannewsletter-input"
-              placeholder="Enter your e-mail"
+              placeholder="Enter your email"
               required
               aria-label="Email address"
             />
-            <button type="submit" className="cannewsletter-submit-button">
-              SUBSCRIBE!
-            </button>
-          </form>
+            <motion.button
+              type="submit"
+              className="cannewsletter-submit-button"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Subscribe
+            </motion.button>
+          </motion.form>
 
-          <div className="cannewsletter-socials" role="list">
-            <a
+          <motion.div
+            className="cannewsletter-socials"
+            variants={itemVariants}
+          >
+            <motion.a
               href="#"
               aria-label="Facebook"
               className="social-icon facebook"
-              role="listitem"
+              whileHover={{ scale: 1.2, y: -5 }}
             >
-              <FontAwesomeIcon icon={faFacebookF} />
-            </a>
-            <a
+              <FaFacebookF />
+            </motion.a>
+            <motion.a
               href="#"
               aria-label="Twitter"
               className="social-icon twitter"
-              role="listitem"
+              whileHover={{ scale: 1.2, y: -5 }}
             >
-              <FontAwesomeIcon icon={faTwitter} />
-            </a>
-            <a
-              href="#"
-              aria-label="Google Plus"
-              className="social-icon googleplus"
-              role="listitem"
-            >
-              <FontAwesomeIcon icon={faGooglePlusG} />
-            </a>
-            <a
+              <FaTwitter />
+            </motion.a>
+            <motion.a
               href="#"
               aria-label="Instagram"
               className="social-icon instagram"
-              role="listitem"
+              whileHover={{ scale: 1.2, y: -5 }}
             >
-              <FontAwesomeIcon icon={faInstagram} />
-            </a>
-          </div>
-        </div>
+              <FaInstagram />
+            </motion.a>
+            <motion.a
+              href="#"
+              aria-label="LinkedIn"
+              className="social-icon linkedin"
+              whileHover={{ scale: 1.2, y: -5 }}
+            >
+              <FaLinkedinIn />
+            </motion.a>
+          </motion.div>
+        </motion.div>
 
-        <div className="cannewsletter-right">
-          <img
+        {/* Right Image */}
+        <motion.div
+          className="cannewsletter-right"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          whileHover={{ scale: 1.02 }}
+        >
+          <motion.img
             src={newsletterImage}
             alt="Newsletter Illustration"
             className="cannewsletter-image"
             draggable={false}
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

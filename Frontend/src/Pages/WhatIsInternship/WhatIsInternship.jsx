@@ -14,10 +14,7 @@ const WhatIsInternship = () => {
       <HelpSection/>
       <ICan/>
       <HowItWorks/>
-      <CanNewsLetter/>
-
-      
-        
+      <CanNewsLetter/> 
     </div>
   )
 }
