@@ -12,6 +12,7 @@ import CertificateSection from '../../Components/CertificateSection/CertificateS
 import Partners from '../../Components/Partners/Partners'
 import News from '../../Components/News/News'
 import Footer from '../../Components/Footer/Footer'
+import ImageGrid from '../../Components/ImageGrid/ImageGrid'
 
 const Home = () => {
   return (
@@ -22,6 +23,7 @@ const Home = () => {
         <PopularCourses/>
         <Info/>
         <Testimonials/>
+        <ImageGrid />
         <ContactBanner/>
         <CourseInstructors/>
         <CertificateSection/>

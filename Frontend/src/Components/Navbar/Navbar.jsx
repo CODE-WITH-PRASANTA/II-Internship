@@ -44,7 +44,8 @@ const Navbar = () => {
   { name: "About Us", sub: [
       { name: "Organization History", path: "/OrganisationHistory" }, // real
       { name: "Vision & Mission", path: "/ComingSoon" },
-      { name: "Team Members", path: "/ComingSoon" },
+      { name: "Team Members", path: "/TeamMember" },
+      { name: "Become A Instructor", path: "/BecomeInstructor" },
       { name: "What is Internship", path: "/WhatIsInternship" },
     ] 
   },
@@ -69,8 +70,8 @@ const Navbar = () => {
   },
   { name: "Success Story", path: "/ComingSoon" },
   { name: "Recruitment", path: "/ComingSoon" },
-  { name: "Faq", path: "/ComingSoon" },
-  { name: "Contact Us", path: "/ComingSoon" },
+  { name: "Faq", path: "/FaQ" },
+  { name: "Contact Us", path: "/ContactUs" },
   { name: "Donate", path: "/ComingSoon" },
 ];
 

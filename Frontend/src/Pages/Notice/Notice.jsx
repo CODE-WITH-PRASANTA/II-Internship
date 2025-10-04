@@ -7,9 +7,6 @@ import Newsletter from '../../Components/Newsletter/Newsletter'
 import TopAuthors from '../../Components/TopAuthors/TopAuthors'
 import HotTopics from '../../Components/HotTopics/HotTopics'
 import StaffPicks from '../../Components/StaffPicks/StaffPicks'
-import PodcastList from '../../Components/PodcastList/PodcastList'
-import Article from '../../Components/Article/Article'
-import Articles from '../../Components/Articles/Articles'
 import ImageGrid from '../../Components/ImageGrid/ImageGrid'
 
 const Notice = () => {
@@ -22,9 +19,6 @@ const Notice = () => {
       <TopAuthors/>
       <HotTopics/>
       <StaffPicks/>
-      <PodcastList/>
-      <Article/>
-      <Articles/>
       <ImageGrid/>
     </div>
   )

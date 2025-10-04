@@ -8,6 +8,10 @@ import './App.css'
 import Notice from "./Pages/Notice/Notice";
 import ComingSoon from "./Components/ComingSoon/ComingSoon";
 import WhatIsInternship from "./Pages/WhatIsInternship/WhatIsInternship";
+import ContactUs from "./Pages/ContactUs/ContactUs";
+import FaqSec from "./Pages/FaqSec/FaqSec";
+import TeamMember from "./Pages/TeamMember/TeamMember";
+import BecomeInstructor from "./Pages/BecomeInstructor/BecomeInstructor";
 
 function App() {
   return (
@@ -21,6 +25,11 @@ function App() {
           <Route path="/Notice" element={<Notice />} />
           <Route path="/ComingSoon" element={<ComingSoon />} />
           <Route path="/WhatIsInternship" element={<WhatIsInternship />} />
+          <Route path="/ContactUs" element={<ContactUs />} />
+          <Route path="/ContactUs" element={<ContactUs />} />
+          <Route path="/FaQ" element={<FaqSec />} />
+          <Route path="/TeamMember" element={<TeamMember />} />
+          <Route path="/BecomeInstructor" element={<BecomeInstructor />} />
         </Routes>
       <Footer />
       </PageWrapper>
