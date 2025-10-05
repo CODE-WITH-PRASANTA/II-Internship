@@ -1,0 +1,260 @@
+/* ==============================
+   BASE RESET
+   ============================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f5f7fa;
+  perspective: 1000px; /* 3D effect */
+}
+
+/* ==============================
+   SECTION STYLING
+   ============================== */
+.questions-section {
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f5f7fa, #ffffff);
+}
+
+/* ==============================
+   3D BACKGROUND PATTERNS
+   ============================== */
+.questions-section::before,
+.questions-section::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.questions-section::before {
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, #00c896 20%, transparent 80%);
+  top: 10%;
+  left: 5%;
+  animation: float3D 12s ease-in-out infinite alternate;
+}
+
+.questions-section::after {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, #ff6b6b 20%, transparent 80%);
+  bottom: 10%;
+  right: 8%;
+  animation: float3Dreverse 14s ease-in-out infinite alternate;
+}
+
+/* ==============================
+   SQUARE GRID BACKGROUND
+   ============================== */
+.questions-container::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(#ffcc00 5px, transparent 5px),
+    radial-gradient(#00aaff 5px, transparent 5px);
+  background-size: 40px 40px;
+  opacity: 0.1;
+  pointer-events: none;
+  animation: rotateBackground 30s linear infinite;
+}
+
+.questions-container::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(0, 200, 150, 0.3);
+  border-radius: 12px;
+  top: 30%;
+  left: 60%;
+  transform: rotateX(45deg) rotateY(45deg);
+  animation: floatSquare 16s ease-in-out infinite alternate;
+}
+
+/* ==============================
+   CONTAINER LAYOUT
+   ============================== */
+.questions-container {
+  display: flex;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  flex-wrap: wrap;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+/* ==============================
+   SIDEBAR
+   ============================== */
+.questions-sidebar {
+  flex: 1 1 280px;
+  min-width: 250px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  transform: translateZ(20px);
+}
+
+.questions-sidebar h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.questions-sidebar p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.questions-menu {
+  list-style: none;
+  padding-left: 0;
+}
+
+.questions-menu li {
+  padding: 0.8rem 0;
+  color: #111;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.questions-menu li:hover {
+  color: #00c896;
+  transform: scale(1.05);
+}
+
+.questions-menu .active {
+  color: #00c896;
+  font-weight: bold;
+  transform: scale(1.05);
+}
+
+/* ==============================
+   CONTENT AREA
+   ============================== */
+.questions-content {
+  flex: 2 1 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transform: translateZ(10px);
+}
+
+/* ==============================
+   ACCORDION ITEM
+   ============================== */
+.questions-item {
+  border: 1px solid #eee;
+  padding: 1.2rem 1.5rem;
+  border-radius: 12px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transform-style: preserve-3d;
+}
+
+.questions-item:hover {
+  background-color: #f1fdfb;
+  border-color: #00c896;
+  transform: translateY(-5px) scale(1.03) rotateX(2deg);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.questions-item.active {
+  border-color: #00c896;
+  background-color: #f1fdfb;
+}
+
+.questions-question {
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.questions-arrow {
+  font-size: 0.9rem;
+  color: #00c896;
+  margin-left: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.questions-item.active .questions-arrow {
+  transform: rotate(180deg);
+}
+
+.questions-answer {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* ==============================
+   ANIMATIONS
+   ============================== */
+@keyframes float3D {
+  0% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+  100% { transform: translateY(20px) rotateX(15deg) rotateY(15deg); }
+}
+
+@keyframes float3Dreverse {
+  0% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+  100% { transform: translateY(-20px) rotateX(-15deg) rotateY(-15deg); }
+}
+
+@keyframes rotateBackground {
+  0% { background-position: 0 0, 20px 20px; }
+  100% { background-position: 20px 20px, 0 0; }
+}
+
+@keyframes floatSquare {
+  0% { transform: translateZ(0) translateY(0px) rotateX(10deg) rotateY(10deg); }
+  100% { transform: translateZ(10px) translateY(-20px) rotateX(25deg) rotateY(25deg); }
+}
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+@media (max-width: 1024px) {
+  .questions-container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .questions-sidebar {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .questions-sidebar h2 {
+    font-size: 1.5rem;
+  }
+
+  .questions-question {
+    font-size: 0.95rem;
+  }
+}

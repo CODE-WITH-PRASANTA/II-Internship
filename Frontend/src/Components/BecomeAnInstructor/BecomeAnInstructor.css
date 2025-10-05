@@ -1,0 +1,221 @@
+/* ==============================
+   GLOBAL RESET
+   ============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ==============================
+   INSTRUCTOR SECTION CONTAINER
+   ============================== */
+.instructor-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #10b981, #06b6d4);
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+  perspective: 2000px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ==============================
+   BACKGROUND FLOATING SHAPES
+   ============================== */
+.instructor-container::before,
+.instructor-container::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.15;
+}
+
+.instructor-container::before {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  top: -100px;
+  left: -100px;
+  animation: rotateShape 20s linear infinite;
+}
+
+.instructor-container::after {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 80%);
+  bottom: -150px;
+  right: -150px;
+  animation: rotateShapeReverse 25s linear infinite;
+}
+
+/* ==============================
+   ANIMATIONS FOR BACKGROUND
+   ============================== */
+@keyframes rotateShape {
+  0% { transform: rotate(0deg) translateX(0); }
+  100% { transform: rotate(360deg) translateX(20px); }
+}
+
+@keyframes rotateShapeReverse {
+  0% { transform: rotate(360deg) translateY(0); }
+  100% { transform: rotate(0deg) translateY(20px); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ==============================
+   INSTRUCTOR CARD
+   ============================== */
+.instructor-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  padding: 40px;
+  max-width: 800px;
+  width: 100%;
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  transform-style: preserve-3d;
+  animation: fadeInCard 1s ease forwards;
+  transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+}
+
+/* Hover 3D glow effect */
+.instructor-card:hover {
+  transform: translateY(-15px) rotateY(6deg) rotateX(4deg) scale(1.02);
+  box-shadow: 0 35px 60px rgba(0, 0, 0, 0.4),
+              0 0 20px rgba(16, 185, 129, 0.7),
+              0 0 40px rgba(6, 182, 212, 0.5);
+  border-color: rgba(16, 185, 129, 0.8);
+}
+
+/* Shine overlay effect */
+.instructor-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 60%);
+  transform: skewX(-20deg) translateX(-100%);
+  transition: transform 0.7s ease;
+  pointer-events: none;
+  border-radius: 25px;
+}
+
+.instructor-card:hover::before {
+  transform: skewX(-20deg) translateX(100%);
+}
+
+/* ==============================
+   CARD CONTENT
+   ============================== */
+.instructor-card h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #fff;
+  font-weight: 700;
+  animation: fadeInText 1s ease forwards;
+}
+
+.instructor-card p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #eee;
+  animation: fadeInText 1.2s ease forwards;
+}
+
+/* ==============================
+   BUTTON
+   ============================== */
+.start-teaching-btn {
+  background: linear-gradient(135deg, #10b981, #06b6d4);
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  animation: fadeInBtn 1.5s ease forwards;
+}
+
+.start-teaching-btn:hover {
+  transform: scale(1.1) rotate(-1deg);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(16, 185, 129, 0.7);
+}
+
+/* ==============================
+   ANIMATIONS FOR CARD ELEMENTS
+   ============================== */
+@keyframes fadeInCard {
+  0% { opacity: 0; transform: translateY(30px) rotateX(2deg); }
+  100% { opacity: 1; transform: translateY(0) rotateX(0deg); }
+}
+
+@keyframes fadeInText {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInBtn {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+   ============================== */
+@media (max-width: 1024px) {
+  .instructor-container {
+    padding: 50px 15px;
+  }
+  .instructor-card {
+    padding: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .instructor-container {
+    padding: 40px 15px;
+  }
+  .instructor-card {
+    padding: 30px;
+    border-radius: 20px;
+  }
+  .instructor-card h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .instructor-container {
+    padding: 30px 10px;
+  }
+  .instructor-card {
+    padding: 20px;
+    border-radius: 15px;
+  }
+  .instructor-card h2 {
+    font-size: 1.5rem;
+  }
+  .instructor-card p {
+    font-size: 0.95rem;
+  }
+  .start-teaching-btn {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+  }
+}

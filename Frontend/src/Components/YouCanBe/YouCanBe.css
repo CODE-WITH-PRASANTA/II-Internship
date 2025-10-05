@@ -1,0 +1,198 @@
+/* ==============================
+   MAIN SECTION CONTAINER
+   ============================== */
+.youcanbe {
+  text-align: center;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+  background: #fdfdfd; /* light background */
+}
+
+/* Section Title */
+.youcanbe h1 {
+  font-size: clamp(2rem, 5vw, 2.5rem); /* responsive font size */
+  margin-bottom: 20px;
+  color: #212529;
+}
+
+/* Section Description */
+.youcanbe p {
+  color: #666;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+/* ==============================
+   CARD CONTAINER
+   ============================== */
+.youcanbe-cards {
+  display: flex;
+  justify-content: center; /* center cards */
+  gap: 30px; /* spacing between cards */
+  flex-wrap: wrap; /* wrap cards on smaller screens */
+  padding: 0 10px;
+}
+
+/* ==============================
+   INDIVIDUAL CARD
+   ============================== */
+.youcanbe-card {
+  position: relative;
+  flex: 1 1 280px; /* flexible width with min size */
+  min-width: 280px;
+  max-width: 350px;
+  background: rgba(255, 255, 255, 0.15); /* translucent glass effect */
+  border-radius: 20px;
+  padding: 40px 20px 20px 20px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  overflow: hidden;
+  perspective: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Glow effect background */
+.youcanbe-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, #ff4d6d, #ff9a3c, #00c896, #007bff);
+  background-size: 400% 400%;
+  animation: glow 8s ease infinite;
+  opacity: 0.6;
+  filter: blur(60px);
+  z-index: 0;
+  border-radius: 30px;
+}
+
+/* Glow animation */
+@keyframes glow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Card hover effect */
+.youcanbe-card:hover {
+  transform: rotateY(10deg) scale(1.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* ==============================
+   CARD IMAGE
+   ============================== */
+.youcanbe-card img {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(255, 255, 255, 0.4);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  animation: float 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* ==============================
+   CARD TITLE
+   ============================== */
+.youcanbe-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #212529;
+  z-index: 1;
+}
+
+/* CARD DESCRIPTION */
+.youcanbe-card p {
+  color: #555;
+  line-height: 1.6;
+  text-align: center;
+  z-index: 1;
+}
+
+/* ==============================
+   RESPONSIVE STYLES
+   ============================== */
+
+/* Large Screens */
+@media (max-width: 1200px) {
+  .youcanbe-cards {
+    gap: 25px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .youcanbe {
+    padding: 35px 15px;
+  }
+
+  .youcanbe-cards {
+    gap: 20px;
+  }
+}
+
+/* Medium Devices */
+@media (max-width: 768px) {
+  .youcanbe-cards {
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .youcanbe-card {
+    max-width: 90%;
+    padding: 30px 15px 15px 15px;
+  }
+}
+
+/* Small Devices */
+@media (max-width: 480px) {
+  .youcanbe h1 {
+    font-size: 2rem;
+  }
+
+  .youcanbe p {
+    font-size: 0.95rem;
+  }
+
+  .youcanbe-card img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 360px) {
+  .youcanbe h1 {
+    font-size: 1.8rem;
+  }
+
+  .youcanbe p {
+    font-size: 0.9rem;
+  }
+
+  .youcanbe-card img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .youcanbe-card h2 {
+    font-size: 1.3rem;
+  }
+}

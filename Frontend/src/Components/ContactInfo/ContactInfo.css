@@ -1,0 +1,300 @@
+/* ==============================
+   CONTACT INFO SECTION
+   ============================== */
+.contactinfo-section {
+  padding: 100px 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9fb 100%);
+  overflow: hidden;
+}
+
+/* ==============================
+   CONTAINER FOR IMAGE & CONTENT
+   ============================== */
+.contactinfo-container {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  max-width: 1200px;
+  width: 100%;
+  flex-wrap: wrap;
+  transform-style: preserve-3d;
+  animation: fadeInUp 1.2s ease;
+}
+
+/* ==============================
+   IMAGE AREA
+   ============================== */
+.contactinfo-image-wrapper {
+  position: relative;
+  flex: 1 1 400px;
+  transform: rotateY(-8deg) rotateX(4deg);
+  transition: all 0.8s ease;
+  animation: floatImage 4s ease-in-out infinite;
+}
+
+.contactinfo-image-wrapper:hover {
+  transform: rotateY(0deg) rotateX(0deg) scale(1.05);
+}
+
+.contactinfo-image img {
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.contactinfo-image:hover img {
+  transform: scale(1.03);
+  box-shadow: 0 30px 50px rgba(0, 0, 0, 0.25);
+}
+
+/* ==============================
+   DECORATIVE ELEMENTS
+   ============================== */
+.contactinfo-decor {
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* Red dashed circle */
+.decor-red {
+  width: 140px;
+  height: 140px;
+  border: 5px dashed #ff4b5c;
+  top: -40px;
+  right: 60px;
+  animation: spinSlow 12s linear infinite;
+}
+
+/* Green soft pulse circle */
+.decor-green {
+  width: 100px;
+  height: 100px;
+  background: rgba(61, 141, 75, 0.15);
+  bottom: -30px;
+  left: 50px;
+  animation: pulseSoft 3s ease-in-out infinite;
+}
+
+/* Dotted pattern element */
+.decor-dots {
+  width: 140px;
+  height: 140px;
+  background-image: radial-gradient(#3d8d4b 1.5px, transparent 1.5px);
+  background-size: 12px 12px;
+  top: 40px;
+  left: -50px;
+  opacity: 0.5;
+  animation: moveDots 8s linear infinite alternate;
+}
+
+/* ==============================
+   CONTENT AREA
+   ============================== */
+.contactinfo-content {
+  flex: 1 1 400px;
+  animation: fadeInRight 1s ease;
+}
+
+.contactinfo-content h2 {
+  font-size: clamp(1.8rem, 4vw, 2.3rem); /* responsive text size */
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #111;
+  line-height: 1.4;
+}
+
+.contactinfo-content h2 span {
+  color: #3d8d4b;
+}
+
+/* ==============================
+   INFO TEXT BLOCKS
+   ============================== */
+.contactinfo-info {
+  margin-bottom: 25px;
+}
+
+.contactinfo-info h3 {
+  font-size: 1.1rem;
+  color: #111;
+  margin-bottom: 8px;
+}
+
+.contactinfo-info p {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ==============================
+   SOCIAL ICONS
+   ============================== */
+.contactinfo-social {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.contactinfo-social a {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-size: 18px;
+  background: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+
+.contactinfo-social a:hover {
+  background-color: #3d8d4b;
+  color: #fff;
+  border-color: #3d8d4b;
+  transform: translateY(-8px) rotateY(15deg);
+  box-shadow: 0 12px 30px rgba(61, 141, 75, 0.4);
+}
+
+/* ==============================
+   ANIMATIONS
+   ============================== */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes floatImage {
+  0% {
+    transform: translateY(0) rotateY(-8deg);
+  }
+  50% {
+    transform: translateY(-15px) rotateY(-5deg);
+  }
+  100% {
+    transform: translateY(0) rotateY(-8deg);
+  }
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseSoft {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+@keyframes moveDots {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(20px, 20px);
+  }
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+   ============================== */
+
+/* Large Tablets */
+@media (max-width: 1200px) {
+  .contactinfo-container {
+    gap: 60px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+  .contactinfo-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contactinfo-content {
+    margin-top: 40px;
+  }
+
+  .contactinfo-social {
+    justify-content: center;
+  }
+
+  .contactinfo-image-wrapper {
+    transform: none;
+  }
+
+  .decor-dots {
+    top: -20px;
+    left: 20px;
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Small Devices */
+@media (max-width: 600px) {
+  .contactinfo-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .contactinfo-info h3 {
+    font-size: 1rem;
+  }
+
+  .contactinfo-social a {
+    width: 42px;
+    height: 42px;
+    font-size: 16px;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+  .contactinfo-section {
+    padding: 60px 5%;
+  }
+
+  .contactinfo-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .contactinfo-info h3 {
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,272 @@
+/* ==============================
+   HOW TO BECOME SECTION
+   ============================== */
+.howtobecome-container {
+  display: flex; /* Flexbox layout */
+  gap: 40px; /* Spacing between form and info */
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+  flex-wrap: wrap; /* Allow stacking on smaller screens */
+  background: white;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  animation: containerFadeIn 1s ease forwards;
+
+  /* SVG Background Pattern */
+  background-image: url("data:image/svg+xml;utf8,<svg width='100' height='100' xmlns='http://www.w3.org/2000/svg'><circle cx='50' cy='50' r='2' fill='%23e0f7fa'/></svg>");
+  background-repeat: repeat;
+  background-size: 80px 80px;
+}
+
+/* Floating background shapes */
+.howtobecome-container::before,
+.howtobecome-container::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: floatShapes 12s ease-in-out infinite alternate;
+}
+
+/* Top left shape */
+.howtobecome-container::before {
+  top: -50px;
+  left: -50px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0, 123, 255, 0.2) 10%, transparent 70%);
+}
+
+/* Bottom right shape */
+.howtobecome-container::after {
+  bottom: -60px;
+  right: -60px;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(0, 200, 150, 0.15) 15%, transparent 70%);
+}
+
+/* Floating shapes animation */
+@keyframes floatShapes {
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-20px) translateX(10px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+/* Container fade-in animation */
+@keyframes containerFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==============================
+   FORM CONTAINER
+   ============================== */
+.howtobecome-form-container {
+  flex: 1;
+  min-width: 300px;
+  background: linear-gradient(135deg, #ffffff, #f4f6f9);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Fade in form animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form heading */
+.howtobecome-form-container h1 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* Form fields wrapper */
+.howtobecome-form-fields {
+  display: flex;
+  gap: 20px;
+}
+
+/* Form field wrapper */
+.howtobecome-form-fields div {
+  flex: 1;
+}
+
+/* Labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Input and textarea styling */
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+/* Focus state */
+input:focus, textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Submit button */
+.howtobecome-submit-btn {
+  background: linear-gradient(135deg, #007bff, #00c896);
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Button hover effect */
+.howtobecome-submit-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+/* ==============================
+   INFO CONTAINER
+   ============================== */
+.howtobecome-info-container {
+  flex: 1;
+  min-width: 300px;
+  position: relative;
+  z-index: 2;
+  animation: fadeInRight 1s ease forwards;
+}
+
+/* Fade in info animation */
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Info heading */
+.howtobecome-info-container h1 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* Tabs */
+.howtobecome-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+/* Tab buttons */
+.howtobecome-tabs button {
+  background: #f0f0f0;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: bold;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+/* Tab hover */
+.howtobecome-tabs button:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #007bff, #00c896);
+  color: white;
+}
+
+/* Active tab */
+.howtobecome-tabs button.active {
+  background: linear-gradient(135deg, #007bff, #00c896);
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Tab content */
+.howtobecome-tab-content {
+  padding: 20px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  animation: fadeInContent 0.6s ease forwards;
+}
+
+/* Tab content fade animation */
+@keyframes fadeInContent {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tab heading */
+.howtobecome-tab-content h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+/* Tab paragraph */
+.howtobecome-tab-content p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* ==============================
+   RESPONSIVE STYLES
+   ============================== */
+
+/* Large screens */
+@media (max-width: 1200px) {
+  .howtobecome-container {
+    padding: 50px 15px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .howtobecome-container {
+    flex-direction: column; /* stack sections vertically */
+    gap: 30px;
+  }
+}
+
+/* Medium devices */
+@media (max-width: 768px) {
+  .howtobecome-form-fields {
+    flex-direction: column; /* stack form fields vertically */
+  }
+}
+
+/* Small devices */
+@media (max-width: 480px) {
+  .howtobecome-container {
+    padding: 30px 10px;
+  }
+  .howtobecome-form-container,
+  .howtobecome-info-container {
+    padding: 20px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  .howtobecome-form-container h1,
+  .howtobecome-info-container h1 {
+    font-size: 1.5rem;
+  }
+}

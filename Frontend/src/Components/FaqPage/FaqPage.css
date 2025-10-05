@@ -1,0 +1,195 @@
+/* ==============================
+   GLOBAL FAQ BANNER STYLES
+   ============================== */
+.faqname-banner {
+  position: relative;
+  text-align: center;
+  background: #f8fbfb;
+  padding: 120px 20px;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+/* ==============================
+   3D FLOATING TEXT
+   ============================== */
+.faqname-content h1 {
+  font-size: 64px;
+  font-weight: 700;
+  color: #1e1e1e;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+  transform: rotateX(15deg);
+  animation: faqname-floatText 6s ease-in-out infinite;
+}
+
+@keyframes faqname-floatText {
+  0%, 100% {
+    transform: rotateX(15deg) translateY(0);
+  }
+  50% {
+    transform: rotateX(0deg) translateY(-10px);
+  }
+}
+
+/* ==============================
+   BREADCRUMB
+   ============================== */
+.faqname-breadcrumb {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #444;
+  animation: faqname-fadeIn 2s ease-in-out;
+}
+
+.faqname-breadcrumb span {
+  margin: 0 6px;
+  color: #666;
+}
+
+/* ==============================
+   ANIMATED BACKGROUND SHAPES
+   ============================== */
+.faqname-bgshape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  animation: faqname-rotateShape 20s linear infinite;
+}
+
+.faqname-shape-left {
+  top: -100px;
+  left: -150px;
+  width: 500px;
+  height: 500px;
+  border: 2px solid #0cb39a;
+}
+
+.faqname-shape-right {
+  bottom: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  border: 2px solid #0cb39a;
+  animation-delay: -10s;
+}
+
+@keyframes faqname-rotateShape {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* ==============================
+   DOTTED PATTERN
+   ============================== */
+.faqname-dots {
+  position: absolute;
+  left: 100px;
+  top: 80px;
+  width: 160px;
+  height: 160px;
+  background-image: radial-gradient(#0cb39a 2px, transparent 2px);
+  background-size: 20px 20px;
+  animation: faqname-moveDots 8s ease-in-out infinite alternate;
+}
+
+@keyframes faqname-moveDots {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(20px);
+  }
+}
+
+/* ==============================
+   WAVE ICON ANIMATION
+   ============================== */
+.faqname-waveicon {
+  position: absolute;
+  right: 120px;
+  top: 130px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transform: rotate(0deg);
+  animation: faqname-waveMove 4s ease-in-out infinite alternate;
+}
+
+.faqname-waveicon span {
+  display: block;
+  width: 60px;
+  height: 5px;
+  background: #0cb39a;
+  border-radius: 10px;
+}
+
+@keyframes faqname-waveMove {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(10px) rotate(3deg);
+  }
+}
+
+/* ==============================
+   FADE IN EFFECT
+   ============================== */
+@keyframes faqname-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+   ============================== */
+@media (max-width: 1024px) {
+  .faqname-content h1 {
+    font-size: 52px;
+  }
+}
+
+@media (max-width: 768px) {
+  .faqname-content h1 {
+    font-size: 42px;
+  }
+
+  .faqname-breadcrumb {
+    font-size: 16px;
+  }
+
+  .faqname-dots {
+    left: 30px;
+    top: 60px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .faqname-waveicon {
+    right: 30px;
+    top: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .faqname-content h1 {
+    font-size: 34px;
+  }
+
+  .faqname-breadcrumb {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,229 @@
+/* ==============================
+   JUSTDROP SECTION
+   ============================== */
+.justdrop-section {
+  position: relative;
+  background: #f2f7f8;
+  padding: 100px 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+/* ==============================
+   MAIN CONTAINER
+   ============================== */
+.justdrop-container {
+  max-width: 800px;
+  width: 100%;
+  background: transparent;
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1.2s ease;
+}
+
+/* ==============================
+   SECTION TITLE
+   ============================== */
+.justdrop-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 40px;
+}
+
+/* ==============================
+   FORM STYLING
+   ============================== */
+.justdrop-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.justdrop-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* ensures responsiveness */
+}
+
+.justdrop-form input,
+.justdrop-form textarea {
+  flex: 1;
+  padding: 18px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  font-size: 1rem;
+  color: #333;
+  outline: none;
+  transition: all 0.3s ease;
+  transform: translateZ(0);
+}
+
+.justdrop-form input:focus,
+.justdrop-form textarea:focus {
+  box-shadow: 0 0 20px rgba(61, 141, 75, 0.25);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.justdrop-form textarea {
+  height: 150px;
+  resize: vertical; /* allows resizing */
+}
+
+/* ==============================
+   SUBMIT BUTTON
+   ============================== */
+.justdrop-btn {
+  background: #1dbb90;
+  color: #fff;
+  font-size: 1rem;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 6px;
+  align-self: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: perspective(600px) translateZ(0);
+}
+
+.justdrop-btn:hover {
+  background: #3d8d4b;
+  transform: translateY(-4px) rotateX(8deg);
+  box-shadow: 0 12px 25px rgba(61, 141, 75, 0.4);
+}
+
+/* ==============================
+   DECORATIVE DOT PATTERNS
+   ============================== */
+.justdrop-decor {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background-image: radial-gradient(#ff5c5c 1.6px, transparent 1.6px);
+  background-size: 14px 14px;
+  opacity: 0.6;
+  z-index: 1;
+  filter: blur(0.5px);
+  transform-style: preserve-3d;
+  animation: floatDots 10s ease-in-out infinite alternate;
+}
+
+.justdrop-decor-left {
+  left: 5%;
+  bottom: 10%;
+  animation-delay: 0.5s;
+  transform: rotateY(15deg) rotateX(10deg);
+}
+
+.justdrop-decor-right {
+  right: 8%;
+  top: 8%;
+  background-image: radial-gradient(#1dbb90 1.8px, transparent 1.8px);
+  animation-delay: 1s;
+  transform: rotateY(-20deg) rotateX(-10deg);
+}
+
+/* ==============================
+   FLOATING WAVE BACKGROUND
+   ============================== */
+.justdrop-wave {
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle at 30% 30%, rgba(29, 187, 144, 0.1), transparent 70%);
+  z-index: 0;
+  animation: waveMotion 12s linear infinite;
+  transform: rotate(15deg);
+}
+
+/* ==============================
+   ANIMATIONS
+   ============================== */
+@keyframes floatDots {
+  0% {
+    transform: translate3d(0, 0, 0) rotateY(15deg);
+  }
+  50% {
+    transform: translate3d(20px, -20px, 30px) rotateY(25deg);
+  }
+  100% {
+    transform: translate3d(-10px, 10px, -20px) rotateY(15deg);
+  }
+}
+
+@keyframes waveMotion {
+  0% {
+    transform: rotate(15deg) scale(1);
+  }
+  50% {
+    transform: rotate(25deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(15deg) scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+   ============================== */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .justdrop-row {
+    flex-direction: column;
+  }
+
+  .justdrop-section {
+    padding: 80px 4%;
+  }
+
+  .justdrop-decor-left,
+  .justdrop-decor-right {
+    width: 120px;
+    height: 120px;
+  }
+
+  .justdrop-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .justdrop-section {
+    padding: 60px 3%;
+  }
+
+  .justdrop-title {
+    font-size: 1.6rem;
+  }
+
+  .justdrop-btn {
+    font-size: 0.95rem;
+    padding: 12px 25px;
+  }
+}
