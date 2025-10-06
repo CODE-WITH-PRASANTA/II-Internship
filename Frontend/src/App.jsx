@@ -12,6 +12,8 @@ import ContactUs from "./Pages/ContactUs/ContactUs";
 import FaqSec from "./Pages/FaqSec/FaqSec";
 import TeamMember from "./Pages/TeamMember/TeamMember";
 import BecomeInstructor from "./Pages/BecomeInstructor/BecomeInstructor";
+import OnCampusInternship from "./Pages/OnCampusInternship/OnCampusInternship";
+import VirtualInternship from "./Pages/VirtualInternship/VirtualInternship";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
           <Route path="/FaQ" element={<FaqSec />} />
           <Route path="/TeamMember" element={<TeamMember />} />
           <Route path="/BecomeInstructor" element={<BecomeInstructor />} />
+          <Route path="/OnCampusInternship" element={<OnCampusInternship />} />
+          <Route path="/VirtualInternship" element={<VirtualInternship />} />
         </Routes>
       <Footer />
       </PageWrapper>

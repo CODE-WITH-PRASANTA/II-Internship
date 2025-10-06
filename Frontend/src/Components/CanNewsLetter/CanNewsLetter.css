@@ -73,7 +73,6 @@
 }
 
 .cannewsletter-submit-button:hover {
-  transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(233, 78, 119, 0.4);
 }
 
@@ -93,7 +92,6 @@
 }
 
 .social-icon:hover {
-  transform: translateY(-5px) scale(1.1);
   box-shadow: 0 10px 30px rgba(233, 78, 119, 0.4);
 }
 

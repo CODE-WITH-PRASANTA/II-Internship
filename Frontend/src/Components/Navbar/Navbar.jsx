@@ -50,11 +50,15 @@ const Navbar = () => {
     ] 
   },
   { name: "Notice", path: "/Notice" }, // real
-  { name: "Internships Program", sub: [
-      { name: "On Campus Internships", path: "/ComingSoon" },
-      { name: "Virtual Internships", path: "/ComingSoon" },
-    ] 
-  },
+{
+  name: "Internships Program",
+  path: "/InternshipsProgram", // ✅ Added main route
+  sub: [
+    { name: "On Campus Internships", path: "/OnCampusInternship" },
+    { name: "Virtual Internships", path: "/VirtualInternship" },
+  ],
+},
+
   { name: "Our Partners", sub: [
       { name: "Educational Institutes", path: "/ComingSoon" },
       { name: "Job Placement Companies", path: "/ComingSoon" },

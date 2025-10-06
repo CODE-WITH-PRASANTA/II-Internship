@@ -8,10 +8,12 @@ import CourseInstructors from '../../Components/CourseInstructors/CourseInstruct
 import Footer from '../../Components/Footer/Footer'
 import AboutTestimonials from '../../Components/AboutTestimonials/AboutTestimonials'
 import AboutTeam from '../../Components/AboutTeam/AboutTeam'
+import BreadCrum from '../../Components/BreadCrum/BreadCrum'
 
 const OrganisationHistory = () => {
   return (
     <div>
+      <BreadCrum />
       <AboutUs/>
       <StatsSection/>
       <BenefitsSection/>
