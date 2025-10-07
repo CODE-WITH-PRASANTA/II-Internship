@@ -1,0 +1,254 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background: #f9fafc;
+  color: #222;
+}
+
+.oncampus-page {
+  padding: 40px 6%;
+}
+
+.oncampus-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.oncampus-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1d3557;
+}
+
+.oncampus-header h2 span {
+  color: #457b9d;
+}
+
+.oncampus-search-bar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 50px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+  padding: 6px 12px;
+}
+
+.oncampus-search-bar input {
+  border: none;
+  outline: none;
+  padding: 10px 16px;
+  width: 240px;
+  font-size: 1rem;
+  border-radius: 50px;
+}
+
+.oncampus-search-bar button {
+  background: linear-gradient(135deg, #1d3557, #457b9d);
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.oncampus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.oncampus-course-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.oncampus-course-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.oncampus-course-image {
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+}
+
+.oncampus-course-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.oncampus-course-card:hover .oncampus-course-image img {
+  transform: scale(1.05);
+}
+
+.oncampus-admission-tag {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: linear-gradient(135deg, #1d3557, #457b9d);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.oncampus-course-content {
+  padding: 16px;
+}
+
+.oncampus-course-meta {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.meta-item i {
+  color: #457b9d;
+  font-size: 0.9rem;
+}
+
+.oncampus-course-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #1d3557;
+}
+
+.oncampus-course-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.tag-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f4f6f8;
+  padding: 5px 10px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.tag-item i {
+  font-size: 0.8rem;
+  color: #457b9d;
+}
+
+.oncampus-course-amenities {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.amenity-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #555;
+  background: #f9fafc;
+  padding: 5px 8px;
+  border-radius: 12px;
+  transition: background 0.3s ease;
+}
+
+.amenity-item:hover {
+  background: #eef6ff;
+}
+
+.amenity-item i {
+  font-size: 0.9rem;
+  color: #457b9d;
+}
+
+/* VIEW ALL PROGRAMS */
+.view-all-programs {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #457b9d;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.view-all-programs:hover {
+  text-decoration: underline;
+}
+
+/* PAGINATION */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 8px;
+}
+
+.page-btn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  background: #f0f0f0;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.page-btn:hover {
+  background: #457b9d;
+  color: #fff;
+}
+
+.page-btn.active {
+  background: #457b9d;
+  color: #fff;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .oncampus-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .oncampus-grid {
+    grid-template-columns: 1fr;
+  }
+  .oncampus-search-bar input {
+    width: 160px;
+  }
+}
