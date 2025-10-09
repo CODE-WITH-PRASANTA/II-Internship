@@ -66,13 +66,13 @@ const Navbar = () => {
     ] 
   },
   { name: "Media", sub: [
-      { name: "Video", path: "/ComingSoon" },
-      { name: "Photo", path: "/ComingSoon" },
-      { name: "Online Media", path: "/ComingSoon" },
-      { name: "News Paper", path: "/ComingSoon" },
+      { name: "Video", path: "/VideoGalary" },
+      { name: "Photo", path: "/MediaPhotos" },
+      { name: "Online Media", path: "/OnlineMedia" },
+      { name: "News Paper", path: "/NewsPaper" },
     ] 
   },
-  { name: "Success Story", path: "/ComingSoon" },
+  { name: "Success Story", path: "/SuccessStory" },
   { name: "Recruitment", path: "/ComingSoon" },
   { name: "Faq", path: "/FaQ" },
   { name: "Contact Us", path: "/ContactUs" },
