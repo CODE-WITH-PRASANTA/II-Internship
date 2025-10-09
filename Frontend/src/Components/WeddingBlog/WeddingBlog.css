@@ -1,0 +1,191 @@
+/* ========= Modern + 3D Premium Wedding Blog ========= */
+/* Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Section */
+.weddingblog-pro {
+  --bg: linear-gradient(180deg,#fbfcfd 0,#eef6f9 100%);
+  --card-radius: 18px;
+  --shadow: 0 18px 40px rgba(18,24,31,0.08);
+  --accent: linear-gradient(90deg,#7ac7bf,#3aa7e0 60%);
+  padding: 84px 6%;
+  background: var(--bg);
+  font-family: Inter, "Segoe UI", system-ui, Roboto, sans-serif;
+  color: #0f1720;
+}
+
+/* Header */
+.wb-header { text-align: center; margin-bottom: 48px; }
+.wb-eyebrow {
+  display:inline-block;
+  font-size: 13px;
+  color:#0f766e;
+  background: rgba(122,199,191,0.12);
+  padding:6px 10px;
+  border-radius:999px;
+  margin-bottom:12px;
+  font-weight:600;
+  letter-spacing:0.4px;
+}
+.wb-header h2 {
+  font-size: 34px;
+  line-height:1.05;
+  font-weight:800;
+  margin-bottom: 12px;
+}
+.wb-header h2 span {
+  background: -webkit-linear-gradient(90deg,#0f766e,#0ea5a3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.wb-sub {
+  color:#475569;
+  max-width:780px;
+  margin:0 auto;
+  font-size:16px;
+  line-height:1.7;
+}
+
+/* Grid */
+.wb-grid {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+}
+@media (max-width:1100px) { .wb-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width:680px) { .wb-grid { grid-template-columns: 1fr; } }
+
+/* Card base */
+.wb-card {
+  --mx: 0; /* from JS -1..1 */
+  --my: 0;
+  --scale: 1;
+  --tiltX: calc(var(--my) * 6deg); /* vertical tilt */
+  --tiltY: calc(var(--mx) * -10deg); /* horizontal tilt */
+  --depth: calc( (var(--mx) * 6px) * -1 );
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  transition: transform 420ms cubic-bezier(.2,.9,.3,1), box-shadow 420ms;
+  transform: translateZ(0);
+  opacity: 0;
+  transform: translateY(28px);
+  will-change: transform;
+  position: relative;
+  border-radius: var(--card-radius);
+}
+
+/* reveal when in view (stagger via inline --reveal-delay) */
+.wb-card.inview {
+  animation: wbReveal 620ms cubic-bezier(.2,.9,.3,1) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+@keyframes wbReveal {
+  from { opacity: 0; transform: translateY(28px) scale(0.995); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* inner surface that actually tilts */
+.wb-card-inner {
+  background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,255,255,0.98));
+  border-radius: inherit;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transform: rotateX(var(--tiltX)) rotateY(var(--tiltY)) translateZ(0);
+  transform-origin: center;
+  transition: transform 380ms cubic-bezier(.2,.9,.3,1);
+  will-change: transform;
+  display:flex;
+  flex-direction:column;
+  min-height: 360px;
+}
+
+/* media (image) area with layered parallax */
+.wb-media {
+  position: relative;
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  transform: translateZ(0);
+  overflow: hidden;
+}
+
+/* media layers: subtle parallax using CSS variables */
+.wb-media-layer {
+  position:absolute; inset:0;
+  pointer-events:none;
+  transform-origin:center;
+  transition: transform 420ms cubic-bezier(.2,.9,.3,1), opacity 420ms;
+}
+
+/* background image slightly lags */
+.layer-bg { transform: translateZ(-20px) translateY(calc(var(--my) * -6px)) translateX(calc(var(--mx) * -6px)); opacity:1;}
+/* gradient overlay moves faster for depth */
+.layer-grad {
+  background: linear-gradient(180deg, rgba(10,10,10,0.0), rgba(10,10,10,0.22));
+  mix-blend-mode: multiply;
+  transform: translateZ(10px) translateY(calc(var(--my) * -3px)) translateX(calc(var(--mx) * -3px));
+  opacity: 1;
+}
+/* specular shine that follows pointer */
+.layer-specular {
+  background: radial-gradient(600px 200px at calc(50% + (var(--mx) * 20%)) calc(30% + (var(--my) * 20%)), rgba(255,255,255,0.14), rgba(255,255,255,0) 35%);
+  mix-blend-mode: screen;
+  transform: translateZ(30px);
+  opacity: 1;
+}
+
+/* body text area */
+.wb-body { padding: 22px 22px 28px; display:flex; flex-direction:column; gap:10px; flex:1; }
+.wb-title { font-size:20px; margin:0; letter-spacing:-0.2px; color:#08121a; font-weight:700; transform: translateZ(40px); }
+.wb-desc { margin:0; color:#475569; line-height:1.6; font-size:14.4px; transform: translateZ(36px); }
+
+/* CTA */
+.wb-cta { margin-top:auto; display:flex; align-items:center; gap:12px; transform: translateZ(40px); }
+.wb-link {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:linear-gradient(90deg,#0ea5a3,#06b6d4);
+  color:white; padding:10px 14px; border-radius:999px; text-decoration:none; font-weight:700; font-size:14px;
+  box-shadow: 0 8px 20px rgba(6,182,212,0.12);
+  transition: transform 240ms ease, box-shadow 240ms ease;
+}
+.wb-link .wb-arrow { display:inline-flex; align-items:center; justify-content:center; transform: translateZ(40px); }
+.wb-card:hover .wb-link { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(6,182,212,0.16); }
+
+/* floating accent element behind card */
+.wb-accent {
+  position:absolute; right:-22px; top:-22px; width:140px; height:140px;
+  background: radial-gradient(circle at 30% 30%, rgba(10,180,200,0.12), rgba(10,180,200,0));
+  filter: blur(18px);
+  transform: translateZ(-40px) scale(1.04);
+  pointer-events:none;
+}
+
+/* hovered state - increase tilt and scale subtly */
+.wb-card.hovered .wb-card-inner { transform: rotateX(calc(var(--tiltX) * 1.1)) rotateY(calc(var(--tiltY) * 1.1)) translateZ(18px); }
+.wb-card.hovered { transform: translateY(-6px) scale(1.006); box-shadow: 0 28px 60px rgba(6,20,30,0.12); }
+
+/* subtle pulse float animation for cards not hovered */
+.wb-card:not(.hovered) .wb-card-inner { animation: wbFloat 6s ease-in-out infinite; transform-origin:center; }
+@keyframes wbFloat {
+  0% { transform: translateY(0) rotateX(calc(var(--tiltX))) rotateY(calc(var(--tiltY))); }
+  50% { transform: translateY(-6px) rotateX(calc(var(--tiltX))) rotateY(calc(var(--tiltY))); }
+  100% { transform: translateY(0) rotateX(calc(var(--tiltX))) rotateY(calc(var(--tiltY))); }
+}
+
+/* small responsive adjustments */
+@media (max-width:1100px) {
+  .wb-media { height:200px; }
+  .wb-title { font-size:18px; }
+}
+@media (max-width:680px) {
+  .wb-media { height:180px; }
+  .wb-body { padding:16px; }
+  .wb-grid { gap:18px; }
+}
+
+/* accessibility: reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .wb-card, .wb-card-inner, .wb-media-layer { transition: none !important; animation: none !important; }
+}

@@ -1,0 +1,108 @@
+.projects {
+  text-align: center;
+  padding: 50px 5%;
+  font-family: "Poppins", sans-serif;
+}
+
+.projects h2 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.projects h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #f9a8d4, #fcd34d);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  perspective: 1500px;
+}
+
+.project-card {
+  width: 100%;
+  height: 400px; /* Increased height */
+  perspective: 1500px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+}
+
+.project-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-back {
+  background: linear-gradient(135deg, #f9a8d4, #fcd34d);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transform: rotateY(180deg);
+  padding: 20px;
+}
+
+.project-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.project-title {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.project-desc {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1200px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .projects h2 {
+    font-size: 28px;
+  }
+}
