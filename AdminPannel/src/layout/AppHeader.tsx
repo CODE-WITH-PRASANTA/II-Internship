@@ -6,7 +6,7 @@ import { ThemeToggleButton } from "../components/common/ThemeToggleButton";
 import NotificationDropdown from "../components/header/NotificationDropdown";
 import UserDropdown from "../components/header/UserDropdown";
 
-import Logo from '../Asserts/Logo.png'
+import Logo from '../Asserts/IIIT LOGO (2).png'
 
 
 const AppHeader: React.FC = () => {

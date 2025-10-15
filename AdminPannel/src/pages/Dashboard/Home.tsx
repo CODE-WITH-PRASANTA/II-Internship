@@ -10,28 +10,28 @@ export default function Home() {
   return (
     <>
       <PageMeta
-        title="FlyDenAi Admin Dashboard | Intelligent Business Management Panel"
-        description="FlyDenAi Admin Dashboard – Monitor analytics, manage sales insights, track revenue goals, and control intelligent business operations with precision and AI-powered insights."
+        title="II Internship Admin Panel | Manage Students, Mentors & Projects"
+        description="II Internship Admin Dashboard – Efficiently manage student data, monitor internship performance, assign mentors, and track project progress in one powerful dashboard."
       />
 
       <div className="grid grid-cols-12 gap-4 md:gap-6">
-        {/* Left Section: Metrics + Charts */}
+        {/* 📊 Left Section: Key Metrics & Reports */}
         <div className="col-span-12 space-y-6 xl:col-span-7">
           <EcommerceMetrics />
           <MonthlySalesChart />
         </div>
 
-        {/* Right Section: Monthly Targets */}
+        {/* 🎯 Right Section: Internship Targets */}
         <div className="col-span-12 xl:col-span-5">
           <MonthlyTarget />
         </div>
 
-        {/* Statistics Section */}
+        {/* 📈 Internship Statistics Section */}
         <div className="col-span-12">
           <StatisticsChart />
         </div>
 
-        {/* Demographics & Orders Section */}
+        {/* 👥 Demographics & Recent Activities */}
         <div className="col-span-12 xl:col-span-5">
           <DemographicCard />
         </div>
