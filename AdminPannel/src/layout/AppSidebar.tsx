@@ -19,7 +19,7 @@ import {
 } from "react-icons/hi";
 
 import { useSidebar } from "../context/SidebarContext";
-import companylogo from "../Asserts/Logo.png";
+import companylogo from "../Asserts/IIIT LOGO (2).png";  // fix spelling
 
 type NavItem = {
   name: string;
