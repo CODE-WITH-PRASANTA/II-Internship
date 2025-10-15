@@ -1,0 +1,142 @@
+.video-gallery {
+  text-align: center;
+  padding: 60px 15%;
+  background: linear-gradient(135deg, #fff9f5, #f0f4ff);
+  font-family: "Poppins", sans-serif;
+}
+
+.video-gallery h2 {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 30px;
+  background: linear-gradient(90deg, #f9a8d4, #fcd34d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.video-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  justify-items: center;
+  padding: 0 10px;
+}
+
+.video-item {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  background: white;
+}
+
+.video-item:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.2);
+}
+
+.video-item img {
+  width: 100%;
+  display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle, rgba(249,168,212,0.9), rgba(252,211,77,0.9));
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 26px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, background 0.3s ease;
+  animation: pulsePlayButton 2s infinite ease-in-out;
+}
+
+.video-item:hover .play-button {
+  transform: translate(-50%, -50%) scale(1.15);
+  background: radial-gradient(circle, rgba(252,211,77,0.9), rgba(249,168,212,0.9));
+  animation: none;
+}
+
+@keyframes pulsePlayButton {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.05); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.video-item p {
+  padding: 14px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1e293b;
+  background: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+
+/* RESPONSIVE BREAKPOINTS */
+@media (min-width: 1600px) {
+  .video-gallery {
+    padding: 60px 20%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .video-gallery {
+    padding: 60px 12%;
+  }
+  .video-item {
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 900px) {
+  .video-gallery {
+    padding: 60px 8%;
+  }
+  .video-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .video-item {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .video-gallery {
+    padding: 40px 5%;
+  }
+  .video-gallery h2 {
+    font-size: 28px;
+  }
+  .video-item p {
+    font-size: 14px;
+    padding: 10px;
+  }
+  .play-button {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+  .social-icons-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  .footer-text {
+    justify-content: center;
+  }
+}
