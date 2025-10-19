@@ -20,6 +20,7 @@ import VideoGalary from "./Pages/VideoGalary/VideoGalary";
 import OnlineMedia from "./Pages/OnlineMedia/OnlineMedia";
 import NewsPaper from "./Pages/NewsPaper/NewsPaper";
 import MediaPhoto from "./Pages/MediaPhoto/MediaPhoto";
+import Recruitment from "./Pages/Recruitment/Recruitment";
 
 function App() {
   return (
@@ -44,6 +45,9 @@ function App() {
           <Route path="/NewsPaper" element={<NewsPaper />} />
           <Route path="/MediaPhotos" element={<MediaPhoto />} />
           <Route path="/SuccessStory" element={<SuccessStory />} />
+          <Route path="/Recruitment" element={<Recruitment />} />
+
+
           <Route path="/SuccessStory/Details" element={<SuccessStoryDetails />} />
         </Routes>
       <Footer />

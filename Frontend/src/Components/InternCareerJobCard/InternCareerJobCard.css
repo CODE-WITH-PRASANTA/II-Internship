@@ -1,0 +1,194 @@
+/* ===================== BASE ===================== */
+.interncareer-jobcard {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  max-width: 1100px;
+  margin: 60px auto;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.4s ease;
+}
+
+.interncareer-jobcard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+/* ===================== HEADER ===================== */
+.interncareer-jobcard-header {
+  background: #e9f1ff;
+  padding: 24px 35px;
+  border-bottom: 1px solid #d9e4ff;
+  text-align: left;
+}
+
+.interncareer-jobcard-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a3d91;
+  margin: 0;
+}
+
+.interncareer-jobcard-sub {
+  font-size: 0.98rem;
+  color: #444;
+  margin-top: 6px;
+}
+
+/* ===================== TABLE ===================== */
+.interncareer-jobcard-table {
+  padding: 25px 35px;
+}
+
+.interncareer-jobcard-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.interncareer-jobcard-row:last-child {
+  border-bottom: none;
+}
+
+.interncareer-jobcard-cell {
+  padding: 14px 12px;
+  font-size: 0.95rem;
+}
+
+.interncareer-jobcard-cell.label {
+  background: #f5f9ff;
+  font-weight: 600;
+}
+
+.interncareer-jobcard-cell.value {
+  color: #1a1a1a;
+}
+
+.interncareer-jobcard-bonus {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* ===================== BUTTONS ===================== */
+.interncareer-jobcard-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 35px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.interncareer-jobcard-btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 12px 36px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  color: #fff;
+}
+
+.interncareer-jobcard-btn.whatsapp {
+  background: #25d366;
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+}
+
+.interncareer-jobcard-btn.whatsapp:hover {
+  background: #20bd5a;
+}
+
+.interncareer-jobcard-btn.apply {
+  background: #ff4d4d;
+  box-shadow: 0 4px 10px rgba(255, 77, 77, 0.3);
+}
+
+.interncareer-jobcard-btn.apply:hover {
+  background: #e43d3d;
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+/* Large Tablets & Small Laptops */
+@media (max-width: 992px) {
+  .interncareer-jobcard {
+    margin: 50px 30px;
+  }
+
+  .interncareer-jobcard-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .interncareer-jobcard-header {
+    text-align: center;
+  }
+
+  .interncareer-jobcard-buttons {
+    justify-content: center;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .interncareer-jobcard {
+    margin: 40px 20px;
+  }
+
+  .interncareer-jobcard-row {
+    grid-template-columns: 1fr;
+  }
+
+  .interncareer-jobcard-cell.label {
+    background: #f0f6ff;
+    border-bottom: 1px solid #eee;
+  }
+
+  .interncareer-jobcard-cell.value {
+    padding-top: 5px;
+  }
+
+  .interncareer-jobcard-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .interncareer-jobcard-btn {
+    width: 100%;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+  .interncareer-jobcard {
+    border-radius: 12px;
+    margin: 30px 12px;
+  }
+
+  .interncareer-jobcard-header {
+    padding: 20px;
+  }
+
+  .interncareer-jobcard-title {
+    font-size: 1.2rem;
+  }
+
+  .interncareer-jobcard-sub {
+    font-size: 0.9rem;
+  }
+
+  .interncareer-jobcard-table {
+    padding: 18px;
+  }
+
+  .interncareer-jobcard-buttons {
+    padding: 20px;
+  }
+
+  .interncareer-jobcard-btn {
+    font-size: 0.95rem;
+    padding: 10px 0;
+  }
+}

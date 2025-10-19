@@ -1,0 +1,243 @@
+/* ================= GLOBAL ================= */
+.interncareer {
+  position: relative;
+  overflow: hidden;
+  background: #f6f9ff;
+  padding: 100px 8%;
+  font-family: "Poppins", sans-serif;
+  color: #1a1a1a;
+}
+
+/* ================= BACKGROUND ANIMATION ================= */
+.interncareer-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: moveCircle 15s ease-in-out infinite alternate;
+}
+
+.circle1 {
+  width: 240px;
+  height: 240px;
+  background: #cce3ff;
+  top: 10%;
+  left: -8%;
+}
+
+.circle2 {
+  width: 180px;
+  height: 180px;
+  background: #e3ecff;
+  bottom: 20%;
+  right: 10%;
+  animation-delay: 4s;
+}
+
+.circle3 {
+  width: 120px;
+  height: 120px;
+  background: #d9f2ff;
+  top: 60%;
+  left: 45%;
+  animation-delay: 8s;
+}
+
+@keyframes moveCircle {
+  from {
+    transform: translateY(0px) scale(1);
+  }
+  to {
+    transform: translateY(-25px) scale(1.1);
+  }
+}
+
+/* ================= CONTAINER ================= */
+.interncareer-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 60px;
+  max-width: 1300px;
+  margin: auto;
+}
+
+/* ================= TEXT ================= */
+.interncareer-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.interncareer-title {
+  font-size: clamp(1.8rem, 2.5vw + 1rem, 3rem);
+  font-weight: 700;
+  color: #1b3b8f;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.interncareer-underline {
+  display: block;
+  width: 80px;
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #ff5b5b, #ff9f43);
+  margin-top: 8px;
+  animation: underlineExpand 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes underlineExpand {
+  from {
+    width: 60px;
+    opacity: 0.7;
+  }
+  to {
+    width: 120px;
+    opacity: 1;
+  }
+}
+
+.interncareer-desc {
+  font-size: clamp(0.95rem, 0.4vw + 0.9rem, 1.1rem);
+  color: #333;
+  line-height: 1.8;
+  max-width: 600px;
+}
+
+/* ================= IMAGE ================= */
+.interncareer-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.interncareer-image img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+  animation: floatImage 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes floatImage {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-12px);
+  }
+}
+
+/* ================= MODERN WAVY LINE ================= */
+.interncareer-bottom-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  overflow: hidden;
+  animation: waveMotion 6s ease-in-out infinite alternate;
+}
+
+.interncareer-bottom-line svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@keyframes waveMotion {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(5px);
+  }
+}
+
+/* ================= RESPONSIVENESS ================= */
+
+/* Tablets (≤ 992px) */
+@media (max-width: 992px) {
+  .interncareer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .interncareer-text {
+    order: 2;
+  }
+
+  .interncareer-image {
+    order: 1;
+  }
+
+  .interncareer-image img {
+    max-width: 340px;
+  }
+
+  .interncareer {
+    padding: 80px 6%;
+  }
+}
+
+/* Small Tablets / Large Phones (≤ 768px) */
+@media (max-width: 768px) {
+  .interncareer {
+    padding: 70px 5%;
+  }
+
+  .interncareer-title {
+    font-size: 2rem;
+  }
+
+  .interncareer-desc {
+    font-size: 0.95rem;
+  }
+
+  .interncareer-image img {
+    max-width: 300px;
+  }
+
+  .circle1 {
+    width: 160px;
+    height: 160px;
+  }
+
+  .circle2 {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* Small Phones (≤ 480px) */
+@media (max-width: 480px) {
+  .interncareer {
+    padding: 60px 5%;
+  }
+
+  .interncareer-title {
+    font-size: 1.7rem;
+  }
+
+  .interncareer-desc {
+    font-size: 0.9rem;
+  }
+
+  .interncareer-image img {
+    max-width: 260px;
+  }
+
+  .interncareer-underline {
+    width: 70px;
+  }
+}

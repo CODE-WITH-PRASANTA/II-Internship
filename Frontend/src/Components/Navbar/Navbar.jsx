@@ -73,7 +73,7 @@ const Navbar = () => {
     ] 
   },
   { name: "Success Story", path: "/SuccessStory" },
-  { name: "Recruitment", path: "/ComingSoon" },
+  { name: "Recruitment", path: "/Recruitment" },
   { name: "Faq", path: "/FaQ" },
   { name: "Contact Us", path: "/ContactUs" },
   { name: "Donate", path: "/ComingSoon" },
