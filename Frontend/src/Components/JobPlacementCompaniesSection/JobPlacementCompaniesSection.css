@@ -1,0 +1,245 @@
+/* ====== WRAPPER ====== */
+.jobplacementcompaniessection-wrapper {
+  padding: 40px 20px;
+  background: #f9f9f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* ====== CONTAINER ====== */
+.jobplacementcompaniessection-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* ====== LEFT COLUMN (Events) ====== */
+.jobplacementcompaniessection-left {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* ====== EVENT CARD ====== */
+.jobplacementcompaniessection-event-card {
+  display: flex;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.jobplacementcompaniessection-event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Image */
+.jobplacementcompaniessection-image {
+  width: 220px;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Info */
+.jobplacementcompaniessection-event-info {
+  padding: 24px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Date, Time, Location */
+.jobplacementcompaniessection-date,
+.jobplacementcompaniessection-time,
+.jobplacementcompaniessection-location {
+  font-size: 14px;
+  color: #555;
+  margin: 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.jobplacementcompaniessection-date .icon,
+.jobplacementcompaniessection-time .icon,
+.jobplacementcompaniessection-location .icon {
+  color: #0cb39a;
+  font-size: 16px;
+}
+
+/* Title */
+.jobplacementcompaniessection-title {
+  margin: 14px 0 8px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #1e1e1e;
+}
+
+/* Description */
+.jobplacementcompaniessection-description {
+  flex-grow: 1;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 16px;
+}
+
+/* Learn More Button */
+.jobplacementcompaniessection-learnmore {
+  align-self: flex-start;
+  padding: 10px 20px;
+  background-color: #0cb39a;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.jobplacementcompaniessection-learnmore:hover {
+  background-color: #09977e;
+  transform: translateY(-2px);
+}
+
+/* ====== PAGINATION ====== */
+.jobplacementcompaniessection-pagination {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.jobplacementcompaniessection-pagination button {
+  background: #e0e0e0;
+  border: none;
+  padding: 8px 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.jobplacementcompaniessection-pagination button:hover {
+  background: #0cb39a;
+  color: white;
+}
+
+.jobplacementcompaniessection-pagination .active {
+  background: #0cb39a;
+  color: white;
+  cursor: default;
+}
+
+/* ====== RIGHT COLUMN (Sidebar) ====== */
+.jobplacementcompaniessection-sidebar {
+  flex: 1;
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  height: fit-content;
+}
+
+/* Sidebar Block Spacing */
+.jobplacementcompaniessection-sidebar-block + .jobplacementcompaniessection-sidebar-block {
+  margin-top: 30px;
+}
+
+/* Sidebar Headings */
+.jobplacementcompaniessection-sidebar-heading {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #0cb39a;
+  padding-bottom: 6px;
+  color: #0cb39a;
+}
+
+/* Sidebar Categories List */
+.jobplacementcompaniessection-categories {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.jobplacementcompaniessection-categories li {
+  font-size: 15px;
+  padding: 8px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #444;
+  transition: color 0.3s ease;
+}
+
+.jobplacementcompaniessection-categories li:hover {
+  color: #0cb39a;
+}
+
+/* Icon style (if using icons separately) */
+.jobplacementcompaniessection-categories li .icon {
+  color: #0cb39a;
+  min-width: 18px;
+  font-size: 18px;
+}
+
+/* ====== RESPONSIVE DESIGN ====== */
+@media (max-width: 991px) {
+  .jobplacementcompaniessection-container {
+    flex-direction: column;
+  }
+
+  .jobplacementcompaniessection-event-card {
+    flex-direction: column;
+  }
+
+  .jobplacementcompaniessection-image {
+    width: 100%;
+    height: 220px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .jobplacementcompaniessection-event-info {
+    padding: 18px 20px;
+  }
+
+  .jobplacementcompaniessection-sidebar {
+    width: 100%;
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .jobplacementcompaniessection-title {
+    font-size: 18px;
+  }
+
+  .jobplacementcompaniessection-description {
+    font-size: 14px;
+  }
+
+  .jobplacementcompaniessection-date,
+  .jobplacementcompaniessection-time,
+  .jobplacementcompaniessection-location {
+    font-size: 13px;
+  }
+
+  .jobplacementcompaniessection-learnmore {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+
+  .jobplacementcompaniessection-pagination button {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+}

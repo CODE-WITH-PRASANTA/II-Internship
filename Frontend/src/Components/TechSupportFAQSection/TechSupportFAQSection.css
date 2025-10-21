@@ -1,0 +1,194 @@
+/* ======================== Container ======================== */
+.techsupportfaqsection-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 60px 5%;
+  align-items: flex-start;
+  background-color: #fff;
+}
+
+/* ======================== Left Side ======================== */
+.techsupportfaqsection-left {
+  flex: 1 1 45%;
+  position: relative;
+  min-width: 300px;
+}
+
+.techsupportfaqsection-phone-image {
+  width: 100%;
+  display: block;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.techsupportfaqsection-testimonial-slider {
+  position: absolute;
+  top: 28%;
+  left: 5%;
+  width: 90%;
+  max-width: 300px;
+}
+
+.techsupportfaqsection-testimonial-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.techsupportfaqsection-quote-icon {
+  color: #f90;
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.techsupportfaqsection-testimonial-text {
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.techsupportfaqsection-testimonial-user {
+  display: flex;
+  align-items: center;
+}
+
+.techsupportfaqsection-user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.techsupportfaqsection-user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.techsupportfaqsection-user-name {
+  font-weight: bold;
+  font-size: 14px;
+  margin: 0;
+}
+
+.techsupportfaqsection-user-title {
+  font-size: 13px;
+  color: #777;
+  margin: 0;
+}
+
+/* ======================== Right Side ======================== */
+.techsupportfaqsection-right {
+  flex: 1 1 45%;
+  min-width: 300px;
+}
+
+.techsupportfaqsection-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.techsupportfaqsection-subtitle {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 30px;
+  max-width: 500px;
+}
+
+/* ======================== Accordion ======================== */
+.techsupportfaqsection-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.techsupportfaqsection-accordion-item {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px 20px;
+  cursor: pointer;
+  background-color: #fff;
+  transition: background 0.3s;
+}
+
+.techsupportfaqsection-accordion-item.open {
+  background-color: #f5f5f5;
+}
+
+.techsupportfaqsection-accordion-question {
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.techsupportfaqsection-accordion-answer {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.techsupportfaqsection-arrow {
+  font-size: 18px;
+}
+
+/* ======================== Responsive ======================== */
+@media (max-width: 1024px) {
+  .techsupportfaqsection-section {
+    padding: 50px 5%;
+  }
+  .techsupportfaqsection-title {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .techsupportfaqsection-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .techsupportfaqsection-left,
+  .techsupportfaqsection-right {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  .techsupportfaqsection-testimonial-slider {
+    position: relative;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .techsupportfaqsection-title {
+    font-size: 24px;
+  }
+  .techsupportfaqsection-subtitle {
+    font-size: 14px;
+  }
+  .techsupportfaqsection-testimonial-text {
+    font-size: 14px;
+  }
+  .techsupportfaqsection-user-name {
+    font-size: 13px;
+  }
+  .techsupportfaqsection-user-title {
+    font-size: 12px;
+  }
+  .techsupportfaqsection-accordion-question {
+    font-size: 15px;
+  }
+  .techsupportfaqsection-accordion-answer {
+    font-size: 13px;
+  }
+}

@@ -21,6 +21,10 @@ import OnlineMedia from "./Pages/OnlineMedia/OnlineMedia";
 import NewsPaper from "./Pages/NewsPaper/NewsPaper";
 import MediaPhoto from "./Pages/MediaPhoto/MediaPhoto";
 import Recruitment from "./Pages/Recruitment/Recruitment";
+import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
+import TermsAndCondition from "./Pages/TermsAndCondition/TermsAndCondition";
+import JobPlacementCompanies from "./Pages/JobPlacementCompanies/JobPlacementCompanies";
+import TechnicalSupport from "./Pages/TechnicalSupport/TechnicalSupport";
 
 function App() {
   return (
@@ -46,6 +50,16 @@ function App() {
           <Route path="/MediaPhotos" element={<MediaPhoto />} />
           <Route path="/SuccessStory" element={<SuccessStory />} />
           <Route path="/Recruitment" element={<Recruitment />} />
+          <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+          <Route path="/TermsAndCondition" element={<TermsAndCondition />} />
+          <Route path="/JobPlacementCompanies" element={<JobPlacementCompanies />} />
+          <Route path="/TechnicalSupport" element={<TechnicalSupport />} />
+
+
+
+
+
+
 
 
           <Route path="/SuccessStory/Details" element={<SuccessStoryDetails />} />

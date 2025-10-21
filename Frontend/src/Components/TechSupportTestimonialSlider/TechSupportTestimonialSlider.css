@@ -1,0 +1,298 @@
+/* =========================
+   SECTION CONTAINER
+========================= */
+.techsupporttestimonialslider-section {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  font-family: "Inter", sans-serif;
+  color: #111;
+}
+
+/* =========================
+   HEADER
+========================= */
+.techsupporttestimonialslider-header {
+  text-align: center;
+  margin-bottom: 50px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+}
+
+.techsupporttestimonialslider-header-title {
+  font-size: 60px;          /* bigger header */
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #111;
+  line-height: 1.2;
+}
+
+.techsupporttestimonialslider-subtitle {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* =========================
+   TESTIMONIAL CARD - FIRST SLIDER
+========================= */
+.techsupporttestimonialslider-card {
+  background: #fafafa;                        
+  border-radius: 12px;
+  border: 1px solid #e2e2e2;                 
+  padding: 30px 25px;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 0 4px rgba(76, 110, 245, 0.1); 
+}
+
+.techsupporttestimonialslider-card:hover {
+  background: #eef2ff;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05),
+              0 0 0 4px rgba(76, 110, 245, 0.2);
+}
+
+/* Quote Icon */
+.techsupporttestimonialslider-quote {
+  font-size: 48px;
+  color: #4c6ef5;
+  margin-bottom: 15px;
+}
+
+/* Quote Text */
+.techsupporttestimonialslider-text {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  flex-grow: 1;
+}
+
+/* USER INFO */
+.techsupporttestimonialslider-user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: auto;
+}
+
+.techsupporttestimonialslider-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #4c6ef5;
+}
+
+.techsupporttestimonialslider-user-info {
+  text-align: left;
+}
+
+.techsupporttestimonialslider-name {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: #111;
+}
+
+.techsupporttestimonialslider-title {
+  font-size: 13px;
+  color: #777;
+}
+
+/* =========================
+   SECOND SLIDER (Optional separate classes)
+========================= */
+.techsupporttestimonialslider-card-second {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #dcdcdc;
+  padding: 28px 22px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 0 3px rgba(76, 110, 245, 0.08);
+  transition: all 0.3s ease;
+}
+
+.techsupporttestimonialslider-card-second:hover {
+  background: #eef2ff;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05), 0 0 0 3px rgba(76,110,245,0.2);
+}
+
+.techsupporttestimonialslider-quote-second {
+  font-size: 44px;
+  color: #4c6ef5;
+  margin-bottom: 14px;
+}
+
+.techsupporttestimonialslider-text-second {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 22px;
+  flex-grow: 1;
+}
+
+.techsupporttestimonialslider-user-second {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.techsupporttestimonialslider-avatar-second {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #4c6ef5;
+}
+
+.techsupporttestimonialslider-user-info-second {
+  text-align: left;
+}
+
+.techsupporttestimonialslider-name-second {
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 3px;
+  color: #111;
+}
+
+.techsupporttestimonialslider-title-second {
+  font-size: 12px;
+  color: #777;
+}
+
+/* =========================
+   SWIPER STYLING
+========================= */
+.swiper-wrapper {
+  align-items: stretch;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+/* Medium Desktop / Small Laptops */
+@media (max-width: 1200px) {
+  .techsupporttestimonialslider-header-title {
+    font-size: 52px;
+  }
+  .techsupporttestimonialslider-subtitle {
+    font-size: 17px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .techsupporttestimonialslider-header-title {
+    font-size: 46px;
+  }
+  .techsupporttestimonialslider-subtitle {
+    font-size: 16px;
+  }
+  .techsupporttestimonialslider-card,
+  .techsupporttestimonialslider-card-second {
+    padding: 25px 20px;
+  }
+}
+
+/* Small Tablets / Large Mobiles */
+@media (max-width: 768px) {
+  .techsupporttestimonialslider-header-title {
+    font-size: 38px;
+  }
+  .techsupporttestimonialslider-subtitle {
+    font-size: 15px;
+  }
+  .techsupporttestimonialslider-card,
+  .techsupporttestimonialslider-card-second {
+    padding: 22px 18px;
+  }
+  .techsupporttestimonialslider-avatar,
+  .techsupporttestimonialslider-avatar-second {
+    width: 50px;
+    height: 50px;
+  }
+  .techsupporttestimonialslider-text,
+  .techsupporttestimonialslider-text-second {
+    font-size: 14px;
+  }
+}
+
+/* Small Mobiles */
+@media (max-width: 480px) {
+  .techsupporttestimonialslider-header-title {
+    font-size: 32px;
+  }
+  .techsupporttestimonialslider-subtitle {
+    font-size: 14px;
+  }
+  .techsupporttestimonialslider-card,
+  .techsupporttestimonialslider-card-second {
+    padding: 20px 16px;
+  }
+  .techsupporttestimonialslider-avatar,
+  .techsupporttestimonialslider-avatar-second {
+    width: 45px;
+    height: 45px;
+  }
+  .techsupporttestimonialslider-text,
+  .techsupporttestimonialslider-text-second {
+    font-size: 13px;
+  }
+  .techsupporttestimonialslider-name,
+  .techsupporttestimonialslider-name-second {
+    font-size: 12px;
+  }
+  .techsupporttestimonialslider-title,
+  .techsupporttestimonialslider-title-second {
+    font-size: 11px;
+  }
+}
+
+/* Extra Small Phones */
+@media (max-width: 360px) {
+  .techsupporttestimonialslider-header-title {
+    font-size: 28px;
+  }
+  .techsupporttestimonialslider-subtitle {
+    font-size: 13px;
+  }
+  .techsupporttestimonialslider-card,
+  .techsupporttestimonialslider-card-second {
+    padding: 18px 12px;
+  }
+  .techsupporttestimonialslider-avatar,
+  .techsupporttestimonialslider-avatar-second {
+    width: 40px;
+    height: 40px;
+  }
+  .techsupporttestimonialslider-text,
+  .techsupporttestimonialslider-text-second {
+    font-size: 12px;
+  }
+  .techsupporttestimonialslider-name,
+  .techsupporttestimonialslider-name-second {
+    font-size: 11px;
+  }
+  .techsupporttestimonialslider-title,
+  .techsupporttestimonialslider-title-second {
+    font-size: 10px;
+  }
+}

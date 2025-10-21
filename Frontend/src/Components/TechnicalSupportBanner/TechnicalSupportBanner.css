@@ -1,0 +1,272 @@
+/* ======================= GLOBAL ======================= */
+.technicalsupportbanner {
+  background: linear-gradient(135deg, #6ea2ff 0%, #478bff 100%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  padding: 100px 40px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.technicalsupportbanner-content {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* ======================= LEFT ======================= */
+.technicalsupportbanner-left {
+  flex: 1;
+  min-width: 300px;
+  z-index: 2;
+}
+
+.technicalsupportbanner-tag {
+  background: #fff;
+  color: #000;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 6px 18px;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.technicalsupportbanner-tag .dot {
+  width: 10px;
+  height: 10px;
+  background: #000;
+  border-radius: 50%;
+}
+
+.technicalsupportbanner-title {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 40px 0 25px;
+}
+
+.technicalsupportbanner-subtext {
+  font-size: 16px;
+  color: #e4e4e4;
+  margin-bottom: 30px;
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+.technicalsupportbanner-users {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.technicalsupportbanner-userimages {
+  display: flex;
+  align-items: center;
+}
+
+.technicalsupportbanner-userimages img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  margin-left: -10px;
+}
+
+.technicalsupportbanner-userimages img:first-child {
+  margin-left: 0;
+}
+
+.technicalsupportbanner-users span {
+  font-size: 15px;
+  color: #fff;
+}
+
+.technicalsupportbanner-buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.call-btn {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 50px;
+  padding: 14px 36px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.call-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+.support-btn {
+  background: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  padding: 16px 38px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.support-btn span {
+  font-size: 18px;
+}
+
+.support-btn:hover {
+  background: #111;
+}
+
+/* ======================= RIGHT ======================= */
+.technicalsupportbanner-right {
+  position: relative;
+  flex: 1;
+  min-width: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.technicalsupportbanner-mobile {
+  width: 90%;
+  max-width: 450px;
+  height: auto;
+  transform: rotate(-3deg);
+  z-index: 1;
+}
+
+/* ======================= CARDS ======================= */
+.technicalsupportbanner-card {
+  position: absolute;
+  background: #fff;
+  color: #000;
+  border-radius: 20px;
+  padding: 18px 26px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.rating-card {
+  top: 10%;
+  left: -5%;
+}
+
+.cybersecurity-card {
+  top: 25%;
+  right: -10%;
+  width: 360px;
+}
+
+.mobile-card {
+  bottom: -5%;
+  left: -8%;
+  width: 360px;
+}
+
+.technicalsupportbanner-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.technicalsupportbanner-card p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.technicalsupportbanner-stars {
+  color: #ff9500;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+/* ======================= RESPONSIVE ======================= */
+@media (max-width: 1024px) {
+  .technicalsupportbanner-title {
+    font-size: 48px;
+  }
+
+  .cybersecurity-card,
+  .mobile-card {
+    width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .technicalsupportbanner {
+    text-align: center;
+    padding: 70px 20px;
+  }
+
+  .technicalsupportbanner-content {
+    flex-direction: column;
+  }
+
+  .technicalsupportbanner-left {
+    order: 1;
+  }
+
+  .technicalsupportbanner-right {
+    order: 2;
+    margin-top: 60px;
+  }
+
+  .technicalsupportbanner-title {
+    font-size: 40px;
+  }
+
+  .technicalsupportbanner-buttons {
+    justify-content: center;
+  }
+
+  .technicalsupportbanner-card {
+    position: static;
+    margin: 15px auto;
+  }
+
+  .technicalsupportbanner-mobile {
+    transform: none;
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .technicalsupportbanner-title {
+    font-size: 32px;
+  }
+
+  .technicalsupportbanner-subtext {
+    font-size: 14px;
+  }
+
+  .call-btn,
+  .support-btn {
+    padding: 12px 26px;
+    font-size: 14px;
+  }
+
+  .cybersecurity-card,
+  .mobile-card {
+    width: 100%;
+  }
+}

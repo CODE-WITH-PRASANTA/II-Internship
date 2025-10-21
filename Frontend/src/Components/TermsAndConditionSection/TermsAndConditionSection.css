@@ -1,0 +1,247 @@
+.termsandconditionsection-wrapper {
+  padding: 60px 20px;
+  background-color: #fff;
+  font-family: 'Inter', sans-serif;
+  color: #2c2c2c;
+}
+
+.termsandconditionsection-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+  padding: 0 16px;
+  flex-wrap: wrap;
+}
+
+.termsandconditionsection-left {
+  flex: 2;
+  font-size: 16px;
+  line-height: 1.8;
+  min-width: 280px;
+}
+
+.termsandconditionsection-heading {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.termsandconditionsection-subheading {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 30px 0 10px;
+}
+
+.termsandconditionsection-paragraph {
+  color: #555;
+  margin-bottom: 16px;
+}
+
+.termsandconditionsection-list {
+  padding-left: 20px;
+  margin-bottom: 16px;
+  color: #555;
+}
+
+.termsandconditionsection-list li {
+  list-style: disc;
+  margin-bottom: 8px;
+}
+
+/* Sidebar */
+.termsandconditionsection-sidebar {
+  flex: 1;
+  min-width: 260px;
+}
+
+/* Sidebar Block */
+.termsandconditionsection-sidebar-block {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.termsandconditionsection-sidebar-heading {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #222;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #eaeaea;
+}
+
+.termsandconditionsection-search-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border 0.3s;
+}
+
+.termsandconditionsection-search-input:focus {
+  border-color: #0cb39a;
+  outline: none;
+}
+
+.termsandconditionsection-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.termsandconditionsection-tag {
+  padding: 6px 14px;
+  background-color: #f2f7f7;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #0cb39a;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.termsandconditionsection-tag:hover {
+  background-color: #0cb39a;
+  color: #fff;
+}
+
+.termsandconditionsection-categories {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.termsandconditionsection-categories li {
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: #333;
+  padding-left: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.termsandconditionsection-categories li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 16px;
+  color: #0cb39a;
+}
+
+/* Promo Card */
+.sidebar-promo {
+  position: relative;
+  background-color: #f5fafd;
+  padding: 30px 25px;
+  border-radius: 16px;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+}
+
+.sidebar-promo-pattern::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(#d0d0d0 1px, transparent 1px);
+  background-size: 12px 12px;
+  opacity: 0.15;
+}
+
+.sidebar-promo-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e1e1e;
+  margin-bottom: 10px;
+}
+
+.sidebar-promo-title span {
+  color: #eb4e63;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.sidebar-promo-line {
+  width: 60px;
+  height: 14px;
+  margin: 0 auto 18px;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='14' viewBox='0 0 60 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 9 C20 -4, 40 20, 55 9' stroke='%230cb39a' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.sidebar-promo-text {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.sidebar-promo-btn {
+  background-color: #0cb39a;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.sidebar-promo-btn:hover {
+  background-color: #099c86;
+}
+
+.sidebar-promo-arrow {
+  margin-left: 8px;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .termsandconditionsection-container {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+
+  .termsandconditionsection-sidebar {
+    margin-top: 40px;
+  }
+
+  .sidebar-promo {
+    padding: 25px 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .termsandconditionsection-heading {
+    font-size: 26px;
+  }
+
+  .termsandconditionsection-subheading {
+    font-size: 18px;
+  }
+
+  .termsandconditionsection-paragraph,
+  .sidebar-promo-text {
+    font-size: 14px;
+  }
+
+  .sidebar-promo-btn {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .termsandconditionsection-container {
+    padding: 0 12px;
+  }
+}

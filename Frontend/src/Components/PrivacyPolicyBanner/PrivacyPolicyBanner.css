@@ -1,0 +1,207 @@
+/* ==============================
+   PRIVACY POLICY BANNER
+   ============================== */
+.privacypolicybanner-banner {
+  position: relative;
+  text-align: center;
+  background: #f8fbfb;
+  padding: 120px 20px;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+/* ==============================
+   3D FLOATING TEXT
+   ============================== */
+.privacypolicybanner-content h1 {
+  font-size: clamp(2rem, 5vw, 64px);
+  font-weight: 700;
+  color: #1e1e1e;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+  transform: rotateX(15deg);
+  animation: privacypolicybanner-floatText 6s ease-in-out infinite;
+}
+
+@keyframes privacypolicybanner-floatText {
+  0%, 100% {
+    transform: rotateX(15deg) translateY(0);
+  }
+  50% {
+    transform: rotateX(0deg) translateY(-10px);
+  }
+}
+
+/* ==============================
+   BREADCRUMB
+   ============================== */
+.privacypolicybanner-breadcrumb {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #444;
+  animation: privacypolicybanner-fadeIn 2s ease-in-out;
+}
+
+.privacypolicybanner-breadcrumb span {
+  margin: 0 6px;
+  color: #666;
+}
+
+/* ==============================
+   BACKGROUND SHAPES
+   ============================== */
+.privacypolicybanner-bgshape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  animation: privacypolicybanner-rotateShape 20s linear infinite;
+}
+
+.privacypolicybanner-shape-left {
+  top: -100px;
+  left: -150px;
+  width: 500px;
+  height: 500px;
+  border: 2px solid #0cb39a;
+}
+
+.privacypolicybanner-shape-right {
+  bottom: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  border: 2px solid #0cb39a;
+  animation-delay: -10s;
+}
+
+@keyframes privacypolicybanner-rotateShape {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* ==============================
+   DOTTED PATTERN
+   ============================== */
+.privacypolicybanner-dots {
+  position: absolute;
+  left: 100px;
+  top: 80px;
+  width: 160px;
+  height: 160px;
+  background-image: radial-gradient(#0cb39a 2px, transparent 2px);
+  background-size: 20px 20px;
+  animation: privacypolicybanner-moveDots 8s ease-in-out infinite alternate;
+}
+
+@keyframes privacypolicybanner-moveDots {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(20px);
+  }
+}
+
+/* ==============================
+   WAVE ICON ANIMATION
+   ============================== */
+.privacypolicybanner-waveicon {
+  position: absolute;
+  right: 120px;
+  top: 130px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transform: rotate(0deg);
+  animation: privacypolicybanner-waveMove 4s ease-in-out infinite alternate;
+}
+
+.privacypolicybanner-waveicon span {
+  display: block;
+  width: 60px;
+  height: 5px;
+  background: #0cb39a;
+  border-radius: 10px;
+}
+
+@keyframes privacypolicybanner-waveMove {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(10px) rotate(3deg);
+  }
+}
+
+/* ==============================
+   FADE IN ANIMATION
+   ============================== */
+@keyframes privacypolicybanner-fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==============================
+   RESPONSIVE STYLES
+   ============================== */
+@media (max-width: 1024px) {
+  .privacypolicybanner-content h1 {
+    font-size: clamp(2rem, 5vw, 48px);
+  }
+  .privacypolicybanner-breadcrumb {
+    font-size: 16px;
+  }
+  .privacypolicybanner-dots {
+    left: 50px;
+    top: 60px;
+    width: 120px;
+    height: 120px;
+  }
+  .privacypolicybanner-waveicon {
+    right: 50px;
+    top: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .privacypolicybanner-content h1 {
+    font-size: clamp(1.8rem, 6vw, 40px);
+  }
+  .privacypolicybanner-breadcrumb {
+    font-size: 15px;
+  }
+  .privacypolicybanner-dots {
+    left: 30px;
+    top: 50px;
+    width: 100px;
+    height: 100px;
+  }
+  .privacypolicybanner-waveicon {
+    right: 30px;
+    top: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .privacypolicybanner-content h1 {
+    font-size: clamp(1.6rem, 7vw, 32px);
+  }
+  .privacypolicybanner-breadcrumb {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .privacypolicybanner-content h1 {
+    font-size: clamp(1.4rem, 8vw, 28px);
+  }
+  .privacypolicybanner-breadcrumb {
+    font-size: 13px;
+  }
+}
