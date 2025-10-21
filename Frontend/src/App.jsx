@@ -14,23 +14,11 @@ import TeamMember from "./Pages/TeamMember/TeamMember";
 import BecomeInstructor from "./Pages/BecomeInstructor/BecomeInstructor";
 import OnCampusInternship from "./Pages/OnCampusInternship/OnCampusInternship";
 import VirtualInternship from "./Pages/VirtualInternship/VirtualInternship";
-import SuccessStory from "./Pages/SuccessStory/SuccessStory";
 import SuccessStoryDetails from "./Pages/SuccessStoryDetails/SuccessStoryDetails";
 import VideoGalary from "./Pages/VideoGalary/VideoGalary";
 import OnlineMedia from "./Pages/OnlineMedia/OnlineMedia";
 import NewsPaper from "./Pages/NewsPaper/NewsPaper";
 import MediaPhoto from "./Pages/MediaPhoto/MediaPhoto";
-import Recruitment from "./Pages/Recruitment/Recruitment";
-import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
-import TermsAndCondition from "./Pages/TermsAndCondition/TermsAndCondition";
-import JobPlacementCompanies from "./Pages/JobPlacementCompanies/JobPlacementCompanies";
-import TechnicalSupport from "./Pages/TechnicalSupport/TechnicalSupport";
-import EducationalInstitute from "./Pages/EducationalInstitute/EducationalInstitute";
-import StudentDashboard from "./Pages/StudentDashboard/StudentDashboard";
-import InstructorDashboard from "./Pages/InstructorDashboard/InstructorDashboard";
-import CreateNewCourse from "./Components/CreateNewCourse/CreateNewCourse";
-import SignInAndLogIn from "./Components/SignInAndLogIn/SignInAndLogIn";
-import InstructorDirectory from "./Components/InstructorDirectory/InstructorDirectory";
 
 function App() {
   return (
@@ -55,31 +43,8 @@ function App() {
           <Route path="/NewsPaper" element={<NewsPaper />} />
           <Route path="/MediaPhotos" element={<MediaPhoto />} />
           <Route path="/SuccessStory" element={<SuccessStory />} />
-          <Route path="/Recruitment" element={<Recruitment />} />
-          <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
-          <Route path="/TermsAndCondition" element={<TermsAndCondition />} />
-          <Route path="/JobPlacementCompanies" element={<JobPlacementCompanies />} />
-          <Route path="/TechnicalSupport" element={<TechnicalSupport />} />
-          <Route path="/EducationalInstitute" element={<EducationalInstitute />} />
-          <Route path="/StudentDashboard" element={<StudentDashboard />} />
-          <Route path="/InstructorDashboard" element={<InstructorDashboard />} />
-          <Route path="/CreateNewCourse" element={<CreateNewCourse />} />
-          <Route path="/SignInAndLogIn" element={<SignInAndLogIn />} />
-          <Route path="/InstructorDirectory" element={<InstructorDirectory />} />
-
-
-
-
-
-
-
-
-
-
-
-
-
           <Route path="/SuccessStory/Details" element={<SuccessStoryDetails />} />
+          <Route path="/SuccessStory" element={<SuccessStory />} />
         </Routes>
       <Footer />
       </PageWrapper>
