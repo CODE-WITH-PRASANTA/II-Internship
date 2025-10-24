@@ -1,0 +1,210 @@
+/* ================= Sidebar Wrapper ================= */
+.studentdashboard-sidebar {
+  width: 280px;
+  min-height: 100vh;
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  color: #333;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  font-family: 'Poppins', sans-serif;
+  position: sticky;
+  top: 20px;
+  transition: all 0.3s ease;
+}
+
+/* ================= Profile Section ================= */
+.studentdashboard-profile {
+  text-align: center;
+  margin-bottom: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.studentdashboard-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #007bff;
+  margin-bottom: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.studentdashboard-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0,123,255,0.3);
+}
+
+.studentdashboard-profile-info {
+  text-align: center;
+}
+
+.studentdashboard-profile-info h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #007bff;
+  margin-bottom: 4px;
+}
+
+.studentdashboard-profile-info p {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+/* Stats Section */
+.studentdashboard-stats {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.studentdashboard-stats div {
+  background: #f0f4ff;
+  border-radius: 12px;
+  padding: 10px 12px;
+  text-align: center;
+  min-width: 65px;
+  transition: all 0.3s ease;
+}
+
+.studentdashboard-stats div:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.studentdashboard-stats strong {
+  display: block;
+  font-size: 16px;
+  color: #007bff;
+}
+
+.studentdashboard-stats span {
+  font-size: 12px;
+  color: #555;
+}
+
+/* ================= Navigation ================= */
+.studentdashboard-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.studentdashboard-nav button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f9f9f9;
+  border: none;
+  padding: 12px 15px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  color: #555;
+  position: relative;
+}
+
+.studentdashboard-nav button .nav-icon {
+  font-size: 18px;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.studentdashboard-nav button:hover {
+  background: #e6f0ff;
+  color: #007bff;
+}
+
+.studentdashboard-nav button:hover .nav-icon {
+  color: #0056d2;
+}
+
+.studentdashboard-nav button.active {
+  background: linear-gradient(90deg, #007bff, #66b3ff);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,123,255,0.3);
+}
+
+.studentdashboard-nav button.active .nav-icon {
+  color: #fff;
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 1440px) {
+  .studentdashboard-sidebar { width: 250px; }
+}
+
+@media (max-width: 1280px) {
+  .studentdashboard-sidebar { width: 220px; }
+}
+
+@media (max-width: 1024px) {
+  .studentdashboard-sidebar {
+    width: 100%;
+    flex-direction: row;
+    padding: 15px;
+    overflow-x: auto;
+    gap: 15px;
+    top: 0;
+    position: relative;
+    border-radius: 20px;
+  }
+
+  .studentdashboard-profile {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+  }
+
+  .studentdashboard-avatar {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0;
+  }
+
+  .studentdashboard-profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .studentdashboard-profile-info h3,
+  .studentdashboard-profile-info p {
+    text-align: left;
+  }
+
+  .studentdashboard-stats { display: none; }
+  .studentdashboard-nav { flex-direction: row; gap: 10px; }
+  .studentdashboard-nav button { padding: 10px 12px; font-size: 14px; }
+}
+
+@media (max-width: 768px) {
+  .studentdashboard-sidebar { padding: 10px; }
+  .studentdashboard-profile { gap: 10px; }
+  .studentdashboard-avatar { width: 50px; height: 50px; }
+  .studentdashboard-nav button { padding: 8px 10px; font-size: 13px; }
+}
+
+@media (max-width: 480px) {
+  .studentdashboard-sidebar { flex-direction: column; width: 100%; padding: 15px; }
+  .studentdashboard-profile { flex-direction: column; align-items: center; text-align: center; }
+  .studentdashboard-nav { flex-direction: column; gap: 8px; }
+  .studentdashboard-nav button { padding: 10px; font-size: 14px; }
+  .studentdashboard-profile-info h3 { font-size: 16px; }
+  .studentdashboard-profile-info p { font-size: 12px; }
+}
+
+@media (max-width: 320px) {
+  .studentdashboard-sidebar { padding: 5px; }
+  .studentdashboard-profile { gap: 5px; }
+  .studentdashboard-avatar { width: 40px; height: 40px; }
+  .studentdashboard-nav button { padding: 8px; font-size: 12px; }
+}

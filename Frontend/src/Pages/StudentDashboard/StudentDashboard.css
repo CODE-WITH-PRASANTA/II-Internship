@@ -1,0 +1,333 @@
+/* ========================= Global Styles ========================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f4f6fa;
+  color: #333;
+  overflow-x: hidden;
+  transition: all 0.3s ease;
+}
+
+/* ========================= Wrapper ========================= */
+.studentdashboard-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f6fa;
+  transition: all 0.3s ease;
+}
+
+.studentdashboard-main {
+  flex: 1;
+  padding: 30px 40px;
+  background: #f4f6fa;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+}
+
+/* ========================= Sidebar ========================= */
+.studentdashboard-sidebar {
+  width: 280px;
+  height: 100vh;
+  margin-left: 80px;
+  background: #fff;
+  border-radius: 20px;
+  border-right: 1px solid #e0e0e0;
+  padding: 25px 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  position: sticky;
+  margin-top: 40px;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+}
+
+/* Scrollbar for sidebar */
+.studentdashboard-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.studentdashboard-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(0,123,255,0.5);
+  border-radius: 3px;
+}
+.studentdashboard-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ========================= Profile Section ========================= */
+.studentdashboard-profile {
+  text-align: center;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.studentdashboard-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #007bff;
+  margin-bottom: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.studentdashboard-avatar:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0,123,255,0.4);
+}
+
+.studentdashboard-profile h3 {
+  font-size: 20px;
+  margin: 5px 0 2px 0;
+  font-weight: 600;
+  color: #007bff;
+}
+
+.studentdashboard-profile p {
+  font-size: 14px;
+  color: #666;
+  font-weight: 400;
+}
+
+/* ========================= Sidebar Stats ========================= */
+.studentdashboard-stats {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.studentdashboard-stats div {
+  background: #f0f4ff;
+  border-radius: 12px;
+  padding: 10px 12px;
+  text-align: center;
+  min-width: 65px;
+  transition: all 0.3s ease;
+}
+
+.studentdashboard-stats div:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.studentdashboard-stats strong {
+  display: block;
+  font-size: 16px;
+  color: #007bff;
+}
+
+.studentdashboard-stats span {
+  font-size: 12px;
+  color: #555;
+}
+
+/* ========================= Sidebar Navigation ========================= */
+.studentdashboard-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.studentdashboard-nav button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 12px 20px;
+  text-align: left;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  color: #555;
+  font-weight: 500;
+  position: relative;
+}
+
+.studentdashboard-nav button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: #007bff;
+  border-radius: 0 4px 4px 0;
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.studentdashboard-nav button.active::before {
+  transform: scaleY(1);
+}
+
+.studentdashboard-nav button:hover {
+  background: #f0f4ff;
+  color: #007bff;
+}
+
+.studentdashboard-nav button.active {
+  background: linear-gradient(90deg, #0066ff, #00ccff);
+  color: #fff;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+/* ========================= Cards ========================= */
+.studentdashboard-card,
+.studentdashboard-coursecard {
+  background: #fff;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.studentdashboard-card:hover,
+.studentdashboard-coursecard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+
+/* ========================= Courses Grid ========================= */
+.studentdashboard-coursegrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.studentdashboard-courseimg {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+}
+
+.studentdashboard-courseimg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.studentdashboard-courseimg:hover img {
+  transform: scale(1.08);
+}
+
+.studentdashboard-coursecontent {
+  padding: 18px 22px;
+}
+
+.studentdashboard-coursecontent h4 {
+  font-size: 16px;
+  color: #007bff;
+  margin-bottom: 8px;
+  min-height: 48px;
+}
+
+.studentdashboard-coursecontent p {
+  color: #555;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.studentdashboard-coursecontent button {
+  background: rgba(0,123,255,0.15);
+  color: #007bff;
+  border: 1px solid #007bff;
+  border-radius: 12px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.3s ease;
+}
+
+.studentdashboard-coursecontent button:hover {
+  background: linear-gradient(135deg, #007bff, #66b3ff);
+  color: #fff;
+}
+
+/* ========================= Tables ========================= */
+.studentdashboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.studentdashboard-table th,
+.studentdashboard-table td {
+  border: 1px solid #e0e0e0;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.studentdashboard-table th {
+  background: linear-gradient(90deg, #0066ff, #00ccff);
+  color: #fff;
+  font-weight: 600;
+}
+
+.studentdashboard-table tr:hover {
+  background: #f0f4ff;
+}
+
+/* ========================= Responsive ========================= */
+@media (max-width: 1440px) {
+  .studentdashboard-sidebar { width: 250px; }
+}
+
+@media (max-width: 1280px) {
+  .studentdashboard-sidebar { width: 220px; }
+  .studentdashboard-main { padding: 25px 30px; }
+}
+
+@media (max-width: 1024px) {
+  .studentdashboard-wrapper { flex-direction: column; }
+  .studentdashboard-sidebar {
+    width: 100%;
+    margin-left: 0;
+    height: auto;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 15px;
+    gap: 10px;
+    position: relative;
+    top: 0;
+  }
+  .studentdashboard-nav { flex-direction: row; gap: 8px; }
+  .studentdashboard-nav button { padding: 10px 14px; font-size: 14px; }
+  .studentdashboard-main { padding: 20px; }
+  .studentdashboard-coursegrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .studentdashboard-sidebar { flex-direction: column; padding: 10px; }
+  .studentdashboard-nav { flex-direction: column; gap: 5px; }
+  .studentdashboard-nav button { font-size: 13px; padding: 8px 10px; }
+  .studentdashboard-main { padding: 15px; }
+}
+
+@media (max-width: 480px) {
+  .studentdashboard-sidebar { padding: 5px; }
+  .studentdashboard-nav button { font-size: 12px; padding: 6px 8px; }
+  .studentdashboard-card,
+  .studentdashboard-coursecard { padding: 10px; }
+  .studentdashboard-coursegrid { grid-template-columns: 1fr; gap: 15px; }
+}
+
+@media (max-width: 320px) {
+  .studentdashboard-sidebar { padding: 5px; }
+  .studentdashboard-nav button { font-size: 11px; padding: 5px 7px; }
+  .studentdashboard-card,
+  .studentdashboard-coursecard { padding: 5px; }
+}

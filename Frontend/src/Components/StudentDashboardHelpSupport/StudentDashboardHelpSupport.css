@@ -1,0 +1,30 @@
+.studentdashboard-helpsupport {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.studentdashboard-helpsupport h2 {
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.studentdashboard-helpsupport p {
+  color: #444;
+  margin-bottom: 15px;
+}
+
+.studentdashboard-helpsupport ul {
+  list-style: none;
+  padding: 0;
+}
+
+.studentdashboard-helpsupport li {
+  background: #eef3ff;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 6px;
+  color: #333;
+  font-size: 15px;
+}

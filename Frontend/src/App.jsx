@@ -25,6 +25,8 @@ import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 import TermsAndCondition from "./Pages/TermsAndCondition/TermsAndCondition";
 import JobPlacementCompanies from "./Pages/JobPlacementCompanies/JobPlacementCompanies";
 import TechnicalSupport from "./Pages/TechnicalSupport/TechnicalSupport";
+import EducationalInstitute from "./Pages/EducationalInstitute/EducationalInstitute";
+import StudentDashboard from "./Pages/StudentDashboard/StudentDashboard";
 
 function App() {
   return (
@@ -54,6 +56,10 @@ function App() {
           <Route path="/TermsAndCondition" element={<TermsAndCondition />} />
           <Route path="/JobPlacementCompanies" element={<JobPlacementCompanies />} />
           <Route path="/TechnicalSupport" element={<TechnicalSupport />} />
+          <Route path="/EducationalInstitute" element={<EducationalInstitute />} />
+          <Route path="/StudentDashboard" element={<StudentDashboard />} />
+
+
 
 
 

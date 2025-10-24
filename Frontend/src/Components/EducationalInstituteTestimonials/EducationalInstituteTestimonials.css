@@ -1,0 +1,165 @@
+.educationalinstitute-testimonials-container {
+  padding: 50px 80px;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  background: #f9faff;
+}
+
+.educationalinstitute-testimonials-container h2 {
+  font-size: 32px;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.educationalinstitute-testimonials-container p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+/* Slider */
+.educationalinstitute-slider-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.educationalinstitute-slider {
+  display: flex;
+  gap: 25px;
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Card */
+.educationalinstitute-testimonial-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+  flex: 0 0 calc(100% / 3 - 16.66px);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.educationalinstitute-testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 35px rgba(0,0,0,0.15);
+}
+
+/* Rating stars */
+.educationalinstitute-rating {
+  color: #f7c94b;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+/* Texts */
+.educationalinstitute-text {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.educationalinstitute-context {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+/* Student info */
+.educationalinstitute-student-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #f1f5ff;
+  padding: 8px 12px;
+  border-radius: 10px;
+
+}
+
+.educationalinstitute-student-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.educationalinstitute-student-text {
+  text-align: left;
+}
+
+.educationalinstitute-name {
+  font-weight: 600;
+  color: #007bff;
+  margin-bottom: 3px;
+}
+
+.educationalinstitute-date {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 3px;
+}
+
+.educationalinstitute-tag {
+  font-size: 12px;
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 40px;
+
+}
+
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .educationalinstitute-testimonial-card {
+    flex: 0 0 calc(50% - 12px);
+  }
+  .educationalinstitute-slider {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .educationalinstitute-testimonial-card {
+    flex: 0 0 100%;
+  }
+  .educationalinstitute-slider {
+    gap: 20px;
+  }
+  .educationalinstitute-testimonials-container {
+    padding: 40px 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .educationalinstitute-testimonial-card {
+    flex: 0 0 100%;
+    padding: 20px;
+  }
+  .educationalinstitute-slider {
+    gap: 20px;
+  }
+  .educationalinstitute-testimonials-container {
+    padding: 30px 20px;
+  }
+  .educationalinstitute-testimonials-container h2 {
+    font-size: 24px;
+  }
+  .educationalinstitute-testimonials-container p {
+    font-size: 14px;
+  }
+}
+
+/* Add this to make the student info section responsive */
+@media (max-width: 400px) {
+  .educationalinstitute-student-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .educationalinstitute-tag {
+    margin-top: 10px;
+  }
+}

@@ -1,0 +1,128 @@
+/* ============================
+   FAQ SECTION (TWO COLUMNS)
+   ============================ */
+.educationalinstitute-faq-container {
+  padding: 60px 80px;
+  background: #f9faff;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+}
+
+.educationalinstitute-faq-container h2 {
+  color: #007bff;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.educationalinstitute-faq-container p {
+  color: #555;
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+
+/* GRID LAYOUT */
+.educationalinstitute-faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* COLUMN */
+.educationalinstitute-faq-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* FAQ ITEM */
+.educationalinstitute-faq-item {
+  background: #fff;
+  border-radius: 10px;
+  padding: 18px 22px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.educationalinstitute-faq-item:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* QUESTION */
+.educationalinstitute-faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: #333;
+  font-size: 18px;
+}
+
+.faq-icon {
+  font-size: 22px;
+  color: #007bff;
+  transition: transform 0.3s ease;
+}
+
+/* ANSWER */
+.educationalinstitute-faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  color: #555;
+  font-size: 15px;
+  line-height: 1.6;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+  margin-top: 0;
+}
+
+.educationalinstitute-faq-item.active .educationalinstitute-faq-answer {
+  max-height: 300px;
+  opacity: 1;
+  margin-top: 10px;
+}
+
+/* ============================
+   RESPONSIVE DESIGN
+   ============================ */
+@media (max-width: 992px) {
+  .educationalinstitute-faq-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .educationalinstitute-faq-column {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .educationalinstitute-faq-container {
+    padding: 40px 30px;
+  }
+
+  .educationalinstitute-faq-container h2 {
+    font-size: 26px;
+  }
+
+  .educationalinstitute-faq-container p {
+    font-size: 14px;
+  }
+
+  .educationalinstitute-faq-question {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .educationalinstitute-faq-container {
+    padding: 30px 20px;
+  }
+
+  .educationalinstitute-faq-item {
+    padding: 15px 18px;
+  }
+}

@@ -1,0 +1,155 @@
+/* EducationalInstituteExploreHistory.css */
+.educationalinstitute-explore-container {
+  padding: 50px 120px; /* increased left & right space */
+  font-family: 'Poppins', sans-serif;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.educationalinstitute-explore-content {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* Left Content */
+.educationalinstitute-left {
+  flex: 1 1 500px;
+  margin-top: 50px;
+}
+
+/* Header */
+.educationalinstitute-header h1 {
+  font-size: 32px;
+  color: #007bff;
+  margin-bottom: 12px;
+}
+
+.educationalinstitute-header p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* Features */
+.educationalinstitute-features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.educationalinstitute-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.educationalinstitute-check-icon {
+  color: #28a745;
+  font-size: 28px;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.feature-text h3 {
+  font-size: 18px;
+  color: #007bff;
+  margin-bottom: 5px;
+}
+
+.feature-text p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Button */
+.educationalinstitute-membership-btn {
+  background: linear-gradient(135deg, #007bff, #00d4ff);
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.educationalinstitute-membership-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+}
+
+/* Right Content */
+.educationalinstitute-right {
+  flex: 1 1 400px;
+  text-align: center;
+}
+
+.educationalinstitute-history-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.educationalinstitute-people-images {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.educationalinstitute-person-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .educationalinstitute-explore-container {
+    padding: 40px 80px;
+  }
+
+  .educationalinstitute-explore-content {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .educationalinstitute-explore-container {
+    padding: 30px 40px;
+  }
+
+  .educationalinstitute-explore-content {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .educationalinstitute-left,
+  .educationalinstitute-right {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .educationalinstitute-explore-container {
+    padding: 20px 20px;
+  }
+
+  .educationalinstitute-header h1 {
+    font-size: 24px;
+  }
+
+  .educationalinstitute-header p {
+    font-size: 14px;
+  }
+
+  .educationalinstitute-membership-btn {
+    width: 100%;
+  }
+}
