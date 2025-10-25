@@ -1,0 +1,272 @@
+.instructordashboardstats-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  font-family: "Inter", sans-serif;
+}
+
+/* === Stats Cards === */
+.instructordashboardstats-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.instructordashboardstats-card {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+  background: #fff;
+}
+
+.instructordashboardstats-card:hover {
+  transform: translateY(-5px);
+}
+
+.instructordashboardstats-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  padding: 12px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.instructordashboardstats-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.instructordashboardstats-title {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* === Recent Courses Table === */
+.instructordashboardstats-recent-courses {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+}
+
+.instructordashboardstats-recent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.instructordashboardstats-recent-header h3 {
+  font-size: 1.1rem;
+  color: #1a1a1a;
+}
+
+.instructordashboardstats-viewall {
+  font-size: 0.9rem;
+  color: #2575fc;
+  cursor: pointer;
+}
+
+.instructordashboardstats-table-wrapper {
+  overflow-x: auto;
+}
+
+.instructordashboardstats-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.instructordashboardstats-table th,
+.instructordashboardstats-table td {
+  text-align: left;
+  padding: 12px 15px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.instructordashboardstats-table thead {
+  background: #111827;
+  color: #fff;
+}
+
+.instructordashboardstats-course-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.instructordashboardstats-course-cell img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.instructordashboardstats-period {
+  background: #E6F4EA;
+  color: #3BA55D;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.instructordashboardstats-edit-btn,
+.instructordashboardstats-delete-btn {
+  border: none;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-right: 5px;
+}
+
+.instructordashboardstats-edit-btn {
+  background: #E6F0FF;
+  color: #3B6CFF;
+}
+
+.instructordashboardstats-delete-btn {
+  background: #FFE9E6;
+  color: #FF6B6B;
+}
+
+/* === Pagination + Entries === */
+.instructordashboardstats-pagination-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.instructordashboardstats-pagination-info {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.instructordashboardstats-pagination {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.instructordashboardstats-page {
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: #f0f0f0;
+  cursor: pointer;
+}
+
+.instructordashboardstats-page.active {
+  background: #2575fc;
+  color: #fff;
+}
+
+/* === Responsive === */
+
+/* Tablets / Small Laptops */
+@media (max-width: 900px) {
+  .instructordashboardstats-cards {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .instructordashboardstats-table th,
+  .instructordashboardstats-table td {
+    padding: 10px 8px;
+    font-size: 0.9rem;
+  }
+
+  .instructordashboardstats-course-cell img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .instructordashboardstats-edit-btn,
+  .instructordashboardstats-delete-btn {
+    padding: 5px 8px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Mobile / Small Screens */
+@media (max-width: 600px) {
+  .instructordashboardstats-wrapper {
+    gap: 20px;
+  }
+
+  .instructordashboardstats-recent-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .instructordashboardstats-pagination-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .instructordashboardstats-pagination {
+    justify-content: flex-start;
+  }
+
+  .instructordashboardstats-cards {
+    gap: 15px;
+  }
+
+  .instructordashboardstats-card {
+    padding: 15px 20px;
+    gap: 10px;
+  }
+
+  .instructordashboardstats-value {
+    font-size: 1.25rem;
+  }
+
+  .instructordashboardstats-title {
+    font-size: 0.9rem;
+  }
+}
+
+/* Extra Small / Very Small Mobile */
+@media (max-width: 400px) {
+  .instructordashboardstats-wrapper {
+    gap: 15px;
+  }
+
+  .instructordashboardstats-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 15px;
+  }
+
+  .instructordashboardstats-icon {
+    padding: 10px;
+  }
+
+  .instructordashboardstats-value {
+    font-size: 1.1rem;
+  }
+
+  .instructordashboardstats-title {
+    font-size: 0.85rem;
+  }
+
+  .instructordashboardstats-table th,
+  .instructordashboardstats-table td {
+    padding: 8px 6px;
+    font-size: 0.85rem;
+  }
+}

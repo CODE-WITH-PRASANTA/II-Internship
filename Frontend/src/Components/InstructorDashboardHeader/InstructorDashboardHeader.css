@@ -1,0 +1,60 @@
+/* ========================= */
+/* HEADER */
+/* ========================= */
+.instructordashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.instructordashboard-header-left h1 {
+  font-size: 1.5rem;
+  color: #2575fc;
+}
+
+.instructordashboard-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.instructordashboard-search input {
+  padding: 7px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  width: 180px;
+  transition: 0.3s;
+}
+
+.instructordashboard-search input:focus { border-color: #2575fc; }
+
+.instructordashboard-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.1rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.user-icon { font-size: 1.4rem; color: #2575fc; }
+
+/* Responsive */
+@media (max-width: 700px) {
+  .instructordashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .instructordashboard-search input { width: 100%; }
+}
+
+@media (max-width: 400px) { 
+  .instructordashboard-header-left h1 { font-size: 1.2rem; } 
+}

@@ -1,0 +1,217 @@
+.instructordashboardorders-wrapper {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.instructordashboardorders-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0b2149;
+  margin-bottom: 20px;
+}
+
+/* Filters */
+.instructordashboardorders-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.instructordashboardorders-search-box {
+  display: flex;
+  align-items: center;
+  background: #f9fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px 12px;
+  width: 280px;
+}
+
+.instructordashboardorders-search-box svg {
+  color: #6b7280;
+  margin-right: 8px;
+}
+
+.instructordashboardorders-search-box input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-size: 14px;
+  color: #374151;
+}
+
+.instructordashboardorders-select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+  background: #fff;
+  color: #374151;
+}
+
+/* Table */
+.instructordashboardorders-table-wrapper {
+  overflow-x: auto;
+}
+
+.instructordashboardorders-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+  table-layout: fixed;
+}
+
+.instructordashboardorders-table thead th {
+  background: #0b2149;
+  color: #fff;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.instructordashboardorders-table tbody tr {
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s ease;
+}
+
+.instructordashboardorders-table tbody tr:hover {
+  background: #f9fafc;
+}
+
+.instructordashboardorders-table td {
+  padding: 14px 16px;
+  font-size: 14px;
+  color: #374151;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.instructordashboardorders-order-title {
+  color: #0b2149;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Pagination */
+.instructordashboardorders-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.instructordashboardorders-pagination p {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.instructordashboardorders-page-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.instructordashboardorders-page-controls button {
+  border: none;
+  background: #f1f5f9;
+  color: #0b2149;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.instructordashboardorders-page-controls button:hover {
+  background: #dbeafe;
+}
+
+.instructordashboardorders-page-controls .active {
+  background: #2563eb;
+  color: #fff;
+}
+
+/* === RESPONSIVE DESIGN === */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .instructordashboardorders-search-box {
+    width: 100%;
+  }
+
+  .instructordashboardorders-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .instructordashboardorders-table {
+    font-size: 13px;
+  }
+}
+
+/* Small Tablets */
+@media (max-width: 768px) {
+  .instructordashboardorders-table th,
+  .instructordashboardorders-table td {
+    padding: 10px 12px;
+  }
+
+  .instructordashboardorders-page-controls button {
+    padding: 5px 8px;
+    font-size: 13px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .instructordashboardorders-table {
+    min-width: 600px; /* horizontal scroll */
+  }
+
+  .instructordashboardorders-table td {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .instructordashboardorders-title {
+    font-size: 18px;
+  }
+}
+
+/* Very small screens - responsive cards */
+@media (max-width: 360px) {
+  .instructordashboardorders-table {
+    min-width: 100%;
+  }
+
+  .instructordashboardorders-table tbody tr {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px;
+    border-radius: 10px;
+    background: #f9fafc;
+    margin-bottom: 10px;
+  }
+
+  .instructordashboardorders-table td {
+    white-space: normal;
+  }
+
+  .instructordashboardorders-table thead {
+    display: none;
+  }
+}

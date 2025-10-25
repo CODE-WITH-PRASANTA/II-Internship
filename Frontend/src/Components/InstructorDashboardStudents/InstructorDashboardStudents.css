@@ -1,0 +1,268 @@
+.instructordashboard-students-wrapper {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.instructordashboard-students-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0b2149;
+  margin-bottom: 20px;
+}
+
+/* Search & Filter Bar */
+.instructordashboard-students-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.instructordashboard-search-box {
+  display: flex;
+  align-items: center;
+  background: #f9fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px 12px;
+  width: 280px;
+}
+
+.instructordashboard-search-box svg {
+  color: #6b7280;
+  margin-right: 8px;
+}
+
+.instructordashboard-search-box input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-size: 14px;
+  color: #374151;
+}
+
+.instructordashboard-select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+  background: #fff;
+  color: #374151;
+}
+
+/* Table Styles */
+.instructordashboard-students-table-wrapper {
+  overflow-x: auto;
+}
+
+.instructordashboard-students-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.instructordashboard-students-table thead {
+  background: #0b2149;
+  color: #fff;
+  text-align: left;
+}
+
+.instructordashboard-students-table thead th {
+  background: #0b2149;
+  color: #fff;
+  text-align: left;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.instructordashboard-students-table tbody tr {
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s ease;
+}
+
+.instructordashboard-students-table tbody tr:hover {
+  background: #f9fafc;
+}
+
+/* Student Info */
+.instructordashboard-student-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+}
+
+.instructordashboard-student-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.instructordashboard-student-name {
+  font-size: 15px;
+  color: #0b2149;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.instructordashboard-student-location {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Progress Bar */
+.instructordashboard-progress-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+}
+
+.instructordashboard-progress-text {
+  font-weight: 600;
+  color: #0b2149;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.instructordashboard-progress-bar {
+  background: #e5e7eb;
+  border-radius: 8px;
+  height: 8px;
+  width: 120px;
+  overflow: hidden;
+}
+
+.instructordashboard-progress-fill {
+  background: repeating-linear-gradient(
+    45deg,
+    #16a34a,
+    #16a34a 6px,
+    #22c55e 6px,
+    #22c55e 12px
+  );
+  height: 100%;
+  border-radius: 8px;
+  transition: width 0.3s ease;
+}
+
+/* Table Data Cells */
+.instructordashboard-students-table td {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #374151;
+  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Actions */
+.instructordashboard-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.instructordashboard-actions button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 6px;
+  transition: all 0.2s ease;
+}
+
+.instructordashboard-chat-btn,
+.instructordashboard-block-btn {
+  color: #fff;
+}
+
+.instructordashboard-chat-btn svg,
+.instructordashboard-block-btn svg {
+  display: block;
+  color: #fff;
+}
+
+/* Chat Button - blue gradient */
+.instructordashboard-chat-btn {
+  background: linear-gradient(135deg, #4f46e5, #3b82f6);
+}
+
+.instructordashboard-chat-btn:hover {
+  background: linear-gradient(135deg, #4338ca, #2563eb);
+}
+
+/* Block Button - red gradient */
+.instructordashboard-block-btn {
+  background: linear-gradient(135deg, #ef4444, #f87171);
+}
+
+.instructordashboard-block-btn:hover {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+}
+
+/* === RESPONSIVE === */
+
+/* Tablets */
+@media (max-width: 900px) {
+  .instructordashboard-search-box {
+    width: 100%;
+  }
+
+  .instructordashboard-students-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .instructordashboard-students-table {
+    font-size: 13px;
+  }
+
+  .instructordashboard-student-img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .instructordashboard-students-table {
+    min-width: 100%;
+  }
+
+  .instructordashboard-students-table tbody tr {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .instructordashboard-students-table td {
+    white-space: normal;
+    font-size: 13px;
+    padding: 6px 8px;
+  }
+
+  .instructordashboard-progress-bar {
+    width: 100%;
+  }
+
+  .instructordashboard-actions {
+    justify-content: flex-start;
+  }
+}

@@ -1,0 +1,35 @@
+/* ========================= */
+/* MAIN CONTENT */
+/* ========================= */
+.instructordashboard-main {
+  display: flex;
+  flex: 1;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+/* Content Area */
+.instructordashboard-content {
+  flex: 1;
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+  overflow-x: hidden;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+/* Scrollbar */
+.instructordashboard-content::-webkit-scrollbar { width: 6px; }
+.instructordashboard-content::-webkit-scrollbar-thumb { background-color: rgba(0, 0, 0, 0.2); border-radius: 3px; }
+.instructordashboard-content::-webkit-scrollbar-track { background: transparent; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .instructordashboard-main { flex-direction: column; }
+  .instructordashboard-content { padding: 20px; border-radius: 12px; margin-top: 10px; }
+}
+
+@media (max-width: 600px) { .instructordashboard-content { padding: 16px; } }
+@media (max-width: 400px) { .instructordashboard-content { padding: 12px; } }

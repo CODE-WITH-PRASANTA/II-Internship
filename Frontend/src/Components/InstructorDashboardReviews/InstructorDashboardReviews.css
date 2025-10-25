@@ -1,0 +1,213 @@
+.instructordashboardreviews-wrapper {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.instructordashboardreviews-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0b2149;
+  margin-bottom: 20px;
+}
+
+/* Review list */
+.instructordashboardreviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.instructordashboardreview-card {
+  display: flex;
+  gap: 16px;
+  background: #f9fafc;
+  padding: 16px;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.instructordashboardreview-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.review-avatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.review-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-header {
+  font-size: 14px;
+  color: #0b2149;
+  margin-bottom: 4px;
+}
+
+.review-rating {
+  margin-bottom: 8px;
+}
+
+.star {
+  font-size: 14px;
+  color: #e5e7eb;
+  margin-right: 2px;
+}
+
+.star.filled {
+  color: #f59e0b;
+}
+
+.review-comment {
+  font-size: 13px;
+  color: #374151;
+  margin-bottom: 8px;
+  word-wrap: break-word;
+}
+
+.review-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-date {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.review-reply-btn {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.review-reply-btn:hover {
+  background: #1d4ed8;
+}
+
+/* Footer: showing entries + pagination */
+.instructordashboardreviews-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.reviews-showing {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.reviews-pagination {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.reviews-pagination button {
+  border: none;
+  background: #f1f5f9;
+  color: #0b2149;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.reviews-pagination button:hover {
+  background: #dbeafe;
+}
+
+.reviews-pagination .active {
+  background: #2563eb;
+  color: #fff;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 1024px) {
+  .instructordashboardreview-card {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .instructordashboardreview-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .review-avatar img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .review-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .instructordashboardreview-card {
+    padding: 12px;
+  }
+
+  .review-comment {
+    font-size: 12px;
+  }
+
+  .review-header {
+    font-size: 13px;
+  }
+
+  .review-reply-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .reviews-pagination button {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+}
+
+/* Very small screens (<360px) */
+@media (max-width: 360px) {
+  .instructordashboardreview-card {
+    gap: 8px;
+  }
+
+  .review-avatar img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .review-footer {
+    width: 100%;
+    flex-direction: column;
+    gap: 4px;
+  }
+}

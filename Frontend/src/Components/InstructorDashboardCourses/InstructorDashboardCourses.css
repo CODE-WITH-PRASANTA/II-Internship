@@ -1,0 +1,192 @@
+.instructordashboardcourses-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  font-family: "Inter", sans-serif;
+}
+
+/* === Recent Courses Table === */
+.instructordashboardcourses-recent-courses {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+}
+
+.instructordashboardcourses-recent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.instructordashboardcourses-recent-header h3 {
+  font-size: 1.1rem;
+  color: #1a1a1a;
+}
+
+.instructordashboardcourses-viewall {
+  font-size: 0.9rem;
+  color: #2575fc;
+  cursor: pointer;
+}
+
+.instructordashboardcourses-table-wrapper {
+  overflow-x: auto;
+}
+
+.instructordashboardcourses-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.instructordashboardcourses-table th,
+.instructordashboardcourses-table td {
+  text-align: left;
+  padding: 12px 15px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.instructordashboardcourses-table thead {
+  background: #111827;
+  color: #fff;
+}
+
+.instructordashboardcourses-course-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.instructordashboardcourses-course-cell img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* === Status styles === */
+.instructordashboardcourses-status {
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.instructordashboardcourses-status.live {
+  background: #e8f9ee;
+  color: #1b7b3a;
+}
+
+.instructordashboardcourses-status.pending {
+  background: #fff7e6;
+  color: #d68910;
+}
+
+.instructordashboardcourses-status.draft {
+  background: #f5f5f5;
+  color: #777;
+}
+
+/* === Action Buttons === */
+.instructordashboardcourses-edit-btn,
+.instructordashboardcourses-delete-btn {
+  border: none;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-right: 5px;
+}
+
+.instructordashboardcourses-edit-btn {
+  background: #e6f0ff;
+  color: #3b6cff;
+}
+
+.instructordashboardcourses-delete-btn {
+  background: #ffe9e6;
+  color: #ff6b6b;
+}
+
+/* === Pagination + Entries === */
+.instructordashboardcourses-pagination-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.instructordashboardcourses-pagination-info {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.instructordashboardcourses-pagination {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.instructordashboardcourses-page {
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: #f0f0f0;
+  cursor: pointer;
+}
+
+.instructordashboardcourses-page.active {
+  background: #2575fc;
+  color: #fff;
+}
+
+/* === Responsive === */
+@media (max-width: 900px) {
+  .instructordashboardcourses-table th,
+  .instructordashboardcourses-table td {
+    padding: 10px 8px;
+    font-size: 0.9rem;
+  }
+
+  .instructordashboardcourses-course-cell img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .instructordashboardcourses-edit-btn,
+  .instructordashboardcourses-delete-btn {
+    padding: 5px 8px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .instructordashboardcourses-recent-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .instructordashboardcourses-pagination-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .instructordashboardcourses-pagination {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 400px) {
+  .instructordashboardcourses-table th,
+  .instructordashboardcourses-table td {
+    padding: 8px 6px;
+    font-size: 0.85rem;
+  }
+}

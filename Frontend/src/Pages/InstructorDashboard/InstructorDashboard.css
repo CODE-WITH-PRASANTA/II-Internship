@@ -1,0 +1,32 @@
+/* ========================= */
+/* DASHBOARD WRAPPER & CONTAINER */
+/* ========================= */
+.instructordashboard-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 0 60px;
+  box-sizing: border-box;
+  background: #f8f9fb;
+  transition: all 0.3s ease;
+}
+
+.instructordashboard-container {
+  display: flex;
+  gap: 25px;
+  width: 100%;
+  max-width: 1500px;
+  transition: all 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 1200px) { 
+  .instructordashboard-wrapper { padding: 0 40px; } 
+}
+@media (max-width: 900px) { 
+  .instructordashboard-wrapper { padding: 0 20px; }
+  .instructordashboard-container { flex-direction: column; gap: 15px; }
+}
+@media (max-width: 600px) { .instructordashboard-wrapper { padding: 0 15px; } }
+@media (max-width: 400px) { .instructordashboard-wrapper { padding: 0 10px; } }

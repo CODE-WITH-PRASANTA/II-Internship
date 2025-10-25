@@ -1,0 +1,264 @@
+.instructordashboardearning {
+  font-family: "Poppins", sans-serif;
+  padding: 30px;
+  background: #f8fafc;
+  color: #1e293b;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* === SUMMARY CARDS === */
+.instructordashboardearning-summary-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.instructordashboardearning-summary-card {
+  flex: 1;
+  min-width: 250px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 18px;
+  padding: 25px;
+  background: white;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.instructordashboardearning-summary-card:hover {
+  transform: translateY(-3px);
+}
+
+.instructordashboardearning-summary-icon {
+  background: white;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.instructordashboardearning-summary-text h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.instructordashboardearning-summary-text p {
+  font-size: 1rem;
+  color: #475569;
+  font-weight: 500;
+}
+
+/* === RECENT COURSES TABLE === */
+.instructordashboardearning-recent-courses {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+  padding: 25px;
+}
+
+.instructordashboardearning-recent-courses h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.instructordashboardearning-recent-courses table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.instructordashboardearning-recent-courses th {
+  background: #0f172a;
+  color: white;
+  padding: 14px 12px;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.instructordashboardearning-recent-courses td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #e2e8f0;
+  vertical-align: middle;
+}
+
+.instructordashboardearning-course-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.instructordashboardearning-course-cell img {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.instructordashboardearning-period-badge {
+  background: #e6f4ea;
+  color: #16a34a;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.instructordashboardearning-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.instructordashboardearning-edit-btn,
+.instructordashboardearning-delete-btn {
+  border: none;
+  outline: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.instructordashboardearning-edit-btn {
+  background: #f1f5f9;
+  color: #2563eb;
+}
+
+.instructordashboardearning-delete-btn {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.instructordashboardearning-edit-btn:hover {
+  background: #e0ebff;
+}
+
+.instructordashboardearning-delete-btn:hover {
+  background: #fecaca;
+}
+
+/* === PAGINATION === */
+.instructordashboardearning-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.instructordashboardearning-pagination button {
+  background: white;
+  border: 1px solid #e2e8f0;
+  color: #1e293b;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.instructordashboardearning-pagination button:hover {
+  background: #e2e8f0;
+}
+
+.instructordashboardearning-pagination .active {
+  background: #2563eb;
+  color: white;
+  border: none;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .instructordashboardearning-summary-cards {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .instructordashboardearning-recent-courses table,
+  .instructordashboardearning-recent-courses thead,
+  .instructordashboardearning-recent-courses tbody,
+  .instructordashboardearning-recent-courses th,
+  .instructordashboardearning-recent-courses td,
+  .instructordashboardearning-recent-courses tr {
+    display: block;
+  }
+
+  .instructordashboardearning-recent-courses tr {
+    background: #f9fafb;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .instructordashboardearning-recent-courses td {
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 10px;
+  }
+
+  .instructordashboardearning-recent-courses td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #475569;
+    flex: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .instructordashboardearning-summary-card {
+    padding: 18px;
+    gap: 12px;
+  }
+
+  .instructordashboardearning-summary-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .instructordashboardearning-summary-text h2 {
+    font-size: 1.4rem;
+  }
+
+  .instructordashboardearning-summary-text p {
+    font-size: 0.9rem;
+  }
+
+  .instructordashboardearning-recent-courses h3 {
+    font-size: 1.1rem;
+  }
+
+  .instructordashboardearning-recent-courses td {
+    font-size: 0.85rem;
+  }
+
+  .instructordashboardearning-course-cell img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .instructordashboardearning-period-badge {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+  }
+
+  .instructordashboardearning-edit-btn,
+  .instructordashboardearning-delete-btn {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  .instructordashboardearning-pagination button {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+}
