@@ -28,6 +28,7 @@ import TechnicalSupport from "./Pages/TechnicalSupport/TechnicalSupport";
 import EducationalInstitute from "./Pages/EducationalInstitute/EducationalInstitute";
 import StudentDashboard from "./Pages/StudentDashboard/StudentDashboard";
 import InstructorDashboard from "./Pages/InstructorDashboard/InstructorDashboard";
+import CreateNewCourse from "./Components/CreateNewCourse/CreateNewCourse";
 
 function App() {
   return (
@@ -60,6 +61,8 @@ function App() {
           <Route path="/EducationalInstitute" element={<EducationalInstitute />} />
           <Route path="/StudentDashboard" element={<StudentDashboard />} />
           <Route path="/InstructorDashboard" element={<InstructorDashboard />} />
+          <Route path="/CreateNewCourse" element={<CreateNewCourse />} />
+
 
 
 
