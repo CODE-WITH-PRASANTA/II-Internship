@@ -29,6 +29,8 @@ import EducationalInstitute from "./Pages/EducationalInstitute/EducationalInstit
 import StudentDashboard from "./Pages/StudentDashboard/StudentDashboard";
 import InstructorDashboard from "./Pages/InstructorDashboard/InstructorDashboard";
 import CreateNewCourse from "./Components/CreateNewCourse/CreateNewCourse";
+import SignInAndLogIn from "./Components/SignInAndLogIn/SignInAndLogIn";
+import InstructorDirectory from "./Components/InstructorDirectory/InstructorDirectory";
 
 function App() {
   return (
@@ -62,6 +64,9 @@ function App() {
           <Route path="/StudentDashboard" element={<StudentDashboard />} />
           <Route path="/InstructorDashboard" element={<InstructorDashboard />} />
           <Route path="/CreateNewCourse" element={<CreateNewCourse />} />
+          <Route path="/SignInAndLogIn" element={<SignInAndLogIn />} />
+          <Route path="/InstructorDirectory" element={<InstructorDirectory />} />
+
 
 
 
