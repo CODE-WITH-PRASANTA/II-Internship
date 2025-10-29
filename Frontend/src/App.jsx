@@ -43,8 +43,12 @@ function App() {
           <Route path="/NewsPaper" element={<NewsPaper />} />
           <Route path="/MediaPhotos" element={<MediaPhoto />} />
           <Route path="/SuccessStory" element={<SuccessStory />} />
+          <Route path="/Recruitment" element={<Recruitment />} />
+
+
           <Route path="/SuccessStory/Details" element={<SuccessStoryDetails />} />
           <Route path="/SuccessStory" element={<SuccessStory />} />
+          <Route path="/Recruitment" element={<Recruitment />} />
         </Routes>
       <Footer />
       </PageWrapper>

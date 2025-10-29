@@ -1,4 +1,4 @@
-.image-grid {
+.home-image-grid {
   display: flex;
   gap: 15px;
   padding: 20px;
@@ -120,7 +120,7 @@
 
 @media (max-width: 480px) {
   .image-card { width: 120px; height: 90px; }
-  .image-grid { gap: 10px; padding: 10px; }
+  .home-image-grid { gap: 10px; padding: 10px; }
 }
 
 /* Animations */

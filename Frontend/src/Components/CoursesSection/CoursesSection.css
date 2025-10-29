@@ -1,15 +1,4 @@
-/* 🌐 Reset & Base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-body {
-  font-family: "Plus Jakarta Sans", sans-serif;
-  background: linear-gradient(160deg, #f7f9fc, #e0f0ff);
-  color: #222;
-}
 
 /* 🌟 Section */
 .course-section {

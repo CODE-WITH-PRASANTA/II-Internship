@@ -61,8 +61,8 @@ const Navbar = () => {
 
   { name: "Our Partners", sub: [
       { name: "Educational Institutes", path: "/ComingSoon" },
-      { name: "Job Placement Companies", path: "/ComingSoon" },
-      { name: "Training & Technical Support", path: "/ComingSoon" },
+      { name: "Job Placement Companies", path: "/JobPlacementCompanies" },
+      { name: "Training & Technical Support", path: "/TechnicalSupport" },
     ] 
   },
   { name: "Media", sub: [

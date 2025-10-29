@@ -52,7 +52,7 @@ const ImageGrid = () => {
 
   return (
     <>
-      <div className="image-grid" ref={sliderRef}>
+      <div className="home-image-grid" ref={sliderRef}>
         {duplicatedImages.map((image, index) => (
           <div 
             className="image-card" 
