@@ -1,134 +1,219 @@
-import React, { useState } from "react";
+import React from "react";
+import {
+  Clock,
+  PlayCircle,
+  BarChart,
+  Star,
+  Heart,
+} from "lucide-react";
+import subject1 from "../../assets/subject1.webp";
+import subject2 from "../../assets/subject2.webp";
+import subject3 from "../../assets/subject3.webp";
+import subject4 from "../../assets/subject4.webp";
+import avatar1 from "../../assets/sub-avt-1.webp";
+import avatar2 from "../../assets/sub-avt-2.webp";
+import avatar3 from "../../assets/sub-avt-3.webp";
+import avatar4 from "../../assets/sub-avt-4.webp";
 import "./CoursesSection.css";
-import { FaUserGraduate, FaStar, FaClock, FaSearch, FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { motion } from "framer-motion";
-
-import i1 from "../../assets/oc1.webp";
-import i2 from "../../assets/oc2.webp";
-import i3 from "../../assets/oc3.webp";
-import i4 from "../../assets/oc4.webp";
-import i5 from "../../assets/oc5.webp";
-import i6 from "../../assets/oc6.webp";
-import i7 from "../../assets/oc7.webp";
-import i8 from "../../assets/oc8.webp";
 
 const CoursesSection = () => {
-  const images = [i1, i2, i3, i4, i5, i6, i7, i8];
-
-  const courses = Array(48)
-    .fill({
-      category: "Music Fundamentals",
-      title: "Advanced Product Design Online Course",
-      students: "9,943 students",
-      rating: "4.5",
-      duration: "2h 30m",
-      price: "$35",
-      instructor: "Jacob Collier",
-    })
-    .map((c, i) => ({ ...c, image: images[i % images.length] }));
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const coursesPerPage = 12;
-  const totalPages = Math.ceil(courses.length / coursesPerPage);
-
-  const indexOfLastCourse = currentPage * coursesPerPage;
-  const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
-  const currentCourses = courses.slice(indexOfFirstCourse, indexOfLastCourse);
-
-  const changePage = (pageNumber) => {
-    setCurrentPage(pageNumber);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const courses = [
+    {
+      id: 1,
+      title: "Angular – The Complete Guider",
+      tag: "Development",
+      time: "21h 56m",
+      lectures: 52,
+      level: "Intermediate",
+      rating: 4.5,
+      free: true,
+      image: subject1,
+      author: "Jacqueline Miller",
+      avatar: avatar1,
+      desc: "Satisfied conveying a dependent contented he gentleman agreeable do be.",
+    },
+    {
+      id: 2,
+      title: "The Complete Digital Marketing Course - 12 Courses in 1",
+      tag: "Marketing",
+      time: "6h 56m",
+      lectures: 82,
+      level: "Beginner",
+      rating: 4.5,
+      free: false,
+      image: subject2,
+      author: "Larry Lawson",
+      avatar: avatar2,
+      desc: "Explained propriety off out perpetual his you. Dependent content.",
+    },
+    {
+      id: 3,
+      title: "The Ultimate Copywriting Course - Write Copy That Sells",
+      tag: "Development",
+      time: "13h 30m",
+      lectures: 72,
+      level: "All level",
+      rating: 4.8,
+      free: false,
+      image: subject3,
+      author: "Louis Crawford",
+      avatar: avatar3,
+      desc: "Insipidity the sufficient discretion imprudence resolution sir him.",
+    },
+    {
+      id: 4,
+      title: "Create a Design System in Figma",
+      tag: "Design",
+      time: "7h 50m",
+      lectures: 21,
+      level: "All level",
+      rating: 4.0,
+      free: false,
+      image: subject4,
+      author: "Frances Guerrero",
+      avatar: avatar4,
+      desc: "Fulfilled direction use continual set him propriety continued.",
+    },
+  ];
 
   return (
-    <section className="course-section">
-      {/* Header */}
-      <div className="course-header">
-        <h2>
-          We Found <span>{courses.length} Courses</span> Available For You
-        </h2>
-
-        <div className="course-search">
-          <input type="text" placeholder="Search Course here ..." />
-          <button>
-            <FaSearch />
+    <section className="courses-section">
+      <div className="courses-header">
+        <h2>Showing 1–7 of 32 result</h2>
+        <div className="view-options">
+          <button className="grid-view active">
+            <i className="fas fa-th-large"></i>
           </button>
+          <button className="list-view">
+            <i className="fas fa-list"></i>
+          </button>
+          <select>
+            <option>Sort by</option>
+          </select>
         </div>
       </div>
 
-      {/* Course Cards */}
-      <div className="course-grid">
-        {currentCourses.map((course, index) => (
-          <motion.div
-            className="course-card"
-            key={index}
-            whileHover={{ scale: 1.03 }}
-            transition={{ type: "spring", stiffness: 150 }}
-          >
-            <div className="course-image">
-              <motion.img
-                src={course.image}
-                alt="Course"
-                initial={{ scale: 1, y: 0 }}
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                whileHover={{ scale: 1.1, rotate: 2 }}
-              />
-              <div className="course-price">{course.price}</div>
-            </div>
+      {/* ✅ Fixed Courses Container Section */}
+      <div className="courses-container">
+        {/* Courses List (left side) */}
+        <div className="courses-list">
+          {courses.map((course) => (
+            <div className="course-card" key={course.id}>
+              <div className="course-image">
+                <img src={course.image} alt={course.title} />
+                {course.free && <span className="free-tag">Free</span>}
 
-            <div className="course-content">
-              <p className="course-category">{course.category}</p>
-              <h3 className="course-title">{course.title}</h3>
-
-              <div className="course-meta">
-                <span>
-                  <FaUserGraduate /> {course.students}
-                </span>
-                <span>
-                  <FaStar /> {course.rating}
-                </span>
-                <span>
-                  <FaClock /> {course.duration}
-                </span>
+                {/* Top right icons */}
+                <div className="course-top-icons">
+                  <div className="rating">
+                    <Star className="star" size={15} />
+                    <span>{course.rating}</span>
+                  </div>
+                  <Heart className="heart" size={15} />
+                </div>
               </div>
 
-              <div className="course-footer">
-                <button className="instructor-btn">by {course.instructor}</button>
-                <button className="enroll-btn">Enroll Now</button>
+              <div className="course-content">
+                <span className={`course-tag ${course.tag.toLowerCase()}`}>
+                  {course.tag}
+                </span>
+                <h4>{course.title}</h4>
+                <p>{course.desc}</p>
+                <div className="course-meta">
+                  <span>
+                    <Clock size={16} /> {course.time}
+                  </span>
+                  <span>
+                    <PlayCircle size={16} /> {course.lectures} lectures
+                  </span>
+                  <span>
+                    <BarChart size={16} /> {course.level}
+                  </span>
+                </div>
+                <div className="course-footer">
+                  <div className="course-author">
+                    <img src={course.avatar} alt={course.author} />
+                    <span>{course.author}</span>
+                  </div>
+                </div>
+                <button className="view-btn">View more</button>
               </div>
             </div>
-          </motion.div>
-        ))}
+          ))}
+        </div>
+
+        {/* Sidebar Filters (right side) */}
+        <aside className="courses-filters">
+          <div className="filter-box">
+            <h3>Category</h3>
+            <ul className="courses-filter-list">
+              {[
+                "All",
+                "Development",
+                "Design",
+                "Accounting",
+                "Translation",
+                "Finance",
+                "Legal",
+                "Photography",
+                "Writing",
+                "Marketing",
+              ].map((item, index) => (
+                <li key={index}>
+                  <label>
+                    <input type="checkbox" />
+                    <span>{item}</span>
+                  </label>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="filter-box">
+            <h3>Price Level</h3>
+            <div className="filter-tags">
+              <button>All</button>
+              <button>Free</button>
+              <button>Paid</button>
+            </div>
+          </div>
+
+          <div className="filter-box">
+            <h3>Skill Level</h3>
+            <div className="filter-tags">
+              <button>All levels</button>
+              <button>Beginner</button>
+              <button>Intermediate</button>
+              <button>Advanced</button>
+            </div>
+          </div>
+
+          <div className="filter-box">
+            <h3>Language</h3>
+            <div className="filter-tags">
+              <button>English</button>
+              <button>Francas</button>
+              <button>Hindi</button>
+              <button>Russian</button>
+              <button>Spanish</button>
+              <button>Bengali</button>
+              <button>Portuguese</button>
+            </div>
+          </div>
+
+          <button className="filter-btn">Filter Results</button>
+        </aside>
       </div>
 
       {/* Pagination */}
       <div className="pagination">
-        <button
-          className="pagination-nav"
-          onClick={() => changePage(currentPage > 1 ? currentPage - 1 : 1)}
-          disabled={currentPage === 1}
-        >
-          <FaChevronLeft /> Previous
-        </button>
-
-        {Array.from({ length: totalPages }, (_, i) => (
-          <button
-            key={i + 1}
-            className={`page-number ${currentPage === i + 1 ? "active-page" : ""}`}
-            onClick={() => changePage(i + 1)}
-          >
-            {i + 1}
-          </button>
-        ))}
-
-        <button
-          className="pagination-nav"
-          onClick={() => changePage(currentPage < totalPages ? currentPage + 1 : totalPages)}
-          disabled={currentPage === totalPages}
-        >
-          Next <FaChevronRight />
-        </button>
+        <button>«</button>
+        <button>1</button>
+        <button className="active">2</button>
+        <button>3</button>
+        <button>…</button>
+        <button>6</button>
+        <button>»</button>
       </div>
     </section>
   );

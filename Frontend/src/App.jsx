@@ -21,6 +21,8 @@ import NewsPaper from "./Pages/NewsPaper/NewsPaper";
 import MediaPhoto from "./Pages/MediaPhoto/MediaPhoto";
 import SuccessStory from "./Pages/SuccessStory/SuccessStory";
 import Recruitment from "./Pages/Recruitment/Recruitment";
+import CourseDetails from "./Pages/CourseDetails/CourseDetails";
+import AllCourseCategories from "./Pages/AllCourseCategories/AllCourseCategories";
 
 function App() {
   return (
@@ -47,6 +49,10 @@ function App() {
           <Route path="/SuccessStory/Details" element={<SuccessStoryDetails />} />
           <Route path="/SuccessStory" element={<SuccessStory />} />
           <Route path="/Recruitment" element={<Recruitment />} />
+          <Route path="/CourseDetails" element={<CourseDetails />} />
+          
+          <Route path="/AllCourseCategories" element={<AllCourseCategories />} />
+
         </Routes>
       <Footer />
       </PageWrapper>
