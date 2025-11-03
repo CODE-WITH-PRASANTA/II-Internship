@@ -93,9 +93,9 @@ const StoryPreview: React.FC = () => {
   };
 
   return (
-    <div className="create-story-container">
+    <div className="StoryPreview-container">
       {/* Right Panel Only */}
-      <div className="create-story-right">
+      <div className="StoryPreview-story-right">
         <h3>📚 All Stories Preview</h3>
 
         {stories.length === 0 ? (

@@ -34,15 +34,15 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { icon: <GridIcon />, name: "Dashboard", path: "/" },
+  { icon: <GridIcon />, name: "Dashboard Overview", path: "/" },
 
   {
     icon: <BookOpenIcon />,
     name: "Course Management",
     subItems: [
-      { name: "Post Course", path: "/course/post" },
+      { name: "Add New Course", path: "/course/post" },
       { name: "Manage Courses", path: "/course/manage" },
-      { name: "Preview Courses", path: "/course/preview" },
+      { name: "Course Preview", path: "/course/preview" },
     ],
   },
 
@@ -54,38 +54,35 @@ const navItems: NavItem[] = [
       { name: "Manage Instructors", path: "/instructor/manage" },
       { name: "Assign Courses", path: "/instructor/assign-courses" },
       { name: "Assignments", path: "/instructor/assignments" },
-      { name: "Payment Management", path: "/instructor/payment" },
-      { name: "Attendance / Leaves", path: "/instructor/attendance" },
+      { name: "Payment & Payouts", path: "/instructor/payment" },
+      { name: "Attendance & Leave", path: "/instructor/attendance" },
     ],
   },
 
-  // ✅ NEW SECTION ADDED HERE
   {
     icon: <FolderPlusIcon />,
     name: "Category Management",
     subItems: [
-      { name: "Create New", path: "/category/create" },
-      { name: "Preview", path: "/category/preview" },
+      { name: "Add New Category", path: "/category/create" },
+      { name: "Category Overview", path: "/category/preview" },
     ],
   },
 
-  // ✅ New Success Story Management Section
   {
     icon: <TrophyIcon />,
-    name: "Success Story Management",
+    name: "Success Stories",
     subItems: [
       { name: "Create Story", path: "/success-story/create" },
-      { name: "Review of Clients Blog", path: "/success-story/review" },
+      { name: "Client Reviews", path: "/success-story/review" },
     ],
   },
 
-  // ✅ New Testimonial Management Section
   {
     icon: <MessageSquareIcon />,
-    name: "Testimonial Management",
+    name: "Testimonials",
     subItems: [
-      { name: "Add Feedback", path: "/testimonial/add" },
-      { name: "View Feedback", path: "/testimonial/view" },
+      { name: "Add Testimonial", path: "/testimonial/add" },
+      { name: "View Testimonials", path: "/testimonial/view" },
     ],
   },
 
@@ -97,8 +94,8 @@ const navItems: NavItem[] = [
       { name: "Manage Students", path: "/student/manage" },
       { name: "Internship Progress", path: "/student/progress" },
       { name: "Assignments", path: "/student/assignments" },
-      { name: "Payment Status", path: "/student/payment" },
-      { name: "Attendance / Leave", path: "/student/attendance" },
+      { name: "Payment Tracking", path: "/student/payment" },
+      { name: "Attendance & Leave", path: "/student/attendance" },
     ],
   },
 
@@ -116,7 +113,7 @@ const navItems: NavItem[] = [
     icon: <CreditCardIcon />,
     name: "Payment Management",
     subItems: [
-      { name: "Payment History", path: "/payment/history" },
+      { name: "Transaction History", path: "/payment/history" },
       { name: "Pending Payments", path: "/payment/pending" },
       { name: "Generate Invoice", path: "/payment/invoice" },
     ],
@@ -124,16 +121,16 @@ const navItems: NavItem[] = [
 
   {
     icon: <ChatIcon />,
-    name: "Feedback / Testimonials",
+    name: "User Feedback",
     subItems: [
-      { name: "Add Feedback", path: "/feedback/add" },
-      { name: "View Feedback", path: "/feedback/view" },
+      { name: "Submit Feedback", path: "/feedback/add" },
+      { name: "Feedback Overview", path: "/feedback/view" },
     ],
   },
 
   {
     icon: <ChartBarIcon />,
-    name: "Reports",
+    name: "Analytics & Reports",
     subItems: [
       { name: "Student Reports", path: "/reports/students" },
       { name: "Course Reports", path: "/reports/courses" },
@@ -145,16 +142,16 @@ const navItems: NavItem[] = [
 
   {
     icon: <BellIcon />,
-    name: "Notifications",
+    name: "Notifications Center",
     subItems: [
-      { name: "Send Notification", path: "/notifications/send" },
-      { name: "Manage Inbox", path: "/notifications/manage" },
+      { name: "Send Notifications", path: "/notifications/send" },
+      { name: "Inbox Management", path: "/notifications/manage" },
     ],
   },
 
   {
     icon: <PhotographIcon />,
-    name: "Media Uploads",
+    name: "Media Library",
     subItems: [
       { name: "Upload Course Materials", path: "/media/course-materials" },
       { name: "Upload Certificates", path: "/media/certificates" },
@@ -163,14 +160,15 @@ const navItems: NavItem[] = [
 
   {
     icon: <CogIcon />,
-    name: "Settings",
+    name: "System Settings",
     subItems: [
-      { name: "Platform Settings", path: "/settings/platform" },
-      { name: "Admin Users", path: "/settings/admin-users" },
-      { name: "System Configuration", path: "/settings/system-config" },
+      { name: "Platform Configuration", path: "/settings/platform" },
+      { name: "Admin Accounts", path: "/settings/admin-users" },
+      { name: "System Preferences", path: "/settings/system-config" },
     ],
   },
 ];
+
 
 // =============================
 // SIDEBAR COMPONENT

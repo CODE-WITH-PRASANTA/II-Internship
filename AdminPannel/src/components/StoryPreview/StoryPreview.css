@@ -1,7 +1,7 @@
 /* =============================
    MAIN CONTAINER
 ============================= */
-.create-story-container {
+.StoryPreview-container {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -14,7 +14,7 @@
 }
 
 /* RIGHT PANEL (Preview Side) */
-.create-story-right {
+.StoryPreview-story-right {
   flex: 1;
   background: #fff;
   border-radius: 16px;
@@ -23,7 +23,7 @@
   overflow-y: auto;
 }
 
-.create-story-right h3 {
+.StoryPreview-story-right h3 {
   font-size: 1.4rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
@@ -303,18 +303,18 @@
     margin-top: 1rem;
   }
 
-  .create-story-container {
+  .StoryPreview-container {
     padding: 1.5rem;
   }
 
-  .create-story-right {
+  .StoryPreview-story-right {
     padding: 1.5rem;
   }
 }
 
 /* Mobiles (up to 600px) */
 @media (max-width: 600px) {
-  .create-story-container {
+  .StoryPreview-container {
     padding: 1rem;
   }
 
