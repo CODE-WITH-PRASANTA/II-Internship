@@ -1,8 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import {
+  FolderPlusIcon,
+  TrophyIcon,
+  MessageSquareIcon,
+} from "lucide-react";
 
 // ✅ React Icons imports
-import { 
+import {
   HiOutlineViewGrid as GridIcon,
   HiOutlineUserCircle as UserCircleIcon,
   HiOutlineBookOpen as BookOpenIcon,
@@ -15,11 +20,11 @@ import {
   HiOutlinePhotograph as PhotographIcon,
   HiOutlineCog as CogIcon,
   HiOutlineDotsHorizontal as HorizontaLDots,
-  HiChevronDown as ChevronDownIcon
+  HiChevronDown as ChevronDownIcon,
 } from "react-icons/hi";
 
 import { useSidebar } from "../context/SidebarContext";
-import companylogo from "../Asserts/IIIT LOGO (2).png";  // fix spelling
+import companylogo from "../Asserts/IIIT LOGO (2).png"; // fixed spelling
 
 type NavItem = {
   name: string;
@@ -48,9 +53,39 @@ const navItems: NavItem[] = [
       { name: "Add Instructor", path: "/instructor/add" },
       { name: "Manage Instructors", path: "/instructor/manage" },
       { name: "Assign Courses", path: "/instructor/assign-courses" },
-      { name: "Assignments", path: "/instructor/assignments" }, // New
-      { name: "Payment Management", path: "/instructor/payment" }, // New
-      { name: "Attendance / Leaves", path: "/instructor/attendance" }, // New
+      { name: "Assignments", path: "/instructor/assignments" },
+      { name: "Payment Management", path: "/instructor/payment" },
+      { name: "Attendance / Leaves", path: "/instructor/attendance" },
+    ],
+  },
+
+  // ✅ NEW SECTION ADDED HERE
+  {
+    icon: <FolderPlusIcon />,
+    name: "Category Management",
+    subItems: [
+      { name: "Create New", path: "/category/create" },
+      { name: "Preview", path: "/category/preview" },
+    ],
+  },
+
+  // ✅ New Success Story Management Section
+  {
+    icon: <TrophyIcon />,
+    name: "Success Story Management",
+    subItems: [
+      { name: "Create Story", path: "/success-story/create" },
+      { name: "Review of Clients Blog", path: "/success-story/review" },
+    ],
+  },
+
+  // ✅ New Testimonial Management Section
+  {
+    icon: <MessageSquareIcon />,
+    name: "Testimonial Management",
+    subItems: [
+      { name: "Add Feedback", path: "/testimonial/add" },
+      { name: "View Feedback", path: "/testimonial/view" },
     ],
   },
 
@@ -61,9 +96,9 @@ const navItems: NavItem[] = [
       { name: "Enroll Student", path: "/student/enroll" },
       { name: "Manage Students", path: "/student/manage" },
       { name: "Internship Progress", path: "/student/progress" },
-      { name: "Assignments", path: "/student/assignments" }, // New
-      { name: "Payment Status", path: "/student/payment" }, // New
-      { name: "Attendance / Leave", path: "/student/attendance" }, // New
+      { name: "Assignments", path: "/student/assignments" },
+      { name: "Payment Status", path: "/student/payment" },
+      { name: "Attendance / Leave", path: "/student/attendance" },
     ],
   },
 
@@ -103,8 +138,8 @@ const navItems: NavItem[] = [
       { name: "Student Reports", path: "/reports/students" },
       { name: "Course Reports", path: "/reports/courses" },
       { name: "Instructor Reports", path: "/reports/instructors" },
-      { name: "Payment Reports", path: "/reports/payments" }, // New
-      { name: "Attendance Reports", path: "/reports/attendance" }, // New
+      { name: "Payment Reports", path: "/reports/payments" },
+      { name: "Attendance Reports", path: "/reports/attendance" },
     ],
   },
 
@@ -132,7 +167,7 @@ const navItems: NavItem[] = [
     subItems: [
       { name: "Platform Settings", path: "/settings/platform" },
       { name: "Admin Users", path: "/settings/admin-users" },
-      { name: "System Configuration", path: "/settings/system-config" }, // New
+      { name: "System Configuration", path: "/settings/system-config" },
     ],
   },
 ];
@@ -150,7 +185,9 @@ const AppSidebar: React.FC = () => {
   const [subMenuHeight, setSubMenuHeight] = useState<Record<string, number>>(
     {}
   );
-  const subMenuRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
+  // ✅ FIXED — proper type for numeric index
+  const subMenuRefs = useRef<Record<number, HTMLDivElement | null>>({});
 
   const isActive = useCallback(
     (path: string) => location.pathname === path,
@@ -174,7 +211,7 @@ const AppSidebar: React.FC = () => {
 
   useEffect(() => {
     if (openSubmenu !== null) {
-      const key = `${openSubmenu.index}`;
+      const key = openSubmenu.index;
       if (subMenuRefs.current[key]) {
         setSubMenuHeight((prev) => ({
           ...prev,
@@ -298,10 +335,12 @@ const AppSidebar: React.FC = () => {
                   )
                 )}
 
-                {/* SUBMENU */}
+                {/* ✅ FIXED REFS */}
                 {nav.subItems && (isExpanded || isHovered || isMobileOpen) && (
                   <div
-                    ref={(el) => (subMenuRefs.current[index] = el)}
+                    ref={(el) => {
+                      subMenuRefs.current[index] = el;
+                    }}
                     className="overflow-hidden transition-all duration-300"
                     style={{
                       height:

@@ -11,6 +11,12 @@ import Blank from "./pages/Blank";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
+import CreateNew from "./components/CreateNew/CreateNew";
+import CategoryPreview from "./components/CategoryPreview/CategoryPreview";
+import PostTestimonial from "./components/PostTestimonial/PostTestimonial";
+import TestimonialPreview from "./components/TestimonialPreview/TestimonialPreview";
+import CreateStory from "./components/CreateStory/CreateStory";
+import StoryPreview from "./components/StoryPreview/StoryPreview";
 
 export default function App() {
   return (
@@ -35,6 +41,21 @@ export default function App() {
             {/* Charts */}
             <Route path="line-chart" element={<LineChart />} />
             <Route path="bar-chart" element={<BarChart />} />
+
+
+            {/* ✅ Category Management */}
+            <Route path="/category/create" element={<CreateNew />} />
+            <Route path="/category/preview" element={<CategoryPreview />} />
+
+                        {/* ✅ Testimonial Management */}
+            <Route path="/testimonial/add" element={<PostTestimonial />} />
+            <Route path="/testimonial/view" element={<TestimonialPreview />} />
+
+                      {/* ✅  New Success Story Management Section */}
+            <Route path="/success-story/create" element={<CreateStory />} />
+            <Route path="/success-story/review" element={<StoryPreview />} />
+            
+
           </Route>
 
           {/* Auth Layout */}
