@@ -1,0 +1,354 @@
+/* ===== Base ===== */
+body {
+  font-family: sans-serif;
+  background: #f5f7fa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.wrapper {
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+/* ===== Header ===== */
+.flex-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.header-title {
+  font-size: 32px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.badge {
+  background: #ffe5cc;
+  color: #ff7a00;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+.create-btn {
+  background: #2563eb;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+
+.create-btn:hover {
+  background: #1e4ed8;
+}
+
+/* ===== Search & Sort ===== */
+.search-sort {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.search-box,
+.sort-box {
+  background: white;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 200px;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.search-box {
+  width: 50%;
+  max-width: 600px;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 15px;
+  background: transparent;
+}
+
+.icon {
+  color: #6b7280;
+}
+
+/* ===== Table ===== */
+.table-container {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.table-header {
+  background: #111827;
+  color: white;
+}
+
+.table-header th {
+  padding: 14px;
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.table-row {
+  border-bottom: 1px solid #eee;
+  transition: 0.2s;
+}
+
+.table-row:hover {
+  background: #f9fafb;
+}
+
+.table-data {
+  padding: 14px;
+  vertical-align: middle;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.course-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ===== Rating ===== */
+.rating span {
+  font-size: 18px;
+}
+
+.rating .filled {
+  color: #facc15;
+}
+
+.rating .empty {
+  color: #d1d5db;
+}
+
+/* ===== Icon Buttons ===== */
+.icon-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn:hover {
+  background: #f3f4f6;
+  transform: scale(1.05);
+}
+
+.icon-btn.edit {
+  color: #16a34a; /* green */
+}
+
+.icon-btn.delete {
+  color: #dc2626; /* red */
+}
+
+.icon-btn.publish {
+  color: #2563eb; /* blue */
+}
+
+.icon-btn.unpublish {
+  color: #f59e0b; /* amber */
+}
+
+/* ===== Footer / Pagination ===== */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 18px;
+  color: #555;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  background: white;
+  transition: 0.2s;
+  font-size: 14px;
+}
+
+.pagination button:hover {
+  background: #f3f4f6;
+}
+
+.pagination .active {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+/* ===== Responsive ===== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .header-title {
+    font-size: 28px;
+  }
+
+  .badge {
+    font-size: 16px;
+  }
+
+  .create-btn {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+
+  .table {
+    min-width: 700px;
+  }
+}
+
+/* Large Phones */
+@media (max-width: 768px) {
+  .flex-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .header-title {
+    font-size: 26px;
+  }
+
+  .search-sort {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  th,
+  td {
+    font-size: 14px;
+  }
+
+  .badge {
+    font-size: 14px;
+  }
+
+  .table {
+    min-width: 600px;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+  .header-title {
+    font-size: 22px;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .create-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .search-sort {
+    gap: 10px;
+  }
+
+  .search-box,
+  .sort-box {
+    width: 100%;
+  }
+
+  .table {
+    min-width: 500px;
+  }
+
+  th,
+  td {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .pagination button {
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+}
+
+/* Ultra-Wide Screens */
+@media (min-width: 1600px) {
+  .wrapper {
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+
+  .table {
+    min-width: 100%;
+  }
+}

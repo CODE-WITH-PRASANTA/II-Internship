@@ -17,6 +17,10 @@ import PostTestimonial from "./components/PostTestimonial/PostTestimonial";
 import TestimonialPreview from "./components/TestimonialPreview/TestimonialPreview";
 import CreateStory from "./components/CreateStory/CreateStory";
 import StoryPreview from "./components/StoryPreview/StoryPreview";
+import AddNewCourse from "./components/AddNewCourse/AddNewCourse";
+import CourseManage from "./components/CourseManage/CourseManage";
+import CourseDetails from "./components/CourseDetails/CourseDetails";
+import ManageInstructors from "./components/ManageInstructors/ManageInstructors";
 
 export default function App() {
   return (
@@ -43,6 +47,12 @@ export default function App() {
             <Route path="bar-chart" element={<BarChart />} />
 
 
+                        {/* ✅ Coursse Management */}
+            <Route path="/course/post" element={<AddNewCourse />} />
+             <Route path="/course/manage" element={<CourseManage />} />
+            <Route path="/course/preview" element={<CourseDetails />} />
+
+
             {/* ✅ Category Management */}
             <Route path="/category/create" element={<CreateNew />} />
             <Route path="/category/preview" element={<CategoryPreview />} />
@@ -54,6 +64,12 @@ export default function App() {
                       {/* ✅  New Success Story Management Section */}
             <Route path="/success-story/create" element={<CreateStory />} />
             <Route path="/success-story/review" element={<StoryPreview />} />
+
+
+                      {/* ✅  New Instructor Management Section */}
+            <Route path="/instructor/add" element={<ManageInstructors />} />
+
+            /instructor/add
             
 
           </Route>
