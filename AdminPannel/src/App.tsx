@@ -21,6 +21,8 @@ import AddNewCourse from "./components/AddNewCourse/AddNewCourse";
 import CourseManage from "./components/CourseManage/CourseManage";
 import CourseDetails from "./components/CourseDetails/CourseDetails";
 import ManageInstructors from "./components/ManageInstructors/ManageInstructors";
+import UserFeedback from "./components/UserFeedback/UserFeedback";
+import FeedbackOverview from "./components/FeedbackOverview/FeedbackOverview";
 
 export default function App() {
   return (
@@ -69,7 +71,13 @@ export default function App() {
                       {/* ✅  New Instructor Management Section */}
             <Route path="/instructor/add" element={<ManageInstructors />} />
 
-            /instructor/add
+
+
+                      {/* ✅  New User Feedback Section */}
+            <Route path="/feedback/add" element={<UserFeedback />} />
+            <Route path="/feedback/view" element={<FeedbackOverview />} />
+            
+            
             
 
           </Route>
