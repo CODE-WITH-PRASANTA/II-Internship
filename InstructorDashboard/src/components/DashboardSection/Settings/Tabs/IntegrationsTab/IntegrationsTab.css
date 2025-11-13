@@ -1,0 +1,262 @@
+/* 🌟 Base Container */
+.integrationstab-container {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fafafa;
+}
+
+.integrationstab-card {
+  width: 100%;
+  max-width: 1100px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+/* 🌟 Service Section */
+.integrationstab-service {
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+.integrationstab-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fdfdfd;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  border: 1px solid #eee;
+  transition: all 0.3s ease;
+}
+
+.integrationstab-header:hover {
+  box-shadow: 0 4px 16px rgba(255, 77, 109, 0.15);
+  transform: translateY(-2px);
+}
+
+.integrationstab-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.integrationstab-iconbox {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background: #f1f1f1;
+  transition: transform 0.3s ease;
+}
+
+.integrationstab-iconbox.zoom {
+  background: #e7f1ff;
+  color: #007bff;
+}
+
+.integrationstab-iconbox.meet {
+  background: #eaf7e8;
+  color: #00b050;
+}
+
+.integrationstab-iconbox:hover {
+  transform: scale(1.1);
+}
+
+.integrationstab-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.integrationstab-desc {
+  color: #666;
+  font-size: 0.95rem;
+  margin-top: 2px;
+}
+
+/* 🌟 Form */
+.integrationstab-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+
+.integrationstab-field label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #222;
+  margin-bottom: 6px;
+}
+
+.integrationstab-required {
+  color: #ff4d6d;
+}
+
+.integrationstab-field input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.integrationstab-field input:focus {
+  border-color: #ff4d6d;
+  box-shadow: 0 0 0 3px rgba(255, 77, 109, 0.1);
+}
+
+/* 🌟 Switch */
+.integrationstab-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+}
+
+.integrationstab-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.integrationstab-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e4e4e4;
+  border-radius: 26px;
+  transition: 0.3s;
+}
+
+.integrationstab-slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.integrationstab-switch input:checked + .integrationstab-slider {
+  background-color: #ff4d6d;
+}
+
+.integrationstab-switch input:checked + .integrationstab-slider::before {
+  transform: translateX(22px);
+}
+
+/* 🌟 Divider */
+.integrationstab-divider {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 25px 0;
+}
+
+/* 🌟 Save Button */
+.integrationstab-savebtn {
+  background: #ff4d6d;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 28px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+}
+
+.integrationstab-savebtn:hover {
+  background: #e23d5f;
+  transform: translateY(-2px);
+}
+
+/* 🌟 Animations */
+.fade-in {
+  animation: fadeIn 0.8s ease;
+}
+.slide-up {
+  animation: slideUp 0.8s ease;
+}
+.bounce:hover {
+  animation: bounce 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* 🌟 Responsive */
+@media (max-width: 992px) {
+  .integrationstab-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .integrationstab-card {
+    padding: 1.2rem;
+  }
+
+  .integrationstab-title {
+    font-size: 1rem;
+  }
+
+  .integrationstab-desc {
+    font-size: 0.9rem;
+  }
+
+  .integrationstab-savebtn {
+    width: 100%;
+    justify-content: center;
+  }
+}

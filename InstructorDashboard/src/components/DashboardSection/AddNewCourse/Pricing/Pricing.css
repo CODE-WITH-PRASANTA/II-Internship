@@ -1,0 +1,208 @@
+.pricing-container {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  color: #111;
+  width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Checkbox */
+.pricing-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.pricing-checkbox input[type="checkbox"] {
+  accent-color: #e30000;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.pricing-checkbox label {
+  font-size: 15px;
+  color: #222;
+  cursor: pointer;
+  flex: 1;
+}
+
+/* Input Fields */
+.pricing-field {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.pricing-field label {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.pricing-field input {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.pricing-field input:focus {
+  border-color: #3e2ab5;
+}
+
+.pricing-field input:disabled {
+  background: #f8f8f8;
+  color: #aaa;
+}
+
+.pricing-discount {
+  font-size: 13.5px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Expiry */
+.pricing-expiry label {
+  font-weight: 600;
+  font-size: 15px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.pricing-radio-group {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.pricing-radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.pricing-radio input[type="radio"] {
+  accent-color: #e30000;
+  cursor: pointer;
+}
+
+.pricing-note {
+  font-size: 13px;
+  color: #666;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+/* ====================== RESPONSIVE ====================== */
+
+/* Large desktops (1440px+) */
+@media (min-width: 1440px) {
+  .pricing-container {
+    max-width: 850px;
+    padding: 35px;
+  }
+
+  .pricing-field input {
+    font-size: 15px;
+  }
+}
+
+/* Medium screens (1024px - tablets) */
+@media (max-width: 1024px) {
+  .pricing-container {
+    padding: 22px;
+    max-width: 650px;
+  }
+
+  .pricing-field label,
+  .pricing-checkbox label {
+    font-size: 14px;
+  }
+
+  .pricing-field input {
+    font-size: 13.5px;
+  }
+
+  .pricing-radio-group {
+    gap: 18px;
+  }
+}
+
+/* Small screens (768px - phones) */
+@media (max-width: 768px) {
+  .pricing-container {
+    padding: 18px;
+    border-radius: 8px;
+  }
+
+  .pricing-checkbox {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .pricing-checkbox label,
+  .pricing-field label {
+    font-size: 14px;
+  }
+
+  .pricing-field input {
+    font-size: 13px;
+    padding: 9px;
+  }
+
+  .pricing-radio-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .pricing-note {
+    font-size: 12.5px;
+  }
+}
+
+/* Extra small screens (below 480px) */
+@media (max-width: 480px) {
+  .pricing-container {
+    padding: 15px;
+  }
+
+  .pricing-field label {
+    font-size: 13px;
+  }
+
+  .pricing-field input {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .pricing-checkbox label {
+    font-size: 13px;
+  }
+
+  .pricing-radio {
+    font-size: 13px;
+  }
+
+  .pricing-discount,
+  .pricing-note {
+    font-size: 11.5px;
+  }
+}

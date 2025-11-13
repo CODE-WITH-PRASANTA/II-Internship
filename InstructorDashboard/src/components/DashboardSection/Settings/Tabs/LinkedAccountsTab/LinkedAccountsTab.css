@@ -1,0 +1,195 @@
+/* Root container */
+.linkedaccountstab-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1.5rem;
+  background: linear-gradient(135deg, #eef2ff, #f9fafb);
+  min-height: 100vh;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Title */
+.linkedaccountstab-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.4rem;
+  text-align: center;
+}
+
+.linkedaccountstab-subtitle {
+  color: #6b7280;
+  margin-bottom: 2.2rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Main card container */
+.linkedaccountstab-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 800px;
+  transition: all 0.4s ease;
+}
+
+/* Individual item */
+.linkedaccountstab-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1.5rem 0;
+  opacity: 0;
+  animation: slideIn 0.8s forwards;
+  animation-timing-function: ease-out;
+}
+
+.linkedaccountstab-item:last-child {
+  border-bottom: none;
+}
+
+.linkedaccountstab-item:hover {
+  transform: translateY(-3px);
+}
+
+/* Front section */
+.linkedaccountstab-front {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Icon styling */
+.linkedaccountstab-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #e0e7ff, #f3f4f6);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.linkedaccountstab-item:hover .linkedaccountstab-icon {
+  background: linear-gradient(135deg, #bfdbfe, #dbeafe);
+  transform: scale(1.1);
+}
+
+/* Info section */
+.linkedaccountstab-info h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.3rem;
+}
+
+.linkedaccountstab-info p {
+  color: #6b7280;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Buttons */
+.linkedaccountstab-btn {
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.linkedaccountstab-link {
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.4);
+}
+
+.linkedaccountstab-link:hover {
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+  transform: scale(1.05);
+}
+
+.linkedaccountstab-remove {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4);
+}
+
+.linkedaccountstab-remove:hover {
+  background: linear-gradient(90deg, #dc2626, #b91c1c);
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .linkedaccountstab-card {
+    padding: 1.8rem;
+  }
+
+  .linkedaccountstab-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .linkedaccountstab-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .linkedaccountstab-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .linkedaccountstab-info h4 {
+    font-size: 1.05rem;
+  }
+
+  .linkedaccountstab-info p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .linkedaccountstab-title {
+    font-size: 1.6rem;
+  }
+
+  .linkedaccountstab-subtitle {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,299 @@
+/* securitytab.css */
+
+/* Root wrapper */
+.securitytab-wrapper {
+  max-width: 980px;
+  margin: 24px auto;
+  padding: 28px;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #222;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Card container */
+.securitytab-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 26px 28px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+  margin-bottom: 26px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: transform .18s ease, box-shadow .18s ease;
+  position: relative;
+  overflow: visible;
+}
+
+/* Slight lift on hover (desktop) */
+@media (hover: hover) {
+  .securitytab-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(34, 34, 34, 0.06);
+  }
+}
+
+/* Title */
+.securitytab-title {
+  font-size: 20px;
+  margin: 0 0 6px 0;
+  font-weight: 700;
+  color: #1f1f1f;
+}
+
+.securitytab-title.small {
+  font-size: 18px;
+}
+
+/* Subtitle */
+.securitytab-sub {
+  color: #6b6b6b;
+  margin: 0 0 18px 0;
+  font-size: 14px;
+}
+
+/* Link styling */
+.securitytab-link {
+  color: #0a66c2;
+  text-decoration: underline;
+}
+
+/* Labels */
+.securitytab-label {
+  display: block;
+  font-weight: 600;
+  margin: 12px 0 8px 0;
+  color: #2b2b2b;
+}
+
+.securitytab-required {
+  color: #e94d6b;
+}
+
+/* Input wrapper */
+.securitytab-input-wrap {
+  position: relative;
+}
+
+/* Input fields */
+.securitytab-input {
+  width: 100%;
+  padding: 14px 48px 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #ececec;
+  background: linear-gradient(180deg,#ffffff,#fbfbfb);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+  font-size: 15px;
+  outline: none;
+  transition: border-color .18s ease, box-shadow .18s ease, transform .12s ease;
+}
+
+/* Slight scale on focus for depth */
+.securitytab-input:focus {
+  border-color: rgba(233,76,99,0.2);
+  box-shadow: 0 6px 20px rgba(233,76,99,0.06);
+  transform: translateY(-1px);
+}
+
+/* Eye toggle button */
+.securitytab-eye {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #7a7a7a;
+  transition: color .12s ease, transform .12s ease;
+}
+
+.securitytab-eye:hover {
+  color: #3b3b3b;
+  transform: translateY(-50%) scale(1.02);
+}
+
+/* Password strength bars */
+.securitytab-strength {
+  display: flex;
+  gap: 12px;
+  margin: 12px 0 6px 0;
+}
+
+.securitytab-strength .bar {
+  flex: 1 1 0;
+  height: 8px;
+  background: #efefef;
+  border-radius: 6px;
+  transition: background .18s ease, transform .18s ease;
+}
+
+.securitytab-strength .bar.filled {
+  transform: scaleY(1.02);
+}
+
+/* Gradient fill colors for strength (left to right) */
+.securitytab-strength .bar.filled:nth-child(1) { background: #ffb6c0; }
+.securitytab-strength .bar.filled:nth-child(2) { background: #ff8fa0; }
+.securitytab-strength .bar.filled:nth-child(3) { background: #ff6280; }
+
+/* Actions container */
+.securitytab-actions {
+  margin-top: 20px;
+}
+
+/* Primary button (used for both save actions) */
+.securitytab-save-btn {
+  background: linear-gradient(180deg,#ff738e,#ff6280);
+  color: #fff;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(255,99,132,0.12);
+  transition: transform .14s ease, box-shadow .14s ease, opacity .12s ease;
+  display: inline-flex;
+  gap: .6rem;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  font-size: 15px;
+}
+
+/* Hover micro interaction */
+@media (hover: hover) {
+  .securitytab-save-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px rgba(255,99,132,0.12);
+  }
+}
+
+/* Email card specific styles */
+.securitytab-card--email {
+  padding: 22px 22px;
+  display: block;
+  position: relative;
+  overflow: visible;
+  border-radius: 10px;
+}
+
+/* Header layout for email section */
+.securitytab-email-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.securitytab-email-icon {
+  color: #ff738e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.98;
+  transform: translateY(0);
+}
+
+/* Email subtext and bold current email */
+.securitytab-email-sub {
+  margin-bottom: 10px;
+  color: #6b6b6b;
+  font-size: 14px;
+}
+
+.securitytab-email-strong {
+  color: #222;
+  font-weight: 700;
+}
+
+/* Input hint icon on email input (decorative) */
+.securitytab-email-hint {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  color: rgba(0,0,0,0.18);
+}
+
+/* make space so right icon fits */
+.securitytab-input--email { padding-right: 48px; }
+
+/* Email actions (center left) */
+.securitytab-actions--email {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Saved state for button */
+.securitytab-save-btn--email.saved {
+  background: linear-gradient(180deg,#34c77b,#2aa764);
+  box-shadow: 0 10px 30px rgba(42,167,100,0.12);
+  transform: translateY(0);
+}
+
+/* checkmark icon alignment */
+.securitytab-save-btn .checkmark { margin-right: 6px; }
+
+/* subtle decorative divider between cards similar to the image */
+.securitytab-card + .securitytab-card::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: rgba(0,0,0,0.03);
+  margin: -12px 0 18px 0;
+}
+
+/* small footer spacer */
+.securitytab-footer-spacer { height: 24px; }
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .securitytab-wrapper { padding: 20px; max-width: 720px; }
+  .securitytab-card { padding: 20px; }
+  .securitytab-email-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .securitytab-email-icon { align-self: flex-end; }
+}
+
+@media (max-width: 600px) {
+  .securitytab-wrapper { padding: 16px; margin: 12px; }
+  .securitytab-input { padding: 12px 44px 12px 12px; border-radius: 8px; }
+  .securitytab-title { font-size: 18px; }
+  .securitytab-card { padding: 16px; border-radius: 8px; }
+  .securitytab-email-header { width: 100%; }
+  .securitytab-save-btn { width: 100%; justify-content: center; padding: 12px 18px; }
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+  .securitytab-wrapper { max-width: 1100px; padding: 32px; }
+  .securitytab-card { padding: 28px 34px; border-radius: 10px; }
+}
+
+/* Accessibility focus rings */
+.securitytab-save-btn:focus, .securitytab-input:focus, .securitytab-eye:focus {
+  outline: 3px solid rgba(234,76,99,0.12);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+/* Tiny animations for icons and micro-interactions */
+.securitytab-email-icon svg {
+  transition: transform .22s ease, opacity .22s ease;
+}
+.securitytab-card--email:hover .securitytab-email-icon svg {
+  transform: translateY(-3px) rotate(-3deg) scale(1.02);
+}
+
+/* small utility */
+.securitytab-link:focus { outline: none; text-decoration: underline; }

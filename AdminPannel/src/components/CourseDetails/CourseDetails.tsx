@@ -8,10 +8,9 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { Eye, Trash2, Upload, Download } from "lucide-react";
+import { Eye, Trash2, Upload, Download,ChevronLeft, ChevronRight } from "lucide-react";
 import "./CourseDetails.css";
 
-// ✅ Type definitions
 interface Student {
   name: string;
   date: string;
@@ -26,36 +25,11 @@ interface ChartData {
 
 const CourseDetails: React.FC = () => {
   const students: Student[] = [
-    {
-      name: "Lori Stevens",
-      date: "29 Nov 2021",
-      rating: 5,
-      avatar: "https://i.pravatar.cc/50?img=11",
-    },
-    {
-      name: "Carolyn Ortiz",
-      date: "15 Nov 2021",
-      rating: 5,
-      avatar: "https://i.pravatar.cc/50?img=12",
-    },
-    {
-      name: "Dennis Barrett",
-      date: "28 Oct 2021",
-      rating: 4,
-      avatar: "https://i.pravatar.cc/50?img=13",
-    },
-    {
-      name: "Billy Vasquez",
-      date: "12 Oct 2021",
-      rating: 4,
-      avatar: "https://i.pravatar.cc/50?img=14",
-    },
-    {
-      name: "Jacqueline Miller",
-      date: "31 Sep 2021",
-      rating: 4,
-      avatar: "https://i.pravatar.cc/50?img=15",
-    },
+    { name: "Lori Stevens", date: "29 Nov 2021", rating: 5, avatar: "https://i.pravatar.cc/50?img=11" },
+    { name: "Carolyn Ortiz", date: "15 Nov 2021", rating: 5, avatar: "https://i.pravatar.cc/50?img=12" },
+    { name: "Dennis Barrett", date: "28 Oct 2021", rating: 4, avatar: "https://i.pravatar.cc/50?img=13" },
+    { name: "Billy Vasquez", date: "12 Oct 2021", rating: 4, avatar: "https://i.pravatar.cc/50?img=14" },
+    { name: "Jacqueline Miller", date: "31 Sep 2021", rating: 4, avatar: "https://i.pravatar.cc/50?img=15" },
   ];
 
   const chartData: ChartData[] = [
@@ -69,104 +43,94 @@ const CourseDetails: React.FC = () => {
   ];
 
   return (
-    <div className="course-wrapper">
+    <div className="coursedetails-wrapper">
       {/* Header */}
-      <div className="header-row">
-        <h1 className="title">Course Details</h1>
-        <button className="edit-btn">Edit Course</button>
+      <div className="coursedetails-header-row">
+        <h1 className="coursedetails-title">Course Details</h1>
+        <button className="coursedetails-edit-btn">Edit Course</button>
       </div>
 
-      <div className="grid-2">
+      {/* Grid Layout */}
+      <div className="coursedetails-grid-2">
         {/* Left Card */}
-        <div className="card">
-          <div className="card-header">
-            <h2 className="course-main-title">
+        <div className="coursedetails-card">
+          <div className="coursedetails-card-header">
+            <h2 className="coursedetails-course-main-title">
               The Complete Digital Marketing Course - 12 Courses in 1
             </h2>
           </div>
 
-          <div className="course-content">
+          {/* Course Image + Description */}
+          <div className="coursedetails-content">
             <img
-              className="course-banner"
+              className="coursedetails-course-banner"
               src="https://picsum.photos/500/300?random=12"
               alt="Course"
             />
-
-            <div className="desc-block">
+            <div className="coursedetails-desc-right">
               <p>
-                Satisfied conveying a dependent contented he gentleman agreeable
-                do be. Warrant private blushes removed an in equally totally if.
-                Delivered dejection necessary objection do Mr prevailed. Mr
-                feeling does chiefly cordial in do.
+                Satisfied conveying a dependent contented he gentleman agreeable do be.
+                Warrant private blushes removed an in equally totally if. Delivered dejection
+                necessary objection do Mr prevailed. Mr feeling does chiefly cordial in do.
               </p>
+            </div>
+          </div>
 
-              <h3 className="price">$295.55</h3>
-
-              <div className="author-row">
-                <img
-                  className="author-img"
-                  src="https://i.pravatar.cc/50?img=8"
-                  alt="Author"
-                />
-                <div>
-                  <h4 className="author-name">By Jacqueline Miller</h4>
-                  <span className="author-tag">Founder Eduport company</span>
-                </div>
+          {/* Info under Image */}
+          <div className="coursedetails-desc-block">
+            <h3 className="coursedetails-price">$295.55</h3>
+            <div className="coursedetails-author-row">
+              <img
+                className="coursedetails-author-img"
+                src="https://i.pravatar.cc/50?img=8"
+                alt="Author"
+              />
+              <div>
+                <h4 className="coursedetails-author-name">By Jacqueline Miller</h4>
+                <span className="coursedetails-author-tag">Founder Eduport company</span>
               </div>
+            </div>
 
-              <div className="details-grid">
-                <div><strong>Release date:</strong> 29 Aug 2020</div>
-                <div><strong>Skills:</strong> All level</div>
-                <div><strong>Total Hour:</strong> 4h 50m</div>
-                <div><strong>Total Lecture:</strong> 30</div>
-                <div><strong>Total Enrolled:</strong> 12,000+</div>
-                <div><strong>Language:</strong> English</div>
-                <div><strong>Certificate:</strong> Yes</div>
-                <div><strong>Review:</strong> 4.5 ⭐</div>
-              </div>
+            <div className="coursedetails-details-grid">
+              <div><strong>Release date:</strong> 29 Aug 2020</div>
+              <div><strong>Skills:</strong> All level</div>
+              <div><strong>Total Hour:</strong> 4h 50m</div>
+              <div><strong>Total Lecture:</strong> 30</div>
+              <div><strong>Total Enrolled:</strong> 12,000+</div>
+              <div><strong>Language:</strong> English</div>
+              <div><strong>Certificate:</strong> Yes</div>
+              <div><strong>Review:</strong> 4.5 ⭐</div>
             </div>
           </div>
         </div>
 
-        {/* Right Side with Graphs */}
-        <div className="right-col">
-          <div className="card">
-            <h3 className="sub-title">Total Course Earning</h3>
-            <div className="chart-container">
+        {/* Right Column */}
+        <div className="coursedetails-right-col">
+          <div className="coursedetails-card">
+            <h3 className="coursedetails-sub-title">Total Course Earning</h3>
+            <div className="coursedetails-chart-container">
               <ResponsiveContainer width="100%" height={220}>
                 <LineChart data={chartData}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="name" />
                   <YAxis />
                   <Tooltip />
-                  <Line
-                    type="monotone"
-                    dataKey="earnings"
-                    stroke="#2563eb"
-                    strokeWidth={3}
-                    dot={{ r: 4 }}
-                  />
+                  <Line type="monotone" dataKey="earnings" stroke="#2563eb" strokeWidth={3} dot={{ r: 4 }} />
                 </LineChart>
               </ResponsiveContainer>
             </div>
           </div>
 
-          <div className="card">
-            <h3 className="sub-title">New Enrollment This Month</h3>
-            <div className="chart-container">
+          <div className="coursedetails-card">
+            <h3 className="coursedetails-sub-title">New Enrollment This Month</h3>
+            <div className="coursedetails-chart-container">
               <ResponsiveContainer width="100%" height={220}>
                 <LineChart data={chartData}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="name" />
                   <YAxis />
                   <Tooltip />
-                  <Line
-                    type="monotone"
-                    dataKey="earnings"
-                    stroke="#10b981"
-                    strokeWidth={3}
-                    dot={{ r: 4 }}
-                  />
+                  <Line type="monotone" dataKey="earnings" stroke="#10b981" strokeWidth={3} dot={{ r: 4 }} />
                 </LineChart>
               </ResponsiveContainer>
             </div>
@@ -174,11 +138,11 @@ const CourseDetails: React.FC = () => {
         </div>
       </div>
 
-      {/* Student Reviews Section */}
-      <div className="review-wrapper">
-        <h2 className="review-title">Students all Reviews</h2>
+      {/* Reviews */}
+      <div className="coursedetails-review-wrapper">
+        <h2 className="coursedetails-review-title">Students all Reviews</h2>
 
-        <div className="review-table">
+        <div className="coursedetails-review-table">
           <table>
             <thead>
               <tr>
@@ -192,48 +156,43 @@ const CourseDetails: React.FC = () => {
               {students.map((s, idx) => (
                 <tr key={idx}>
                   <td>
-                    <div className="student-info">
-                      <img
-                        src={s.avatar}
-                        alt={s.name}
-                        className="review-avatar"
-                      />
+                    <div className="coursedetails-student-info">
+                      <img src={s.avatar} alt={s.name} className="coursedetails-review-avatar" />
                       <span>{s.name}</span>
                     </div>
                   </td>
                   <td>{s.date}</td>
                   <td>
                     {Array.from({ length: 5 }).map((_, i) => (
-                      <span
-                        key={i}
-                        className={i < s.rating ? "star filled" : "star empty"}
-                      >
+                      <span key={i} className={i < s.rating ? "coursedetails-star filled" : "coursedetails-star empty"}>
                         ★
                       </span>
                     ))}
                   </td>
-                  <td className="action-icons">
-  <span title="View"><Eye className="icon view" /></span>
-  <span title="Delete"><Trash2 className="icon delete" /></span>
-  <span title="Publish"><Upload className="icon publish" /></span>
-  <span title="Unpublish"><Download className="icon unpublish" /></span>
-</td>
-
+                  <td className="coursedetails-action-icons">
+                    <span title="View"><Eye className="coursedetails-icon view" /></span>
+                    <span title="Delete"><Trash2 className="coursedetails-icon delete" /></span>
+                    <span title="Publish"><Upload className="coursedetails-icon publish" /></span>
+                    <span title="Unpublish"><Download className="coursedetails-icon unpublish" /></span>
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
 
-        <div className="review-footer">
+        {/* Pagination */}
+        <div className="coursedetails-review-footer">
           <span>Showing 1 to 8 of 20 entries</span>
-          <div className="pagination">
-            <button>{"<"}</button>
-            <button>1</button>
-            <button className="active">2</button>
-            <button>3</button>
-            <button>{">"}</button>
-          </div>
+        
+<div className="coursedetails-pagination">
+  <button disabled><ChevronLeft size={16} /></button>
+  <button>1</button>
+  <button className="active">2</button>
+  <button>3</button>
+  <button><ChevronRight size={16} /></button>
+</div>
+
         </div>
       </div>
     </div>

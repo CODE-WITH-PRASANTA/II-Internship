@@ -1,0 +1,252 @@
+.courseinformation-container {
+  padding: 25px;
+  background-color: #fff;
+  border-radius: 10px;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.courseinformation-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 5px;
+}
+
+.courseinformation-subtitle {
+  font-size: 15px;
+  color: #777;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.courseinformation-section {
+  margin-bottom: 30px;
+}
+
+.courseinformation-label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.required {
+  color: red;
+}
+
+/* Thumbnail Upload */
+.courseinformation-thumbnail-upload {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.courseinformation-input {
+  flex: 1;
+  min-width: 220px;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.courseinformation-input:focus {
+  border-color: #6c63ff;
+}
+
+.courseinformation-upload-btn {
+  background-color: #4f3ef5;
+  color: #fff;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.courseinformation-upload-btn:hover {
+  background-color: #3a2fd5;
+}
+
+/* Upload Box */
+.courseinformation-upload-box {
+  border: 1px dashed #ddd;
+  border-radius: 8px;
+  text-align: center;
+  padding: 30px;
+  margin-top: 15px;
+  background: #fafafa;
+  transition: background-color 0.3s;
+}
+
+.courseinformation-upload-box:hover {
+  background: #f6f6ff;
+}
+
+.courseinformation-upload-placeholder {
+  color: #555;
+}
+
+.courseinformation-upload-icon {
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+.courseinformation-upload-text {
+  font-weight: 600;
+}
+
+.courseinformation-upload-info {
+  font-size: 13px;
+  color: #888;
+}
+
+.courseinformation-thumbnail-preview {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Video Inputs */
+.courseinformation-video-inputs {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.courseinformation-select {
+  flex: 1;
+  min-width: 180px;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.courseinformation-select:focus {
+  border-color: #6c63ff;
+}
+
+/* Video Preview */
+.courseinformation-video-preview {
+  position: relative;
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.courseinformation-video-thumbnail {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  object-fit: cover;
+}
+
+.courseinformation-play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.courseinformation-play-button:hover {
+  background-color: #4f3ef5;
+  color: #fff;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* 🧩 Responsive Design */
+@media (max-width: 1200px) {
+  .courseinformation-container {
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 992px) {
+  .courseinformation-container {
+    padding: 20px;
+  }
+  .courseinformation-thumbnail-preview {
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .courseinformation-title {
+    font-size: 20px;
+  }
+
+  .courseinformation-subtitle {
+    font-size: 14px;
+  }
+
+  .courseinformation-video-inputs {
+    flex-direction: column;
+  }
+
+  .courseinformation-input,
+  .courseinformation-select {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .courseinformation-container {
+    padding: 15px;
+  }
+
+  .courseinformation-thumbnail-upload {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .courseinformation-upload-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .courseinformation-upload-box {
+    padding: 20px;
+  }
+
+  .courseinformation-thumbnail-preview {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .courseinformation-title {
+    font-size: 18px;
+  }
+  .courseinformation-subtitle {
+    font-size: 13px;
+  }
+  .courseinformation-upload-btn {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+}

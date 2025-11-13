@@ -1,0 +1,335 @@
+/* 🌟 GLOBAL STYLES */
+.myprofile-container {
+  padding: 2.5rem;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #f9fafb, #f3f4f6);
+  color: #111827;
+  min-height: 100vh;
+  box-sizing: border-box;
+  animation: fadeIn 0.8s ease;
+}
+
+/* === TITLE SECTION === */
+.myprofile-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 2rem;
+  animation: slideDown 0.6s ease;
+}
+
+.myprofile-title-icon {
+  color: #2563eb;
+  width: 42px;
+  height: 42px;
+  background: rgba(37, 99, 235, 0.1);
+  border-radius: 12px;
+  padding: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.15);
+}
+
+.myprofile-title-icon:hover {
+  transform: scale(1.1) rotate(5deg);
+  background: rgba(37, 99, 235, 0.2);
+}
+
+.myprofile-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.5px;
+}
+
+/* === SECTION CARD === */
+.myprofile-section {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1.8rem;
+  margin-bottom: 1.8rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+  animation: fadeUp 0.7s ease;
+}
+
+.myprofile-section:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.myprofile-section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.6rem;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.myprofile-section-title svg {
+  color: #2563eb;
+}
+
+/* === INFO GRID === */
+.myprofile-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+}
+
+.myprofile-info-item {
+  display: flex;
+  flex-direction: column;
+  background: #f9fafb;
+  border-radius: 10px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.myprofile-info-item:hover {
+  background: #eef2ff;
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+}
+
+/* === ICON INSIDE LABEL === */
+.myprofile-label-icon {
+  color: #2563eb;
+  margin-bottom: 6px;
+  width: 20px;
+  height: 20px;
+}
+
+/* === LABELS & VALUES === */
+.myprofile-label {
+  font-weight: 600;
+  color: #111827;
+  font-size: 0.95rem;
+}
+
+.myprofile-value {
+  color: #4b5563;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+/* === BIO SECTION === */
+.myprofile-bio-section {
+  margin-top: 1.3rem;
+  background: #f9fafb;
+  padding: 1rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.myprofile-bio-section:hover {
+  background: #eef2ff;
+  transform: translateY(-2px);
+}
+
+.myprofile-bio-text {
+  color: #4b5563;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* === EDUCATION TIMELINE === */
+.myprofile-education-timeline {
+  margin-top: 1.4rem;
+  padding-left: 1.2rem;
+  border-left: 3px solid #dbeafe;
+  position: relative;
+}
+
+.myprofile-education-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+  position: relative;
+  animation: fadeUp 0.6s ease;
+}
+
+.myprofile-dot {
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border-radius: 50%;
+  margin-top: 0.35rem;
+  flex-shrink: 0;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.4);
+}
+
+.myprofile-edu-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #111827;
+}
+
+.myprofile-edu-subtitle {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* === EXPERIENCE SECTION === */
+.myprofile-experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.myprofile-experience-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: #f9fafb;
+  border-radius: 10px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  animation: fadeUp 0.7s ease;
+}
+
+.myprofile-experience-item:hover {
+  background: #eef2ff;
+  transform: translateX(4px);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.08);
+}
+
+.myprofile-exp-icon {
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.1);
+  padding: 0.6rem;
+  border-radius: 10px;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+}
+
+.myprofile-exp-icon:hover {
+  background: rgba(37, 99, 235, 0.2);
+  transform: scale(1.1);
+}
+
+.myprofile-exp-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #111827;
+}
+
+.myprofile-exp-subtitle {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 1024px) {
+  .myprofile-container {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .myprofile-title {
+    font-size: 1.7rem;
+  }
+
+  .myprofile-section {
+    padding: 1.4rem;
+  }
+
+  .myprofile-info-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .myprofile-title-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .myprofile-section-title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .myprofile-container {
+    padding: 1rem;
+  }
+
+  .myprofile-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .myprofile-title-wrapper {
+    justify-content: center;
+  }
+
+  .myprofile-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .myprofile-section {
+    padding: 1rem;
+  }
+
+  .myprofile-exp-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .myprofile-section-title {
+    justify-content: center;
+    text-align: center;
+  }
+}

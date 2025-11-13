@@ -1,0 +1,193 @@
+/* Container */
+.withdrawtab-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Inter", sans-serif;
+  color: #111827;
+  width: 90%;
+  box-sizing: border-box;
+}
+
+/* Title */
+.withdrawtab-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Cards container */
+.withdrawtab-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+/* Individual card */
+.withdrawtab-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: border 0.2s, box-shadow 0.2s;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.withdrawtab-card input[type="radio"] {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  accent-color: #f43f5e;
+  width: 18px;
+  height: 18px;
+}
+
+.withdrawtab-card-content {
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.withdrawtab-card-title {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #111827;
+}
+
+.withdrawtab-card-subtitle {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+.withdrawtab-card:hover {
+  border-color: #f43f5e;
+  box-shadow: 0 4px 10px rgba(244, 63, 94, 0.1);
+}
+
+.withdrawtab-card-active {
+  border-color: #f43f5e;
+  box-shadow: 0 4px 10px rgba(244, 63, 94, 0.15);
+}
+
+/* Form */
+.withdrawtab-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Row layout */
+.withdrawtab-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Field */
+.withdrawtab-field {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+.withdrawtab-field label {
+  font-size: 0.875rem;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.withdrawtab-field input {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.withdrawtab-field input:focus {
+  outline: none;
+  border-color: #f43f5e;
+  box-shadow: 0 0 0 2px rgba(244, 63, 94, 0.2);
+}
+
+/* Full width field */
+.withdrawtab-full-width {
+  flex: 1 1 100%;
+}
+
+/* Button */
+.withdrawtab-button {
+  background-color: #f43f5e;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  width: 100%;
+  text-align: center;
+}
+
+.withdrawtab-button:hover {
+  background-color: #e11d48;
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .withdrawtab-container {
+    padding: 18px;
+  }
+  .withdrawtab-card-content {
+    margin-left: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .withdrawtab-row {
+    flex-direction: column;
+  }
+  .withdrawtab-field {
+    flex: 1 1 100%;
+  }
+  .withdrawtab-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 16px;
+  }
+  .withdrawtab-card input[type="radio"] {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    margin-bottom: 8px;
+  }
+  .withdrawtab-card-content {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .withdrawtab-title {
+    font-size: 1.25rem;
+  }
+  .withdrawtab-field input {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+  .withdrawtab-button {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+}

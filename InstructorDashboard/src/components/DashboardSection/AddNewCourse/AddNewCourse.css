@@ -1,0 +1,356 @@
+/* Container */
+.addcourse-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eef2ff, #ffffff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Card */
+.addcourse-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem;
+  max-width: 900px;
+  width: 100%;
+  transition: all 0.4s ease;
+}
+
+.addcourse-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Title */
+.addcourse-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e1e2f;
+  margin-bottom: 2rem;
+}
+
+/* Steps */
+.addcourse-steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.addcourse-step {
+  text-align: center;
+  flex: 1;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.addcourse-step p {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* Step circle */
+.addcourse-step-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  color: #6b7280;
+  transition: all 0.3s ease;
+}
+
+.addcourse-step.active .addcourse-step-circle {
+  background: #4f46e5;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
+}
+
+.addcourse-step.completed .addcourse-step-circle {
+  background: #10b981;
+  color: #fff;
+}
+
+/* Progress bar */
+.addcourse-progressbar {
+  height: 5px;
+  background: #e5e7eb;
+  border-radius: 3px;
+  margin: 1.5rem 0 2rem;
+  overflow: hidden;
+}
+
+.addcourse-progress {
+  height: 100%;
+  background: linear-gradient(90deg, #4f46e5, #6366f1);
+  transition: width 0.5s ease;
+}
+
+/* Step Content */
+.addcourse-content {
+  min-height: 280px;
+  animation: fadeIn 0.6s ease;
+}
+
+/* Buttons */
+.addcourse-buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.addcourse-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.addcourse-btn.primary {
+  background: linear-gradient(90deg, #4f46e5, #6366f1);
+  color: #fff;
+}
+
+.addcourse-btn.primary:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+}
+
+.addcourse-btn.secondary {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.addcourse-btn.secondary:hover:not(.disabled) {
+  background: #e5e7eb;
+  transform: scale(1.03);
+}
+
+.addcourse-btn.success {
+  background: #10b981;
+  color: #fff;
+}
+
+.addcourse-btn.success:hover {
+  background: #059669;
+  transform: scale(1.05);
+}
+
+.addcourse-btn.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease;
+}
+
+.slide-in {
+  animation: slideIn 0.6s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ==================== SUCCESS POPUP ==================== */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(17, 17, 17, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  backdrop-filter: blur(3px);
+}
+
+.popup-box {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 14px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+  animation: scaleIn 0.3s ease;
+}
+
+/* ✅ Center popup icon perfectly */
+.popup-icon {
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Texts */
+.popup-box h3 {
+  color: #111;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.popup-box p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.popup-btn {
+  background: #22c55e;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.popup-btn:hover {
+  background: #1da94f;
+  transform: translateY(-2px);
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+/* Small phones */
+@media (max-width: 480px) {
+  .addcourse-container {
+    padding: 1rem;
+  }
+
+  .addcourse-card {
+    padding: 1.2rem;
+  }
+
+  .addcourse-title {
+    font-size: 1.3rem;
+  }
+
+  .addcourse-step p {
+    font-size: 0.8rem;
+  }
+
+  .addcourse-content {
+    min-height: 240px;
+  }
+
+  .addcourse-buttons {
+    flex-direction: column-reverse;
+  }
+
+  .addcourse-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .popup-box {
+    padding: 28px 18px;
+  }
+
+  .popup-box h3 {
+    font-size: 17px;
+  }
+
+  .popup-box p {
+    font-size: 13px;
+  }
+
+  .popup-btn {
+    font-size: 13.5px;
+    padding: 9px 16px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .addcourse-card {
+    padding: 1.5rem;
+  }
+
+  .addcourse-title {
+    font-size: 1.5rem;
+  }
+
+  .addcourse-steps {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .addcourse-buttons {
+    flex-direction: column-reverse;
+  }
+
+  .addcourse-btn {
+    width: 100%;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+  .addcourse-card {
+    max-width: 1100px;
+    padding: 3rem;
+  }
+
+  .addcourse-title {
+    font-size: 2rem;
+  }
+
+  .addcourse-content {
+    min-height: 320px;
+  }
+}

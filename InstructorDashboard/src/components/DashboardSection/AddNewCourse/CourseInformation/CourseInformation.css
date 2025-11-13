@@ -1,0 +1,345 @@
+/* ===========================
+   Base Container
+=========================== */
+.courseinformation-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.8s ease-in-out;
+  box-sizing: border-box;
+}
+
+/* ===========================
+   Title
+=========================== */
+.courseinformation-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 2rem;
+  position: relative;
+  line-height: 1.3;
+}
+
+.courseinformation-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #4f46e5;
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* ===========================
+   Form Layout
+=========================== */
+.courseinformation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.courseinformation-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+.courseinformation-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.3s ease;
+  min-width: 250px;
+}
+
+.courseinformation-field.full {
+  flex: 1 1 100%;
+}
+
+/* ===========================
+   Labels
+=========================== */
+.courseinformation-field label {
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+/* ===========================
+   Inputs / Selects / Textareas
+=========================== */
+.courseinformation-field input,
+.courseinformation-field select,
+.courseinformation-field textarea {
+  padding: 0.85rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+  resize: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.courseinformation-field input:focus,
+.courseinformation-field select:focus,
+.courseinformation-field textarea:focus {
+  border-color: #4f46e5;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* ===========================
+   Double Card Section
+=========================== */
+.courseinformation-double {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
+}
+
+.courseinformation-card {
+  flex: 1;
+  min-width: 280px;
+  background: #f9fafc;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+  border: 1px solid #eee;
+}
+
+.courseinformation-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.courseinformation-card h3 {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #4f46e5;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+}
+
+.courseinformation-card i {
+  font-size: 1rem;
+  color: #4f46e5;
+}
+
+.courseinformation-card input {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-size: 1rem;
+  background: #fff;
+  transition: border-color 0.3s ease;
+  width: 100%;
+  margin-bottom: 0.7rem;
+}
+
+.courseinformation-card input:focus {
+  border-color: #4f46e5;
+}
+
+.courseinformation-additem {
+  background: none;
+  border: none;
+  color: #ff5075;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  text-align: left;
+}
+
+.courseinformation-additem:hover {
+  color: #ff2d5a;
+}
+
+/* ===========================
+   Featured Switch
+=========================== */
+.courseinformation-featured {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  font-weight: 500;
+  color: #333;
+  flex-wrap: wrap;
+}
+
+.courseinformation-switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 24px;
+}
+
+.courseinformation-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.courseinformation-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.3s;
+  border-radius: 24px;
+}
+
+.courseinformation-slider::before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.courseinformation-switch input:checked + .courseinformation-slider {
+  background-color: #22c55e;
+}
+
+.courseinformation-switch input:checked + .courseinformation-slider::before {
+  transform: translateX(22px);
+}
+
+/* ===========================
+   Animations
+=========================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===========================
+   Responsive Design
+=========================== */
+
+/* Large Tablets and Small Desktops */
+@media (max-width: 1200px) {
+  .courseinformation-container {
+    padding: 2rem;
+  }
+
+  .courseinformation-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+  .courseinformation-container {
+    padding: 1.8rem;
+  }
+
+  .courseinformation-row {
+    flex-direction: column;
+  }
+
+  .courseinformation-double {
+    flex-direction: column;
+  }
+
+  .courseinformation-card {
+    width: 100%;
+  }
+
+  .courseinformation-field {
+    width: 100%;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 600px) {
+  .courseinformation-container {
+    margin: 1.5rem;
+    padding: 1.2rem;
+    border-radius: 12px;
+  }
+
+  .courseinformation-title {
+    font-size: 1.5rem;
+  }
+
+  .courseinformation-field label {
+    font-size: 0.9rem;
+  }
+
+  .courseinformation-field input,
+  .courseinformation-field select,
+  .courseinformation-field textarea {
+    font-size: 0.9rem;
+    padding: 0.75rem 0.9rem;
+  }
+
+  .courseinformation-card {
+    padding: 1.2rem;
+  }
+
+  .courseinformation-card h3 {
+    font-size: 1rem;
+  }
+
+  .courseinformation-additem {
+    font-size: 0.85rem;
+  }
+}
+
+/* Very Small Screens (e.g., 360px width) */
+@media (max-width: 400px) {
+  .courseinformation-container {
+    padding: 1rem;
+  }
+
+  .courseinformation-title {
+    font-size: 1.3rem;
+  }
+
+  .courseinformation-field input,
+  .courseinformation-field select,
+  .courseinformation-field textarea {
+    font-size: 0.85rem;
+    padding: 0.7rem 0.8rem;
+  }
+
+  .courseinformation-card {
+    padding: 1rem;
+  }
+
+  .courseinformation-featured {
+    font-size: 0.9rem;
+  }
+}

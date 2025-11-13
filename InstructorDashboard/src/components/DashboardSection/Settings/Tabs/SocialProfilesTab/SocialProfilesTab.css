@@ -1,0 +1,229 @@
+/* ---------- Root Container ---------- */
+.socialprofilestab-root {
+  max-width: 750px;
+  margin: 60px auto;
+  padding: 20px;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI";
+  color: #1a1a1a;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* ---------- Card ---------- */
+.socialprofilestab-card {
+  border-radius: 16px;
+  padding: 40px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+
+
+/* ---------- Title & Subtitle ---------- */
+.socialprofilestab-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #2d2d2d;
+  letter-spacing: -0.3px;
+  margin-bottom: 4px;
+  text-align: center;
+  animation: slideDown 0.6s ease;
+}
+
+.socialprofilestab-sub {
+  font-size: 15px;
+  color: #777;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+/* ---------- Field ---------- */
+.socialprofilestab-field {
+  display: flex;
+  flex-direction: column;
+  animation: fadeUp 0.5s ease both;
+}
+
+/* ---------- Label ---------- */
+.socialprofilestab-label {
+  font-weight: 600;
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+.socialprofilestab-label:hover {
+  color: #ff648a;
+}
+
+/* ---------- Input Wrap ---------- */
+.socialprofilestab-input-wrap {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1.5px solid #e3e3e3;
+  border-radius: 10px;
+  padding: 12px 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.socialprofilestab-input-wrap:hover {
+  border-color: #ff6b8a;
+  box-shadow: 0 0 10px rgba(255, 107, 138, 0.15);
+  transform: translateY(-2px);
+}
+
+.socialprofilestab-input-wrap:focus-within {
+  border-color: #ff648a;
+  box-shadow: 0 0 0 4px rgba(255, 100, 138, 0.1);
+}
+
+/* ---------- Icon ---------- */
+.socialprofilestab-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+.socialprofilestab-input-wrap:hover .socialprofilestab-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* ---------- Input ---------- */
+.socialprofilestab-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  color: #222;
+  background: transparent;
+  transition: color 0.3s ease;
+}
+
+.socialprofilestab-input::placeholder {
+  color: #aaa;
+  transition: color 0.3s ease;
+}
+
+.socialprofilestab-input:focus::placeholder {
+  color: #ccc;
+}
+
+/* ---------- Button ---------- */
+.socialprofilestab-savebtn {
+  align-self: center;
+  background: linear-gradient(90deg, #ff648a, #ff7b72);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 14px 36px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  letter-spacing: 0.5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.socialprofilestab-savebtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 100, 138, 0.4);
+}
+
+.socialprofilestab-savebtn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.8s ease;
+}
+
+.socialprofilestab-savebtn:hover::after {
+  transform: translateX(100%);
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 992px) {
+  .socialprofilestab-card {
+    padding: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .socialprofilestab-card {
+    padding: 28px 20px;
+  }
+
+  .socialprofilestab-title {
+    font-size: 22px;
+  }
+
+  .socialprofilestab-input {
+    font-size: 14px;
+  }
+
+  .socialprofilestab-savebtn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .socialprofilestab-root {
+    padding: 10px;
+  }
+
+  .socialprofilestab-label {
+    font-size: 14px;
+  }
+
+  .socialprofilestab-input {
+    font-size: 13px;
+  }
+
+  .socialprofilestab-card {
+    border-radius: 12px;
+  }
+}
