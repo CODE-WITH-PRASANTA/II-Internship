@@ -1,12 +1,14 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+
+// Lucide Icons
 import {
   FolderPlusIcon,
   TrophyIcon,
   MessageSquareIcon,
 } from "lucide-react";
 
-// ✅ React Icons imports
+// React Icons (Heroicons)
 import {
   HiOutlineViewGrid as GridIcon,
   HiOutlineUserCircle as UserCircleIcon,
@@ -24,16 +26,13 @@ import {
 } from "react-icons/hi";
 
 import { useSidebar } from "../context/SidebarContext";
-import companylogo from "../Asserts/IIIT LOGO (2).png"; // fixed spelling
+import companylogo from "../Asserts/IIIT LOGO (2).png";
 
-type NavItem = {
-  name: string;
-  icon: React.ReactNode;
-  path?: string;
-  subItems?: { name: string; path: string }[];
-};
 
-const navItems: NavItem[] = [
+// =========================
+//  MENU STRUCTURE
+// =========================
+const navItems = [
   { icon: <GridIcon />, name: "Dashboard Overview", path: "/" },
 
   {
@@ -170,21 +169,15 @@ const navItems: NavItem[] = [
 ];
 
 
-// =============================
-// SIDEBAR COMPONENT
-// =============================
-const AppSidebar: React.FC = () => {
+// =========================
+//  SIDEBAR COMPONENT
+// =========================
+const AppSidebar = () => {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
   const location = useLocation();
 
-  const [openSubmenu, setOpenSubmenu] = useState<{ index: number } | null>(
-    null
-  );
-  const [subMenuHeight, setSubMenuHeight] = useState<Record<string, number>>(
-    {}
-  );
-
-  // ✅ FIXED — proper type for numeric index
+  const [openSubmenu, setOpenSubmenu] = useState<{ index: number } | null>(null);
+  const [subMenuHeight, setSubMenuHeight] = useState<Record<number, number>>({});
   const subMenuRefs = useRef<Record<number, HTMLDivElement | null>>({});
 
   const isActive = useCallback(
@@ -195,14 +188,12 @@ const AppSidebar: React.FC = () => {
   useEffect(() => {
     let matched = false;
     navItems.forEach((nav, index) => {
-      if (nav.subItems) {
-        nav.subItems.forEach((sub) => {
-          if (isActive(sub.path)) {
-            setOpenSubmenu({ index });
-            matched = true;
-          }
-        });
-      }
+      nav.subItems?.forEach((sub) => {
+        if (isActive(sub.path)) {
+          setOpenSubmenu({ index });
+          matched = true;
+        }
+      });
     });
     if (!matched) setOpenSubmenu(null);
   }, [location, isActive]);
@@ -225,20 +216,13 @@ const AppSidebar: React.FC = () => {
 
   return (
     <aside
-      className={`fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-50 border-r border-gray-200 
-        ${
-          isExpanded || isMobileOpen
-            ? "w-[290px]"
-            : isHovered
-            ? "w-[290px]"
-            : "w-[90px]"
-        }
-        ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}
-        lg:translate-x-0`}
+      className={`fixed mt-16 lg:mt-0 top-0 left-0 px-5 h-screen z-50 bg-white dark:bg-gray-900 border-r dark:border-gray-800 transition-all duration-300 
+        ${isExpanded || isMobileOpen || isHovered ? "w-[290px]" : "w-[90px]"}
+        ${isMobileOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0`}
       onMouseEnter={() => !isExpanded && setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* LOGO SECTION */}
+      {/* LOGO */}
       <div
         className={`py-5 flex ${
           !isExpanded && !isHovered ? "lg:justify-center" : "justify-start"
@@ -254,13 +238,12 @@ const AppSidebar: React.FC = () => {
         </Link>
       </div>
 
-      {/* MENU SECTION */}
-      <div className="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar">
+      {/* MENU */}
+      <div className="flex flex-col overflow-y-auto no-scrollbar duration-300">
         <nav>
           <h2
-            className={`mb-4 text-xs uppercase flex leading-[20px] text-gray-400 ${
-              !isExpanded && !isHovered ? "lg:justify-center" : "justify-start"
-            }`}
+            className={`mb-4 text-xs uppercase text-gray-400 flex leading-[20px]
+            ${!isExpanded && !isHovered ? "lg:justify-center" : ""}`}
           >
             {isExpanded || isHovered || isMobileOpen ? (
               "Main Menu"
@@ -272,42 +255,31 @@ const AppSidebar: React.FC = () => {
           <ul className="flex flex-col gap-4">
             {navItems.map((nav, index) => (
               <li key={nav.name}>
+                {/* Dropdown Menu */}
                 {nav.subItems ? (
                   <button
                     onClick={() => handleSubmenuToggle(index)}
-                    className={`menu-item group ${
+                    className={`menu-item group cursor-pointer ${
                       openSubmenu?.index === index
                         ? "menu-item-active"
                         : "menu-item-inactive"
-                    } cursor-pointer ${
-                      !isExpanded && !isHovered
-                        ? "lg:justify-center"
-                        : "lg:justify-start"
-                    }`}
+                    } ${!isExpanded && !isHovered ? "lg:justify-center" : ""}`}
                   >
-                    <span
-                      className={`menu-item-icon-size ${
-                        openSubmenu?.index === index
-                          ? "menu-item-icon-active"
-                          : "menu-item-icon-inactive"
-                      }`}
-                    >
-                      {nav.icon}
-                    </span>
+                    <span className="menu-item-icon-size">{nav.icon}</span>
+
                     {(isExpanded || isHovered || isMobileOpen) && (
-                      <span className="menu-item-text">{nav.name}</span>
-                    )}
-                    {(isExpanded || isHovered || isMobileOpen) && (
-                      <ChevronDownIcon
-                        className={`ml-auto w-5 h-5 transition-transform duration-200 ${
-                          openSubmenu?.index === index
-                            ? "rotate-180 text-brand-500"
-                            : ""
-                        }`}
-                      />
+                      <>
+                        <span className="menu-item-text">{nav.name}</span>
+                        <ChevronDownIcon
+                          className={`ml-auto w-5 h-5 transition-all ${
+                            openSubmenu?.index === index ? "rotate-180" : ""
+                          }`}
+                        />
+                      </>
                     )}
                   </button>
                 ) : (
+                  /* Normal Menu Item */
                   nav.path && (
                     <Link
                       to={nav.path}
@@ -317,15 +289,7 @@ const AppSidebar: React.FC = () => {
                           : "menu-item-inactive"
                       }`}
                     >
-                      <span
-                        className={`menu-item-icon-size ${
-                          isActive(nav.path)
-                            ? "menu-item-icon-active"
-                            : "menu-item-icon-inactive"
-                        }`}
-                      >
-                        {nav.icon}
-                      </span>
+                      <span className="menu-item-icon-size">{nav.icon}</span>
                       {(isExpanded || isHovered || isMobileOpen) && (
                         <span className="menu-item-text">{nav.name}</span>
                       )}
@@ -333,38 +297,39 @@ const AppSidebar: React.FC = () => {
                   )
                 )}
 
-                {/* ✅ FIXED REFS */}
-                {nav.subItems && (isExpanded || isHovered || isMobileOpen) && (
-                  <div
-                    ref={(el) => {
-                      subMenuRefs.current[index] = el;
-                    }}
-                    className="overflow-hidden transition-all duration-300"
-                    style={{
-                      height:
-                        openSubmenu?.index === index
-                          ? `${subMenuHeight[index]}px`
-                          : "0px",
-                    }}
-                  >
-                    <ul className="mt-2 space-y-1 ml-9">
-                      {nav.subItems.map((sub) => (
-                        <li key={sub.name}>
-                          <Link
-                            to={sub.path}
-                            className={`menu-dropdown-item ${
-                              isActive(sub.path)
-                                ? "menu-dropdown-item-active"
-                                : "menu-dropdown-item-inactive"
-                            }`}
-                          >
-                            {sub.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                {/* Submenu dropdown */}
+                {nav.subItems &&
+                  (isExpanded || isHovered || isMobileOpen) && (
+                    <div
+                      ref={(el) => {
+                        subMenuRefs.current[index] = el;
+                      }}
+                      className="overflow-hidden transition-all duration-300"
+                      style={{
+                        height:
+                          openSubmenu?.index === index
+                            ? `${subMenuHeight[index]}px`
+                            : "0px",
+                      }}
+                    >
+                      <ul className="mt-2 space-y-1 ml-9">
+                        {nav.subItems.map((sub) => (
+                          <li key={sub.path}>
+                            <Link
+                              to={sub.path}
+                              className={`menu-dropdown-item ${
+                                isActive(sub.path)
+                                  ? "menu-dropdown-item-active"
+                                  : "menu-dropdown-item-inactive"
+                              }`}
+                            >
+                              {sub.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
               </li>
             ))}
           </ul>
