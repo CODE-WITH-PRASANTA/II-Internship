@@ -91,17 +91,7 @@ export default function App() {
    {/* CourseInformation*/}
         <Route path="/course-instructor-dashboard-page" element={<InstructorDashboardPage/>} />
 
-
-
-
- 
-
-
-
           <Route path="blank" element={<Blank />} />
-
-
-          
 
           {/* Forms */}
           <Route path="form-elements" element={<FormElements />} />

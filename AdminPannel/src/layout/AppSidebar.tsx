@@ -76,6 +76,27 @@ const navItems = [
   },
    
   
+ {
+  icon: <BookOpenIcon />,
+  name: "Course Management",
+  subItems: [
+    { name: "Add New Course", path: "/course/post" },
+    { name: "Manage Courses", path: "/course/manage" },
+    { name: "Course Preview", path: "/course/preview" },
+  ],
+},
+
+// ✅ NEW SECTION
+{
+  icon: <TrophyIcon />,
+  name: "Story Management",
+  subItems: [
+    { name: "Post Success Story", path: "/success-story/post" },
+    { name: "Story Preview", path: "/success-story/preview" },
+  ],
+},
+
+
   {
     icon: <UserCircleIcon />,
     name: "Instructor Management",
