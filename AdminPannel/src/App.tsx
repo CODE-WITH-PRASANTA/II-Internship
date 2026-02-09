@@ -45,6 +45,9 @@ import FeedbackOverview from "./components/FeedbackOverview/FeedbackOverview";
 import CourseDetails from "./components/CourseDetails/CourseDetails";
 import CourseManage from "./components/CourseManage/CourseManage";
 import AddNewCourseMain from "./components/AddNewCourseMain/AddNewCourseMain";
+import TSKInstructorPage from "./pages/InstructorPage/InstructorPage";
+import EventPicturePage from "./pages/EventPicturePage/EventPicturePage";
+import LearningPartner from "./pages/LearningPartner/LearningPartner";
 
 export default function App() {
   return (
@@ -77,6 +80,9 @@ export default function App() {
           {/* ✅ Category Management */}
           <Route path="category/create" element={<CreateNew />} />
           <Route path="category/preview" element={<CategoryPreview />} />
+        <Route path="/main-instructor" element={<TSKInstructorPage />} />
+        <Route path="/events/upload" element={<EventPicturePage />} />
+         <Route path="/learning-partners" element={<LearningPartner />} />
 
           {/* ✅ Testimonial Management */}
           <Route path="testimonial/add" element={<PostTestimonial />} />
@@ -94,12 +100,21 @@ export default function App() {
           <Route path="feedback/view" element={<FeedbackOverview />} />
         </Route>
 
+
+
+
+
+
+
+
+
         {/* ✅ Auth Pages (without AppLayout) */}
         <Route path="/TailAdmin/signin" element={<SignIn />} />
         <Route path="/TailAdmin/signup" element={<SignUp />} />
 
         {/* ✅ Fallback Page */}
         <Route path="*" element={<NotFound />} />
+
       </Routes>
     </Router>
   );
