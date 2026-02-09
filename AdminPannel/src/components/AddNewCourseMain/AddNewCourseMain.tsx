@@ -4,7 +4,6 @@ import './AddNewCourseMain.css'
 const AddNewCourseMain = () => {
   return (
     <div>
-        
     </div>
   )
 }
