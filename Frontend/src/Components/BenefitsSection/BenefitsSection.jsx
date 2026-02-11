@@ -6,22 +6,25 @@ const benefits = [
   {
     id: 1,
     icon: <FaGraduationCap />,
-    title: "High Quality Courses",
-    description: "Lorem ipsum dolor sit amet conset ur elit sed eiusmod ex tempor inc labore",
+    title: "NEP 2020 Aligned Internships",
+    description:
+      "In alignment with the National Education Policy (NEP) 2020, IIInternship provides 80–120 hours of structured internship programs to ensure practical and experiential learning for undergraduate students.",
     colorClass: "BenefitSec-green",
   },
   {
     id: 2,
     icon: <FaKey />,
-    title: "Life Time Access",
-    description: "Lorem ipsum dolor sit amet conset ur elit sed eiusmod ex tempor inc labore",
+    title: "Multidisciplinary & Skill-Based Learning",
+    description:
+      "We promote multidisciplinary education with skill-oriented training, connecting students to real-world work experience, fieldwork, research exposure, and professional internships.",
     colorClass: "BenefitSec-pink",
   },
   {
     id: 3,
     icon: <FaChalkboardTeacher />,
-    title: "Expert Instructors",
-    description: "Lorem ipsum dolor sit amet conset ur elit sed eiusmod ex tempor inc labore",
+    title: "Learn by Doing – Earn While Learning",
+    description:
+      "Our programs emphasize 'Earn While Learning' and hands-on training, encouraging students to develop practical knowledge, discipline, and career readiness through experiential learning.",
     colorClass: "BenefitSec-blue",
   },
 ];
@@ -30,9 +33,9 @@ const BenefitsSection = () => {
   return (
     <section className="BenefitSec-container">
       <div className="BenefitSec-header">
-        <p className="BenefitSec-subtitle">WHY CHOOSE IIInternship</p>
+        <p className="BenefitSec-subtitle">ALIGNMENT WITH NEP 2020</p>
         <h2 className="BenefitSec-title">
-          The Best <span>Beneficial</span> Side of IIInternship
+          Education Designed for <span>Experiential Learning</span>
         </h2>
         <div className="BenefitSec-underline"></div>
       </div>
@@ -44,7 +47,9 @@ const BenefitsSection = () => {
             className={`BenefitSec-card ${item.colorClass}`}
             style={{ animationDelay: `${index * 0.3}s` }}
           >
-            <div className={`BenefitSec-icon ${item.colorClass}`}>{item.icon}</div>
+            <div className={`BenefitSec-icon ${item.colorClass}`}>
+              {item.icon}
+            </div>
             <h3 className="BenefitSec-cardTitle">{item.title}</h3>
             <p className="BenefitSec-cardDesc">{item.description}</p>
           </div>

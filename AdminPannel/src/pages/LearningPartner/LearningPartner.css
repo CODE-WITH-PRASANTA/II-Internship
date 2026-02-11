@@ -92,6 +92,43 @@
   padding:6px 14px;
   border-radius:6px;
 }
+/* TABLE HEADER */
+.tsk-partner-head{
+  display:grid;
+  grid-template-columns:80px 1fr 150px;
+  background:#f1f3f7;
+  padding:14px 16px;
+  border-radius:10px;
+  font-weight:600;
+  margin-bottom:12px;
+}
+
+/* TABLE ROW */
+.tsk-partner-row{
+  display:grid;
+  grid-template-columns:80px 1fr 150px;
+  align-items:center;
+  padding:12px 16px;
+  border-bottom:1px solid #eee;
+}
+
+/* SL NO */
+.tsk-partner-slno{
+  font-weight:600;
+}
+
+/* IMAGE */
+.tsk-partner-image img{
+  width:90px;
+  height:60px;
+  object-fit:contain;
+}
+
+/* ACTION ALIGN */
+.tsk-partner-actions{
+  display:flex;
+  gap:8px;
+}
 
 /* RESPONSIVE */
 @media(max-width:900px){

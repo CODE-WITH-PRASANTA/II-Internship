@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TSKStarRating from "./InstructorRating";
 
-interface InstructorType{
+interface InstructorType {
   id?: number;
   name: string;
   designation: string;
@@ -13,101 +13,149 @@ interface InstructorType{
   image: string | null;
 }
 
-interface Props{
-  onSubmit:(data:InstructorType)=>void;
-  editItem:InstructorType | null;
+interface Props {
+  onSubmit: (data: InstructorType) => void;
+  editItem: InstructorType | null;
 }
 
-const TSKInstructorForm:React.FC<Props> = ({onSubmit,editItem})=>{
-
-  const [form,setForm] = useState<InstructorType>({
-    name:"",
-    designation:"",
-    about:"",
-    rating:0,
-    facebook:"",
-    instagram:"",
-    linkedin:"",
-    image:null
+const TSKInstructorForm: React.FC<Props> = ({ onSubmit, editItem }) => {
+  const [form, setForm] = useState<InstructorType>({
+    name: "",
+    designation: "",
+    about: "",
+    rating: 0,
+    facebook: "",
+    instagram: "",
+    linkedin: "",
+    image: null,
   });
 
-  useEffect(()=>{
-    if(editItem) setForm(editItem);
-  },[editItem]);
+  useEffect(() => {
+    if (editItem) setForm(editItem);
+  }, [editItem]);
 
-  const handleSubmit=(e:React.FormEvent)=>{
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(form);
   };
 
-  return(
+  return (
     <form className="tsk-form-card" onSubmit={handleSubmit}>
-
-      {/* CARD HEADER */}
+      
+      {/* HEADER */}
       <div className="tsk-card-header">
         <h3>Main Instructor Form</h3>
       </div>
 
-      <input
-        className="tsk-input"
-        placeholder="Instructor Name"
-        value={form.name}
-        onChange={(e)=>setForm({...form,name:e.target.value})}
-      />
+      {/* NAME */}
+      <div className="tsk-field">
+        <label className="tsk-label">Instructor Name</label>
+        <input
+          className="tsk-input"
+          value={form.name}
+          onChange={(e) => setForm({ ...form, name: e.target.value })}
+        />
+      </div>
 
-      <input
-        className="tsk-input"
-        placeholder="Designation"
-        value={form.designation}
-        onChange={(e)=>setForm({...form,designation:e.target.value})}
-      />
+      {/* DESIGNATION + RATING */}
+      <div className="tsk-row">
+        <div className="tsk-field">
+          <label className="tsk-label">Designation</label>
+          <input
+            className="tsk-input"
+            value={form.designation}
+            onChange={(e) =>
+              setForm({ ...form, designation: e.target.value })
+            }
+          />
+        </div>
 
-      <textarea
-        className="tsk-textarea"
-        placeholder="About Instructor"
-        value={form.about}
-        onChange={(e)=>setForm({...form,about:e.target.value})}
-      />
+        <div className="tsk-field">
+          <label className="tsk-label">Rating</label>
+          <TSKStarRating
+            rating={form.rating}
+            setRating={(r) => setForm({ ...form, rating: r })}
+          />
+        </div>
+      </div>
 
-      {/* RATING LABEL */}
-      <label className="tsk-label">Rating</label>
-      <TSKStarRating
-        rating={form.rating}
-        setRating={(r)=>setForm({...form,rating:r})}
-      />
+      {/* ABOUT + IMAGE (SAME ROW) */}
+      <div className="tsk-row">
+        
+        <div className="tsk-field">
+          <label className="tsk-label">About Instructor</label>
+          <textarea
+            className="tsk-textarea"
+            value={form.about}
+            onChange={(e) =>
+              setForm({ ...form, about: e.target.value })
+            }
+          />
+        </div>
 
-      <input
-        className="tsk-input"
-        placeholder="Facebook"
-        value={form.facebook}
-        onChange={(e)=>setForm({...form,facebook:e.target.value})}
-      />
+        <div className="tsk-field">
+          <label className="tsk-label">Instructor Image</label>
 
-      <input
-        className="tsk-input"
-        placeholder="Instagram"
-        value={form.instagram}
-        onChange={(e)=>setForm({...form,instagram:e.target.value})}
-      />
+          <input
+            type="file"
+            className="tsk-input"
+            onChange={(e) => {
+              if (e.target.files) {
+                setForm({
+                  ...form,
+                  image: URL.createObjectURL(e.target.files[0]),
+                });
+              }
+            }}
+          />
 
-      <input
-        className="tsk-input"
-        placeholder="Linkedin"
-        value={form.linkedin}
-        onChange={(e)=>setForm({...form,linkedin:e.target.value})}
-      />
+          {/* IMAGE PREVIEW */}
+          {form.image && (
+            <div className="tsk-preview">
+              <img src={form.image} alt="preview" />
+            </div>
+          )}
+        </div>
 
-      <input
-        type="file"
-        className="tsk-input"
-        onChange={(e)=>{
-          if(e.target.files){
-            setForm({...form,image:URL.createObjectURL(e.target.files[0])});
+      </div>
+
+      {/* SOCIAL LINKS */}
+      <div className="tsk-field">
+        <label className="tsk-label">Facebook</label>
+        <input
+          className="tsk-input"
+          value={form.facebook}
+          onChange={(e) =>
+            setForm({ ...form, facebook: e.target.value })
           }
-        }}
-      />
+        />
+      </div>
 
-      <button className="tsk-submit-btn">Submit</button>
+      <div className="tsk-field">
+        <label className="tsk-label">Instagram</label>
+        <input
+          className="tsk-input"
+          value={form.instagram}
+          onChange={(e) =>
+            setForm({ ...form, instagram: e.target.value })
+          }
+        />
+      </div>
+
+      <div className="tsk-field">
+        <label className="tsk-label">LinkedIn</label>
+        <input
+          className="tsk-input"
+          value={form.linkedin}
+          onChange={(e) =>
+            setForm({ ...form, linkedin: e.target.value })
+          }
+        />
+      </div>
+
+      <button className="tsk-submit-btn">
+        {editItem ? "Update Instructor" : "Submit"}
+      </button>
 
     </form>
   );
