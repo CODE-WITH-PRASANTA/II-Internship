@@ -1,202 +1,172 @@
-import React from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
-import { Eye, Trash2, Upload, Download,ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useState } from "react";
 import "./CourseDetails.css";
+import { FiGrid, FiList, FiEye, FiEdit, FiTrash2 } from "react-icons/fi";
+import { FaStar } from "react-icons/fa";
 
-interface Student {
-  name: string;
-  date: string;
+interface Course {
+  id: number;
+  image: string;
+  title: string;
+  level: string;
+  teacher: string;
+  designation: string;
+  language: string;
   rating: number;
-  avatar: string;
+  price: string;
+  timeline: string;
+  students: number;
+  lessons: number;
 }
 
-interface ChartData {
-  name: string;
-  earnings: number;
-}
+const dummyCourses: Course[] = [
+  {
+    id: 1,
+    image:
+      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80",
+    title: "React Dashboard Mastery",
+    level: "Beginner",
+    teacher: "Arjun Patel",
+    designation: "UI/UX Expert",
+    language: "English",
+    rating: 5,
+    price: "₹4,999",
+    timeline: "6 Weeks",
+    students: 1200,
+    lessons: 42,
+  },
+  {
+    id: 2,
+    image:
+      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
+    title: "Scalable React Apps",
+    level: "Advanced",
+    teacher: "Meera Khan",
+    designation: "Software Architect",
+    language: "English",
+    rating: 4,
+    price: "₹6,499",
+    timeline: "8 Weeks",
+    students: 980,
+    lessons: 55,
+  },
+  {
+    id: 3,
+    image:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
+    title: "Frontend with AI",
+    level: "Intermediate",
+    teacher: "Kiran Rao",
+    designation: "AI Engineer",
+    language: "Hindi",
+    rating: 5,
+    price: "₹5,999",
+    timeline: "5 Weeks",
+    students: 1500,
+    lessons: 38,
+  },
+];
 
-const CourseDetails: React.FC = () => {
-  const students: Student[] = [
-    { name: "Lori Stevens", date: "29 Nov 2021", rating: 5, avatar: "https://i.pravatar.cc/50?img=11" },
-    { name: "Carolyn Ortiz", date: "15 Nov 2021", rating: 5, avatar: "https://i.pravatar.cc/50?img=12" },
-    { name: "Dennis Barrett", date: "28 Oct 2021", rating: 4, avatar: "https://i.pravatar.cc/50?img=13" },
-    { name: "Billy Vasquez", date: "12 Oct 2021", rating: 4, avatar: "https://i.pravatar.cc/50?img=14" },
-    { name: "Jacqueline Miller", date: "31 Sep 2021", rating: 4, avatar: "https://i.pravatar.cc/50?img=15" },
-  ];
-
-  const chartData: ChartData[] = [
-    { name: "Mon", earnings: 4000 },
-    { name: "Tue", earnings: 3000 },
-    { name: "Wed", earnings: 5000 },
-    { name: "Thu", earnings: 4780 },
-    { name: "Fri", earnings: 5890 },
-    { name: "Sat", earnings: 4390 },
-    { name: "Sun", earnings: 5490 },
-  ];
+const PreviewCourse: React.FC = () => {
+  const [view, setView] = useState<"grid" | "list">("list");
 
   return (
-    <div className="coursedetails-wrapper">
-      {/* Header */}
-      <div className="coursedetails-header-row">
-        <h1 className="coursedetails-title">Course Details</h1>
-        <button className="coursedetails-edit-btn">Edit Course</button>
-      </div>
+    <div className="preview-wrapper">
+      {/* HEADER */}
+      <div className="preview-header">
+        <h2>Course Preview</h2>
 
-      {/* Grid Layout */}
-      <div className="coursedetails-grid-2">
-        {/* Left Card */}
-        <div className="coursedetails-card">
-          <div className="coursedetails-card-header">
-            <h2 className="coursedetails-course-main-title">
-              The Complete Digital Marketing Course - 12 Courses in 1
-            </h2>
-          </div>
-
-          {/* Course Image + Description */}
-          <div className="coursedetails-content">
-            <img
-              className="coursedetails-course-banner"
-              src="https://picsum.photos/500/300?random=12"
-              alt="Course"
-            />
-            <div className="coursedetails-desc-right">
-              <p>
-                Satisfied conveying a dependent contented he gentleman agreeable do be.
-                Warrant private blushes removed an in equally totally if. Delivered dejection
-                necessary objection do Mr prevailed. Mr feeling does chiefly cordial in do.
-              </p>
-            </div>
-          </div>
-
-          {/* Info under Image */}
-          <div className="coursedetails-desc-block">
-            <h3 className="coursedetails-price">$295.55</h3>
-            <div className="coursedetails-author-row">
-              <img
-                className="coursedetails-author-img"
-                src="https://i.pravatar.cc/50?img=8"
-                alt="Author"
-              />
-              <div>
-                <h4 className="coursedetails-author-name">By Jacqueline Miller</h4>
-                <span className="coursedetails-author-tag">Founder Eduport company</span>
-              </div>
-            </div>
-
-            <div className="coursedetails-details-grid">
-              <div><strong>Release date:</strong> 29 Aug 2020</div>
-              <div><strong>Skills:</strong> All level</div>
-              <div><strong>Total Hour:</strong> 4h 50m</div>
-              <div><strong>Total Lecture:</strong> 30</div>
-              <div><strong>Total Enrolled:</strong> 12,000+</div>
-              <div><strong>Language:</strong> English</div>
-              <div><strong>Certificate:</strong> Yes</div>
-              <div><strong>Review:</strong> 4.5 ⭐</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column */}
-        <div className="coursedetails-right-col">
-          <div className="coursedetails-card">
-            <h3 className="coursedetails-sub-title">Total Course Earning</h3>
-            <div className="coursedetails-chart-container">
-              <ResponsiveContainer width="100%" height={220}>
-                <LineChart data={chartData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
-                  <Line type="monotone" dataKey="earnings" stroke="#2563eb" strokeWidth={3} dot={{ r: 4 }} />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
-
-          <div className="coursedetails-card">
-            <h3 className="coursedetails-sub-title">New Enrollment This Month</h3>
-            <div className="coursedetails-chart-container">
-              <ResponsiveContainer width="100%" height={220}>
-                <LineChart data={chartData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
-                  <Line type="monotone" dataKey="earnings" stroke="#10b981" strokeWidth={3} dot={{ r: 4 }} />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
+        <div className="view-icons">
+          <FiGrid
+            className={view === "grid" ? "active" : ""}
+            onClick={() => setView("grid")}
+          />
+          <FiList
+            className={view === "list" ? "active" : ""}
+            onClick={() => setView("list")}
+          />
         </div>
       </div>
 
-      {/* Reviews */}
-      <div className="coursedetails-review-wrapper">
-        <h2 className="coursedetails-review-title">Students all Reviews</h2>
-
-        <div className="coursedetails-review-table">
-          <table>
+      {/* ================= LIST VIEW (TABLE) ================= */}
+      {view === "list" && (
+        <div className="table-wrapper">
+          <table className="course-table">
             <thead>
               <tr>
-                <th>Student Name</th>
-                <th>Date</th>
+                <th>Course</th>
+                <th>Instructor</th>
+                <th>Level</th>
+                <th>Language</th>
                 <th>Rating</th>
+                <th>Price</th>
+                <th>Timeline</th>
+                <th>Students</th>
+                <th>Lessons</th>
                 <th>Action</th>
               </tr>
             </thead>
+
             <tbody>
-              {students.map((s, idx) => (
-                <tr key={idx}>
+              {dummyCourses.map(course => (
+                <tr key={course.id}>
+                  {/* COURSE */}
                   <td>
-                    <div className="coursedetails-student-info">
-                      <img src={s.avatar} alt={s.name} className="coursedetails-review-avatar" />
-                      <span>{s.name}</span>
+                    <div className="course-cell">
+                      <img src={course.image} alt={course.title} />
+                      <span>{course.title}</span>
                     </div>
                   </td>
-                  <td>{s.date}</td>
+
+                  {/* INSTRUCTOR */}
                   <td>
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <span key={i} className={i < s.rating ? "coursedetails-star filled" : "coursedetails-star empty"}>
-                        ★
-                      </span>
-                    ))}
+                    <div className="instructor-cell">
+                      <strong>{course.teacher}</strong>
+                      <small>{course.designation}</small>
+                    </div>
                   </td>
-                  <td className="coursedetails-action-icons">
-                    <span title="View"><Eye className="coursedetails-icon view" /></span>
-                    <span title="Delete"><Trash2 className="coursedetails-icon delete" /></span>
-                    <span title="Publish"><Upload className="coursedetails-icon publish" /></span>
-                    <span title="Unpublish"><Download className="coursedetails-icon unpublish" /></span>
+
+                  <td>{course.level}</td>
+                  <td>{course.language}</td>
+
+                  {/* RATING */}
+                  <td>
+                    <div className="rating">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <FaStar
+                          key={i}
+                          className={i < course.rating ? "active" : ""}
+                        />
+                      ))}
+                    </div>
+                  </td>
+
+                  <td>{course.price}</td>
+                  <td>{course.timeline}</td>
+                  <td>{course.students}</td>
+                  <td>{course.lessons}</td>
+
+                  {/* ACTION */}
+                  <td>
+                    <div className="table-actions">
+                      <button className="view">
+                        <FiEye />
+                      </button>
+                      <button className="edit">
+                        <FiEdit />
+                      </button>
+                      <button className="delete">
+                        <FiTrash2 />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-
-        {/* Pagination */}
-        <div className="coursedetails-review-footer">
-          <span>Showing 1 to 8 of 20 entries</span>
-        
-<div className="coursedetails-pagination">
-  <button disabled><ChevronLeft size={16} /></button>
-  <button>1</button>
-  <button className="active">2</button>
-  <button>3</button>
-  <button><ChevronRight size={16} /></button>
-</div>
-
-        </div>
-      </div>
+      )}
     </div>
   );
 };
 
-export default CourseDetails;
+export default PreviewCourse;

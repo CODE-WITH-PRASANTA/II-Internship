@@ -248,13 +248,15 @@ const AppSidebar = () => {
   };
 
   return (
-    <aside
-      className={`fixed mt-16 lg:mt-0 top-0 left-0 px-5 h-[100vh] overflow-hidden z-50 bg-white dark:bg-gray-900 border-r dark:border-gray-800 transition-all duration-300
-        ${isExpanded || isMobileOpen || isHovered ? "w-[290px]" : "w-[90px]"}
+        <aside
+        className={`fixed top-16 lg:top-0 left-0 px-5 
+        h-[calc(100vh-64px)] lg:h-screen 
+        overflow-hidden z-50 bg-white dark:bg-gray-900 
+        border-r dark:border-gray-800 transition-all duration-300
+        ${isExpanded || isMobileOpen || isHovered ? "w-[320px]" : "w-[95px]"}
         ${isMobileOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0`}
-      onMouseEnter={() => !isExpanded && setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+      >
+
       {/* LOGO */}
       <div
         className={`py-5 flex ${
@@ -272,7 +274,7 @@ const AppSidebar = () => {
       </div>
 
       {/* MENU */}
-      <div className="flex flex-col h-[calc(100vh-80px)] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 duration-300">
+     <div className="flex flex-col h-full overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 duration-300">
         <nav>
           <h2
             className={`mb-4 text-xs uppercase text-gray-400 flex leading-[20px]
@@ -302,7 +304,9 @@ const AppSidebar = () => {
 
                     {(isExpanded || isHovered || isMobileOpen) && (
                       <>
-                        <span className="menu-item-text">{nav.name}</span>
+                        <span className="menu-item-text whitespace-nowrap overflow-hidden text-ellipsis">
+  {nav.name}
+</span>
                         <ChevronDownIcon
                           className={`ml-auto w-5 h-5 transition-all ${
                             openSubmenu?.index === index ? "rotate-180" : ""
@@ -324,7 +328,9 @@ const AppSidebar = () => {
                     >
                       <span className="menu-item-icon-size">{nav.icon}</span>
                       {(isExpanded || isHovered || isMobileOpen) && (
-                        <span className="menu-item-text">{nav.name}</span>
+                        <span className="menu-item-text whitespace-nowrap overflow-hidden text-ellipsis">
+  {nav.name}
+</span>
                       )}
                     </Link>
                   )
