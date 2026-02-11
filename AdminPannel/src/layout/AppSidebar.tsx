@@ -34,6 +34,26 @@ import companylogo from "../Asserts/IIIT LOGO (2).png";
 // =========================
 const navItems = [
   { icon: <GridIcon />, name: "Dashboard Overview", path: "/" },
+   
+  {
+    icon: <UserCircleIcon />,
+    name: "Main Instructor Page",
+    path: "/main-instructor",
+  },
+
+  // 3rd position
+  {
+    icon: <PhotographIcon />,
+    name: "Upload Event Pic",
+    path: "/events/upload",
+  },
+
+  // 4th position
+  {
+    icon: <UsersIcon />,
+    name: "Our Learning Partner",
+    path: "/learning-partners",
+  },
 
   {
     icon: <BookOpenIcon />,
@@ -44,6 +64,38 @@ const navItems = [
       { name: "Course Preview", path: "/course/preview" },
     ],
   },
+  
+  {
+    icon: <BookOpenIcon />,
+    name: "Course Management",
+    subItems: [
+      { name: "Add New Course", path: "/course/post" },
+      { name: "Manage Courses", path: "/course/manage" },
+      { name: "Course Preview", path: "/course/preview" },
+    ],
+  },
+   
+  
+ {
+  icon: <BookOpenIcon />,
+  name: "Course Management",
+  subItems: [
+    { name: "Add New Course", path: "/course/post" },
+    { name: "Manage Courses", path: "/course/manage" },
+    { name: "Course Preview", path: "/course/preview" },
+  ],
+},
+
+// ✅ NEW SECTION
+{
+  icon: <TrophyIcon />,
+  name: "Story Management",
+  subItems: [
+    { name: "Post Success Story", path: "/success-story/post" },
+    { name: "Story Preview", path: "/success-story/preview" },
+  ],
+},
+
 
   {
     icon: <UserCircleIcon />,

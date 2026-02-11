@@ -1,19 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./AddNewCourseMain.css";
 
-interface Course {
-  id: number;
-  image: string;
-  title: string;
-  level: string;
-  teacher: string;
-  designation: string;
-  language: string;
-  rating: number;
-  price: string;
-  timeline: string;
-  students: number;
-  lessons: number;
+const AddNewCourseMain = () => {
+  return (
+    <div>
+    </div>
+  )
 }
 
 const AddNewCourseMain: React.FC = () => {

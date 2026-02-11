@@ -1,0 +1,166 @@
+/* MAIN WRAPPER */
+.premium-wrapper {
+  width: 100%;
+  padding: 15px 25px;
+}
+
+/* ⭐ MAIN PAGE TITLE */
+.main-title {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #1e4fa3;
+  letter-spacing: 1px;
+}
+
+/* MAIN CONTAINER */
+.premium-container {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  box-sizing: border-box;
+  height: auto;
+  overflow: hidden;
+}
+
+/* LEFT FORM SECTION */
+.form-section {
+  width: 40%;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  height: 85vh;
+}
+
+.form-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.form-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.form-scroll::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+  border-radius: 5px;
+}
+
+/* INPUTS */
+.premium-form label {
+  margin-top: 12px;
+  font-weight: 600;
+  color: #333;
+}
+
+.premium-form input,
+.premium-form select,
+.premium-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #d4d4d4;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.premium-form input:focus,
+.premium-form select:focus,
+.premium-form textarea:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 4px rgba(25,118,210,0.3);
+}
+
+textarea {
+  min-height: 70px;
+  resize: none;
+}
+
+.grid-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* BUTTON */
+.submit-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: #1976d2;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.submit-btn:hover {
+  background: #0d57a1;
+}
+
+/* RIGHT TABLE SECTION */
+.table-section {
+  width: 60%;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.table-header {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #1e4fa3;
+}
+
+/* TABLE */
+.table-scroll {
+  flex: 1;
+  overflow-x: auto;
+}
+
+.premium-table {
+  width: max-content;   
+  border-collapse: collapse;
+}
+
+.premium-table th,
+.premium-table td {
+  padding: 12px 18px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.premium-table th {
+  background: #1976d2;
+  color: #fff;
+}
+
+/* ACTION BUTTONS */
+.edit-btn {
+  padding: 6px 12px;
+  background: #ffa726;
+  border: none;
+  color: white;
+  border-radius: 6px;
+}
+
+.delete-btn {
+  padding: 6px 12px;
+  background: #e53935;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  margin-left: 6px;
+}

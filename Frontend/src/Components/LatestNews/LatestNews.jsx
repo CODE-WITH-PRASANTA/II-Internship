@@ -8,7 +8,7 @@ import Lnews3 from "../../assets/Lnews3.webp";
 import Lnews4 from "../../assets/Lnews4.webp";
 import Lnews5 from "../../assets/Lnews5.webp";
 import Lnews6 from "../../assets/Lnews6.webp";
-import Lnews7 from "../../assets/Lnews7.webp";
+import Lnews7 from "../../assets/LNews7.webp";
 import Lnews8 from "../../assets/Lnews8.webp";
 import Lnews9 from "../../assets/Lnews9.webp";
 

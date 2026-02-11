@@ -45,6 +45,14 @@ import FeedbackOverview from "./components/FeedbackOverview/FeedbackOverview";
 import CourseDetails from "./components/CourseDetails/CourseDetails";
 import CourseManage from "./components/CourseManage/CourseManage";
 import AddNewCourseMain from "./components/AddNewCourseMain/AddNewCourseMain";
+<<<<<<< HEAD
+import StoryPost from "./components/StoryPost/StoryPost";
+import StoryPreeview from "./components/StoryPreeview/StoryPreeview";
+=======
+import TSKInstructorPage from "./pages/InstructorPage/InstructorPage";
+import EventPicturePage from "./pages/EventPicturePage/EventPicturePage";
+import LearningPartner from "./pages/LearningPartner/LearningPartner";
+>>>>>>> 3b47e74a9cbb6ee4c355e82361744ba7a819d265
 
 export default function App() {
   return (
@@ -77,6 +85,9 @@ export default function App() {
           {/* ✅ Category Management */}
           <Route path="category/create" element={<CreateNew />} />
           <Route path="category/preview" element={<CategoryPreview />} />
+        <Route path="/main-instructor" element={<TSKInstructorPage />} />
+        <Route path="/events/upload" element={<EventPicturePage />} />
+         <Route path="/learning-partners" element={<LearningPartner />} />
 
           {/* ✅ Testimonial Management */}
           <Route path="testimonial/add" element={<PostTestimonial />} />
@@ -92,7 +103,18 @@ export default function App() {
           {/* ✅ User Feedback Management */}
           <Route path="feedback/add" element={<UserFeedback />} />
           <Route path="feedback/view" element={<FeedbackOverview />} />
+          <Route path="/success-story/post" element={<StoryPost/>}/>
+          <Route path="/success-story/preview" element={<StoryPreeview/>}/>
+
         </Route>
+
+
+
+
+
+
+
+
 
         {/* ✅ Auth Pages (without AppLayout) */}
         <Route path="/TailAdmin/signin" element={<SignIn />} />
@@ -100,6 +122,7 @@ export default function App() {
 
         {/* ✅ Fallback Page */}
         <Route path="*" element={<NotFound />} />
+
       </Routes>
     </Router>
   );
