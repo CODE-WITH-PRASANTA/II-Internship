@@ -1,0 +1,139 @@
+.tsk-event-wrapper{
+  padding:24px;
+  background:#f4f5f9;
+}
+
+.tsk-event-grid{
+  display:grid;
+  grid-template-columns:50% 50%;
+  gap:24px;
+}
+
+/* FORM */
+.tsk-event-form{
+  background:#fff;
+  padding:24px;
+  border-radius:14px;
+  box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.tsk-event-input{
+  width:100%;
+  padding:12px;
+  margin:14px 0;
+}
+
+.tsk-event-btn{
+  width:100%;
+  padding:14px;
+  border:none;
+  background:linear-gradient(45deg,#ff512f,#dd2476);
+  color:#fff;
+  border-radius:10px;
+}
+
+/* LIST */
+.tsk-event-list{
+  background:#fff;
+  padding:24px;
+  border-radius:14px;
+  box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.tsk-event-scroll{
+  max-height:60vh;
+  overflow-y:auto;
+  scrollbar-width:none;
+}
+.tsk-event-scroll::-webkit-scrollbar{display:none;}
+
+.tsk-event-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:12px;
+}
+
+.tsk-event-item img{
+  width:70px;
+  height:60px;
+  object-fit:cover;
+  border-radius:8px;
+}
+/* CARD HEADER */
+.tsk-card-header{
+  border-bottom:1px solid #eee;
+  padding-bottom:12px;
+  margin-bottom:18px;
+}
+
+/* FILE INPUT */
+.tsk-file-upload{
+  display:block;
+  border:2px dashed #dcdcdc;
+  border-radius:12px;
+  padding:22px;
+  text-align:center;
+  cursor:pointer;
+  margin-bottom:20px;
+  font-weight:600;
+  color:#777;
+  transition:.3s;
+}
+.tsk-file-upload:hover{
+  border-color:#ff512f;
+  color:#ff512f;
+}
+.tsk-file-upload input{
+  display:none;
+}
+
+/* ACTION BUTTONS */
+.tsk-event-actions{
+  display:flex;
+  gap:8px;
+}
+
+.tsk-edit-btn{
+  background:#4c8bf5;
+  color:#fff;
+  border:none;
+  padding:6px 14px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.tsk-delete-btn{
+  background:#ff4d4f;
+  color:#fff;
+  border:none;
+  padding:6px 14px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+/* SAME CARD HEADER STYLE */
+.tsk-card-header{
+  border-bottom:1px solid #eee;
+  padding-bottom:12px;
+  margin-bottom:18px;
+}
+
+/* PREVIEW IMAGE */
+.tsk-preview{
+  text-align:center;
+  margin-bottom:18px;
+}
+.tsk-preview img{
+  width:120px;
+  height:90px;
+  object-fit:cover;
+  border-radius:10px;
+  box-shadow:0 3px 8px rgba(0,0,0,.15);
+}
+
+@media(max-width:900px){
+  .tsk-event-grid{
+    grid-template-columns:1fr;
+  }
+}

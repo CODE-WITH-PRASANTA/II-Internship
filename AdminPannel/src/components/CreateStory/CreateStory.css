@@ -408,6 +408,45 @@
   opacity: 0.9;
 }
 
+/* LEFT FORM — vertical scroll but hidden scrollbar */
+.create-story-left{
+  flex: 0 0 40%;
+  background:#ffffff;
+  padding:2rem;
+  border-radius:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.06);
+
+  max-height:85vh;
+  overflow-y:auto;
+  scrollbar-width:none;           /* Firefox */
+}
+.create-story-left::-webkit-scrollbar{
+  display:none;                   /* Chrome */
+}
+
+
+/* RIGHT LIST — horizontal scrollbar hidden */
+.create-story-right{
+  flex:1;
+  background:#fff;
+  padding:2rem;
+  border-radius:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.06);
+
+  overflow-x:auto;
+  overflow-y:auto;
+  max-height:85vh;
+}
+
+/* Hide horizontal scrollbar */
+.create-story-right::-webkit-scrollbar{
+  height:0px;
+}
+.create-story-right{
+  scrollbar-width:thin;
+}
+
+
 /* Responsive */
 @media (max-width: 1024px) {
   .create-story-container {
