@@ -45,6 +45,8 @@ import FeedbackOverview from "./components/FeedbackOverview/FeedbackOverview";
 import CourseDetails from "./components/CourseDetails/CourseDetails";
 import CourseManage from "./components/CourseManage/CourseManage";
 import AddNewCourseMain from "./components/AddNewCourseMain/AddNewCourseMain";
+import StoryPost from "./components/StoryPost/StoryPost";
+import StoryPreeview from "./components/StoryPreeview/StoryPreeview";
 
 export default function App() {
   return (
@@ -92,6 +94,9 @@ export default function App() {
           {/* ✅ User Feedback Management */}
           <Route path="feedback/add" element={<UserFeedback />} />
           <Route path="feedback/view" element={<FeedbackOverview />} />
+          <Route path="/success-story/post" element={<StoryPost/>}/>
+          <Route path="/success-story/preview" element={<StoryPreeview/>}/>
+
         </Route>
 
         {/* ✅ Auth Pages (without AppLayout) */}

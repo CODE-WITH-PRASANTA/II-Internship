@@ -35,15 +35,26 @@ import companylogo from "../Asserts/IIIT LOGO (2).png";
 const navItems = [
   { icon: <GridIcon />, name: "Dashboard Overview", path: "/" },
 
-  {
-    icon: <BookOpenIcon />,
-    name: "Course Management",
-    subItems: [
-      { name: "Add New Course", path: "/course/post" },
-      { name: "Manage Courses", path: "/course/manage" },
-      { name: "Course Preview", path: "/course/preview" },
-    ],
-  },
+ {
+  icon: <BookOpenIcon />,
+  name: "Course Management",
+  subItems: [
+    { name: "Add New Course", path: "/course/post" },
+    { name: "Manage Courses", path: "/course/manage" },
+    { name: "Course Preview", path: "/course/preview" },
+  ],
+},
+
+// ✅ NEW SECTION
+{
+  icon: <TrophyIcon />,
+  name: "Story Management",
+  subItems: [
+    { name: "Post Success Story", path: "/success-story/post" },
+    { name: "Story Preview", path: "/success-story/preview" },
+  ],
+},
+
 
   {
     icon: <UserCircleIcon />,

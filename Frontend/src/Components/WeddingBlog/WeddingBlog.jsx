@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from "react";
 import "./WeddingBlog.css";
 import { FaArrowRight } from "react-icons/fa";
 import w1 from "../../assets/w1.webp";
-import w2 from "../../assets/W2.webp";
-import w3 from "../../assets/W3.webp";
+import w2 from "../../assets/w2.webp";
+import w3 from "../../assets/w3.webp";
 
 
 const posts = [
