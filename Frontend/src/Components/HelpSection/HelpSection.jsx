@@ -14,42 +14,52 @@ const HelpSection = () => {
   };
 
   return (
-    <section className="help-section">
-      <motion.h1
+    <section
+      className="help-section"
+      aria-labelledby="internship-objectives"
+    >
+      {/* SEO Optimized Heading */}
+      <motion.h2
+        id="internship-objectives"
         className="help-title"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        I can help you with
-      </motion.h1>
+        Key Objectives of Internship Programs
+      </motion.h2>
 
+      {/* SEO Friendly Short Description */}
       <motion.p
         className="help-subtitle"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        Most frequent questions and answers
+        Our internships focus on practical exposure, skill development,
+        leadership growth, career clarity,<br /> and strong connections with
+        industry and research sectors.
       </motion.p>
 
       <div className="help-grid-container">
         {/* Left Side Boxes */}
         {[
           {
-            icon: "👨‍🏫",
-            title: "1:1 Coaching",
-            desc: "Personalized mentorship sessions focused on your real growth journey.",
+            icon: "📘",
+            title: "Practical Exposure",
+            desc: "Connecting theoretical knowledge with real-world experience.",
           },
           {
-            icon: "🏆",
-            title: "Life Programs",
-            desc: "Transformative programs built to enhance productivity and mindset.",
+            icon: "🎯",
+            title: "Skill & Employability",
+            desc: "Enhancing professional skills and career readiness.",
           },
         ].map((box, i) => (
           <motion.div
             key={i}
-            className={`help-box ${i === 0 ? "help-box-top-left" : "help-box-bottom-left"}`}
+            className={`help-box ${
+              i === 0 ? "help-box-top-left" : "help-box-bottom-left"
+            }`}
             variants={boxVariants}
             initial="hidden"
             whileInView="visible"
@@ -70,25 +80,31 @@ const HelpSection = () => {
           whileInView={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <img src={help} alt="Coach" />
+          <img
+            src={help}
+            alt="Internship program focused on skill development and practical learning"
+            loading="lazy"
+          />
         </motion.div>
 
         {/* Right Side Boxes */}
         {[
           {
-            icon: "🌸",
-            title: "Self Development",
-            desc: "Unlock your best potential with powerful self-growth frameworks.",
+            icon: "🧭",
+            title: "Career Clarity",
+            desc: "Developing a clear understanding of career options.",
           },
           {
-            icon: "🌿",
-            title: "Support",
-            desc: "Get 24/7 guidance to stay consistent and motivated on your path.",
+            icon: "🤝",
+            title: "Leadership & Teamwork",
+            desc: "Improving leadership, collaboration, and problem-solving.",
           },
         ].map((box, i) => (
           <motion.div
             key={i}
-            className={`help-box ${i === 0 ? "help-box-top-right" : "help-box-bottom-right"}`}
+            className={`help-box ${
+              i === 0 ? "help-box-top-right" : "help-box-bottom-right"
+            }`}
             variants={boxVariants}
             initial="hidden"
             whileInView="visible"
@@ -102,6 +118,9 @@ const HelpSection = () => {
           </motion.div>
         ))}
       </div>
+
+      {/* SEO Hidden Structured Content */}
+     
     </section>
   );
 };

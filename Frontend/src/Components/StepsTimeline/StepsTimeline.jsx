@@ -3,40 +3,41 @@ import "./StepsTimeline.css";
 import { FaUserGraduate, FaCalendarAlt, FaLaptopCode, FaAward } from "react-icons/fa";
 
 const StepsTimeline = () => {
-  const steps = [
-    {
-      title: "Enroll & Begin Your Learning Journey",
-      description:
-        "Start by enrolling in our internship or coaching program designed to boost your skills and confidence. Get access to structured modules and mentor guidance.",
-      icon: <FaUserGraduate />,
-      label: "STEP 1 — ENROLLMENT",
-      active: true,
-    },
-    {
-      title: "Attend Training & Hands-on Sessions",
-      description:
-        "Join live mentor-led sessions, complete interactive tasks, and gain real-world project exposure through structured learning paths.",
-      icon: <FaCalendarAlt />,
-      label: "STEP 2 — TRAINING PHASE",
-      active: false,
-    },
-    {
-      title: "Work on Real Projects & Build Your Portfolio",
-      description:
-        "Apply your skills to actual client and in-house projects. Gain valuable experience and learn professional workflow management.",
-      icon: <FaLaptopCode />,
-      label: "STEP 3 — PRACTICAL EXPERIENCE",
-      active: false,
-    },
-    {
-      title: "Get Certified & Kickstart Your Career",
-      description:
-        "Complete your final evaluation and earn a recognized certificate. Get placement assistance and career guidance from our mentors.",
-      icon: <FaAward />,
-      label: "STEP 4 — SUCCESS & CERTIFICATION",
-      active: false,
-    },
-  ];
+const steps = [
+  {
+    title: "Apply classroom knowledge in practice.",
+    description:
+      "Internships allow students to translate academic concepts into practical tasks, helping them understand how theories function in real professional environments and industry settings.",
+    icon: <FaUserGraduate />,
+    label: "STEP 1 — PRACTICAL APPLICATION",
+    active: true,
+  },
+  {
+    title: "Understand real-world work situations.",
+    description:
+      "Through structured exposure to workplace scenarios, team collaboration, and project execution, interns gain insight into real-world expectations and professional responsibilities.",
+    icon: <FaCalendarAlt />,
+    label: "STEP 2 — INDUSTRY EXPOSURE",
+    active: false,
+  },
+  {
+    title: "Learn professional discipline and work culture.",
+    description:
+      "Internship experience introduces students to deadlines, accountability, communication standards, and ethical work practices essential for long-term career growth.",
+    icon: <FaLaptopCode />,
+    label: "STEP 3 — PROFESSIONAL DEVELOPMENT",
+    active: false,
+  },
+  {
+    title: "Develop confidence and decision-making skills.",
+    description:
+      "By handling responsibilities, solving real problems, and contributing to meaningful projects, interns build confidence, leadership ability, and independent decision-making skills.",
+    icon: <FaAward />,
+    label: "STEP 4 — PERSONAL & CAREER GROWTH",
+    active: false,
+  },
+];
+
 
   useEffect(() => {
     const items = document.querySelectorAll(".timeline-item");
@@ -56,9 +57,11 @@ const StepsTimeline = () => {
 
   return (
     <section className="timeline-section">
-      <h2 className="timeline-title">🚀 Your Path to Internship Success</h2>
+      <h2 className="timeline-title">Why Internship Matters
+</h2>
       <p className="timeline-subtitle">
-        From enrollment to certification — experience the professional growth you deserve.
+       In modern times, employers look not only at degrees but also at the ability to perform the job. <br />
+Internships provide young people with the opportunity to—
       </p>
 
       <div className="timeline-container">
