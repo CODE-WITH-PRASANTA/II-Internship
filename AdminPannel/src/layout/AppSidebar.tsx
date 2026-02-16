@@ -23,6 +23,8 @@ import {
   HiOutlineCog as CogIcon,
   HiOutlineDotsHorizontal as HorizontaLDots,
   HiChevronDown as ChevronDownIcon,
+
+
 } from "react-icons/hi";
 
 import { useSidebar } from "../context/SidebarContext";
@@ -66,25 +68,18 @@ const navItems = [
   },
   
   {
-    icon: <BookOpenIcon />,
-    name: "Course Management",
-    subItems: [
-      { name: "Add New Course", path: "/course/post" },
-      { name: "Manage Courses", path: "/course/manage" },
-      { name: "Course Preview", path: "/course/preview" },
-    ],
-  },
-   
-  
- {
-  icon: <BookOpenIcon />,
-  name: "Course Management",
+  icon: <PhotographIcon />,
+  name: "Gallery Management",
   subItems: [
-    { name: "Add New Course", path: "/course/post" },
-    { name: "Manage Courses", path: "/course/manage" },
-    { name: "Course Preview", path: "/course/preview" },
+    { name: "Video Management", path: "/gallery/videos" },
+    { name: "Photo Management", path: "/gallery/photos" },
+    { name: "Online Media Management", path: "/gallery/online-media" },
+    { name: "News Paper Management", path: "/gallery/news" },
   ],
 },
+
+  
+ 
 
 // ✅ NEW SECTION
 {

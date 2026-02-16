@@ -45,14 +45,11 @@ import FeedbackOverview from "./components/FeedbackOverview/FeedbackOverview";
 import CourseDetails from "./components/CourseDetails/CourseDetails";
 import CourseManage from "./components/CourseManage/CourseManage";
 import AddNewCourseMain from "./components/AddNewCourseMain/AddNewCourseMain";
-<<<<<<< HEAD
 import StoryPost from "./components/StoryPost/StoryPost";
 import StoryPreeview from "./components/StoryPreeview/StoryPreeview";
-=======
 import TSKInstructorPage from "./pages/InstructorPage/InstructorPage";
 import EventPicturePage from "./pages/EventPicturePage/EventPicturePage";
 import LearningPartner from "./pages/LearningPartner/LearningPartner";
->>>>>>> 3b47e74a9cbb6ee4c355e82361744ba7a819d265
 
 export default function App() {
   return (
@@ -77,6 +74,7 @@ export default function App() {
           <Route path="line-chart" element={<LineChart />} />
           <Route path="bar-chart" element={<BarChart />} />
           
+          {/* ✅ Course Management */}
           <Route path="course/preview" element={<CourseDetails />} />
           <Route path="course/post" element={<AddNewCourseMain />} />
           <Route path="course/manage" element={<CourseManage />} />
