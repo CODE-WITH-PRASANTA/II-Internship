@@ -6,7 +6,7 @@ import Footer from "./Components/Footer/Footer";
 import PageWrapper from "./Components/PageWrapper";
 import './App.css'
 import Notice from "./Pages/Notice/Notice";
-import ComingSoon from "./Components/ComingSoon/ComingSoon";
+// import ComingSoon from "./Components/ComingSoon/ComingSoon";
 import WhatIsInternship from "./Pages/WhatIsInternship/WhatIsInternship";
 import ContactUs from "./Pages/ContactUs/ContactUs";
 import FaqSec from "./Pages/FaqSec/FaqSec";
@@ -23,6 +23,8 @@ import SuccessStory from "./Pages/SuccessStory/SuccessStory";
 import Recruitment from "./Pages/Recruitment/Recruitment";
 import CourseDetails from "./Pages/CourseDetails/CourseDetails";
 import AllCourseCategories from "./Pages/AllCourseCategories/AllCourseCategories";
+import VissionAndMission from "./Pages/VissionAndMission/VissionAndMission";
+import Immersion from "./Pages/Immersion/Immersion";
 
 function App() {
   return (
@@ -33,7 +35,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/OrganisationHistory" element={<OrganisationHistory />} />
           <Route path="/Notice" element={<Notice />} />
-          <Route path="/ComingSoon" element={<ComingSoon />} />
+          {/* <Route path="/ComingSoon" element={<ComingSoon />} /> */}
           <Route path="/WhatIsInternship" element={<WhatIsInternship />} />
           <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/ContactUs" element={<ContactUs />} />
@@ -52,6 +54,8 @@ function App() {
           <Route path="/CourseDetails" element={<CourseDetails />} />
           
           <Route path="/AllCourseCategories" element={<AllCourseCategories />} />
+          <Route path="/vision" element={< VissionAndMission />} />
+          <Route path="/WhatIsImmersion" element={<Immersion />} />
 
         </Routes>
       <Footer />

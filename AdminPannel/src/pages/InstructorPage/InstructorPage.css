@@ -2,6 +2,7 @@
 body{
   overflow-x:hidden;
 }
+
 .tsk-container{
   max-width:1100px; /* slightly smaller */
   margin:0 auto;
@@ -18,6 +19,27 @@ body{
   max-width:1200px;
   margin:0 auto;
 }
+.tsk-ins-list-card{
+  background:#fff;
+  padding:22px;
+  border-radius:14px;
+  box-shadow:0 3px 10px rgba(0,0,0,.08);
+
+  height:80vh;              /* FIXED HEIGHT */
+  display:flex;
+  flex-direction:column;
+}
+.tsk-ins-scroll{
+  flex:1;                   /* take remaining space */
+  overflow-y:auto;          /* enable vertical scroll */
+  overflow-x:hidden;
+  scrollbar-width:none;     /* firefox */
+}
+
+.tsk-ins-scroll::-webkit-scrollbar{
+  display:none;             /* chrome/safari */
+}
+
 
 /* GRID LAYOUT */
 .tsk-grid-layout{
@@ -273,6 +295,98 @@ body{
   align-items:center;
   padding:14px 10px;
   border-bottom:1px solid #eee;
+}
+
+.tsk-form-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  /* REMOVE INTERNAL SCROLL */
+  overflow: hidden;
+}
+
+.tsk-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tsk-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.tsk-input,
+.tsk-textarea {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.tsk-textarea {
+  min-height: 80px;
+  resize: none;
+}
+
+/* ONE LINE ROW */
+.tsk-row {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.tsk-row .tsk-field {
+  flex: 1;
+}
+
+.tsk-submit-btn {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: #ec4899;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+.tsk-row{
+  display:flex;
+  gap:20px;
+  align-items:flex-start;
+}
+
+.tsk-row .tsk-field{
+  flex:1;
+}
+
+.tsk-textarea{
+  min-height:110px;
+  resize:none;
+}
+
+.tsk-preview{
+  margin-top:12px;
+}
+
+.tsk-preview img{
+  width:120px;
+  height:90px;
+  object-fit:cover;
+  border-radius:10px;
+  box-shadow:0 3px 8px rgba(0,0,0,.15);
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .tsk-row{
+    flex-direction:column;
+  }
 }
 
 

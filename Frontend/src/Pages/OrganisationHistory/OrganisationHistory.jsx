@@ -9,6 +9,10 @@ import Footer from '../../Components/Footer/Footer'
 import AboutTestimonials from '../../Components/AboutTestimonials/AboutTestimonials'
 import AboutTeam from '../../Components/AboutTeam/AboutTeam'
 import BreadCrum from '../../Components/BreadCrum/BreadCrum'
+import FounderVission from '../../Components/FoundersVission/FoundersVission'
+import Inspiration from '../../Components/Inspiration/Inspiration'
+import InstituteOfInternship from '../../Components/InstituteOfInternship/InstituteOfInternship'
+import PurposeSection from '../../Components/PurposeSection/PurposeSection'
 
 const OrganisationHistory = () => {
   return (
@@ -16,7 +20,11 @@ const OrganisationHistory = () => {
       <BreadCrum />
       <AboutUs/>
       <StatsSection/>
+      <FounderVission />
       <BenefitsSection/>
+      <Inspiration />
+      <InstituteOfInternship />
+      <PurposeSection />
       <AboutTeam/>
       <ContactBanner/>
       <AboutTestimonials/>

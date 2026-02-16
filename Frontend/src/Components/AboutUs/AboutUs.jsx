@@ -34,24 +34,40 @@ const AboutUs = () => {
           >
             ABOUT US
           </motion.h5>
+
           <motion.h2
             variants={variants}
             transition={{ duration: 0.5, delay: 0.5 }}
             className="aboutus-title"
           >
-            We Provide Best <span>Education</span> Services For You.
+            International Institute of Internship <span>(i3)</span>
           </motion.h2>
+
           <motion.p
             variants={variants}
             transition={{ duration: 0.5, delay: 0.6 }}
             className="aboutus-description"
           >
-            Magna aliqua enim ad minim veniam quis nostrud exercitation ullamco
-            laboris Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-            sed do eius tempor incididunt labore.
+            Established in 2025, the International Institute of Internship (i3) 
+            is committed to empowering youth through experiential learning, 
+            skill-based education, and structured internship opportunities. 
+            As a flagship initiative of the Divya Prerak Kahaniyan Humanity 
+            Research Centre Trust (DPKHRC Trust), i3 bridges the gap between 
+            academic knowledge and real-world professional exposure.
+          </motion.p>
+
+          <motion.p
+            variants={variants}
+            transition={{ duration: 0.5, delay: 0.65 }}
+            className="aboutus-description"
+          >
+            Founded under the leadership of Dr. Avishek Kumar, the institute 
+            aligns with the National Education Policy (NEP) 2020, promoting 
+            multidisciplinary learning, practical training, and employment readiness.
           </motion.p>
 
           <div className="aboutus-cards">
+            {/* Mission */}
             <motion.div
               variants={variants}
               transition={{ duration: 0.5, delay: 0.7 }}
@@ -62,11 +78,13 @@ const AboutUs = () => {
               </div>
               <h4 className="aboutus-card-title">Our Mission</h4>
               <p className="aboutus-card-text">
-                Magna aliqua enim minim quis nostrud exercitation ullamco laboris
-                Lorem ipsum.
+                To provide meaningful, value-based internships that develop 
+                leadership, professional skills, and social responsibility 
+                among students.
               </p>
             </motion.div>
 
+            {/* Vision */}
             <motion.div
               variants={variants}
               transition={{ duration: 0.5, delay: 0.8 }}
@@ -77,8 +95,8 @@ const AboutUs = () => {
               </div>
               <h4 className="aboutus-card-title">Our Vision</h4>
               <p className="aboutus-card-text">
-                Magna aliqua enim minim quis nostrud exercitation ullamco laboris
-                Lorem ipsum.
+                To become a trusted platform that connects education with 
+                real-world experience, creating confident and future-ready professionals.
               </p>
             </motion.div>
           </div>
@@ -103,20 +121,21 @@ const AboutUs = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="aboutus-image-large"
           >
-            <img src={a1} alt="Student Talking" />
+            <img src={a1} alt="Student Learning Experience" />
           </motion.div>
+
           <div className="aboutus-image-grid">
             <motion.img
               variants={variants}
               transition={{ duration: 0.5, delay: 0.5 }}
               src={a2}
-              alt="Online Class"
+              alt="Internship Training"
             />
             <motion.img
               variants={variants}
               transition={{ duration: 0.5, delay: 0.6 }}
               src={a3}
-              alt="Studying"
+              alt="Skill Development Session"
             />
           </div>
         </motion.div>

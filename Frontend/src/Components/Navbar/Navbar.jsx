@@ -43,9 +43,10 @@ const Navbar = () => {
   { name: "Home", path: "/" }, // real
   { name: "About Us", sub: [
       { name: "Organization History", path: "/OrganisationHistory" }, // real
-      { name: "Vision & Mission", path: "/ComingSoon" },
+      { name: "Vision & Mission", path: "/vision" },
       { name: "Team Members", path: "/TeamMember" },
       { name: "Become A Instructor", path: "/BecomeInstructor" },
+      { name: "What is Immersion" , path:"/WhatIsImmersion"},
       { name: "What is Internship", path: "/WhatIsInternship" },
     ] 
   },

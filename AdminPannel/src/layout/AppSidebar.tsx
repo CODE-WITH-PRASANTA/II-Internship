@@ -23,8 +23,6 @@ import {
   HiOutlineCog as CogIcon,
   HiOutlineDotsHorizontal as HorizontaLDots,
   HiChevronDown as ChevronDownIcon,
-
-
 } from "react-icons/hi";
 
 import { useSidebar } from "../context/SidebarContext";
@@ -35,63 +33,49 @@ import companylogo from "../Asserts/IIIT LOGO (2).png";
 //  MENU STRUCTURE
 // =========================
 const navItems = [
-  { icon: <GridIcon />, name: "Dashboard Overview", path: "/" },
-   
+  { icon: <GridIcon />, name: "Dashboard", path: "/" },
+
   {
     icon: <UserCircleIcon />,
-    name: "Main Instructor Page",
+    name: "Instructor Profile",
     path: "/main-instructor",
   },
 
-  // 3rd position
   {
     icon: <PhotographIcon />,
-    name: "Upload Event Pic",
+    name: "Event Gallery",
     path: "/events/upload",
   },
 
-  // 4th position
   {
     icon: <UsersIcon />,
-    name: "Our Learning Partner",
+    name: "Learning Partners",
     path: "/learning-partners",
   },
 
+  // ================= COURSE MANAGEMENT =================
   {
     icon: <BookOpenIcon />,
     name: "Course Management",
     subItems: [
-      { name: "Add New Course", path: "/course/post" },
+      { name: "Create Course", path: "/course/post" },
       { name: "Manage Courses", path: "/course/manage" },
       { name: "Course Preview", path: "/course/preview" },
     ],
   },
-  
+
+  // ================= SUCCESS STORIES =================
   {
-  icon: <PhotographIcon />,
-  name: "Gallery Management",
-  subItems: [
-    { name: "Video Management", path: "/gallery/videos" },
-    { name: "Photo Management", path: "/gallery/photos" },
-    { name: "Online Media Management", path: "/gallery/online-media" },
-    { name: "News Paper Management", path: "/gallery/news" },
-  ],
-},
+    icon: <TrophyIcon />,
+    name: "Success Stories",
+    subItems: [
+      { name: "Add Success Story", path: "/success-story/post" },
+      { name: "Story Preview", path: "/success-story/preview" },
+      { name: "Client Reviews", path: "/success-story/review" },
+    ],
+  },
 
-  
- 
-
-// ✅ NEW SECTION
-{
-  icon: <TrophyIcon />,
-  name: "Story Management",
-  subItems: [
-    { name: "Post Success Story", path: "/success-story/post" },
-    { name: "Story Preview", path: "/success-story/preview" },
-  ],
-},
-
-
+  // ================= INSTRUCTOR MANAGEMENT =================
   {
     icon: <UserCircleIcon />,
     name: "Instructor Management",
@@ -100,29 +84,22 @@ const navItems = [
       { name: "Manage Instructors", path: "/instructor/manage" },
       { name: "Assign Courses", path: "/instructor/assign-courses" },
       { name: "Assignments", path: "/instructor/assignments" },
-      { name: "Payment & Payouts", path: "/instructor/payment" },
-      { name: "Attendance & Leave", path: "/instructor/attendance" },
+      { name: "Payments & Payouts", path: "/instructor/payment" },
+      { name: "Attendance Management", path: "/instructor/attendance" },
     ],
   },
 
+  // ================= CATEGORY =================
   {
     icon: <FolderPlusIcon />,
     name: "Category Management",
     subItems: [
-      { name: "Add New Category", path: "/category/create" },
+      { name: "Create Category", path: "/category/create" },
       { name: "Category Overview", path: "/category/preview" },
     ],
   },
 
-  {
-    icon: <TrophyIcon />,
-    name: "Success Stories",
-    subItems: [
-      { name: "Create Story", path: "/success-story/create" },
-      { name: "Client Reviews", path: "/success-story/review" },
-    ],
-  },
-
+  // ================= TESTIMONIALS =================
   {
     icon: <MessageSquareIcon />,
     name: "Testimonials",
@@ -132,6 +109,7 @@ const navItems = [
     ],
   },
 
+  // ================= STUDENT MANAGEMENT =================
   {
     icon: <UsersIcon />,
     name: "Student Management",
@@ -139,25 +117,40 @@ const navItems = [
       { name: "Enroll Student", path: "/student/enroll" },
       { name: "Manage Students", path: "/student/manage" },
       { name: "Internship Progress", path: "/student/progress" },
-      { name: "Assignments", path: "/student/assignments" },
+      { name: "Student Assignments", path: "/student/assignments" },
       { name: "Payment Tracking", path: "/student/payment" },
       { name: "Attendance & Leave", path: "/student/attendance" },
     ],
   },
 
+  // ================= GALLERY MANAGEMENT =================
+  {
+  icon: <PhotographIcon />,
+  name: "Gallery Management",
+  subItems: [
+    { name: "Video Management", path: "/gallery/videos" },
+    { name: "Photo Management", path: "/gallery/photos" },
+    { name: "Online Media Management", path: "/gallery/online-media" },
+    { name: "News Management", path: "/gallery/news" },
+  ],
+},
+
+
+  // ================= PROJECT MANAGEMENT =================
   {
     icon: <ClipboardListIcon />,
-    name: "Internship Projects",
+    name: "Project Management",
     subItems: [
       { name: "Add Project", path: "/project/add" },
       { name: "Manage Projects", path: "/project/manage" },
-      { name: "Student Assignments", path: "/project/assignments" },
+      { name: "Project Assignments", path: "/project/assignments" },
     ],
   },
 
+  // ================= PAYMENT MANAGEMENT =================
   {
     icon: <CreditCardIcon />,
-    name: "Payment Management",
+    name: "Financial Management",
     subItems: [
       { name: "Transaction History", path: "/payment/history" },
       { name: "Pending Payments", path: "/payment/pending" },
@@ -165,15 +158,17 @@ const navItems = [
     ],
   },
 
+  // ================= FEEDBACK =================
   {
     icon: <ChatIcon />,
-    name: "User Feedback",
+    name: "Feedback Management",
     subItems: [
       { name: "Submit Feedback", path: "/feedback/add" },
       { name: "Feedback Overview", path: "/feedback/view" },
     ],
   },
 
+  // ================= REPORTS =================
   {
     icon: <ChartBarIcon />,
     name: "Analytics & Reports",
@@ -186,34 +181,48 @@ const navItems = [
     ],
   },
 
+  // ================= NOTIFICATIONS =================
   {
     icon: <BellIcon />,
-    name: "Notifications Center",
+    name: "Notifications",
     subItems: [
-      { name: "Send Notifications", path: "/notifications/send" },
+      { name: "Send Notification", path: "/notifications/send" },
       { name: "Inbox Management", path: "/notifications/manage" },
     ],
   },
 
+
+  // ================= Notice Management =================
+  {
+    icon: <UsersIcon />,
+    name: "Notice Management",
+    path: "/notice/Management",
+  },
+
+
+
+  // ================= MEDIA =================
   {
     icon: <PhotographIcon />,
-    name: "Media Library",
+    name: "Media Management",
     subItems: [
-      { name: "Upload Course Materials", path: "/media/course-materials" },
-      { name: "Upload Certificates", path: "/media/certificates" },
+      { name: "Course Materials", path: "/media/course-materials" },
+      { name: "Certificates", path: "/media/certificates" },
     ],
   },
 
+  // ================= SETTINGS =================
   {
     icon: <CogIcon />,
     name: "System Settings",
     subItems: [
-      { name: "Platform Configuration", path: "/settings/platform" },
-      { name: "Admin Accounts", path: "/settings/admin-users" },
-      { name: "System Preferences", path: "/settings/system-config" },
+      { name: "Platform Settings", path: "/settings/platform" },
+      { name: "Admin Users", path: "/settings/admin-users" },
+      { name: "System Configuration", path: "/settings/system-config" },
     ],
   },
 ];
+
 
 
 // =========================
@@ -262,13 +271,15 @@ const AppSidebar = () => {
   };
 
   return (
-    <aside
-      className={`fixed mt-16 lg:mt-0 top-0 left-0 px-5 h-screen z-50 bg-white dark:bg-gray-900 border-r dark:border-gray-800 transition-all duration-300 
-        ${isExpanded || isMobileOpen || isHovered ? "w-[290px]" : "w-[90px]"}
+        <aside
+        className={`fixed top-16 lg:top-0 left-0 px-5 
+        h-[calc(100vh-64px)] lg:h-screen 
+        overflow-hidden z-50 bg-white dark:bg-gray-900 
+        border-r dark:border-gray-800 transition-all duration-300
+        ${isExpanded || isMobileOpen || isHovered ? "w-[320px]" : "w-[95px]"}
         ${isMobileOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0`}
-      onMouseEnter={() => !isExpanded && setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+      >
+
       {/* LOGO */}
       <div
         className={`py-5 flex ${
@@ -286,7 +297,7 @@ const AppSidebar = () => {
       </div>
 
       {/* MENU */}
-      <div className="flex flex-col overflow-y-auto no-scrollbar duration-300">
+     <div className="flex flex-col h-full overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 duration-300">
         <nav>
           <h2
             className={`mb-4 text-xs uppercase text-gray-400 flex leading-[20px]
@@ -316,7 +327,9 @@ const AppSidebar = () => {
 
                     {(isExpanded || isHovered || isMobileOpen) && (
                       <>
-                        <span className="menu-item-text">{nav.name}</span>
+                        <span className="menu-item-text whitespace-nowrap overflow-hidden text-ellipsis">
+  {nav.name}
+</span>
                         <ChevronDownIcon
                           className={`ml-auto w-5 h-5 transition-all ${
                             openSubmenu?.index === index ? "rotate-180" : ""
@@ -338,7 +351,9 @@ const AppSidebar = () => {
                     >
                       <span className="menu-item-icon-size">{nav.icon}</span>
                       {(isExpanded || isHovered || isMobileOpen) && (
-                        <span className="menu-item-text">{nav.name}</span>
+                        <span className="menu-item-text whitespace-nowrap overflow-hidden text-ellipsis">
+  {nav.name}
+</span>
                       )}
                     </Link>
                   )
