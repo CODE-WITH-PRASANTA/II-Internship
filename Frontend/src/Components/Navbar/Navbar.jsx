@@ -77,7 +77,7 @@ const Navbar = () => {
   { name: "Recruitment", path: "/Recruitment" },
   { name: "Faq", path: "/FaQ" },
   { name: "Contact Us", path: "/ContactUs" },
-  { name: "Donate", path: "/ComingSoon" },
+  { name: "Donate", path: "/Donatebox" },
 ];
 
 

@@ -574,3 +574,44 @@ span.flatpickr-weekday,
 .simplebar-scrollbar.simplebar-visible:before {
   @apply opacity-100;
 }
+
+/* ================= SIDEBAR HOVER UPDATE ================= */
+
+.menu-item {
+  @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200;
+}
+
+.menu-item-inactive {
+  @apply text-[#cbd5e1] hover:bg-[#334155] hover:text-white;
+}
+
+.menu-item-active {
+  @apply bg-[#3b4f68] text-white;
+}
+
+.menu-item-icon-size {
+  @apply w-5 h-5 text-[#94a3b8] group-hover:text-white transition-colors duration-200;
+}
+
+.menu-dropdown-item {
+  @apply block px-3 py-2 rounded-md text-sm transition-all duration-200;
+}
+
+.menu-dropdown-item-inactive {
+  @apply text-[#94a3b8] hover:bg-[#334155] hover:text-white;
+}
+
+.menu-dropdown-item-active {
+  @apply bg-[#3b4f68] text-white;
+
+}
+
+/* Hide scrollbar but keep scroll working */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE & Edge */
+  scrollbar-width: none;     /* Firefox */
+}

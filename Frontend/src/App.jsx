@@ -25,6 +25,12 @@ import CourseDetails from "./Pages/CourseDetails/CourseDetails";
 import AllCourseCategories from "./Pages/AllCourseCategories/AllCourseCategories";
 import VissionAndMission from "./Pages/VissionAndMission/VissionAndMission";
 import Immersion from "./Pages/Immersion/Immersion";
+import Donate from "./Pages/Donate/Donate";
+import LoginPage from "./Pages/LoginPage/LoginPage";
+import RegisterPage from "./Pages/RegisterPage/RegisterPage";
+import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
+import MentorRegistration from "./Pages/MentorRegistration/MentorRegistration";
+import ApplicationSubmited from "./Components/ApplicationSubmited/ApplicationSubmited";
 
 function App() {
   return (
@@ -56,7 +62,14 @@ function App() {
           <Route path="/AllCourseCategories" element={<AllCourseCategories />} />
           <Route path="/vision" element={< VissionAndMission />} />
           <Route path="/WhatIsImmersion" element={<Immersion />} />
-
+          <Route path="/Donatebox" element={<Donate />} />
+          <Route path="/Login" element={<LoginPage />} />
+          <Route path="/Register" element={<RegisterPage />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
+           
+           <Route path="/Mentor-registration-form" element={<MentorRegistration />} />
+           <Route path="/Application-submited" element={<ApplicationSubmited />} />
+          
         </Routes>
       <Footer />
       </PageWrapper>
