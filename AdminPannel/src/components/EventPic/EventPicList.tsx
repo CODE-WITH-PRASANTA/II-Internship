@@ -1,14 +1,10 @@
 import React from "react";
-
-interface EventPicType{
-  id?: number;
-  image: string | null;
-}
+import { getImageUrl } from "../../api/api";
 
 interface Props{
-  list:EventPicType[];
-  onEdit:(item:EventPicType)=>void;
-  onDelete:(id:number)=>void;
+  list:any[];
+  onEdit:(item:any)=>void;
+  onDelete:(id:string)=>void;
 }
 
 const EventPicList:React.FC<Props> = ({list,onEdit,onDelete}) => {
@@ -19,7 +15,6 @@ const EventPicList:React.FC<Props> = ({list,onEdit,onDelete}) => {
         <h3>Event Photo List</h3>
       </div>
 
-      {/* TABLE HEADER */}
       <div className="tsk-event-head">
         <div>Sl No</div>
         <div>Image</div>
@@ -28,19 +23,23 @@ const EventPicList:React.FC<Props> = ({list,onEdit,onDelete}) => {
 
       <div className="tsk-event-scroll">
         {list.map((item,index)=>(
-          <div key={item.id} className="tsk-event-row">
+          <div key={item._id} className="tsk-event-row">
             
-            {/* SL NO */}
             <div className="tsk-slno">
               {index + 1}
             </div>
 
-            {/* IMAGE */}
             <div className="tsk-image-cell">
-              <img src={item.image || ""} alt="event" />
+              {item.image ? (
+                <img 
+                  src={getImageUrl(item.image)} 
+                  alt="event" 
+                />
+              ) : (
+                <div style={{width:60,height:60,background:"#eee"}} />
+              )}
             </div>
 
-            {/* ACTION */}
             <div className="tsk-event-actions">
               <button 
                 className="tsk-edit-btn" 
@@ -48,9 +47,10 @@ const EventPicList:React.FC<Props> = ({list,onEdit,onDelete}) => {
               >
                 Edit
               </button>
+
               <button 
                 className="tsk-delete-btn" 
-                onClick={()=>onDelete(item.id!)}
+                onClick={()=>onDelete(item._id)}
               >
                 Delete
               </button>
