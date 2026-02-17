@@ -1,0 +1,173 @@
+/* MAIN WRAPPER */
+.xmsu-container {
+  min-height: 100vh;
+  background: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+/* CARD */
+.xmsu-card {
+  width: 100%;
+  max-width: 1300px;
+  height: 720px;
+  background: #ffffff;
+  display: flex;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* LEFT SIDE */
+.xmsu-left {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.xmsu-overlay {
+  background: rgba(0, 50, 60, 0.75);
+  color: white;
+  height: 100%;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.xmsu-logo {
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.xmsu-left-content h2 {
+  font-size: 36px;
+  margin: 10px 0;
+}
+
+.xmsu-desc {
+  max-width: 400px;
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+.xmsu-register span {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* RIGHT SIDE */
+.xmsu-right {
+  flex: 1;
+  padding: 70px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.xmsu-title {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.xmsu-subtitle {
+  margin-bottom: 30px;
+  color: #555;
+}
+
+.xmsu-right label {
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.xmsu-input {
+  width: 100%;
+  padding: 14px;
+  margin-top: 8px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+/* Checkbox Wrapper */
+.xmsu-checkbox {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Hide default checkbox */
+.xmsu-check-input {
+  width: 18px;
+  height: 18px;
+  accent-color: #10b981; /* GREEN like reference */
+  cursor: pointer;
+}
+
+/* Label styling */
+.xmsu-check-label {
+  cursor: pointer;
+  color: #0f172a;
+  font-weight: 500;
+}
+
+
+.xmsu-btn {
+  margin-top: 25px;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background: #10b981;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.xmsu-divider {
+  text-align: center;
+  margin: 20px 0;
+  color: #888;
+}
+
+/* RESPONSIVE */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .xmsu-card {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .xmsu-left {
+    height: 300px;
+  }
+
+  .xmsu-right {
+    padding: 40px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .xmsu-container {
+    padding: 15px;
+  }
+
+  .xmsu-right {
+    padding: 25px;
+  }
+
+  .xmsu-title {
+    font-size: 24px;
+  }
+
+  .xmsu-left-content h2 {
+    font-size: 24px;
+  }
+}

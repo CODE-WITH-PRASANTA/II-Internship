@@ -1,0 +1,130 @@
+/* ========================= */
+/* MAIN CONTAINER */
+/* ========================= */
+
+.i3success-container {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #3f5bd9, #4e67e8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+}
+
+/* ========================= */
+/* CONTENT WRAPPER */
+/* ========================= */
+
+.i3success-content {
+  max-width: 600px;
+  width: 100%;
+  color: #ffffff;
+}
+
+/* ========================= */
+/* ICON */
+/* ========================= */
+
+.i3success-icon-wrapper {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 30px auto;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.i3success-icon {
+  font-size: 45px;
+  color: #3f5bd9;
+}
+
+/* ========================= */
+/* TEXT */
+/* ========================= */
+
+.i3success-title {
+  font-size: 44px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.i3success-subtitle {
+  font-size: 18px;
+  margin-bottom: 10px;
+  opacity: 0.95;
+}
+
+.i3success-description {
+  font-size: 16px;
+  opacity: 0.9;
+  margin-bottom: 35px;
+}
+
+/* ========================= */
+/* BUTTON */
+/* ========================= */
+
+.i3success-btn {
+  padding: 14px 35px;
+  border-radius: 30px;
+  background: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.i3success-btn:hover {
+  background: #ffffff;
+  color: #3f5bd9;
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .i3success-title {
+    font-size: 34px;
+  }
+
+  .i3success-icon-wrapper {
+    width: 90px;
+    height: 90px;
+  }
+
+  .i3success-icon {
+    font-size: 36px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .i3success-container {
+    padding: 20px;
+  }
+
+  .i3success-title {
+    font-size: 26px;
+  }
+
+  .i3success-subtitle {
+    font-size: 15px;
+  }
+
+  .i3success-description {
+    font-size: 14px;
+  }
+
+  .i3success-btn {
+    width: 100%;
+  }
+}
