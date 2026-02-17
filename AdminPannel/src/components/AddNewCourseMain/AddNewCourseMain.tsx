@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./AddNewCourseMain.css";
 
+/* ===== TYPE ===== */
 /* =============================
    COURSE TYPE DEFINITION
 ============================= */
@@ -71,7 +72,7 @@ const AddNewCourseMain: React.FC = () => {
   const handleImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const url = URL.createObjectURL(e.target.files[0]);
-      setFormData(prev => ({ ...prev, image: url }));
+      setFormData((prev) => ({ ...prev, image: url }));
     }
   };
 
@@ -85,14 +86,14 @@ const AddNewCourseMain: React.FC = () => {
     }
 
     if (editId !== null) {
-      setCourses(prev =>
-        prev.map(course =>
+      setCourses((prev) =>
+        prev.map((course) =>
           course.id === editId ? { ...formData, id: editId } : course
         )
       );
       setEditId(null);
     } else {
-      setCourses(prev => [...prev, { ...formData, id: Date.now() }]);
+      setCourses((prev) => [...prev, { ...formData, id: Date.now() }]);
     }
 
     // Reset form
@@ -125,7 +126,7 @@ const AddNewCourseMain: React.FC = () => {
      DELETE
   ============================= */
   const handleDelete = (id: number) => {
-    setCourses(prev => prev.filter(course => course.id !== id));
+    setCourses((prev) => prev.filter((course) => course.id !== id));
   };
 
  return (

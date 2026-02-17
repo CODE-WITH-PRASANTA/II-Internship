@@ -123,6 +123,19 @@ const navItems = [
     ],
   },
 
+  // ================= GALLERY MANAGEMENT =================
+  {
+  icon: <PhotographIcon />,
+  name: "Gallery Management",
+  subItems: [
+    { name: "Video Management", path: "/gallery/videos" },
+    { name: "Photo Management", path: "/gallery/photos" },
+    { name: "Online Media Management", path: "/gallery/online-media" },
+    { name: "News Management", path: "/gallery/news" },
+  ],
+},
+
+
   // ================= PROJECT MANAGEMENT =================
   {
     icon: <ClipboardListIcon />,
@@ -177,6 +190,16 @@ const navItems = [
       { name: "Inbox Management", path: "/notifications/manage" },
     ],
   },
+
+
+  // ================= Notice Management =================
+  {
+    icon: <UsersIcon />,
+    name: "Notice Management",
+    path: "/notice/Management",
+  },
+
+
 
   // ================= MEDIA =================
   {

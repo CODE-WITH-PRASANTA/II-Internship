@@ -54,6 +54,13 @@ import FeedbackOverview from "./components/FeedbackOverview/FeedbackOverview";
 /* ================= OTHER ================= */
 import EventPicturePage from "./pages/EventPicturePage/EventPicturePage";
 import LearningPartner from "./pages/LearningPartner/LearningPartner";
+import VideoManagement from "./components/VideoManagement/VideoManagement";
+import PhotoManagement from "./components/PhotoManagement/PhotoManagement";
+import OnlineMediaManagement from "./components/OnlineMediaManagement/OnlineMediaManagement";
+import NewsManagement from "./components/NewsManagement/NewsManagement";
+
+/*==============  Notice Management  ===============*/
+import NoticeManagement from "./pages/NoticeManagement/NoticeManagement";
 
 export default function App() {
   return (
@@ -86,6 +93,18 @@ export default function App() {
           <Route path="course/manage" element={<CourseManage />} />
           <Route path="course/preview" element={<CourseDetails />} />
 
+          {/* ================= Video Management ================= */}
+          <Route path="/gallery/videos" element={<VideoManagement/>}/>
+           
+           {/* ================= Photo Management ================= */}
+          <Route path="/gallery/photos" element={<PhotoManagement/>}/>
+
+          {/* ================= Online Media Management ================= */}
+          <Route path="/gallery/online-media" element={<OnlineMediaManagement/>}/>
+
+          {/* ================= News Management ================= */}
+          <Route path="/gallery/news" element={<NewsManagement/>}/>
+
           {/* ================= CATEGORY ================= */}
           <Route path="category/create" element={<CreateNew />} />
           <Route path="category/preview" element={<CategoryPreview />} />
@@ -111,6 +130,10 @@ export default function App() {
           {/* ================= FEEDBACK ================= */}
           <Route path="feedback/add" element={<UserFeedback />} />
           <Route path="feedback/view" element={<FeedbackOverview />} />
+
+          {/*====================Notice Management=======================*/}
+          <Route path="/notice/Management" element={<NoticeManagement />} />
+
 
         </Route>
 
