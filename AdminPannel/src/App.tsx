@@ -22,7 +22,7 @@ import BasicTables from "./pages/Tables/BasicTables";
 import FormElements from "./pages/Forms/FormElements";
 
 /* ================= DASHBOARD ================= */
-import Home from "./pages/Dashboard/Home";
+
 
 /* ================= CATEGORY ================= */
 import CreateNew from "./components/CreateNew/CreateNew";
@@ -61,6 +61,7 @@ import NewsManagement from "./components/NewsManagement/NewsManagement";
 
 /*==============  Notice Management  ===============*/
 import NoticeManagement from "./pages/NoticeManagement/NoticeManagement";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 export default function App() {
   return (
@@ -72,7 +73,7 @@ export default function App() {
         <Route path="/" element={<AppLayout />}>
 
           {/* Dashboard */}
-          <Route index element={<Home />} />
+          <Route path="/" element={<Dashboard />} />
 
           {/* General */}
           <Route path="profile" element={<UserProfiles />} />
