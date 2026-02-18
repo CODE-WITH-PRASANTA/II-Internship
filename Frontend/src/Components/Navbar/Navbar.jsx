@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../../assets/IIIT LOGO (2).png";
@@ -26,6 +26,20 @@ const Navbar = () => {
   const [mobileInternshipOpen, setMobileInternshipOpen] = useState(false);
   const [mobilePartnersOpen, setMobilePartnersOpen] = useState(false);
   const [mobileMediaOpen, setMobileMediaOpen] = useState(false);
+
+
+  /* ===== STOP BACKGROUND SCROLL WHEN DRAWER OPEN ===== */
+useEffect(() => {
+  if (drawerOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+
+  return () => {
+    document.body.style.overflow = "auto";
+  };
+}, [drawerOpen]);
 
   return (
     <>
