@@ -4,9 +4,9 @@
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   gap: 24px;
-  padding: 30px;
+  padding: 0px;
   background: #f4f6fa;
-  min-height: 100vh;
+  min-height: 75vh;
 }
 
 /* ================= CARD ================= */
