@@ -1,0 +1,145 @@
+/* ================= SECTION ================= */
+
+.eduportabout-section {
+  padding: 90px 6%;
+  background: #ffffff;
+}
+
+/* ================= HEADER ================= */
+
+.eduportabout-header {
+  max-width: 800px;
+  margin-bottom: 60px;
+}
+
+.eduportabout-header h2 {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.eduportabout-header p {
+  color: #6b7280;
+  line-height: 1.7;
+}
+
+/* ================= GRID ================= */
+
+.eduportabout-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* ================= IMAGE ================= */
+
+.eduportabout-image-wrapper {
+  position: relative;
+}
+
+.eduportabout-image-wrapper img {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+/* Decorative dots */
+.eduportabout-decorative-dots {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  width: 160px;
+  opacity: 0.8;
+}
+
+/* ================= CONTENT ================= */
+
+.eduportabout-content h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.eduportabout-content p {
+  color: #6b7280;
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+/* ================= CHECKLIST ================= */
+
+.eduportabout-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 25px 0;
+}
+
+.eduportabout-checklist li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.eduportabout-checklist svg {
+  color: #22c55e;
+  font-size: 18px;
+}
+
+/* ================= PROGRESS BARS ================= */
+
+.eduportabout-progress-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px 40px;
+  margin-top: 30px;
+}
+
+.eduportabout-progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.eduportabout-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.eduportabout-progress-bar div {
+  height: 100%;
+  background: #2563eb;
+  border-radius: 10px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1024px) {
+  .eduportabout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .eduportabout-progress-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .eduportabout-section {
+    padding: 60px 20px;
+  }
+
+  .eduportabout-header h2 {
+    font-size: 28px;
+  }
+
+  .eduportabout-content h3 {
+    font-size: 22px;
+  }
+}
