@@ -58,6 +58,7 @@ import VideoManagement from "./components/VideoManagement/VideoManagement";
 import PhotoManagement from "./components/PhotoManagement/PhotoManagement";
 import OnlineMediaManagement from "./components/OnlineMediaManagement/OnlineMediaManagement";
 import NewsManagement from "./components/NewsManagement/NewsManagement";
+import AdminNoticeManager from "./pages/AdminNoticeManager/AdminNoticeManager";
 
 /*==============  Notice Management  ===============*/
 import NoticeManagement from "./pages/NoticeManagement/NoticeManagement";
@@ -134,6 +135,8 @@ export default function App() {
 
           {/*====================Notice Management=======================*/}
           <Route path="/notice/Management" element={<NoticeManagement />} />
+
+          <Route path="/admin/notices/post" element={<AdminNoticeManager />} />
 
 
         </Route>

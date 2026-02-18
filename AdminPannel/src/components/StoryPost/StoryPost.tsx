@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API, { getImageUrl } from "../../api/api";
+import { Editor } from "@tinymce/tinymce-react";
+
 
 interface FormDataType {
   title: string;
@@ -7,11 +9,15 @@ interface FormDataType {
   image: File | null;
   category: string;
   author: string;
+  authorEmail: string;
   designation: string;
   quotes: string;
   tags: string;
+  blogTags: string[]; // ✅ changed to array
   address: string;
   contact: string;
+  publishDate: string;
+  publishStatus: string;
 }
 
 interface RecordType {
@@ -21,23 +27,34 @@ interface RecordType {
   image?: string;
   category: string;
   author: string;
+  authorEmail?: string;
+  designation?: string;   // ✅ ADD THIS
+  blogTags?: string[] | string;
+  publishDate?: string;
+  publishStatus?: string;
   contact: string;
 }
 
 export default function AddSuccessStory() {
+
   const [form, setForm] = useState<FormDataType>({
     title: "",
     description: "",
     image: null,
     category: "",
     author: "",
+    authorEmail: "",
     designation: "",
     quotes: "",
     tags: "",
+    blogTags: [], // ✅ array
     address: "",
     contact: "",
+    publishDate: new Date().toISOString().slice(0, 16),
+    publishStatus: "Draft",
   });
 
+  const [tagInput, setTagInput] = useState(""); // ✅ new
   const [records, setRecords] = useState<RecordType[]>([]);
   const [loading, setLoading] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -56,11 +73,9 @@ export default function AddSuccessStory() {
     try {
       setLoading(true);
       const res = await API.get("/success-stories");
-
       const stories = Array.isArray(res.data)
         ? res.data
         : res.data.data || [];
-
       setRecords(stories);
     } catch (err) {
       console.error("FETCH ERROR:", err);
@@ -80,18 +95,41 @@ export default function AddSuccessStory() {
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) => {
-    const { name, value } = e.target;
+    const { name, value, type } = e.target as HTMLInputElement;
 
-    if ((e.target as HTMLInputElement).files) {
-      const file = (e.target as HTMLInputElement).files![0];
-      setForm({ ...form, image: file });
+    if (type === "file") {
+      const file = (e.target as HTMLInputElement).files?.[0] || null;
+      setForm((prev) => ({ ...prev, image: file }));
       return;
     }
 
-    setForm({ ...form, [name]: value });
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  /* ================= SUBMIT (ADD OR UPDATE) ================= */
+  /* ================= TAG LOGIC ================= */
+  const addTag = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && tagInput.trim()) {
+      e.preventDefault();
+
+      if (!form.blogTags.includes(tagInput.trim())) {
+        setForm((prev) => ({
+          ...prev,
+          blogTags: [...prev.blogTags, tagInput.trim()],
+        }));
+      }
+
+      setTagInput("");
+    }
+  };
+
+  const removeTag = (index: number) => {
+    setForm((prev) => ({
+      ...prev,
+      blogTags: prev.blogTags.filter((_, i) => i !== index),
+    }));
+  };
+
+  /* ================= SUBMIT ================= */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -100,7 +138,11 @@ export default function AddSuccessStory() {
 
       Object.entries(form).forEach(([key, value]) => {
         if (value !== null && value !== "") {
-          formData.append(key, value as any);
+          if (key === "blogTags") {
+            formData.append("blogTags", JSON.stringify(value));
+          } else {
+            formData.append(key, value as any);
+          }
         }
       });
 
@@ -120,17 +162,36 @@ export default function AddSuccessStory() {
 
   /* ================= EDIT ================= */
   const handleEdit = (rec: RecordType) => {
+
+    let parsedTags: string[] = [];
+
+    if (typeof rec.blogTags === "string") {
+      try {
+        parsedTags = JSON.parse(rec.blogTags);
+      } catch {
+        parsedTags = [];
+      }
+    } else if (Array.isArray(rec.blogTags)) {
+      parsedTags = rec.blogTags;
+    }
+
     setForm({
       title: rec.title,
       description: rec.description,
       image: null,
       category: rec.category,
       author: rec.author,
-      designation: "",
+      authorEmail: rec.authorEmail || "",
+      designation: rec.designation || "",
       quotes: "",
       tags: "",
+      blogTags: parsedTags,
       address: "",
       contact: rec.contact,
+      publishDate: rec.publishDate
+        ? rec.publishDate.slice(0, 16)
+        : new Date().toISOString().slice(0, 16),
+      publishStatus: rec.publishStatus || "Draft",
     });
 
     setEditingId(rec._id);
@@ -156,14 +217,19 @@ export default function AddSuccessStory() {
       image: null,
       category: "",
       author: "",
+      authorEmail: "",
       designation: "",
       quotes: "",
       tags: "",
+      blogTags: [],
       address: "",
       contact: "",
+      publishDate: new Date().toISOString().slice(0, 16),
+      publishStatus: "Draft",
     });
     setEditingId(null);
   };
+
 
   return (
     <div className="min-h-screen flex flex-col bg-[#f3f4f6]">
@@ -198,6 +264,90 @@ export default function AddSuccessStory() {
                   required
                 />
               </div>
+              <div>
+  <label className="label">Author Name</label>
+  <input
+    type="text"
+    name="author"
+    value={form.author}
+    onChange={handleChange}
+    className="input"
+    required
+  />
+</div>
+<div>
+  <label className="label">Author Email</label>
+  <input
+    type="email"
+    name="authorEmail"
+    value={form.authorEmail}
+    onChange={handleChange}
+    className="input"
+    required
+  />
+</div>
+<div>
+  <label className="label">Author Designation</label>
+  <input
+    type="text"
+    name="designation"
+    value={form.designation}
+    onChange={handleChange}
+    className="input"
+    placeholder="e.g. Software Engineer, CEO"
+  />
+</div>
+<div>
+  <label className="label">Blog Tags</label>
+  <input
+              type="text"
+              value={tagInput}
+              onChange={(e) => setTagInput(e.target.value)}
+              onKeyDown={addTag}
+              className="input"
+              placeholder="Type tag and press Enter"
+            />
+<div className="flex flex-wrap gap-2 mt-2">
+              {form.blogTags.map((tag, index) => (
+                <span
+                  key={index}
+                  className="px-3 py-1 text-xs bg-indigo-100 text-indigo-700 rounded-full flex items-center gap-2"
+                >
+                  {tag}
+                  <button
+                    type="button"
+                    onClick={() => removeTag(index)}
+                    className="text-red-500"
+                  >
+                    ✕
+                  </button>
+                </span>
+              ))}
+            </div>
+</div>
+<div>
+  <label className="label">Publish Date & Time</label>
+  <input
+    type="datetime-local"
+    name="publishDate"
+    value={form.publishDate}
+    onChange={handleChange}
+    className="input"
+  />
+</div>
+<div>
+  <label className="label">Publish Status</label>
+  <select
+    name="publishStatus"
+    value={form.publishStatus}
+    onChange={handleChange}
+    className="input"
+  >
+    <option value="Draft">Draft</option>
+    <option value="Published">Published</option>
+    <option value="Archived">Archived</option>
+  </select>
+</div>
 
               <div>
                 <label className="label">Story Category</label>
@@ -226,17 +376,32 @@ export default function AddSuccessStory() {
                 />
               </div>
 
-              <div>
-                <label className="label">Story Content</label>
-                <textarea
-                  name="description"
-                  value={form.description}
-                  onChange={handleChange}
-                  rows={6}
-                  className="input"
-                  required
-                />
-              </div>
+             <div>
+  <label className="label">Story Content</label>
+
+  <Editor
+    apiKey="jeq7g2k84sqpi9364o8x9ptqf09aoesaq8jxmp49dl4sh57z"
+    value={form.description}
+    onEditorChange={(content) =>
+      setForm((prev) => ({ ...prev, description: content }))
+    }
+    init={{
+      height: 400,
+      menubar: false,
+      plugins: [
+        "anchor", "autolink", "charmap", "codesample",
+        "emoticons", "link", "lists", "media",
+        "searchreplace", "table", "visualblocks",
+        "wordcount", "checklist", "mediaembed",
+        "advtable", "advcode", "markdown"
+      ],
+      toolbar:
+        "undo redo | blocks | bold italic underline strikethrough | " +
+        "link media table | bullist numlist | align | removeformat",
+      branding: false,
+    }}
+  />
+</div>
 
               <div className="flex gap-3 flex-wrap">
                 <button

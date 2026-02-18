@@ -59,7 +59,7 @@ const StaffPicks = () => {
       {/* NOTICE GRID */}
       <div className="notice-grid">
         {notices.map((notice, index) => (
-          <div className="notice-card" key={index}>
+          <div className="Staff-notice-card" key={index}>
             <div className="notice-category">{notice.category}</div>
 
             <h3>{notice.title}</h3>

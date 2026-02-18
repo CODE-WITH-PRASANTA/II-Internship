@@ -1,5 +1,3 @@
-
-
 /* Reset */
 * {
   margin: 0;
@@ -196,6 +194,8 @@
   display: none;
   font-size: 22px;
   cursor: pointer;
+  color:whitesmoke;
+  
 }
 
 /* Drawer */
@@ -301,6 +301,27 @@
   .Navbar-visit-btn {
     padding: 12px 22px;
     font-size: 14px;
+  }
+}
+/* ========================================= */
+/* 🔒 PREVENT MOBILE MENU ON DESKTOP */
+/* ========================================= */
+
+@media (min-width: 769px) {
+
+  /* Hide mobile drawer completely */
+  .Navbar-mobile-drawer {
+    display: none !important;
+  }
+
+  /* Hide overlay */
+  .Navbar-overlay {
+    display: none !important;
+  }
+
+  /* Ensure hamburger never shows */
+  .Navbar-hamburger {
+    display: none !important;
   }
 }
 
