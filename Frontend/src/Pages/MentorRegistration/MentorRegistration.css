@@ -1,0 +1,321 @@
+/* ============================= */
+/* MAIN CONTAINER */
+/* ============================= */
+
+.i3mentor-container {
+  height: 100vh;
+  background: #f3f4f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 60px; /* reduced */
+}
+
+
+/* ============================= */
+/* MAIN CARD WRAPPER */
+/* ============================= */
+
+.i3mentor-card {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  gap: 60px; /* space between image & form */
+  align-items: center;
+}
+
+/* ============================= */
+/* LEFT IMAGE PANEL (55%) */
+/* ============================= */
+
+.i3mentor-left {
+  width: 55%;
+  height: 85vh; /* reduced from 850px */
+  border-radius: 35px;
+}
+
+.i3mentor-overlay {
+  width: 100%;
+  height: 100%;
+ padding: 50px 50px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 35, 50, 0.85),
+    rgba(0, 50, 70, 0.92)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.i3mentor-logo {
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.i3mentor-left-content h2 {
+  font-size: 36px;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.i3mentor-left-content p {
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 460px;
+  opacity: 0.9;
+}
+
+/* SOCIAL ICONS */
+
+.i3mentor-social-wrapper {
+  margin-top: 30px;
+}
+
+.i3mentor-social-icons {
+  display: flex;
+  gap: 18px;
+}
+
+.i3mentor-social-icons svg {
+  width: 44px;
+  height: 44px;
+  padding: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.i3mentor-social-icons svg:hover {
+  background: #ffffff;
+  color: #0f172a;
+  transform: translateY(-4px);
+}
+
+/* ============================= */
+/* RIGHT FORM PANEL (45%) */
+/* ============================= */
+
+.i3mentor-right {
+  width: 45%;
+  height: 85vh;
+  background: #ffffff;
+ 
+ 
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+  border-radius: 45px;
+  padding: 50px 55px; /* reduced */
+  margin-left: -8%;
+ overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.i3mentor-right::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+/* ============================= */
+/* PROGRESS BAR */
+/* ============================= */
+
+.i3mentor-progress-wrapper {
+  margin-bottom: 40px;
+}
+
+.i3mentor-progress-text {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 14px;
+  color: #111827;
+}
+
+.i3mentor-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.i3mentor-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2f6ad9, #4f8cff);
+  border-radius: 50px;
+  transition: width 0.4s ease;
+}
+
+/* ============================= */
+/* FORM STYLING */
+/* ============================= */
+
+.i3mentor-form {
+  width: 100%;
+}
+
+.i3mentor-form h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #111827;
+}
+
+/* ALL INPUT SAME HEIGHT */
+
+.i3mentor-form input,
+.i3mentor-form select,
+.i3mentor-form textarea {
+  width: 100%;
+  height: 48px;
+  padding: 0 20px;
+  border-radius: 40px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 14px;
+  margin-bottom: 22px;
+  transition: 0.3s;
+}
+
+.i3mentor-form textarea {
+  height: 100px;
+  padding-top: 16px;
+  border-radius: 25px;
+  resize: none;
+}
+
+.i3mentor-form input:focus,
+.i3mentor-form select:focus,
+.i3mentor-form textarea:focus {
+  border-color: #2f6ad9;
+  background: #ffffff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(47, 106, 217, 0.12);
+}
+
+/* ============================= */
+/* BUTTONS */
+/* ============================= */
+
+.i3mentor-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.i3mentor-prev,
+.i3mentor-next,
+.i3mentor-submit {
+  height: 50px;
+  padding: 0 35px;
+  border-radius: 40px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.i3mentor-prev {
+  background: #e5e7eb;
+}
+
+.i3mentor-next,
+.i3mentor-submit {
+  background: linear-gradient(90deg, #2f6ad9, #4f8cff);
+  color: #ffffff;
+}
+
+.i3mentor-next:hover,
+.i3mentor-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(47, 106, 217, 0.3);
+}
+/* ============================= */
+/* TERMS & CONDITIONS */
+/* ============================= */
+
+.i3mentor-terms {
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.i3mentor-terms-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #374151;
+  cursor: pointer;
+}
+
+.i3mentor-terms-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #2f6ad9;
+  cursor: pointer;
+}
+
+.i3mentor-terms-label a {
+  color: #2f6ad9;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.i3mentor-terms-label a:hover {
+  text-decoration: underline;
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 1200px) {
+  .i3mentor-card {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .i3mentor-left,
+  .i3mentor-right {
+    width: 100%;
+  }
+
+  .i3mentor-right {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .i3mentor-container {
+    padding: 20px;
+  }
+
+  .i3mentor-overlay {
+    padding: 40px 30px;
+  }
+
+  .i3mentor-right {
+    padding: 40px 30px;
+  }
+
+  .i3mentor-left-content h2 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .i3mentor-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .i3mentor-prev,
+  .i3mentor-next,
+  .i3mentor-submit {
+    width: 100%;
+  }
+}

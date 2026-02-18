@@ -6,26 +6,33 @@ import "./ICan.css";
 
 const faqItems = [
   {
-    title: "Technical Skill Training",
+    title: "What is the International Institute of I3 Internship?",
     content:
-      "Our internship programs focus on hands-on training in modern technologies like React.js, Node.js, and MongoDB. Students gain real-world experience by working on live projects and industry-level assignments.",
+      "The International Institute of I3 Internship is a structured internship program designed to provide real-world industry experience, technical training, mentorship, and career development support for students and fresh graduates.",
   },
   {
-    title: "Soft Skills & Career Guidance",
+    title: "What technical skills are covered in the I3 Internship program?",
     content:
-      "We provide personalized mentorship, resume building, interview preparation, and communication skill training to help students confidently face campus interviews and job placements.",
+      "Our internship programs offer hands-on training in modern technologies such as React.js, Node.js, and MongoDB. Students work on live industry projects to gain practical experience and become job-ready.",
+  },
+ 
+  {
+    title: "Is project-based learning included in the I3 Internship?",
+    content:
+      "Yes, students work on real-world, project-based assignments that simulate industry scenarios. This helps improve problem-solving abilities, teamwork, leadership, and project management skills.",
   },
   {
-    title: "Project-Based Learning",
+    title: "Does the I3 Internship offer placement assistance?",
     content:
-      "Students work on live projects, simulating real-world scenarios, enhancing problem-solving skills, teamwork, and project management experience to become job-ready.",
+      "We collaborate with reputed companies and industry partners to provide placement assistance. Students receive mock interviews, professional guidance, and support to kickstart their careers successfully.",
   },
   {
-    title: "Campus Placement Assistance",
+    title: "Will I receive a certificate after completing the internship?",
     content:
-      "We collaborate with top companies to provide placement opportunities for our interns. Students get guidance, mock interviews, and placement support to kickstart their careers.",
+      "Yes, upon successful completion of the internship at the International Institute of I3 Internship, students receive an official certificate that strengthens their resume and professional profile.",
   },
 ];
+
 
 const ICan = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -37,59 +44,76 @@ const ICan = () => {
   return (
     <>
       {/* Main Section */}
-      <section className="ican-section">
-        <h2 className="ican-title">I can help you with</h2>
-        <p className="ican-subtitle">
-          Explore our training, internship programs, and campus placement support
-        </p>
+    <section className="ican-section" aria-labelledby="nep-internship">
+  <h2 className="ican-title" id="nep-internship">
+    Internship as per National Education Policy (NEP) 2020
+  </h2>
 
-        <div className="ican-grid-container">
-          {/* Left box with image */}
-          <div className="ican-box ican-box-left">
-            <img src={y1} alt="Training icon" className="ican-image" />
-          </div>
+  <p className="ican-subtitle">
+    Experiential learning and skill-based education for career readiness
+  </p>
 
-          {/* Center top text box */}
-          <div className="ican-box ican-box-center-top">
-            <h3>Technical Skill Training</h3>
-            <p>
-              Gain hands-on experience with industry-relevant technologies
-              through structured internship programs designed to make you job-ready.
-            </p>
-            <button className="ican-read-more">READ MORE</button>
-          </div>
+  <div className="ican-grid-container">
+    
+    {/* Left box with image */}
+    <div className="ican-box ican-box-left">
+      <img
+        src={y1}
+        alt="Experiential learning internship program"
+        className="ican-image"
+      />
+    </div>
 
-          {/* Right box with image */}
-          <div className="ican-box ican-box-right">
-            <img src={y2} alt="Mentorship icon" className="ican-image" />
-          </div>
+    {/* Center top text box */}
+    <div className="ican-box ican-box-center-top">
+      <h3>Learning by Doing</h3>
+      <p>
+        Aligned with NEP 2020, our internships focus on real projects,
+        field exposure, and practical skill development.
+      </p>
+      <button className="ican-read-more">READ MORE</button>
+    </div>
 
-          {/* Bottom left text box */}
-          <div className="ican-box ican-box-bottom-left">
-            <h3>Soft Skills & Career Guidance</h3>
-            <p>
-              Get personalized mentorship, resume building, interview preparation,
-              and soft skill training to excel in campus interviews.
-            </p>
-            <button className="ican-read-more">READ MORE</button>
-          </div>
+    {/* Right box with image */}
+    <div className="ican-box ican-box-right">
+      <img
+        src={y2}
+        alt="Structured internship mentorship"
+        className="ican-image"
+      />
+    </div>
 
-          {/* Bottom center with image */}
-          <div className="ican-box ican-box-bottom-center">
-            <img src={y3} alt="Project icon" className="ican-image" />
-          </div>
+    {/* Bottom left text box */}
+    <div className="ican-box ican-box-bottom-left">
+      <h3>Structured Internships at i3</h3>
+      <p>
+        The International Institute of Internship (i3) provides
+        mentorship-driven programs designed to build industry-ready skills.
+      </p>
+      <button className="ican-read-more">READ MORE</button>
+    </div>
 
-          {/* Bottom right text box */}
-          <div className="ican-box ican-box-bottom-right">
-            <h3>Project-Based Learning & Placement Support</h3>
-            <p>
-              Work on live projects, gain practical experience, and get
-              placement assistance with our campus partner companies.
-            </p>
-            <button className="ican-read-more">READ MORE</button>
-          </div>
-        </div>
-      </section>
+    {/* Bottom center with image */}
+    <div className="ican-box ican-box-bottom-center">
+      <img
+        src={y3}
+        alt="Types of internships at i3"
+        className="ican-image"
+      />
+    </div>
+
+    {/* Bottom right text box */}
+    <div className="ican-box ican-box-bottom-right">
+      <h3>Types & Flexible Modes</h3>
+      <p>
+        Academic, Skill, Research, Digital, and Management internships
+        available in online, offline, on-campus, and hybrid formats.
+      </p>
+      <button className="ican-read-more">READ MORE</button>
+    </div>
+
+  </div>
+</section>
 
       {/* FAQ Accordion Section */}
       <section className="faq-section">
@@ -160,39 +184,52 @@ const ICan = () => {
       </section>
 
       {/* Clean Help Section */}
-      <section className="clean-help-section">
-        <h2 className="clean-help-title">Our Internship Programs</h2>
-        <p className="clean-help-subtitle">
-          Practical learning, skill enhancement, and career support
-        </p>
+     <section
+  className="clean-help-section"
+  aria-labelledby="internship-education-system"
+>
+  <h2 className="clean-help-title" id="internship-education-system">
+    Understanding Internship in Today’s Education System
+  </h2>
 
-        <div className="clean-help-grid">
-          <div className="clean-help-box">
-            <h3>Technical Training</h3>
-            <p>
-              Learn full-stack development, backend systems, and modern technologies
-              with hands-on guidance from experts.
-            </p>
-            <button className="clean-read-more">READ MORE</button>
-          </div>
-          <div className="clean-help-box">
-            <h3>Soft Skills & Guidance</h3>
-            <p>
-              Enhance communication, resume building, and interview skills for
-              campus and corporate opportunities.
-            </p>
-            <button className="clean-read-more">READ MORE</button>
-          </div>
-          <div className="clean-help-box">
-            <h3>Project & Placement Support</h3>
-            <p>
-              Work on live projects, gain practical experience, and get placement
-              assistance with partner companies.
-            </p>
-            <button className="clean-read-more">READ MORE</button>
-          </div>
-        </div>
-      </section>
+  <p className="clean-help-subtitle">
+    Practical, experience-based learning aligned with NEP 2020
+  </p>
+
+  <div className="clean-help-grid">
+    {/* Card 1 */}
+    <div className="clean-help-box">
+      <h3>Structured Practical Learning</h3>
+      <p>
+        Internships provide real-world experience by connecting classroom
+        knowledge with live projects and industry exposure.
+      </p>
+      <button className="clean-read-more">READ MORE</button>
+    </div>
+
+    {/* Card 2 */}
+    <div className="clean-help-box">
+      <h3>Skill & Professional Growth</h3>
+      <p>
+        Students develop technical skills, communication, confidence, and
+        industry-ready professional understanding.
+      </p>
+      <button className="clean-read-more">READ MORE</button>
+    </div>
+
+    {/* Card 3 */}
+    <div className="clean-help-box">
+      <h3>Career Development under NEP 2020</h3>
+      <p>
+        As emphasized in NEP 2020, internships play a vital role in preparing
+        students for employment, entrepreneurship, and research careers.
+      </p>
+      <button className="clean-read-more">READ MORE</button>
+    </div>
+  </div>
+</section>
+
+
     </>
   );
 };

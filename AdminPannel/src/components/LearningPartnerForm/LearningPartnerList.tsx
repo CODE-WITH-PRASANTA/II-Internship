@@ -20,19 +20,43 @@ const LearningPartnerList:React.FC<Props> = ({list,onEdit,onDelete})=>{
         <h3>Learning Partner List</h3>
       </div>
 
-      <div className="tsk-partner-scroll">
-        {list.map(item=>(
-          <div key={item.id} className="tsk-partner-item">
-            <img src={item.image || ""} alt=""/>
+      {/* TABLE HEADER */}
+      <div className="tsk-partner-head">
+        <div>Sl No</div>
+        <div>Image</div>
+        <div>Action</div>
+      </div>
 
+      <div className="tsk-partner-scroll">
+        {list.map((item,index)=>(
+          <div key={item.id} className="tsk-partner-row">
+            
+            {/* SL NO */}
+            <div className="tsk-partner-slno">
+              {index + 1}
+            </div>
+
+            {/* IMAGE */}
+            <div className="tsk-partner-image">
+              <img src={item.image || ""} alt="partner"/>
+            </div>
+
+            {/* ACTION */}
             <div className="tsk-partner-actions">
-              <button className="tsk-partner-edit" onClick={()=>onEdit(item)}>
+              <button 
+                className="tsk-partner-edit" 
+                onClick={()=>onEdit(item)}
+              >
                 Edit
               </button>
-              <button className="tsk-partner-delete" onClick={()=>onDelete(item.id!)}>
+              <button 
+                className="tsk-partner-delete" 
+                onClick={()=>onDelete(item.id!)}
+              >
                 Delete
               </button>
             </div>
+
           </div>
         ))}
       </div>
