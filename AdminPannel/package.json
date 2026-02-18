@@ -24,6 +24,7 @@
         "apexcharts": "^4.1.0",
         "autoprefixer": "^10.4.20",
         "axios": "^1.13.5",
+        "axois": "^0.0.1-security",
         "classnames": "^2.5.1",
         "clsx": "^2.1.1",
         "flatpickr": "^4.6.13",
