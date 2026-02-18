@@ -1,35 +1,35 @@
 const express = require("express");
 const router = express.Router();
 
-const {
-  createStory,
-  getAllStories,
-  deleteStory,
-  updateStory, // ✅ added
-} = require("../controllers/successStory.controller");
-
 const { upload, convertToWebp } = require("../middleware/upload");
+
+const {
+  createNotice,
+  getAllNotices,
+  updateNotice,
+  deleteNotice,
+} = require("../controllers/notice.controller");
 
 /* ================= CREATE ================= */
 router.post(
   "/",
   upload.single("image"),
-  convertToWebp,
-  createStory
+  convertToWebp,        // ✅ ADD THIS
+  createNotice
 );
 
-/* ================= GET ALL ================= */
-router.get("/", getAllStories);
+/* ================= GET ================= */
+router.get("/", getAllNotices);
 
 /* ================= UPDATE ================= */
 router.put(
   "/:id",
   upload.single("image"),
-  convertToWebp,
-  updateStory
+  convertToWebp,        // ✅ ADD THIS
+  updateNotice
 );
 
 /* ================= DELETE ================= */
-router.delete("/:id", deleteStory);
+router.delete("/:id", deleteNotice);
 
 module.exports = router;

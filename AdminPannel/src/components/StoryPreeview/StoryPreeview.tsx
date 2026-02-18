@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   HiOutlineViewGrid,
   HiOutlineViewList,
-  HiDotsVertical,
 } from "react-icons/hi";
 import API, { getImageUrl } from "../../api/api";
 import "./StoryPreeview.css";
@@ -14,18 +13,18 @@ interface Story {
   category: string;
   description: string;
   author: string;
-  designation: string;
-  quotes: string;
-  tags: string;
-  address: string;
-  contact: string;
+  designation?: string;   // ✅ safe optional
+  quotes?: string;
+  blogTags?: string[];
+  address?: string;
+  contact?: string;
   image: string;
+  publishStatus?: string;
 }
 
 const StoryPreeview: React.FC = () => {
   const [stories, setStories] = useState<Story[]>([]);
   const [viewType, setViewType] = useState<"grid" | "list">("grid");
-  const [openAction, setOpenAction] = useState<string | null>(null);
 
   /* ================= FETCH STORIES ================= */
   const fetchStories = async () => {
@@ -42,20 +41,38 @@ const StoryPreeview: React.FC = () => {
   }, []);
 
   /* ================= DELETE ================= */
-  const handleDelete = async (id: string): Promise<void> => {
+  const handleDelete = async (id: string) => {
     if (!window.confirm("Delete this story?")) return;
 
     try {
       await API.delete(`/success-stories/${id}`);
-      fetchStories(); // refresh after delete
+      setStories((prev) => prev.filter((s) => s._id !== id));
     } catch (err) {
       console.error("DELETE ERROR:", err);
     }
   };
 
-  /* ================= EDIT ================= */
-  const handleEdit = (story: Story): void => {
-    alert(`Edit: ${story.title}`);
+  /* ================= TOGGLE PUBLISH ================= */
+  const handleTogglePublish = async (story: Story) => {
+    try {
+      const newStatus =
+        story.publishStatus === "Published" ? "Draft" : "Published";
+
+      await API.put(`/success-stories/${story._id}`, {
+        publishStatus: newStatus,
+      });
+
+      // ✅ Optimistic update (designation + tags remain intact)
+      setStories((prev) =>
+        prev.map((item) =>
+          item._id === story._id
+            ? { ...item, publishStatus: newStatus }
+            : item
+        )
+      );
+    } catch (err) {
+      console.error("TOGGLE PUBLISH ERROR:", err);
+    }
   };
 
   return (
@@ -91,14 +108,45 @@ const StoryPreeview: React.FC = () => {
               <div className="card-body">
                 <h3>{story.title}</h3>
                 <p className="category">{story.category}</p>
-                <p className="description">{story.description}</p>
 
+                <div
+                  className="description"
+                  dangerouslySetInnerHTML={{ __html: story.description }}
+                />
+
+                {/* ✅ Designation Safe Render */}
                 <div className="author-block">
                   <span>{story.author}</span>
-                  <small>{story.designation}</small>
+                  {story.designation && (
+                    <small>{story.designation}</small>
+                  )}
                 </div>
 
-                <p className="tags">{story.tags}</p>
+                {/* ✅ Tags Safe Render */}
+                <div className="tags">
+                  {story.blogTags && story.blogTags.length > 0 ? (
+                    story.blogTags.map((tag, index) => (
+                      <span key={index} className="tag-chip">
+                        {tag}
+                      </span>
+                    ))
+                  ) : (
+                    <span className="tag-chip">No Tags</span>
+                  )}
+                </div>
+
+                <button
+                  className={`publish-toggle-btn ${
+                    story.publishStatus === "Published"
+                      ? "published"
+                      : "draft"
+                  }`}
+                  onClick={() => handleTogglePublish(story)}
+                >
+                  {story.publishStatus === "Published"
+                    ? "Unpublish"
+                    : "Publish"}
+                </button>
               </div>
             </div>
           ))}
@@ -117,7 +165,8 @@ const StoryPreeview: React.FC = () => {
                 <th>Author</th>
                 <th>Designation</th>
                 <th>Tags</th>
-                <th>Action</th>
+                <th>Status</th>
+                <th>Delete</th>
               </tr>
             </thead>
 
@@ -134,32 +183,42 @@ const StoryPreeview: React.FC = () => {
                   <td>{story.title}</td>
                   <td>{story.category}</td>
                   <td>{story.author}</td>
-                  <td>{story.designation}</td>
-                  <td>{story.tags}</td>
+                  <td>{story.designation || "-"}</td>
 
-                  <td className="action-td">
-                    <HiDotsVertical
-                      className="action-icon"
-                      onClick={() =>
-                        setOpenAction(
-                          openAction === story._id ? null : story._id
-                        )
-                      }
-                    />
-
-                    {openAction === story._id && (
-                      <div className="action-dropdown">
-                        <button onClick={() => handleEdit(story)}>
-                          Edit
-                        </button>
-                        <button
-                          className="delete"
-                          onClick={() => handleDelete(story._id)}
-                        >
-                          Delete
-                        </button>
-                      </div>
+                  <td>
+                    {story.blogTags && story.blogTags.length > 0 ? (
+                      story.blogTags.map((tag, index) => (
+                        <span key={index} className="tag-chip">
+                          {tag}
+                        </span>
+                      ))
+                    ) : (
+                      "-"
                     )}
+                  </td>
+
+                  <td>
+                    <button
+                      className={`publish-toggle-btn ${
+                        story.publishStatus === "Published"
+                          ? "published"
+                          : "draft"
+                      }`}
+                      onClick={() => handleTogglePublish(story)}
+                    >
+                      {story.publishStatus === "Published"
+                        ? "Unpublish"
+                        : "Publish"}
+                    </button>
+                  </td>
+
+                  <td>
+                    <button
+                      className="delete"
+                      onClick={() => handleDelete(story._id)}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}
