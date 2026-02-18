@@ -1,13 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { HiArrowUpRight } from "react-icons/hi2";
-import { FaRegFileAlt } from "react-icons/fa"; // Notice icon
-import { MdOutlineAdminPanelSettings } from "react-icons/md"; // Admin icon
+import { MdOutlineAdminPanelSettings } from "react-icons/md";
+import { BsGrid3X3GapFill, BsListUl } from "react-icons/bs";
+
 import "./NoticeSection.css";
+
 import i1 from "../../assets/img-1.webp";
 import i2 from "../../assets/img-2.webp";
 import i3 from "../../assets/img-3.webp";
 
 const NoticeSection = () => {
+  const [view, setView] = useState("grid");
+
   const notices = [
     {
       id: "NTC-101",
@@ -33,55 +37,62 @@ const NoticeSection = () => {
       date: "Oct 10, 2025",
       postedBy: "Admin Office",
       title: "Scholarship Application Deadline Extended",
-      desc: "The deadline for applying for scholarships has been extended to Oct 20, 2025. Students are encouraged to apply before the new deadline.",
+      desc: "The deadline for applying for scholarships has been extended to Oct 20, 2025.",
       img: i3,
     },
   ];
 
-  const sliderRef = useRef(null);
-
-  useEffect(() => {
-    const slider = sliderRef.current;
-    let scrollAmount = 0;
-    const slideWidth = slider.firstChild.offsetWidth + 25;
-
-    const autoSlide = setInterval(() => {
-      if (scrollAmount >= slider.scrollWidth - slider.clientWidth) {
-        scrollAmount = 0;
-      } else {
-        scrollAmount += slideWidth;
-      }
-      slider.scrollTo({ left: scrollAmount, behavior: "smooth" });
-    }, 3500);
-
-    return () => clearInterval(autoSlide);
-  }, []);
-
   return (
-    <section className="noticesection">
-      <div className="noticesection-header">
-        <h2>📢 Official Notice Board</h2>
-        <p>Stay Updated with the Latest Announcements</p>
+    <section className="notice-section">
+      {/* Header */}
+      <div className="notice-header">
+        <div>
+          <h2>📢 Official Notice Board</h2>
+          <p>Stay Updated with the Latest Announcements</p>
+        </div>
+
+        {/* View Toggle */}
+        <div className="view-toggle">
+          <button
+            className={view === "grid" ? "active" : ""}
+            onClick={() => setView("grid")}
+          >
+            <BsGrid3X3GapFill />
+          </button>
+
+          <button
+            className={view === "list" ? "active" : ""}
+            onClick={() => setView("list")}
+          >
+            <BsListUl />
+          </button>
+        </div>
       </div>
 
-      <div className="noticesection-slider" ref={sliderRef}>
+      {/* Cards */}
+      <div className={`notice-wrapper ${view}`}>
         {notices.map((item) => (
-          <div key={item.id} className="noticesection-card">
-            <img src={item.img} alt={item.title} className="noticesection-img" />
-            <div className="noticesection-overlay">
-              <span className="noticesection-category">{item.category}</span>
-              <div className="noticesection-meta">
+          <div key={item.id} className={`notice-card ${view}`}>
+            <img src={item.img} alt={item.title} className="notice-img" />
+
+            <div className="notice-content">
+              <span className="notice-category">{item.category}</span>
+
+              <div className="notice-meta">
                 <span>🆔 {item.id}</span>
                 <span>📅 {item.date}</span>
               </div>
-              <h3 className="noticesection-title">{item.title}</h3>
-              <p className="noticesection-desc">{item.desc}</p>
-              <div className="noticesection-footer">
-                <div className="noticesection-posted">
-                  <MdOutlineAdminPanelSettings className="admin-icon" />
+
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
+
+              <div className="notice-footer">
+                <div className="posted">
+                  <MdOutlineAdminPanelSettings />
                   <span>{item.postedBy}</span>
                 </div>
-                <div className="noticesection-arrow">
+
+                <div className="arrow">
                   <HiArrowUpRight />
                 </div>
               </div>

@@ -28,10 +28,6 @@ import {
 import { useSidebar } from "../context/SidebarContext";
 import companylogo from "../Asserts/IIIT LOGO (2).png";
 
-
-// =========================
-//  MENU STRUCTURE
-// =========================
 const navItems = [
   { icon: <GridIcon />, name: "Dashboard", path: "/" },
 
@@ -125,16 +121,15 @@ const navItems = [
 
   // ================= GALLERY MANAGEMENT =================
   {
-  icon: <PhotographIcon />,
-  name: "Gallery Management",
-  subItems: [
-    { name: "Video Management", path: "/gallery/videos" },
-    { name: "Photo Management", path: "/gallery/photos" },
-    { name: "Online Media Management", path: "/gallery/online-media" },
-    { name: "News Management", path: "/gallery/news" },
-  ],
-},
-
+    icon: <PhotographIcon />,
+    name: "Gallery Management",
+    subItems: [
+      { name: "Video Management", path: "/gallery/videos" },
+      { name: "Photo Management", path: "/gallery/photos" },
+      { name: "Online Media Management", path: "/gallery/online-media" },
+      { name: "News Management", path: "/gallery/news" },
+    ],
+  },
 
   // ================= PROJECT MANAGEMENT =================
   {
@@ -191,15 +186,12 @@ const navItems = [
     ],
   },
 
-
-  // ================= Notice Management =================
+  // ================= NOTICE MANAGEMENT =================
   {
     icon: <UsersIcon />,
     name: "Notice Management",
     path: "/notice/Management",
   },
-
-
 
   // ================= MEDIA =================
   {
@@ -222,14 +214,8 @@ const navItems = [
     ],
   },
 ];
-
-
-
-// =========================
-//  SIDEBAR COMPONENT
-// =========================
 const AppSidebar = () => {
-  const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
+  const { isExpanded, isMobileOpen, isHovered } = useSidebar();
   const location = useLocation();
 
   const [openSubmenu, setOpenSubmenu] = useState<{ index: number } | null>(null);
@@ -252,7 +238,7 @@ const AppSidebar = () => {
       });
     });
     if (!matched) setOpenSubmenu(null);
-  }, [location, isActive]);
+  }, [location.pathname]);
 
   useEffect(() => {
     if (openSubmenu !== null) {
@@ -271,14 +257,17 @@ const AppSidebar = () => {
   };
 
   return (
-        <aside
-        className={`fixed top-16 lg:top-0 left-0 px-5 
-        h-[calc(100vh-64px)] lg:h-screen 
-        overflow-hidden z-50 bg-white dark:bg-gray-900 
-        border-r dark:border-gray-800 transition-all duration-300
-        ${isExpanded || isMobileOpen || isHovered ? "w-[320px]" : "w-[95px]"}
-        ${isMobileOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0`}
-      >
+    <aside
+      className={`fixed top-16 lg:top-0 left-0 px-5 
+      h-[calc(100vh-64px)] lg:h-screen 
+      overflow-hidden z-50 
+      bg-[#1e293b]
+      border-r border-[#334155]
+      text-[#cbd5e1]
+      transition-all duration-300
+      ${isExpanded || isMobileOpen || isHovered ? "w-[320px]" : "w-[95px]"}
+      ${isMobileOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0`}
+    >
 
       {/* LOGO */}
       <div
@@ -297,23 +286,22 @@ const AppSidebar = () => {
       </div>
 
       {/* MENU */}
-     <div className="flex flex-col h-full overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 duration-300">
+      <div className="flex flex-col h-full overflow-y-auto pr-2 no-scrollbar duration-300">
         <nav>
           <h2
-            className={`mb-4 text-xs uppercase text-gray-400 flex leading-[20px]
+            className={`mb-4 text-xs uppercase text-[#64748b] flex leading-[20px]
             ${!isExpanded && !isHovered ? "lg:justify-center" : ""}`}
           >
             {isExpanded || isHovered || isMobileOpen ? (
               "Main Menu"
             ) : (
-              <HorizontaLDots className="size-6" />
+              <HorizontaLDots className="size-6 text-[#94a3b8]" />
             )}
           </h2>
 
           <ul className="flex flex-col gap-4">
             {navItems.map((nav, index) => (
               <li key={nav.name}>
-                {/* Dropdown Menu */}
                 {nav.subItems ? (
                   <button
                     onClick={() => handleSubmenuToggle(index)}
@@ -328,8 +316,8 @@ const AppSidebar = () => {
                     {(isExpanded || isHovered || isMobileOpen) && (
                       <>
                         <span className="menu-item-text whitespace-nowrap overflow-hidden text-ellipsis">
-  {nav.name}
-</span>
+                          {nav.name}
+                        </span>
                         <ChevronDownIcon
                           className={`ml-auto w-5 h-5 transition-all ${
                             openSubmenu?.index === index ? "rotate-180" : ""
@@ -339,7 +327,6 @@ const AppSidebar = () => {
                     )}
                   </button>
                 ) : (
-                  /* Normal Menu Item */
                   nav.path && (
                     <Link
                       to={nav.path}
@@ -352,14 +339,13 @@ const AppSidebar = () => {
                       <span className="menu-item-icon-size">{nav.icon}</span>
                       {(isExpanded || isHovered || isMobileOpen) && (
                         <span className="menu-item-text whitespace-nowrap overflow-hidden text-ellipsis">
-  {nav.name}
-</span>
+                          {nav.name}
+                        </span>
                       )}
                     </Link>
                   )
                 )}
 
-                {/* Submenu dropdown */}
                 {nav.subItems &&
                   (isExpanded || isHovered || isMobileOpen) && (
                     <div
