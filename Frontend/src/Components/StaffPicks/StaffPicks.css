@@ -100,7 +100,7 @@
 
 
 /* Card */
-.notice-card {
+.Staff-notice-card {
   flex: 0 0 300px;
   scroll-snap-align: start;
   border-radius: 18px;
@@ -125,7 +125,7 @@
   text-transform: uppercase;
 }
 
-.notice-card h3 {
+.Staff-notice-card h3 {
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 14px;
@@ -149,7 +149,7 @@
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.notice-card:hover .arrow {
+.Staff-notice-card:hover .arrow {
   transform: translateX(6px);
   color: #fff;
 }
@@ -188,7 +188,7 @@
     padding: 30px 0;
   }
 
-  .notice-card {
+  .Staff-notice-card {
     flex: 0 0 240px;
     padding: 20px;
   }
@@ -227,7 +227,7 @@
     padding: 25px 0;
   }
 
-  .notice-card {
+  .Staff-notice-card {
     flex: 0 0 85%;
     padding: 18px;
   }
@@ -269,7 +269,7 @@
     padding: 20px 0;
   }
 
-  .notice-card {
+  .Staff-notice-card {
     flex: 0 0 90%;
     padding: 16px;
   }

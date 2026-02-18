@@ -7,6 +7,7 @@ const Newsletter = () => {
   return (
     <section className="newsletter">
       <div className="newsletter-wrapper">
+
         {/* LEFT */}
         <div className="newsletter-left">
           <span className="newsletter-tag">Newsletter</span>
@@ -18,8 +19,8 @@ const Newsletter = () => {
           </h2>
 
           <p className="newsletter-description">
-            Get weekly updates about new templates, product launches, and useful
-            resources — no spam.
+            Get weekly updates about new templates, product launches,
+            and useful resources — no spam.
           </p>
 
           <div className="newsletter-form">
@@ -33,7 +34,6 @@ const Newsletter = () => {
 
           <div className="newsletter-terms">
             <input type="checkbox" id="terms" className="newsletter-checkbox" />
-
             <label htmlFor="terms" className="newsletter-terms-label">
               I agree to the{" "}
               <a href="#" className="newsletter-terms-link">
@@ -50,24 +50,22 @@ const Newsletter = () => {
           </div>
 
           <div className="newsletter-social">
-  <h4>Follow us</h4>
+            <h4>Follow us</h4>
 
-  <button className="social-btn">
-    <span className="social-left">
-      <FaFacebookF className="social-icon facebook" />
-      Facebook
-    </span>
-  </button>
+            <div className="social-row">
+              <button className="social-btn">
+                <FaFacebookF className="social-icon facebook" />
+                Facebook
+              </button>
 
-  <button className="social-btn">
-    <span className="social-left">
-      <FaTwitter className="social-icon twitter" />
-      Twitter
-    </span>
-  </button>
-</div>
-
+              <button className="social-btn">
+                <FaTwitter className="social-icon twitter" />
+                Twitter
+              </button>
+            </div>
+          </div>
         </div>
+
       </div>
     </section>
   );

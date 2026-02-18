@@ -1,3 +1,18 @@
+/* ===== GALLERY HEADING ===== */
+.gallery-heading-wrap {
+  text-align: center;
+  padding-top: 20px;
+  background: #fff;
+}
+
+.gallery-heading {
+  font-size: 34px;
+  font-weight: 800;
+  color: #0b2440;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
 .home-image-grid {
   display: flex;
   gap: 15px;
@@ -121,6 +136,21 @@
 @media (max-width: 480px) {
   .image-card { width: 120px; height: 90px; }
   .home-image-grid { gap: 10px; padding: 10px; }
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gallery-heading {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-heading {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
 }
 
 /* Animations */
