@@ -1,254 +1,337 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../../assets/IIIT LOGO (2).png";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaYoutube,
+  FaPhoneAlt,
+  FaMapMarkerAlt,
+  FaEnvelope,
+  FaChevronDown,
+  FaBars,
+  FaTimes,
+} from "react-icons/fa";
 
 const Navbar = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(null);
-  const [showNavbar, setShowNavbar] = useState(true);
-  const menuRef = useRef(null);
-  const lastScrollY = useRef(0);
+  const [aboutOpen, setAboutOpen] = useState(false);
+  const [internshipOpen, setInternshipOpen] = useState(false);
+  const [partnersOpen, setPartnersOpen] = useState(false);
+  const [mediaOpen, setMediaOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
-  /* ================= SCROLL HIDE NAVBAR ================= */
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > lastScrollY.current) {
-        setShowNavbar(false);
-      } else {
-        setShowNavbar(true);
-      }
-      lastScrollY.current = window.scrollY;
-    };
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
+  const [mobileInternshipOpen, setMobileInternshipOpen] = useState(false);
+  const [mobilePartnersOpen, setMobilePartnersOpen] = useState(false);
+  const [mobileMediaOpen, setMobileMediaOpen] = useState(false);
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
-  /* ================= CLOSE ON OUTSIDE CLICK ================= */
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setMobileMenuOpen(false);
-        setMobileDropdownOpen(null);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  /* ===== STOP BACKGROUND SCROLL WHEN DRAWER OPEN ===== */
+useEffect(() => {
+  if (drawerOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
 
-  /* ================= LOCK BODY SCROLL ================= */
-  useEffect(() => {
-    document.body.style.overflow = mobileMenuOpen ? "hidden" : "auto";
-  }, [mobileMenuOpen]);
-
-  const toggleDropdown = (index) => {
-    setMobileDropdownOpen(mobileDropdownOpen === index ? null : index);
+  return () => {
+    document.body.style.overflow = "auto";
   };
-
-  const menuItems = [
-    { name: "Home", path: "/" },
-    {
-      name: "About Us",
-      sub: [
-        { name: "Organization History", path: "/OrganisationHistory" },
-        { name: "Vision & Mission", path: "/vision" },
-        { name: "Team Members", path: "/TeamMember" },
-        { name: "Become A Instructor", path: "/BecomeInstructor" },
-        { name: "What is Immersion", path: "/WhatIsImmersion" },
-        { name: "What is Internship", path: "/WhatIsInternship" },
-      ],
-    },
-    { name: "Notice", path: "/Notice" },
-    {
-      name: "Internships Program",
-      path: "/InternshipsProgram",
-      sub: [
-        { name: "On Campus Internships", path: "/OnCampusInternship" },
-        { name: "Virtual Internships", path: "/VirtualInternship" },
-      ],
-    },
-    {
-      name: "Our Partners",
-      sub: [
-        { name: "Educational Institutes", path: "/ComingSoon" },
-        { name: "Job Placement Companies", path: "/JobPlacementCompanies" },
-        { name: "Training & Technical Support", path: "/TechnicalSupport" },
-      ],
-    },
-    {
-      name: "Media",
-      sub: [
-        { name: "Video", path: "/VideoGalary" },
-        { name: "Photo", path: "/MediaPhotos" },
-        { name: "Online Media", path: "/OnlineMedia" },
-        { name: "News Paper", path: "/NewsPaper" },
-      ],
-    },
-    { name: "Success Story", path: "/SuccessStory" },
-    { name: "Recruitment", path: "/Recruitment" },
-    { name: "Faq", path: "/FaQ" },
-    { name: "Contact Us", path: "/ContactUs" },
-    { name: "Donate", path: "/Donatebox" },
-  ];
+}, [drawerOpen]);
 
   return (
     <>
-      {/* ================= TOP BAR ================= */}
-      <div className="topbar">
-        <div className="topbar-container">
-          <div className="topbar-content">
-            <div className="topbar-left">
-              <a href="tel:12345615523" className="topbar-item">
-                📞 <span>123 4561 5523</span>
-              </a>
-              <a href="mailto:info@IIInternship.co" className="topbar-item">
-                ✉ <span>info@IIInternship.co</span>
-              </a>
-            </div>
+      {/* ===== Top Bar ===== */}
+     <div className="Navbar-top-bar">
+  <div className="Navbar-top-left">
+    <span><FaPhoneAlt /> 123 4561 5523</span>
+    <span><FaEnvelope /> info@IIInternship.co</span>
+  </div>
 
-            <div className="topbar-right">
-              <Link to="/Login" className="topbar-login">
-                🔑 Login / Register
-              </Link>
-              <Link to="/Apply" className="topbar-cta">
-                🚀 Apply Now
-              </Link>
-            </div>
-          </div>
+  <div className="Navbar-top-right">
+    <Link to="/Login" className="Navbar-login-btn">
+      🔑 Login / Register
+    </Link>
+
+    <Link to="/Apply" className="Navbar-apply-btn">
+      🚀 Apply Now
+    </Link>
+  </div>
+</div>
+
+
+      {/* ===== Navbar ===== */}
+      <nav className="Navbar-navbar">
+        <div className="Navbar-logo">
+          <img src={logo} alt="IIIT Logo" />
         </div>
-      </div>
 
-      {/* ================= NAVBAR ================= */}
-      <header
-        className={`Nav-navbar-wrapper ${showNavbar ? "show" : "hide"}`}
-      >
-        <nav className="Nav-navbar">
-          <div className="Nav-navbar-inner">
-            <div className="Nav-logo-wrapper">
-              <Link to="/" className="Nav-logo">
-                <img src={logo} alt="Logo" />
-              </Link>
-            </div>
+        <ul className="Navbar-nav-links">
+          <li>
+            <Link to="/">Home</Link>
+          </li>
 
-            <button
-              className="Nav-toggler"
-              onClick={() => setMobileMenuOpen(true)}
+          {/* ABOUT US */}
+          <li
+            onMouseEnter={() => setAboutOpen(true)}
+            onMouseLeave={() => setAboutOpen(false)}
+          >
+            About Us <FaChevronDown />
+            <div
+              className={`Navbar-dropdown-menu ${
+                aboutOpen ? "open" : ""
+              }`}
             >
-              ☰
-            </button>
-
-            {/* Desktop Menu */}
-            <ul className="Nav-menu">
-              {menuItems.map((item, i) => (
-                <li className="Nav-item" key={i}>
-                  {item.sub ? (
-                    <>
-                      <span className="Nav-link">{item.name}</span>
-                      <ul className="Nav-dropdown">
-                        {item.sub.map((sub, idx) => (
-                          <li key={idx}>
-                            <Link to={sub.path}>{sub.name}</Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  ) : item.name === "Donate" ? (
-                    <Link className="Nav-donate-btn" to={item.path}>
-                      {item.name}
-                    </Link>
-                  ) : (
-                    <Link className="Nav-link" to={item.path}>
-                      {item.name}
-                    </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </nav>
-
-        {/* ================= MOBILE OVERLAY ================= */}
-        {mobileMenuOpen && (
-          <div
-            className="Nav-overlay"
-            onClick={() => setMobileMenuOpen(false)}
-          />
-        )}
-
-        {/* ================= MOBILE MENU ================= */}
-        <div
-          className={`Nav-mobile-menu ${mobileMenuOpen ? "open" : ""}`}
-          ref={menuRef}
-        >
-          <div className="Nav-mobile-wrapper">
-            <div className="Nav-mobile-top">
-              <div className="Nav-mobile-logo">
-                <img src={logo} alt="Logo" />
-              </div>
-              <button
-                className="Nav-close"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                ✕
-              </button>
+              <Link to="/OrganisationHistory" className="Navbar-dropdown-item">
+                Organization History
+              </Link>
+              <Link to="/vision" className="Navbar-dropdown-item">
+                Vision & Mission
+              </Link>
+              <Link to="/TeamMember" className="Navbar-dropdown-item">
+                Team Members
+              </Link>
+              <Link to="/BecomeInstructor" className="Navbar-dropdown-item">
+                Become A Instructor
+              </Link>
+              <Link to="/WhatIsImmersion" className="Navbar-dropdown-item">
+                What is Immersion
+              </Link>
+              <Link to="/WhatIsInternship" className="Navbar-dropdown-item">
+                What is Internship
+              </Link>
             </div>
+          </li>
 
-            <ul className="Nav-mobile-list">
-              {menuItems.map((item, i) => (
-                <li key={i}>
-                  {item.sub ? (
-                    <>
-                      <div
-                        className="mobile-link"
-                        onClick={() => toggleDropdown(i)}
-                      >
-                        {item.name}
-                        <span>
-                          {mobileDropdownOpen === i ? "▲" : "▼"}
-                        </span>
-                      </div>
+          <li>
+            <Link to="/Notice">Notice</Link>
+          </li>
 
-                      <ul
-                        className={`mobile-dropdown ${
-                          mobileDropdownOpen === i ? "open" : ""
-                        }`}
-                      >
-                        {item.sub.map((sub, idx) => (
-                          <li key={idx}>
-                            <Link
-                              to={sub.path}
-                              onClick={() => setMobileMenuOpen(false)}
-                            >
-                              {sub.name}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  ) : item.name === "Donate" ? (
-                    <Link
-                      to={item.path}
-                      className="Nav-mobile-donate-btn"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  ) : (
-                    <Link
-                      to={item.path}
-                      className="mobile-link"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
+          {/* INTERNSHIP PROGRAM */}
+          <li
+            onMouseEnter={() => setInternshipOpen(true)}
+            onMouseLeave={() => setInternshipOpen(false)}
+          >
+            Internships Program <FaChevronDown />
+            <div
+              className={`Navbar-dropdown-menu ${
+                internshipOpen ? "open" : ""
+              }`}
+            >
+              <Link
+                to="/OnCampusInternship"
+                className="Navbar-dropdown-item"
+              >
+                On Campus Internships
+              </Link>
+              <Link
+                to="/VirtualInternship"
+                className="Navbar-dropdown-item"
+              >
+                Virtual Internships
+              </Link>
+            </div>
+          </li>
+
+          {/* OUR PARTNERS */}
+          <li
+            onMouseEnter={() => setPartnersOpen(true)}
+            onMouseLeave={() => setPartnersOpen(false)}
+          >
+            Our Partners <FaChevronDown />
+            <div
+              className={`Navbar-dropdown-menu ${
+                partnersOpen ? "open" : ""
+              }`}
+            >
+              <Link
+                to="/AllCourseCategories"
+                className="Navbar-dropdown-item"
+              >
+                Educational Institutes
+              </Link>
+              <Link to="/CourseDetails" className="Navbar-dropdown-item">
+                Job Placement Companies
+              </Link>
+            </div>
+          </li>
+
+          {/* MEDIA */}
+          <li
+            onMouseEnter={() => setMediaOpen(true)}
+            onMouseLeave={() => setMediaOpen(false)}
+          >
+            Media <FaChevronDown />
+            <div
+              className={`Navbar-dropdown-menu ${
+                mediaOpen ? "open" : ""
+              }`}
+            >
+              <Link to="/VideoGalary" className="Navbar-dropdown-item">
+                Video
+              </Link>
+              <Link to="/MediaPhotos" className="Navbar-dropdown-item">
+                Photo
+              </Link>
+              <Link to="/OnlineMedia" className="Navbar-dropdown-item">
+                Online Media
+              </Link>
+              <Link to="/NewsPaper" className="Navbar-dropdown-item">
+                News Paper
+              </Link>
+            </div>
+          </li>
+
+          <li>
+            <Link to="/SuccessStory">Success Story</Link>
+          </li>
+
+          <li>
+            <Link to="/Recruitment">Recruitment</Link>
+          </li>
+
+          <li>
+            <Link to="/FaQ">Faq</Link>
+          </li>
+
+          <li>
+            <Link to="/ContactUs">Contact Us</Link>
+          </li>
+        </ul>
+
+        {/* Right Section */}
+        <div className="Navbar-nav-actions">
+          <div className="Navbar-call-box">
+           
+           
+          </div>
+
+          <Link to="/Donatebox" className="Navbar-visit-btn">
+            Donate
+          </Link>
+
+          <div
+            className="Navbar-hamburger"
+            onClick={() => setDrawerOpen(true)}
+          >
+            <FaBars />
           </div>
         </div>
-      </header>
+      </nav>
+
+      {/* Overlay */}
+      {drawerOpen && (
+        <div
+          className="Navbar-overlay"
+          onClick={() => setDrawerOpen(false)}
+        />
+      )}
+      {/* ===== Mobile Drawer ===== */}
+<div className={`Navbar-mobile-drawer ${drawerOpen ? "open" : ""}`}>
+  <div className="Navbar-drawer-header">
+    <img src={logo} alt="IIIT Logo" />
+    <FaTimes onClick={() => setDrawerOpen(false)} />
+  </div>
+
+  <ul className="Navbar-drawer-menu">
+    <li>
+      <Link to="/" onClick={() => setDrawerOpen(false)}>Home</Link>
+    </li>
+
+    {/* ABOUT US */}
+    <li
+      className="Navbar-mobile-item"
+      onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
+    >
+      About Us <FaChevronDown className={mobileAboutOpen ? "rotate" : ""} />
+    </li>
+
+    {mobileAboutOpen && (
+      <div className="navbar-mobile-submenu">
+        <Link to="/OrganisationHistory" className="navbar-mobile-submenu__item" onClick={() => setDrawerOpen(false)}>Organization History</Link>
+        <Link to="/vision" className="navbar-mobile-submenu__item" onClick={() => setDrawerOpen(false)}>Vision & Mission</Link>
+        <Link to="/TeamMember" className="navbar-mobile-submenu__item" onClick={() => setDrawerOpen(false)}>Team Members</Link>
+        <Link to="/BecomeInstructor" className="navbar-mobile-submenu__item" onClick={() => setDrawerOpen(false)}>Become A Instructor</Link>
+        <Link to="/WhatIsImmersion" className="navbar-mobile-submenu__item" onClick={() => setDrawerOpen(false)}>What is Immersion</Link>
+        <Link to="/WhatIsInternship" className="navbar-mobile-submenu__item" onClick={() => setDrawerOpen(false)}>What is Internship</Link>
+      </div>
+    )}
+
+    <li>
+      <Link to="/Notice" onClick={() => setDrawerOpen(false)}>Notice</Link>
+    </li>
+
+    {/* INTERNSHIP */}
+    <li
+      className="Navbar-mobile-item"
+      onClick={() => setMobileInternshipOpen(!mobileInternshipOpen)}
+    >
+      Internships Program <FaChevronDown className={mobileInternshipOpen ? "rotate" : ""} />
+    </li>
+
+    {mobileInternshipOpen && (
+      <div className="navbar-mobile-submenu">
+        <Link to="/OnCampusInternship" className="navbar-mobile-submenu__item" onClick={() => setDrawerOpen(false)}>On Campus Internships</Link>
+        <Link to="/VirtualInternship" className="navbar-mobile-submenu__item" onClick={() => setDrawerOpen(false)}>Virtual Internships</Link>
+      </div>
+    )}
+
+    {/* PARTNERS */}
+    <li
+      className="Navbar-mobile-item"
+      onClick={() => setMobilePartnersOpen(!mobilePartnersOpen)}
+    >
+      Our Partners <FaChevronDown className={mobilePartnersOpen ? "rotate" : ""} />
+    </li>
+
+    {mobilePartnersOpen && (
+      <div className="navbar-mobile-submenu">
+        <Link to="/AllCourseCategories" className="navbar-mobile-submenu__item" onClick={() => setDrawerOpen(false)}>Educational Institutes</Link>
+        <Link to="/CourseDetails" className="navbar-mobile-submenu__item" onClick={() => setDrawerOpen(false)}>Job Placement Companies</Link>
+      </div>
+    )}
+
+    {/* MEDIA */}
+    <li
+      className="Navbar-mobile-item"
+      onClick={() => setMobileMediaOpen(!mobileMediaOpen)}
+    >
+      Media <FaChevronDown className={mobileMediaOpen ? "rotate" : ""} />
+    </li>
+
+    {mobileMediaOpen && (
+      <div className="navbar-mobile-submenu">
+        <Link to="/VideoGalary" className="navbar-mobile-submenu__item" onClick={() => setDrawerOpen(false)}>Video</Link>
+        <Link to="/MediaPhotos" className="navbar-mobile-submenu__item" onClick={() => setDrawerOpen(false)}>Photo</Link>
+        <Link to="/OnlineMedia" className="navbar-mobile-submenu__item" onClick={() => setDrawerOpen(false)}>Online Media</Link>
+        <Link to="/NewsPaper" className="navbar-mobile-submenu__item" onClick={() => setDrawerOpen(false)}>News Paper</Link>
+      </div>
+    )}
+
+    <li>
+      <Link to="/SuccessStory" onClick={() => setDrawerOpen(false)}>Success Story</Link>
+    </li>
+
+    <li>
+      <Link to="/Recruitment" onClick={() => setDrawerOpen(false)}>Recruitment</Link>
+    </li>
+
+    <li>
+      <Link to="/FaQ" onClick={() => setDrawerOpen(false)}>Faq</Link>
+    </li>
+
+    <li>
+      <Link to="/ContactUs" onClick={() => setDrawerOpen(false)}>Contact Us</Link>
+    </li>
+
+    <li>
+      <Link to="/Donatebox" onClick={() => setDrawerOpen(false)}>Donate</Link>
+    </li>
+  </ul>
+</div>
+
     </>
   );
 };
