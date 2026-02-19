@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./CourseInstructors.css";
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaShareAlt, FaStar } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaShareAlt,
+  FaStar,
+} from "react-icons/fa";
 
 // Assets
 import ProfileImg from "../../assets/team-04.webp";
@@ -38,53 +44,84 @@ const instructors = [
 ];
 
 const CourseInstructors = () => {
+  const [activeIndex, setActiveIndex] = useState(null);
+  const wrapperRef = useRef(null);
+
+  const toggleShare = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
+
+  // Close when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        setActiveIndex(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <section className="courseinstructor-section">
-      {/* Section Header */}
+    <section className="courseinstructor-section" ref={wrapperRef}>
+      {/* Header */}
       <p className="courseinstructor-subtitle">INSTRUCTORS</p>
       <h2 className="courseinstructor-title">Course Instructors</h2>
       <span className="courseinstructor-underline"></span>
 
-      {/* Instructors Grid */}
+      {/* Grid */}
       <div className="courseinstructor-grid">
         {instructors.map((inst, index) => (
           <div className="courseinstructor-card" key={index}>
+            {/* Image Section */}
             <div className="courseinstructor-image-wrapper">
               <img
                 src={inst.image}
                 alt={inst.name}
                 className="courseinstructor-image"
               />
-              <div className="courseinstructor-overlay">
+
+              {/* Social Icons (Click to Show) */}
+              <div
+                className={`courseinstructor-overlay ${
+                  activeIndex === index ? "active" : ""
+                }`}
+              >
                 <div className="courseinstructor-social-icons">
-                  <FaFacebookF className="courseinstructor-icon" />
-                  <FaTwitter className="courseinstructor-icon" />
-                  <FaLinkedinIn className="courseinstructor-icon" />
+                  <FaFacebookF />
+                  <FaTwitter />
+                  <FaLinkedinIn />
                 </div>
               </div>
-              <div className="courseinstructor-share-btn">
-                <FaShareAlt className="courseinstructor-icon" />
+
+              {/* Share Button */}
+              <div
+                className="courseinstructor-share-btn"
+                onClick={() => toggleShare(index)}
+              >
+                <FaShareAlt />
               </div>
             </div>
 
-            {/* Instructor Info */}
+            {/* Content */}
             <h3 className="courseinstructor-name">{inst.name}</h3>
             <p className="courseinstructor-role">{inst.role}</p>
-
-            {/* Bio */}
             <p className="courseinstructor-bio">{inst.bio}</p>
 
             {/* Rating */}
             <div className="courseinstructor-rating">
-              {Array(inst.rating)
-                .fill()
-                .map((_, i) => (
-                  <FaStar key={i} className="courseinstructor-star" />
-                ))}
+              {[...Array(inst.rating)].map((_, i) => (
+                <FaStar key={i} className="courseinstructor-star" />
+              ))}
             </div>
 
-            {/* Profile Button */}
-            <button className="courseinstructor-btn">View Profile</button>
+            {/* Button */}
+            <button className="courseinstructor-btn">
+              View Profile
+            </button>
           </div>
         ))}
       </div>
