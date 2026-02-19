@@ -1,0 +1,246 @@
+/* ===== SECTION ===== */
+.Workshop-Section-section {
+  background: #f8f8fb;
+  padding: 70px 20px;
+}
+
+.Workshop-Section-container {
+  max-width: 1320px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* ===== LEFT IMAGE ===== */
+.Workshop-Section-left {
+  flex: 1 1 500px;
+  display: flex;
+  justify-content: center;
+}
+
+.Workshop-Section-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.Workshop-Section-main-img {
+  width: 100%;
+  display: block;
+  border-radius: 50% 45% 50% 45%;
+  object-fit: cover;
+}
+
+/* Floating shape */
+.Workshop-Section-floating-shape {
+  position: absolute;
+  top: -25px;
+  right: 60px;
+  width: 130px;
+  z-index: 3;
+  animation: Workshop-Section-float 3s ease-in-out infinite;
+}
+
+/* Play button */
+.Workshop-Section-play-btn {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85px;
+  height: 85px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff3b3b;
+  font-size: 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.Workshop-Section-play-btn:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+/* ===== RIGHT CONTENT ===== */
+.Workshop-Section-right {
+  flex: 1 1 520px;
+}
+
+.Workshop-Section-tag {
+  display: inline-block;
+  background: #ecebff;
+  color: #5c4df5;
+  padding: 6px 18px;
+  border-radius: 25px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.Workshop-Section-right h2 {
+  font-size: 30px;
+  color: #0e1545;
+  margin-bottom: 18px;
+  font-weight: 700;
+}
+
+.Workshop-Section-desc {
+  color: #5f647d;
+  line-height: 1.8;
+  margin-bottom: 28px;
+  font-size: 17px;
+}
+
+/* ===== FEATURES ===== */
+.Workshop-Section-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+  margin-bottom: 28px;
+}
+
+.Workshop-Section-feature-item {
+  display: flex;
+  gap: 14px;
+}
+
+.Workshop-Section-icon {
+  min-width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: white;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.Workshop-Section-icon-pink {
+  background: #ff6b6b;
+}
+
+.Workshop-Section-icon-blue {
+  background: #11c2d8;
+}
+
+.Workshop-Section-feature-item h4 {
+  font-size: 15px;
+  margin: 0 0 8px;
+  color: #0e1545;
+}
+
+.Workshop-Section-feature-item p {
+  margin: 0;
+  color: #5f647d;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* ===== BUTTON ===== */
+.Workshop-Section-join-btn {
+  background: linear-gradient(90deg, #5d4df5, #4338ca);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 35px;
+  font-size: 20px;
+  font-weight: 550;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 8px 0 #2d2ca3;
+  transition: 0.25s ease;
+}
+
+.Workshop-Section-join-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ===== FLOAT ANIMATION ===== */
+@keyframes Workshop-Section-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ===== RESPONSIVE ===== */
+
+/* Laptop */
+@media (max-width: 1200px) {
+  .Workshop-Section-right h2 {
+    font-size: 36px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .Workshop-Section-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .Workshop-Section-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .Workshop-Section-feature-item {
+    justify-content: center;
+    text-align: left;
+  }
+
+  .Workshop-Section-floating-shape {
+    right: 30px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .Workshop-Section-section {
+    padding: 40px 10px;
+  }
+
+  .Workshop-Section-right h2 {
+    font-size: 30px;
+  }
+
+  .Workshop-Section-desc {
+    font-size: 15px;
+  }
+
+  .Workshop-Section-join-btn {
+    font-size: 16px;
+    padding: 12px 22px;
+  }
+
+  .Workshop-Section-play-btn {
+    width: 65px;
+    height: 65px;
+    font-size: 22px;
+  }
+
+  .Workshop-Section-floating-shape {
+    width: 90px;
+    top: -15px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .Workshop-Section-right h2 {
+    font-size: 24px;
+  }
+
+  .Workshop-Section-feature-item h4 {
+    font-size: 18px;
+  }
+
+  .Workshop-Section-feature-item p {
+    font-size: 14px;
+  }
+}

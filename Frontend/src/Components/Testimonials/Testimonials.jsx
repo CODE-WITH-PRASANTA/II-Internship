@@ -1,49 +1,47 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Testimonials.css";
 
 import Profilepic from "../../assets/Profile 0001.webp";
 import DotShape from "../../assets/shape-2.png";
 
 const testimonialsData = [
-  {
-    id: 1,
-    name: "Thomas Lopez",
-    role: "Designer",
-    img: Profilepic,
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet consectetur elit adicing sed do usmod zx tempor enim minim veniam quis nostrud exer citation.",
-  },
-  {
-    id: 2,
-    name: "Amber Page",
-    role: "Developer",
-    img: Profilepic,
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet consectetur elit adicing sed do usmod zx tempor enim minim veniam quis nostrud exer citation.",
-  },
-  {
-    id: 3,
-    name: "John Doe",
-    role: "Designer",
-    img: Profilepic,
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet consectetur elit adicing sed do usmod zx tempor enim minim veniam quis nostrud exer citation.",
-  },
-  {
-    id: 4,
-    name: "Jane Smith",
-    role: "Developer",
-    img: Profilepic,
-    rating: 5,
-    review:
-      "Lorem ipsum dolor sit amet consectetur elit adicing sed do usmod zx tempor enim minim veniam quis nostrud exer citation.",
-  },
+  { id: 1, name: "Thomas Lopez", role: "Designer", img: Profilepic, rating: 5,
+    review: "Lorem ipsum dolor sit amet consectetur elit adicing sed do usmod zx tempor enim minim veniam quis nostrud exer citation." },
+  { id: 2, name: "Amber Page", role: "Developer", img: Profilepic, rating: 5,
+    review: "Lorem ipsum dolor sit amet consectetur elit adicing sed do usmod zx tempor enim minim veniam quis nostrud exer citation." },
+  { id: 3, name: "John Doe", role: "Designer", img: Profilepic, rating: 5,
+    review: "Lorem ipsum dolor sit amet consectetur elit adicing sed do usmod zx tempor enim minim veniam quis nostrud exer citation." },
+  { id: 4, name: "Jane Smith", role: "Developer", img: Profilepic, rating: 5,
+    review: "Lorem ipsum dolor sit amet consectetur elit adicing sed do usmod zx tempor enim minim veniam quis nostrud exer citation." },
 ];
 
 const Testimonials = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [cardsPerPage, setCardsPerPage] = useState(2);
+
+  // Responsive cards per page
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setCardsPerPage(1);
+      } else {
+        setCardsPerPage(2);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const totalPages = Math.ceil(testimonialsData.length / cardsPerPage);
+
+  const startIndex = (currentPage - 1) * cardsPerPage;
+  const visibleCards = testimonialsData.slice(
+    startIndex,
+    startIndex + cardsPerPage
+  );
+
   return (
     <section className="testimonial-section">
       <div className="testimonial-left">
@@ -59,24 +57,36 @@ const Testimonials = () => {
         </button>
       </div>
 
-     <div className="testimonial-right">
-  <div className="testimonial-slider">
-    {testimonialsData.map((item) => (
-      <div className="testimonial-card" key={item.id}>
-        <img src={DotShape} alt="dots" className="testimonial-dot" />
-        <div className="testimonial-header">
-          <img src={item.img} alt={item.name} className="testimonial-avatar" />
-          <span className="testimonial-quote">"</span>
+      <div className="testimonial-right">
+        <div className="testimonial-slider">
+          {visibleCards.map((item) => (
+            <div className="testimonial-card" key={item.id}>
+              <img src={DotShape} alt="dots" className="testimonial-dot" />
+              <div className="testimonial-header">
+                <img src={item.img} alt={item.name} className="testimonial-avatar" />
+                <span className="testimonial-quote">"</span>
+              </div>
+              <p className="testimonial-review">{item.review}</p>
+              <div className="testimonial-stars">{"★".repeat(item.rating)}</div>
+              <h3 className="testimonial-name">{item.name}</h3>
+              <p className="testimonial-role">{item.role}</p>
+            </div>
+          ))}
         </div>
-        <p className="testimonial-review">{item.review}</p>
-        <div className="testimonial-stars">{"★".repeat(item.rating)}</div>
-        <h3 className="testimonial-name">{item.name}</h3>
-        <p className="testimonial-role">{item.role}</p>
-      </div>
-    ))}
-  </div>
-</div>
 
+        {/* Pagination */}
+        <div className="testimonial-pagination">
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index}
+              className={currentPage === index + 1 ? "active" : ""}
+              onClick={() => setCurrentPage(index + 1)}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };

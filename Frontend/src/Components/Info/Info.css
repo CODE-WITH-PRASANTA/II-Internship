@@ -84,11 +84,7 @@
 }
 
 
-/* ====== Gradient Colors ====== */
-.gradient-green { background: linear-gradient(135deg, #00c49f, #00e0c6); }
-.gradient-red { background: linear-gradient(135deg, #ff3b6c, #ff6b95); }
-.gradient-orange { background: linear-gradient(135deg, #f39c12, #f9c74f); }
-.gradient-purple { background: linear-gradient(135deg, #9b59b6, #af7de9); }
+
 
 /* ====== Info Text ====== */
 .info-text {
@@ -122,12 +118,26 @@
 }
 
 /* Mobiles */
+/* Mobiles */
 @media (max-width: 600px) {
+
   .info-box {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr); /* 2 per row */
     gap: 25px;
-    padding: 40px 20px;
+    padding: 35px 20px;
   }
-  .info-number { font-size: 2rem; }
-  .info-text { font-size: 0.85rem; }
+
+  .info-item {
+    align-items: center;
+  }
+
+  .info-number {
+    font-size: 1.9rem;
+  }
+
+  .info-text {
+    font-size: 0.75rem;
+  }
+
 }
+

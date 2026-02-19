@@ -6,6 +6,7 @@ const path = require("path");
 const connectDB = require("./config/db");
 const successStoryRoutes = require("./routes/successStory.routes");
 const eventPicRoutes = require("./routes/eventPic.routes");
+const noticeRoutes = require("./routes/notice.routes");
 
 dotenv.config();
 connectDB();
@@ -24,6 +25,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api/success-stories", successStoryRoutes);
 
 app.use("/api/event-pics", eventPicRoutes);
+app.use("/api/notices", noticeRoutes);
 
 // ================= SERVER =================
 const PORT = process.env.PORT || 5000;
