@@ -32,6 +32,8 @@ import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
 import MentorRegistration from "./Pages/MentorRegistration/MentorRegistration";
 import ApplicationSubmited from "./Components/ApplicationSubmited/ApplicationSubmited";
 
+<Route path="/admin/notices" element={<AdminNoticeManager />} />
+
 function App() {
   return (
     <Router>

@@ -187,11 +187,15 @@ const navItems = [
   },
 
   // ================= NOTICE MANAGEMENT =================
-  {
-    icon: <UsersIcon />,
-    name: "Notice Management",
-    path: "/notice/Management",
-  },
+  
+ {
+  icon: <BellIcon />,
+  name: "Notice Management",
+  subItems: [
+    { name: "Post Notice", path: "/admin/notices/post" },
+    { name: "Manage Notices", path: "/admin/notices/manage" },
+  ],
+},
 
   // ================= MEDIA =================
   {
