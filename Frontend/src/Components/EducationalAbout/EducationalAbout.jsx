@@ -25,25 +25,9 @@ const EducationalAbout = () => {
         <div className="eduportabout-image-wrapper">
           <img src={aboutImage} alt="Students meeting" />
 
-          {/* Decorative SVG */}
-          <div className="eduportabout-decorative-dots">
-            <svg viewBox="0 0 200 200">
-              {[...Array(28)].map((_, i) => {
-                const angle = (i / 28) * Math.PI * 2;
-                const radius = 70;
-                return (
-                  <ellipse
-                    key={i}
-                    cx={100 + radius * Math.cos(angle)}
-                    cy={100 + radius * Math.sin(angle)}
-                    rx="4"
-                    ry="10"
-                    fill="#111"
-                  />
-                );
-              })}
-            </svg>
-          </div>
+         
+         
+          
         </div>
 
         {/* RIGHT CONTENT */}

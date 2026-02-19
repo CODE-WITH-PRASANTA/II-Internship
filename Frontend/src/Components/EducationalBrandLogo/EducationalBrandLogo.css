@@ -1,0 +1,74 @@
+/* ================= SECTION ================= */
+
+.eduportbrandlogos-section {
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  background: #f8f9fc;
+  padding: 0 5%;
+}
+
+/* ================= CONTAINER ================= */
+
+.eduportbrandlogos-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 40px;
+  align-items: center;
+  justify-items: center;
+}
+
+/* ================= LOGO ITEM ================= */
+
+.eduportbrandlogos-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+}
+
+.eduportbrandlogos-item img {
+  max-width: 120px;
+  max-height: 60px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.4s ease;
+}
+
+/* Hover effect */
+.eduportbrandlogos-item:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1024px) {
+  .eduportbrandlogos-section {
+    height: auto;
+    padding: 60px 20px;
+  }
+
+  .eduportbrandlogos-container {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .eduportbrandlogos-item img {
+    max-width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .eduportbrandlogos-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .eduportbrandlogos-item img {
+    max-width: 90px;
+  }
+}
