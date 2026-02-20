@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import './ImageGrid.css';
+import React, { useState, useEffect, useRef } from "react";
+import "./ImageGrid.css";
 import ig1 from "../../assets/img-1.webp";
 import ig2 from "../../assets/ht1.webp";
 import ig3 from "../../assets/ht2.webp";
@@ -24,17 +24,15 @@ const ImageGrid = () => {
   const [modalImg, setModalImg] = useState(null);
   const sliderRef = useRef(null);
 
-  // Infinite smooth scroll
   useEffect(() => {
     const slider = sliderRef.current;
-    let speed = 0.5; // pixels per frame
+    let speed = 0.5;
     let animationFrame;
 
     const scroll = () => {
       if (slider) {
         slider.scrollLeft += speed;
 
-        // Seamless infinite scroll
         if (slider.scrollLeft >= slider.scrollWidth / 2) {
           slider.scrollLeft = 0;
         }
@@ -43,19 +41,22 @@ const ImageGrid = () => {
     };
 
     animationFrame = requestAnimationFrame(scroll);
-
     return () => cancelAnimationFrame(animationFrame);
   }, []);
 
-  // Duplicate images for seamless loop
   const duplicatedImages = [...images, ...images];
 
   return (
     <>
+      {/* ===== HEADING ===== */}
+      <div className="gallery-heading-wrap">
+        <h2 className="gallery-heading">Our Gallery</h2>
+      </div>
+
       <div className="home-image-grid" ref={sliderRef}>
         {duplicatedImages.map((image, index) => (
-          <div 
-            className="image-card" 
+          <div
+            className="image-card"
             key={index}
             onClick={() => setModalImg(image.img)}
           >

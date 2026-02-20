@@ -1,0 +1,167 @@
+/* ================= SECTION ================= */
+
+.eduportshowcase-section {
+  padding: 80px 5%;
+  background: #f8f9fc;
+}
+
+/* ================= HEADER ================= */
+
+.eduportshowcase-header {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 60px;
+}
+
+.eduportshowcase-header h2 {
+  font-size: 38px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.4;
+}
+
+/* ================= GRID ================= */
+
+.eduportshowcase-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+/* ================= LEFT COLUMN ================= */
+
+.eduportshowcase-left {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.eduportshowcase-small-top {
+  width: 200px;
+  height: 130px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.eduportshowcase-small-bottom {
+  width: 100%;
+  height: 250px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+/* ================= CENTER ================= */
+
+.eduportshowcase-center {
+  position: relative;
+}
+
+.eduportshowcase-main-image {
+  width: 100%;
+  height: 500px;
+  border-radius: 25px;
+  object-fit: cover;
+}
+
+/* Decorative Dots */
+.eduportshowcase-dots {
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
+  width: 120px;
+  height: 120px;
+  background-image: radial-gradient(#0f172a 5px, transparent 5px);
+  background-size: 20px 20px;
+}
+
+/* Decorative Arrow */
+.eduportshowcase-arrow {
+  position: absolute;
+  top: -40px;
+  left: 20%;
+  width: 200px;
+}
+
+/* ================= RIGHT COLUMN ================= */
+
+.eduportshowcase-right {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.eduportshowcase-orange-card {
+  background: linear-gradient(135deg, #ff6a00, #ff9f43);
+  padding: 60px;
+  border-radius: 25px;
+  color: #ffffff;
+}
+
+.eduportshowcase-orange-card span {
+  font-size: 14px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.eduportshowcase-orange-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.eduportshowcase-bottom-image {
+  width: 200px;
+  height: 120px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1024px) {
+  .eduportshowcase-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .eduportshowcase-main-image {
+    height: 420px;
+  }
+
+  .eduportshowcase-dots,
+  .eduportshowcase-arrow {
+    display: none;
+  }
+
+  .eduportshowcase-header h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .eduportshowcase-section {
+    padding: 60px 20px;
+  }
+
+  .eduportshowcase-main-image {
+    height: 350px;
+  }
+
+  .eduportshowcase-orange-card {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .eduportshowcase-main-image {
+    height: 280px;
+  }
+
+  .eduportshowcase-small-top {
+    height: 130px;
+  }
+
+  .eduportshowcase-small-bottom {
+    height: 200px;
+  }
+}

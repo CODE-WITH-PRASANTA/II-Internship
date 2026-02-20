@@ -5,6 +5,7 @@ const {
   createStory,
   getAllStories,
   deleteStory,
+  updateStory, // ✅ added
 } = require("../controllers/successStory.controller");
 
 const { upload, convertToWebp } = require("../middleware/upload");
@@ -17,8 +18,16 @@ router.post(
   createStory
 );
 
-/* ================= GET ================= */
+/* ================= GET ALL ================= */
 router.get("/", getAllStories);
+
+/* ================= UPDATE ================= */
+router.put(
+  "/:id",
+  upload.single("image"),
+  convertToWebp,
+  updateStory
+);
 
 /* ================= DELETE ================= */
 router.delete("/:id", deleteStory);

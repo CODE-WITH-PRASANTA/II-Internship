@@ -1,65 +1,87 @@
 import React from "react";
 import "./TopCategory.css";
 import {
-  FaLaptopCode, FaCertificate, FaBrain, FaPenNib, FaCode,
-  FaPills, FaDatabase, FaBullhorn, FaHandshake, FaLaptop, FaImages
+  FaCode,
+  FaBriefcase,
+  FaChartLine,
+  FaBullhorn,
+  FaShoppingBag,
+  FaCamera,
+  FaPaintBrush,
+  FaHeartbeat,
+  FaMusic,
 } from "react-icons/fa";
-import { BsBookHalf, BsPeople } from "react-icons/bs";
-
-const stats = [
-  { icon: <FaLaptopCode />, number: "3020", text: "Online Courses", color: "#4facfe" },
-  { icon: <BsBookHalf />, number: "150+", text: "Top Instructors", color: "#00f2fe" },
-  { icon: <FaCertificate />, number: "800+", text: "Certifications", color: "#43e97b" },
-  { icon: <BsPeople />, number: "6,000", text: "Membership", color: "#fa709a" },
-];
 
 const categories = [
-  { icon: <FaBrain />, text: "Business Management", bg: "#e0f7f4" },
-  { icon: <FaPenNib />, text: "Arts & Design", bg: "#ffe6ea" },
-  { icon: <FaCode />, text: "Personal Development", bg: "#e6fff3" },
-  { icon: <FaPills />, text: "Health & Fitness", bg: "#fff4d9" },
-  { icon: <FaDatabase />, text: "Data Science", bg: "#f0e6ff" },
-  { icon: <FaBullhorn />, text: "Marketing", bg: "#ffe6f0" },
-  { icon: <FaHandshake />, text: "Business & Finance", bg: "#e6e6ff" },
-  { icon: <FaLaptop />, text: "Computer Science", bg: "#fff4d9" },
-  { icon: <FaImages />, text: "Video & Photography", bg: "#e6f7ff" },
+  {
+    title: "Development",
+    desc: "Take your journey with this course",
+    icon: <FaCode />,
+  },
+  {
+    title: "Business",
+    desc: "Take your journey with this course",
+    icon: <FaBriefcase />,
+  },
+  {
+    title: "Data Science",
+    desc: "Discover the data science",
+    icon: <FaChartLine />,
+  },
+  {
+    title: "Marketing",
+    desc: "Take up your self in the next level",
+    icon: <FaBullhorn />,
+  },
+  {
+    title: "Life Styles",
+    desc: "Improved your life style course",
+    icon: <FaShoppingBag />,
+  },
+  {
+    title: "Photography",
+    desc: "Become the great photographer",
+    icon: <FaCamera />,
+  },
+  {
+    title: "Art and Design",
+    desc: "Grow your design skills",
+    icon: <FaPaintBrush />,
+  },
+  {
+    title: "Health and Fitness",
+    desc: "Enjoy the health life with fitness",
+    icon: <FaHeartbeat />,
+  },
+  {
+    title: "Music",
+    desc: "Improve your self with music",
+    icon: <FaMusic />,
+  },
 ];
-
-const StatCard = ({ icon, number, text, color }) => (
-  <div className="stat-card" style={{ borderColor: color }}>
-    <div className="stat-icon" style={{ backgroundColor: color }}>{icon}</div>
-    <div>
-      <h2>{number}</h2>
-      <p>{text}</p>
-    </div>
-  </div>
-);
-
-const CategoryCard = ({ icon, text, bg }) => (
-  <div className="category-card" style={{ backgroundColor: bg }}>
-    <span className="category-icon">{icon}</span>
-    <p>{text}</p>
-  </div>
-);
 
 const TopCategory = () => {
   return (
-    <>
-      {/* Stats Section */}
-      <section className="stats-section">
-        <div className="stats-row">
-          {stats.map((stat, i) => <StatCard key={i} {...stat} />)}
-        </div>
-      </section>
-      {/* Categories Section */}
-      <section className="categories-section">
-        <h2 className="section-title">Top Categories</h2>
-        <p className="section-subtitle">Explore popular learning areas chosen by thousands of learners</p>
-        <div className="categories-grid">
-          {categories.map((cat, i) => <CategoryCard key={i} {...cat} />)}
-        </div>
-      </section>
-    </>
+    <section className="top-category">
+      <div className="top-category-header">
+        <h4>Explore</h4>
+        <h2>
+          Our Top <span>Categories</span>
+        </h2>
+      </div>
+
+      <div className="category-grid">
+        {categories.map((item, index) => (
+          <div className="category-card" key={index}>
+            <div className="icon-wrap">{item.icon}</div>
+            <div className="category-content">
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };
 

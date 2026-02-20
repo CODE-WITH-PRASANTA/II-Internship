@@ -4,14 +4,30 @@ const successStorySchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
     description: { type: String, required: true },
+
     category: { type: String },
+
     author: { type: String },
+    authorEmail: { type: String }, // ✅ added
+
     designation: { type: String },
     quotes: { type: String },
+
     tags: { type: String },
+
+    blogTags: { type: [String], default: [] }, // ✅ array
+
     address: { type: String },
     contact: { type: String },
-    image: { type: String }, // store image filename
+
+    publishDate: { type: Date }, // ✅ added
+    publishStatus: {
+      type: String,
+      enum: ["Draft", "Published", "Archived"],
+      default: "Draft",
+    }, // ✅ added
+
+    image: { type: String },
   },
   { timestamps: true }
 );
