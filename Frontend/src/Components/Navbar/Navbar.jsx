@@ -118,6 +118,20 @@ const Navbar = () => {
               >
                 Virtual Internships
               </Link>
+              <Link
+                to="/RunningInternship"
+                className="Navbar-dropdown-item"
+              >
+               Running Internships
+              </Link>
+              <Link
+                to="/RunningDetails"
+                className="Navbar-dropdown-item"
+              >
+                Running Details
+               
+              </Link>
+
             </div>
           </li>
 

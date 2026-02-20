@@ -46,13 +46,6 @@ import TSKInstructorPage from "./pages/InstructorPage/InstructorPage";
 import CourseDetails from "./components/CourseDetails/CourseDetails";
 import CourseManage from "./components/CourseManage/CourseManage";
 import AddNewCourseMain from "./components/AddNewCourseMain/AddNewCourseMain";
-<<<<<<< HEAD
-import StoryPost from "./components/StoryPost/StoryPost";
-import StoryPreeview from "./components/StoryPreeview/StoryPreeview";
-import TSKInstructorPage from "./pages/InstructorPage/InstructorPage";
-import EventPicturePage from "./pages/EventPicturePage/EventPicturePage";
-import LearningPartner from "./pages/LearningPartner/LearningPartner";
-=======
 
 /* ================= FEEDBACK ================= */
 import UserFeedback from "./components/UserFeedback/UserFeedback";
@@ -69,7 +62,6 @@ import NewsManagement from "./components/NewsManagement/NewsManagement";
 /*==============  Notice Management  ===============*/
 import NoticeManagement from "./pages/NoticeManagement/NoticeManagement";
 import Dashboard from "./pages/Dashboard/Dashboard";
->>>>>>> e28440ce56824029209aed28c6ff04523391eb0d
 
 export default function App() {
   return (

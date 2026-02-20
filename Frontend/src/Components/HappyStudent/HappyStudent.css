@@ -1,0 +1,166 @@
+/* Outer Wrapper */
+.happy-student-wrapper {
+  width: 100%;
+  background: #0066e9;
+  padding: 90px 20px; /* more breathing room */
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* Background Shapes (Top Left) */
+.happy-student-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  border-radius: 50%;
+  opacity: 0.55;
+}
+
+/* Background Shapes (Bottom Left) */
+.happy-student-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 90px;
+  width: 170px;
+  height: 170px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  border-radius: 50%;
+  opacity: 0.55;
+}
+
+/* Title */
+.happy-student-title {
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+/* Subtitle */
+.happy-student-subtitle {
+  font-size: 17px;
+  opacity: 0.95;
+  margin-bottom: 45px;
+}
+
+/* Form Box */
+.happy-student-form {
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  padding: 14px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Input Field */
+.happy-student-input {
+  flex: 1;
+  padding: 20px 26px;
+  font-size: 17px;
+  border-radius: 40px;
+  border: none;
+  outline: none;
+  background: #edf3ff;
+  color: #333;
+}
+
+/* Button */
+.happy-student-btn {
+  padding: 18px 40px;
+  background: #003764;
+  color: white;
+  border: none;
+  border-radius: 40px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.happy-student-btn:hover {
+  background: #00294b;
+}
+
+/* ------------------------
+     TABLET RESPONSIVE
+------------------------- */
+@media (max-width: 900px) {
+  .happy-student-title {
+    font-size: 32px;
+  }
+
+  .happy-student-subtitle {
+    font-size: 16px;
+  }
+
+  .happy-student-form {
+    max-width: 600px;
+    padding: 18px;
+  }
+
+  .happy-student-input {
+    padding: 18px 22px;
+    font-size: 16px;
+  }
+
+  .happy-student-btn {
+    padding: 16px 34px;
+    font-size: 16px;
+  }
+}
+
+/* ------------------------
+      MOBILE RESPONSIVE
+------------------------- */
+@media (max-width: 600px) {
+  .happy-student-wrapper {
+    padding: 60px 15px;
+  }
+
+  .happy-student-title {
+    font-size: 26px;
+  }
+
+  .happy-student-subtitle {
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
+
+  .happy-student-form {
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 30px;
+    padding: 20px;
+  }
+
+  .happy-student-input,
+  .happy-student-btn {
+    width: 100%;
+  }
+
+  .happy-student-input {
+    padding: 16px 20px;
+  }
+
+  .happy-student-btn {
+    padding: 16px 20px;
+  }
+}

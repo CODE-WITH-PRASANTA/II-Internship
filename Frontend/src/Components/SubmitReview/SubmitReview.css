@@ -1,0 +1,123 @@
+/* ---------- WRAPPER ---------- */
+.submit-review-wrapper {
+  width: 100%;
+  padding: 50px 0;          /* increased spacing */
+  background: #f5f7fc;
+  display: flex;
+  justify-content: center;
+}
+
+/* ---------- CONTAINER ---------- */
+.submit-review-container {
+  width: 92%;
+  max-width: 1100px;
+  background: #ffffff;
+  padding: 45px 55px;       /* improved padding */
+  border-radius: 18px;      /* slight smoothness */
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+}
+
+/* ---------- TITLE ---------- */
+.submit-review-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #043a79;
+  margin-bottom: 35px;      /* increased gap */
+}
+
+/* ---------- ROW LAYOUT ---------- */
+.submit-review-row {
+  display: flex;
+  gap: 25px;                /* increased spacing between fields */
+  margin-bottom: 30px;
+}
+
+.submit-review-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.submit-review-field.full {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/* ---------- LABEL ---------- */
+.submit-review-field label {
+  font-size: 16px;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+/* ---------- INPUTS ---------- */
+.submit-review-field input,
+.submit-review-field textarea {
+  width: 100%;
+  padding: 18px;              /* more input padding */
+  background: #eef3ff;
+  border: 1px solid #e3e8f2;
+  border-radius: 10px;        /* smoother UI */
+  font-size: 16px;
+  color: #333;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.submit-review-field input:focus,
+.submit-review-field textarea:focus {
+  border-color: #1a73e8;
+  background: #f5faff;
+}
+
+/* ---------- BUTTON ---------- */
+.submit-review-btn {
+  padding: 16px 35px;         /* bigger button */
+  background: #0066e9;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-top: 10px;
+}
+
+.submit-review-btn:hover {
+  background: #0a53c6;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1024px) {
+  .submit-review-container {
+    padding: 40px 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .submit-review-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .submit-review-container {
+    padding: 35px 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .submit-review-container {
+    padding: 30px 20px;
+  }
+
+  .submit-review-title {
+    font-size: 24px;
+  }
+
+  .submit-review-btn {
+    width: 100%;
+    padding: 15px;
+  }
+}

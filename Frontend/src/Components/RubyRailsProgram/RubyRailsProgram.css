@@ -1,0 +1,248 @@
+.course-hero {
+  background: #f6f7fb;
+  padding: 80px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.course-hero-wrapper {
+  max-width: 1250px;
+  margin: auto;
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  padding: 0 20px;
+}
+
+/* LEFT VIDEO */
+.video-box {
+  position: relative;
+  width: 460px;
+  min-width: 460px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.video-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* PLAY BUTTON */
+.play-button {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.play-circle {
+  width: 90px;
+  height: 90px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #0d3558;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.play-circle::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border: 2px dashed white;
+  border-radius: 50%;
+  animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* RIGHT CONTENT */
+.course-info h1 {
+  font-size: 42px;
+  color: #133b6b;
+  margin: 10px 0 20px;
+  font-weight: 700;
+}
+
+.badges {
+  display: flex;
+  gap: 12px;
+}
+
+.badge {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.beginner {
+  background: #e7f7ed;
+  color: #2aa36b;
+}
+
+.pro {
+  background: #ffe8e3;
+  color: #ff6a3d;
+}
+
+.meta-row {
+  display: flex;
+  gap: 30px;
+  color: #4c5a73;
+  font-weight: 500;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.meta-row span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.description {
+  color: #6b7a90;
+  line-height: 1.7;
+  max-width: 650px;
+  margin-bottom: 20px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stars {
+  color: #ffb400;
+  letter-spacing: 2px;
+  font-size: 18px;
+}
+
+.rating-value {
+  font-weight: 700;
+  color: #0d3558;
+}
+
+.reviews {
+  color: #7b8aa3;
+}
+
+/* VIDEO MODAL */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.video-content {
+  width: 80%;
+  max-width: 900px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff4d4f;
+  color: #fff;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =============== RESPONSIVE =============== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .course-hero-wrapper {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .video-box {
+    width: 100%;
+    min-width: 100%;
+    max-width: 600px;
+  }
+
+  .course-info h1 {
+    font-size: 34px;
+  }
+}
+
+/* Large Phones */
+@media (max-width: 768px) {
+  .course-hero {
+    padding: 60px 15px;
+  }
+
+  .meta-row {
+    justify-content: center;
+  }
+
+  .course-info h1 {
+    font-size: 28px;
+  }
+
+  .play-circle {
+    width: 70px;
+    height: 70px;
+  }
+
+  .play-circle::after {
+    width: 95px;
+    height: 95px;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+
+  .course-hero {
+    padding: 50px 12px;
+  }
+
+  .course-info h1 {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .video-content {
+    width: 95%;
+    padding: 10px;
+  }
+
+  iframe {
+    height: 260px !important;
+  }
+}

@@ -31,6 +31,8 @@ import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
 import MentorRegistration from "./Pages/MentorRegistration/MentorRegistration";
 import ApplicationSubmited from "./Components/ApplicationSubmited/ApplicationSubmited";
+import  RunningInternship  from "./Pages/RunningInternship/RunningInternship";
+import RunningDetails from "./Pages/RunningDetails/RunningDetails";
 
 function App() {
   return (
@@ -50,6 +52,8 @@ function App() {
           <Route path="/BecomeInstructor" element={<BecomeInstructor />} />
           <Route path="/OnCampusInternship" element={<OnCampusInternship />} />
           <Route path="/VirtualInternship" element={<VirtualInternship />} />
+          <Route path="/RunningInternship" element={<RunningInternship/>} />
+          <Route path="/RunningDetails" element={<RunningDetails/>}/>
           <Route path="/VideoGalary" element={<VideoGalary />} />
           <Route path="/OnlineMedia" element={<OnlineMedia />} />
           <Route path="/NewsPaper" element={<NewsPaper />} />
