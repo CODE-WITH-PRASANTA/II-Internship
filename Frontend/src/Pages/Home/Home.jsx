@@ -13,6 +13,8 @@ import Partners from '../../Components/Partners/Partners'
 import News from '../../Components/News/News'
 import Footer from '../../Components/Footer/Footer'
 import ImageGrid from '../../Components/ImageGrid/ImageGrid'
+import WorkshopSection from '../../Components/WorkshopSection/WorkshopSection'
+import WhyChooseUs from '../../Components/WhyChooseUs/WhyChooseUs'
 
 const Home = () => {
   return (
@@ -21,7 +23,9 @@ const Home = () => {
         <TopCatagory/>
         <AboutSection/>
         <PopularCourses/>
+        <WorkshopSection/>
         <Info/>
+        <WhyChooseUs/>
         <Testimonials/>
         <ImageGrid />
         <ContactBanner/>
