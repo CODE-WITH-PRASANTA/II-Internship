@@ -66,13 +66,10 @@ import NewsManagement from "./components/NewsManagement/NewsManagement";
 /*==============  Notice Management  ===============*/
 import NoticeManagement from "./pages/NoticeManagement/NoticeManagement";
 import Dashboard from "./pages/Dashboard/Dashboard";
-<<<<<<< HEAD
 import InstructorManagement from "./pages/InstructorManagement/InstructorManagment";
 import CareerManagement from "./pages/CareerManagement/CareerManagement";
-=======
 import PostNotice from "./pages/PostNotice/PostNotice";
 import NoticePreview from "./pages/NoticePreview/NoticePreview";
->>>>>>> 150aabe9894bfb8275a514b934aca0ee8ef967ee
 
 export default function App() {
   return (
