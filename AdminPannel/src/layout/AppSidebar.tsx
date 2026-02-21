@@ -39,7 +39,7 @@ const navItems = [
 
   {
     icon: <PhotographIcon />,
-    name: "Event Gallery",
+    name: "Home Event Gallery",
     path: "/events/upload",
   },
 
@@ -54,9 +54,9 @@ const navItems = [
     icon: <BookOpenIcon />,
     name: "Course Management",
     subItems: [
-      { name: "Create Course", path: "/course/post" },
+      { name: "Course Posting", path: "/course/post" },
       { name: "Manage Courses", path: "/course/manage" },
-      { name: "Course Preview", path: "/course/preview" },
+      { name: "Course Approval", path: "/course/approval" },
     ],
   },
 

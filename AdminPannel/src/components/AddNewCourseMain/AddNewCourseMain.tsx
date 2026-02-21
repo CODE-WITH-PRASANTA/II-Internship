@@ -1,331 +1,256 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./AddNewCourseMain.css";
 
-/* ===== TYPE ===== */
-/* =============================
-   COURSE TYPE DEFINITION
-============================= */
-interface Course {
-  id: number;
-  image: string;
-  title: string;
-  level: string;
-  teacher: string;
-  designation: string;
-  language: string;
-  rating: number;
-  price: string;
-  timeline: string;
-  students: number;
-  lessons: number;
-}
-
 const AddNewCourseMain: React.FC = () => {
-  const [courses, setCourses] = useState<Course[]>([]);
-  const [editId, setEditId] = useState<number | null>(null);
+  const [phase, setPhase] = useState<number>(1);
 
-  const [formData, setFormData] = useState<Omit<Course, "id">>({
-    image: "",
-    title: "",
-    level: "",
-    teacher: "",
-    designation: "",
-    language: "",
-    rating: 0,
-    price: "",
-    timeline: "",
-    students: 0,
-    lessons: 0,
-  });
+  const nextPhase = () => setPhase((prev) => prev + 1);
+  const prevPhase = () => setPhase((prev) => prev - 1);
 
-  /* =============================
-     CLEANUP IMAGE URL
-  ============================= */
-  useEffect(() => {
-    return () => {
-      if (formData.image) {
-        URL.revokeObjectURL(formData.image);
-      }
-    };
-  }, [formData.image]);
-
-  /* =============================
-     HANDLE INPUT CHANGE
-  ============================= */
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-
-    setFormData(prev => ({
-      ...prev,
-      [name]:
-        name === "students" || name === "lessons"
-          ? Number(value)
-          : value,
-    }));
+  const handleSave = () => {
+    alert("Data Saved Successfully ✅");
   };
 
-  /* =============================
-     HANDLE IMAGE UPLOAD
-  ============================= */
-  const handleImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const url = URL.createObjectURL(e.target.files[0]);
-      setFormData((prev) => ({ ...prev, image: url }));
-    }
-  };
-
-  /* =============================
-     HANDLE SUBMIT
-  ============================= */
   const handleSubmit = () => {
-    if (!formData.title || !formData.level) {
-      alert("Please fill required fields");
-      return;
-    }
-
-    if (editId !== null) {
-      setCourses((prev) =>
-        prev.map((course) =>
-          course.id === editId ? { ...formData, id: editId } : course
-        )
-      );
-      setEditId(null);
-    } else {
-      setCourses((prev) => [...prev, { ...formData, id: Date.now() }]);
-    }
-
-    // Reset form
-    setFormData({
-      image: "",
-      title: "",
-      level: "",
-      teacher: "",
-      designation: "",
-      language: "",
-      rating: 0,
-      price: "",
-      timeline: "",
-      students: 0,
-      lessons: 0,
-    });
+    alert("Course Submitted Successfully 🚀");
   };
 
-  /* =============================
-     EDIT
-  ============================= */
-  const handleEdit = (course: Course) => {
-    const { id, ...rest } = course;
-    setEditId(id);
-    setFormData(rest);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  const [chapters, setChapters] = useState([
+    { title: "", videos: [""] },
+  ]);
+
+  const addChapter = () => {
+    setChapters([...chapters, { title: "", videos: [""] }]);
   };
 
-  /* =============================
-     DELETE
-  ============================= */
-  const handleDelete = (id: number) => {
-    setCourses((prev) => prev.filter((course) => course.id !== id));
+  const addVideo = (index: number) => {
+    const updated = [...chapters];
+    updated[index].videos.push("");
+    setChapters(updated);
   };
 
- return (
-  <div className="coursePage">
-    {/* ================= LEFT FORM CARD ================= */}
-    <div className="courseFormCard">
-      <div className="cardHeader">
-        <h2>{editId ? "Update Course" : "Create New Course"}</h2>
-        <p>Fill the course details below</p>
-      </div>
+  return (
+    <div className="coursepost-container">
+      <div className="coursepost-card">
+        <h2 className="coursepost-title">Course Posting Panel</h2>
 
-      <div className="formGrid">
-
-        {/* IMAGE */}
-        <div className="formField fullWidth">
-          <label>Course Thumbnail</label>
-          <input type="file" accept="image/*" onChange={handleImage} />
+        {/* Progress Indicator */}
+        <div className="coursepost-progress">
+          {[1, 2, 3, 4, 5].map((step) => (
+            <div
+              key={step}
+              className={`coursepost-step ${
+                phase >= step ? "active" : ""
+              }`}
+            >
+              {step}
+            </div>
+          ))}
         </div>
 
-        {/* TITLE */}
-        <div className="formField">
-          <label>Course Title</label>
-          <input name="title" value={formData.title} onChange={handleChange} />
-        </div>
+        {/* ---------------- PHASES ---------------- */}
 
-        {/* LEVEL */}
-        <div className="formField">
-          <label>Course Level</label>
-          <select name="level" value={formData.level} onChange={handleChange}>
-            <option value="">Select Level</option>
-            <option value="Beginner">Beginner</option>
-            <option value="Expert">Expert</option>
-            <option value="All Level">All Level</option>
-          </select>
-        </div>
+        {phase === 1 && (
+          <div className="coursepost-section">
+            <h3>Basic Information</h3>
 
-        {/* INSTRUCTOR */}
-        <div className="formField">
-          <label>Instructor Name</label>
-          <input name="teacher" value={formData.teacher} onChange={handleChange} />
-        </div>
+            <div className="coursepost-grid-2">
+              <input type="file" />
+              <input placeholder="Course Title" />
+            </div>
 
-        {/* DESIGNATION */}
-        <div className="formField">
-          <label>Instructor Designation</label>
-          <input name="designation" value={formData.designation} onChange={handleChange} />
-        </div>
+            <textarea placeholder="Course Short Quote" />
 
-        {/* LANGUAGE */}
-        <div className="formField">
-          <label>Language</label>
-          <select name="language" value={formData.language} onChange={handleChange}>
-            <option value="">Select Language</option>
-            <option value="English">English</option>
-            <option value="Hindi">Hindi</option>
-          </select>
-        </div>
+            <div className="coursepost-grid-2">
+              <input placeholder="Author Name" />
+              <input placeholder="Author Designation" />
+            </div>
 
-        {/* RATING */}
-        <div className="formField">
-          <label>Course Rating</label>
-          <div className="ratingStars">
-            {[1, 2, 3, 4, 5].map(star => (
-              <span
-                key={star}
-                className={star <= formData.rating ? "starFilled" : "starEmpty"}
-                onClick={() => setFormData(prev => ({ ...prev, rating: star }))}
-              >
-                ★
-              </span>
+            <div className="coursepost-grid-2">
+              <input placeholder="Pricing" />
+              <input placeholder="Timeline" />
+            </div>
+
+            <div className="coursepost-grid-2">
+              <select>
+                <option>Rating</option>
+                <option>4.1</option>
+                <option>4.2</option>
+                <option>4.3</option>
+                <option>4.4</option>
+              </select>
+
+              <select>
+                <option>Category</option>
+                <option>Development</option>
+                <option>Design</option>
+                <option>Marketing</option>
+              </select>
+            </div>
+
+            <input placeholder="Tags (3 tags separated by comma)" />
+
+            <div className="coursepost-btns">
+              <button onClick={handleSave} className="coursepost-save">
+                Save
+              </button>
+              <button onClick={nextPhase} className="coursepost-next">
+                Next →
+              </button>
+            </div>
+          </div>
+        )}
+
+        {phase === 2 && (
+          <div className="coursepost-section">
+            <h3>Main Information</h3>
+
+            <textarea placeholder="Course Description" />
+            <textarea placeholder="What You'll Learn (One per line)" />
+            <textarea placeholder="Other Course Information" />
+
+            <div className="coursepost-btns">
+              <button onClick={handleSave} className="coursepost-save">
+                Save
+              </button>
+              <button onClick={nextPhase} className="coursepost-next">
+                Next →
+              </button>
+            </div>
+          </div>
+        )}
+
+        {phase === 3 && (
+          <div className="coursepost-section">
+            <h3>Curriculum</h3>
+
+            {chapters.map((chapter, index) => (
+              <div key={index} className="coursepost-chapter">
+                <input placeholder="Chapter Title" />
+                <button
+                  type="button"
+                  className="coursepost-add"
+                  onClick={addChapter}
+                >
+                  + Chapter
+                </button>
+
+                {chapter.videos.map((video, vIndex) => (
+                  <div key={vIndex} className="coursepost-video">
+                    <input placeholder="Video URL" />
+                    <button
+                      type="button"
+                      className="coursepost-add"
+                      onClick={() => addVideo(index)}
+                    >
+                      + Video
+                    </button>
+                  </div>
+                ))}
+              </div>
             ))}
+
+            <div className="coursepost-btns">
+              <button onClick={handleSave} className="coursepost-save">
+                Save
+              </button>
+              <button onClick={nextPhase} className="coursepost-next">
+                Next →
+              </button>
+            </div>
           </div>
-        </div>
+        )}
 
-        {/* PRICE */}
-        <div className="formField">
-          <label>Price (₹)</label>
-          <input type="number" name="price" value={formData.price} onChange={handleChange} />
-        </div>
+        {phase === 4 && (
+          <div className="coursepost-section">
+            <h3>Course Settings</h3>
 
-        {/* DURATION */}
-        <div className="formField">
-          <label>Duration</label>
-          <input name="timeline" value={formData.timeline} onChange={handleChange} />
-        </div>
+            <div className="coursepost-grid-2">
+              <input placeholder="Discount %" />
+              <input placeholder="Timeline to Increase Price" />
+            </div>
 
-        {/* STUDENTS */}
-        <div className="formField">
-          <label>Total Students</label>
-          <input type="number" name="students" value={formData.students} onChange={handleChange} />
-        </div>
+            <div className="coursepost-grid-2">
+              <select>
+                <option>Certificate</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+              <input type="date" />
+            </div>
 
-        {/* LESSONS */}
-        <div className="formField">
-          <label>Total Lessons</label>
-          <input type="number" name="lessons" value={formData.lessons} onChange={handleChange} />
-        </div>
+            <div className="coursepost-grid-2">
+              <input placeholder="Language" />
+              <select>
+                <option>Skill Level</option>
+                <option>Beginner</option>
+                <option>Intermediate</option>
+                <option>Advance</option>
+              </select>
+            </div>
 
+            <div className="coursepost-grid-2">
+              <input placeholder="Duration" />
+              <input type="number" placeholder="Total Lectures (1-50)" />
+            </div>
+
+            <input placeholder="Demo Video URL" />
+
+            <div className="coursepost-btns">
+              <button onClick={handleSave} className="coursepost-save">
+                Save
+              </button>
+              <button onClick={nextPhase} className="coursepost-next">
+                Next →
+              </button>
+            </div>
+          </div>
+        )}
+
+        {phase === 5 && (
+          <div className="coursepost-section">
+            <h3>Instructor Information</h3>
+
+            <select>
+              <option>Select Teacher</option>
+              <option>John Doe</option>
+              <option>Jane Smith</option>
+            </select>
+
+            <input placeholder="Designation" />
+
+            <div className="coursepost-grid-3">
+              <input placeholder="Instagram URL" />
+              <input placeholder="LinkedIn URL" />
+              <input placeholder="Twitter URL" />
+            </div>
+
+            <textarea placeholder="About Instructor for this Course" />
+
+            <div className="coursepost-grid-2">
+              <input placeholder="Mail ID" />
+              <input placeholder="Website" />
+            </div>
+
+            <div className="coursepost-btns">
+              <button onClick={handleSave} className="coursepost-save">
+                Save
+              </button>
+              <button onClick={handleSubmit} className="coursepost-submit">
+                Submit
+              </button>
+            </div>
+          </div>
+        )}
+
+        {phase > 1 && (
+          <button className="coursepost-back" onClick={prevPhase}>
+            ← Back
+          </button>
+        )}
       </div>
-
-      <button className="primaryBtn" onClick={handleSubmit}>
-        {editId ? "Update Course" : "Publish Course"}
-      </button>
     </div>
-
-   {/* ================= RIGHT SECTION ================= */}
-<div className="coursePreviewCard">
-
-  {/* ===== CARD PREVIEW ===== */}
-  <div className="cardHeader">
-    <h2>Course Preview</h2>
-    <p>Live preview of created courses</p>
-  </div>
-
-  <div className="previewContainer">
-    {courses.length === 0 ? (
-      <div className="emptyState">No courses added yet</div>
-    ) : (
-      courses.map(course => (
-        <div key={course.id} className="courseCard">
-          {course.image && (
-            <img src={course.image} alt="course" />
-          )}
-
-          <div className="courseCardBody">
-            <h3>{course.title}</h3>
-            <span className="badge">{course.level}</span>
-
-            <p className="instructorName">{course.teacher}</p>
-            <p className="designationText">{course.designation}</p>
-
-            <div className="ratingText">
-              {"★".repeat(course.rating)}
-            </div>
-
-            <div className="courseMeta">
-              <span>₹{course.price}</span>
-              <span>{course.students} Students</span>
-              <span>{course.lessons} Lessons</span>
-            </div>
-
-            <div className="cardActions">
-              <button className="editBtn" onClick={() => handleEdit(course)}>Edit</button>
-              <button className="deleteBtn" onClick={() => handleDelete(course.id)}>Delete</button>
-            </div>
-          </div>
-        </div>
-      ))
-    )}
-  </div>
-
-  {/* ===== TABLE SECTION BELOW ===== */}
-  <div className="tableSection">
-    <h3 className="tableTitle">All Courses Data</h3>
-
-    <div className="tableWrapper">
-      <table className="courseTable">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Level</th>
-            <th>Instructor</th>
-            <th>Price</th>
-            <th>Students</th>
-            <th>Lessons</th>
-            <th>Rating</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {courses.length === 0 ? (
-            <tr>
-              <td colSpan={7} className="tableEmpty">
-                No Data Available
-              </td>
-            </tr>
-          ) : (
-            courses.map(course => (
-              <tr key={course.id}>
-                <td>{course.title}</td>
-                <td>{course.level}</td>
-                <td>{course.teacher}</td>
-                <td>₹{course.price}</td>
-                <td>{course.students}</td>
-                <td>{course.lessons}</td>
-                <td>{"★".repeat(course.rating)}</td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-</div>
-
-  </div>
-);
-
+  );
 };
 
 export default AddNewCourseMain;

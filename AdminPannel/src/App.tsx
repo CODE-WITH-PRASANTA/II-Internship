@@ -38,9 +38,12 @@ import StoryPreview from "./components/StoryPreview/StoryPreview";
 import StoryPost from "./components/StoryPost/StoryPost";
 import StoryPreeview from "./components/StoryPreeview/StoryPreeview";
 
-/* ================= INSTRUCTOR ================= */
+/* ================= INSTRUCTOR PROFILE================= */
+import InstructorPage from "./pages/InstructorPage/InstructorPage";
+
+
+/* ================= INSTRUCTOR MANAGEMENT================= */
 import ManageInstructors from "./components/ManageInstructors/ManageInstructors";
-import TSKInstructorPage from "./pages/InstructorPage/InstructorPage";
 
 /* ================= COURSE ================= */
 import CourseDetails from "./components/CourseDetails/CourseDetails";
@@ -91,9 +94,9 @@ export default function App() {
           <Route path="bar-chart" element={<BarChart />} />
 
           {/* ================= COURSE ================= */}
-          <Route path="course/post" element={<AddNewCourseMain />} />
-          <Route path="course/manage" element={<CourseManage />} />
-          <Route path="course/preview" element={<CourseDetails />} />
+          <Route path="/course/post" element={<AddNewCourseMain />} />
+          <Route path="/course/manage" element={<CourseManage />} />
+          <Route path="/course/preview" element={<CourseDetails />} />
 
           {/* ================= Video Management ================= */}
           <Route path="/gallery/videos" element={<VideoManagement/>}/>
@@ -112,11 +115,13 @@ export default function App() {
           <Route path="category/preview" element={<CategoryPreview />} />
 
           {/* ================= INSTRUCTOR ================= */}
-          <Route path="main-instructor" element={<TSKInstructorPage />} />
+          <Route path="/main-instructor" element={<InstructorPage />} />
           <Route path="instructor/add" element={<ManageInstructors />} />
 
           {/* ================= EVENTS ================= */}
-          <Route path="events/upload" element={<EventPicturePage />} />
+          <Route path="/events/upload" element={<EventPicturePage />} />
+
+          
           <Route path="learning-partners" element={<LearningPartner />} />
 
           {/* ================= TESTIMONIAL ================= */}
