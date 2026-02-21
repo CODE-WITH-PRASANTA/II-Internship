@@ -63,6 +63,8 @@ import AdminNoticeManager from "./pages/AdminNoticeManager/AdminNoticeManager";
 /*==============  Notice Management  ===============*/
 import NoticeManagement from "./pages/NoticeManagement/NoticeManagement";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import InstructorManagement from "./pages/InstructorManagement/InstructorManagment";
+import CareerManagement from "./pages/CareerManagement/CareerManagement";
 
 export default function App() {
   return (
@@ -89,6 +91,9 @@ export default function App() {
           {/* Charts */}
           <Route path="line-chart" element={<LineChart />} />
           <Route path="bar-chart" element={<BarChart />} />
+
+          <Route path="/instructor-management" element={<InstructorManagement />} />
+          <Route path="/career-management" element={<CareerManagement />} />
 
           {/* ================= COURSE ================= */}
           <Route path="course/post" element={<AddNewCourseMain />} />

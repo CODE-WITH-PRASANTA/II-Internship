@@ -48,7 +48,18 @@ const navItems = [
     name: "Learning Partners",
     path: "/learning-partners",
   },
+ 
+  {
+  icon: <UserCircleIcon />,
+  name: "Instructor Management",
+  path: "/instructor-management",
+},
 
+{
+  icon: <ClipboardListIcon />,
+  name: "Career Management",
+  path: "/career-management",
+},
   // ================= COURSE MANAGEMENT =================
   {
     icon: <BookOpenIcon />,
@@ -85,6 +96,17 @@ const navItems = [
     ],
   },
 
+ // ================= CAREER MANAGEMENT =================
+{
+  icon: <ClipboardListIcon />,
+  name: "Career Management",
+  subItems: [
+    { name: "Post Job", path: "/career/post-job" },
+    { name: "Manage Jobs", path: "/career/manage-jobs" },
+    { name: "Applications", path: "/career/applications" },
+    { name: "Career Settings", path: "/career/settings" },
+  ],
+},
   // ================= CATEGORY =================
   {
     icon: <FolderPlusIcon />,
