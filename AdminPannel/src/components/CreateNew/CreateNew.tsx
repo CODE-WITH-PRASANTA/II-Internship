@@ -10,10 +10,11 @@ import {
   Moon,
   Sun,
 } from "lucide-react";
+import API, { getImageUrl } from "../../api/api";
 import "./CreateNew.css";
 
 interface Category {
-  id: number;
+  _id: string;
   name: string;
   type: "Top" | "Normal";
   icon: string | null;
@@ -22,14 +23,17 @@ interface Category {
 
 const CreateNew: React.FC = () => {
   const [categoryName, setCategoryName] = useState("");
-  const [categoryType, setCategoryType] = useState<"Top" | "Normal">("Normal");
+  const [categoryType, setCategoryType] =
+    useState<"Top" | "Normal">("Normal");
+  const [iconFile, setIconFile] = useState<File | null>(null);
   const [iconPreview, setIconPreview] = useState<string | null>(null);
   const [categories, setCategories] = useState<Category[]>([]);
-  const [editingId, setEditingId] = useState<number | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
   const [editedCategory, setEditedCategory] = useState<Category | null>(null);
+  const [editIconFile, setEditIconFile] = useState<File | null>(null);
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
-  // ✅ Apply theme to html (not body)
+  /* ================= THEME ================= */
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
@@ -38,55 +42,107 @@ const CreateNew: React.FC = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
-  const handleIconUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => setIconPreview(reader.result as string);
-      reader.readAsDataURL(file);
+  /* ================= FETCH ================= */
+  const fetchCategories = async () => {
+    try {
+      const res = await API.get("/categories");
+      setCategories(res.data);
+    } catch (err) {
+      console.error("FETCH ERROR:", err);
     }
   };
 
-  const handleAddCategory = () => {
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  /* ================= ICON UPLOAD ================= */
+  const handleIconUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setIconFile(file);
+      setIconPreview(URL.createObjectURL(file));
+    }
+  };
+
+  /* ================= ADD ================= */
+  const handleAddCategory = async () => {
     if (!categoryName.trim()) return;
-    const newCategory: Category = {
-      id: Date.now(),
-      name: categoryName.trim(),
-      type: categoryType,
-      icon: iconPreview,
-      published: true,
-    };
-    setCategories((prev) => [newCategory, ...prev]);
-    setCategoryName("");
-    setIconPreview(null);
+
+    try {
+      const formData = new FormData();
+      formData.append("name", categoryName);
+      formData.append("type", categoryType);
+      if (iconFile) formData.append("icon", iconFile);
+
+      await API.post("/categories", formData);
+
+      setCategoryName("");
+      setIconFile(null);
+      setIconPreview(null);
+
+      fetchCategories();
+    } catch (err: any) {
+      alert(err.response?.data?.message || "Error creating category");
+    }
   };
 
-  const handleDelete = (id: number) => {
-    setCategories(categories.filter((cat) => cat.id !== id));
+  /* ================= DELETE ================= */
+  const handleDelete = async (id: string) => {
+    if (!window.confirm("Delete this category?")) return;
+
+    try {
+      await API.delete(`/categories/${id}`);
+      fetchCategories();
+    } catch (err) {
+      console.error("DELETE ERROR:", err);
+    }
   };
 
-  const togglePublish = (id: number) => {
+  /* ================= TOGGLE ================= */
+ const togglePublish = async (id: string) => {
+  try {
+    const res = await API.patch(`/categories/toggle/${id}`);
+
     setCategories((prev) =>
       prev.map((cat) =>
-        cat.id === id ? { ...cat, published: !cat.published } : cat
+        cat._id === id ? res.data.category : cat
       )
     );
-  };
+  } catch (err) {
+    console.error("TOGGLE ERROR:", err);
+  }
+};
 
+  /* ================= EDIT ================= */
   const handleEdit = (category: Category) => {
-    setEditingId(category.id);
+    setEditingId(category._id);
     setEditedCategory({ ...category });
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!editedCategory) return;
-    setCategories((prev) =>
-      prev.map((cat) =>
-        cat.id === editedCategory.id ? { ...editedCategory } : cat
-      )
-    );
-    setEditingId(null);
-    setEditedCategory(null);
+
+    try {
+      const formData = new FormData();
+      formData.append("name", editedCategory.name);
+      formData.append("type", editedCategory.type);
+      formData.append(
+        "published",
+        editedCategory.published.toString()
+      );
+      if (editIconFile) formData.append("icon", editIconFile);
+
+      await API.put(`/categories/${editedCategory._id}`, formData);
+
+      setEditingId(null);
+      setEditedCategory(null);
+      setEditIconFile(null);
+
+      fetchCategories();
+    } catch (err) {
+      console.error("UPDATE ERROR:", err);
+    }
   };
 
   const handleCancel = () => {
@@ -97,16 +153,16 @@ const CreateNew: React.FC = () => {
   const handleEditIcon = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file && editedCategory) {
-      const reader = new FileReader();
-      reader.onload = () =>
-        setEditedCategory({ ...editedCategory, icon: reader.result as string });
-      reader.readAsDataURL(file);
+      setEditIconFile(file);
+      setEditedCategory({
+        ...editedCategory,
+        icon: URL.createObjectURL(file),
+      });
     }
   };
 
   return (
     <div className="create-category-container">
-      {/* Theme Toggle */}
       <div className="theme-toggle">
         <button onClick={toggleTheme} className="theme-btn">
           {theme === "light" ? (
@@ -197,13 +253,20 @@ const CreateNew: React.FC = () => {
             </div>
 
             {categories.map((cat) =>
-              editingId === cat.id && editedCategory ? (
-                <div className="category-row editing" key={cat.id}>
+              editingId === cat._id && editedCategory ? (
+                <div className="category-row editing" key={cat._id}>
                   <div className="category-icon">
-                    <label htmlFor={`editIcon-${cat.id}`} className="icon-label">
+                    <label
+                      htmlFor={`editIcon-${cat._id}`}
+                      className="icon-label"
+                    >
                       {editedCategory.icon ? (
                         <img
-                          src={editedCategory.icon}
+                          src={
+                            editedCategory.icon.startsWith("blob:")
+                              ? editedCategory.icon
+                              : getImageUrl(editedCategory.icon || "")
+                          }
                           alt="icon"
                           className="uploaded-icon"
                         />
@@ -213,7 +276,7 @@ const CreateNew: React.FC = () => {
                     </label>
                     <input
                       type="file"
-                      id={`editIcon-${cat.id}`}
+                      id={`editIcon-${cat._id}`}
                       accept="image/*"
                       onChange={handleEditIcon}
                       hidden
@@ -245,7 +308,7 @@ const CreateNew: React.FC = () => {
                   </select>
                   <span
                     className="status"
-                    onClick={() => togglePublish(cat.id)}
+                    onClick={() => togglePublish(cat._id)}
                   >
                     {cat.published ? (
                       <>
@@ -273,11 +336,14 @@ const CreateNew: React.FC = () => {
                   className={`category-row ${
                     cat.published ? "published" : "unpublished"
                   }`}
-                  key={cat.id}
+                  key={cat._id}
                 >
                   <div className="category-icon">
                     {cat.icon ? (
-                      <img src={cat.icon} alt="category icon" />
+                      <img
+                        src={getImageUrl(cat.icon)}
+                        alt="category icon"
+                      />
                     ) : (
                       <Upload size={18} />
                     )}
@@ -286,8 +352,7 @@ const CreateNew: React.FC = () => {
                   <span>{cat.type}</span>
                   <span
                     className="status"
-                    onClick={() => togglePublish(cat.id)}
-                    title="Click to toggle status"
+                    onClick={() => togglePublish(cat._id)}
                   >
                     {cat.published ? (
                       <>
@@ -310,7 +375,7 @@ const CreateNew: React.FC = () => {
                     </button>
                     <button
                       className="delete-btn"
-                      onClick={() => handleDelete(cat.id)}
+                      onClick={() => handleDelete(cat._id)}
                     >
                       <Trash2 size={18} />
                     </button>

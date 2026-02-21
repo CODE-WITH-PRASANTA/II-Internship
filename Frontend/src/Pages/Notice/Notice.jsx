@@ -5,12 +5,10 @@ import BreadcrumBg from '../../assets/mini-header.webp';
 
 import NoticeSection from '../../Components/NoticeSection/NoticeSection';
 import CategorySlider from '../../Components/CategorySlider/CategorySlider';
-import ServiceBlogs from '../../Components/ServiceBlogs/ServiceBlogs';
-import Newsletter from '../../Components/Newsletter/Newsletter';
-import TopAuthors from '../../Components/TopAuthors/TopAuthors';
-import HotTopics from '../../Components/HotTopics/HotTopics';
-import StaffPicks from '../../Components/StaffPicks/StaffPicks';
-import ImageGrid from '../../Components/ImageGrid/ImageGrid';
+
+
+
+
 
 const Notice = () => {
 
@@ -31,12 +29,12 @@ const Notice = () => {
       {/* Page Content */}
       <NoticeSection/>
       <CategorySlider/>
-      <ServiceBlogs/>
-      <Newsletter/>
-      <TopAuthors/>
-      <HotTopics/>
-      <StaffPicks/>
-      <ImageGrid/>
+      
+     
+      
+      
+      
+      
     </div>
   );
 };

@@ -7,6 +7,7 @@ const connectDB = require("./config/db");
 const successStoryRoutes = require("./routes/successStory.routes");
 const eventPicRoutes = require("./routes/eventPic.routes");
 const noticeRoutes = require("./routes/notice.routes");
+const categoryRoutes = require("./routes/category.routes");
 
 dotenv.config();
 connectDB();
@@ -14,18 +15,26 @@ connectDB();
 const app = express();
 
 // ================= MIDDLEWARE =================
-app.use(cors());
+app.use(
+  cors({
+    origin: true, // allow all localhost ports
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // ================= STATIC FILES =================
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
+
 // ================= ROUTES =================
 app.use("/api/success-stories", successStoryRoutes);
-
 app.use("/api/event-pics", eventPicRoutes);
 app.use("/api/notices", noticeRoutes);
+app.use("/api/categories", categoryRoutes);
+
 
 // ================= SERVER =================
 const PORT = process.env.PORT || 5000;

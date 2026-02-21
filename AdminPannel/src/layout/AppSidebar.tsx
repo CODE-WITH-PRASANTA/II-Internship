@@ -95,6 +95,7 @@ const navItems = [
       { name: "Attendance Management", path: "/instructor/attendance" },
     ],
   },
+<<<<<<< HEAD
 
  // ================= CAREER MANAGEMENT =================
 {
@@ -105,6 +106,16 @@ const navItems = [
     { name: "Manage Jobs", path: "/career/manage-jobs" },
     { name: "Applications", path: "/career/applications" },
     { name: "Career Settings", path: "/career/settings" },
+=======
+// ================= NOTICE MANAGEMENT =================
+  
+ {
+  icon: <BellIcon />,
+  name: "Notice Management",
+  subItems: [
+    { name: "Post Notice", path: "/admin/notices/post" },
+    { name: "Notice Preview", path: "/admin/notices/preview" },
+>>>>>>> 150aabe9894bfb8275a514b934aca0ee8ef967ee
   ],
 },
   // ================= CATEGORY =================
@@ -208,16 +219,7 @@ const navItems = [
     ],
   },
 
-  // ================= NOTICE MANAGEMENT =================
   
- {
-  icon: <BellIcon />,
-  name: "Notice Management",
-  subItems: [
-    { name: "Post Notice", path: "/admin/notices/post" },
-    { name: "Manage Notices", path: "/admin/notices/manage" },
-  ],
-},
 
   // ================= MEDIA =================
   {

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CheckCircle2, XCircle } from "lucide-react";
+import API, { getImageUrl } from "../../api/api";
 import "./CategoryPreview.css";
 
 interface Category {
-  id: number;
+  _id: string;
   name: string;
   type: "Top" | "Normal";
   icon: string | null;
@@ -11,57 +12,66 @@ interface Category {
 }
 
 const CategoryPreview: React.FC = () => {
-  const [categories] = useState<Category[]>([
-    {
-      id: 1,
-      name: "Travel & Tourism",
-      type: "Top",
-      icon: "https://cdn-icons-png.flaticon.com/512/197/197484.png",
-      published: true,
-    },
-    {
-      id: 2,
-      name: "Technology",
-      type: "Normal",
-      icon: "https://cdn-icons-png.flaticon.com/512/919/919851.png",
-      published: true,
-    },
-    {
-      id: 3,
-      name: "Education",
-      type: "Top",
-      icon: "https://cdn-icons-png.flaticon.com/512/3135/3135755.png",
-      published: false,
-    },
-    {
-      id: 4,
-      name: "Health & Fitness",
-      type: "Normal",
-      icon: "https://cdn-icons-png.flaticon.com/512/2966/2966484.png",
-      published: true,
-    },
-  ]);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  /* ================= FETCH ================= */
+  const fetchCategories = async () => {
+    try {
+      const res = await API.get("/categories");
+      setCategories(res.data);
+    } catch (err) {
+      console.error("FETCH ERROR:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  /* ================= TOGGLE ================= */
+  const togglePublish = async (id: string) => {
+    try {
+      const res = await API.patch(`/categories/toggle/${id}`);
+
+      const updatedCategory = res.data.category;
+
+      setCategories((prev) =>
+        prev.map((cat) =>
+          cat._id === id ? updatedCategory : cat
+        )
+      );
+    } catch (err) {
+      console.error("TOGGLE ERROR:", err);
+    }
+  };
 
   return (
     <div className="category-preview-container">
       <h2 className="preview-title">Category Preview</h2>
 
-      {categories.length === 0 ? (
+      {loading ? (
+        <p className="empty-msg">Loading categories...</p>
+      ) : categories.length === 0 ? (
         <p className="empty-msg">No categories available.</p>
       ) : (
         <div className="preview-grid">
           {categories.map((cat) => (
             <div
-              key={cat.id}
+              key={cat._id}
               className={`preview-card ${
                 cat.published ? "published" : "unpublished"
               }`}
             >
               <div className="icon-wrap">
                 {cat.icon ? (
-                  <img src={cat.icon} alt={cat.name} />
+                  <img src={getImageUrl(cat.icon)} alt={cat.name} />
                 ) : (
-                  <div className="placeholder-icon">{cat.name[0]}</div>
+                  <div className="placeholder-icon">
+                    {cat.name[0]}
+                  </div>
                 )}
               </div>
 
@@ -69,7 +79,11 @@ const CategoryPreview: React.FC = () => {
                 <h3>{cat.name}</h3>
                 <p className="type">{cat.type} Category</p>
 
-                <div className="status">
+                <div
+                  className="status"
+                  onClick={() => togglePublish(cat._id)}
+                  style={{ cursor: "pointer" }}
+                >
                   {cat.published ? (
                     <>
                       <CheckCircle2 color="#16a34a" />
