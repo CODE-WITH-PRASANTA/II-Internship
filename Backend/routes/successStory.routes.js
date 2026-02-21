@@ -4,8 +4,10 @@ const router = express.Router();
 const {
   createStory,
   getAllStories,
+  getPublishedStories,
+  updateStory,
   deleteStory,
-  updateStory, // ✅ added
+  getSingleStory
 } = require("../controllers/successStory.controller");
 
 const { upload, convertToWebp } = require("../middleware/upload");
@@ -18,8 +20,12 @@ router.post(
   createStory
 );
 
-/* ================= GET ALL ================= */
+/* ================= GET ALL (Admin) ================= */
 router.get("/", getAllStories);
+
+router.get("/:id", getSingleStory);
+/* ================= GET PUBLISHED (Public) ================= */
+router.get("/published", getPublishedStories);
 
 /* ================= UPDATE ================= */
 router.put(

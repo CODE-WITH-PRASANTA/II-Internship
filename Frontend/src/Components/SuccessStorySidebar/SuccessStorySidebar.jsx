@@ -1,51 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./SuccessStorySidebar.css";
 import { FiSearch, FiChevronRight, FiCalendar } from "react-icons/fi";
-
-import latest1 from "../../assets/Post-1.webp";
-import latest2 from "../../assets/Post-2.webp";
-import latest3 from "../../assets/Post-3.webp";
-import latest4 from "../../assets/Post-1.webp";
+import { useNavigate } from "react-router-dom";
+import API, { getImageUrl } from "../../api/api";
 
 const SuccessStorySidebar = () => {
-  const latestPosts = [
-    {
-      id: 1,
-      image: latest1,
-      date: "April 13, 2024",
-      title: "The Right Learning Path For You",
-    },
-    {
-      id: 2,
-      image: latest2,
-      date: "April 13, 2024",
-      title: "The Growing Need Management",
-    },
-    {
-      id: 3,
-      image: latest3,
-      date: "April 13, 2024",
-      title: "The Right Learning Path For You",
-    },
-    {
-      id: 4,
-      image: latest4,
-      date: "April 13, 2024",
-      title: "The Growing Need Management",
-    },
-  ];
+  const [latestPosts, setLatestPosts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [tags, setTags] = useState([]);
+  const navigate = useNavigate();
 
-  const categories = [
-    "Art & Design",
-    "Business",
-    "Data Science",
-    "Development",
-    "Finance",
-    "Health & Fitness",
-    "Lifestyle",
-  ];
+  /* ================= FETCH SIDEBAR DATA ================= */
+  useEffect(() => {
+    fetchCategories();
+    fetchLatestPosts();
+  }, []);
 
-  const tags = ["Education", "Training", "Online", "Learn", "Course", "LMS"];
+  const fetchCategories = async () => {
+    try {
+      const res = await API.get("/categories");
+      const published = res.data.filter((cat) => cat.published);
+      setCategories(published);
+    } catch (err) {
+      console.error("CATEGORY FETCH ERROR:", err);
+    }
+  };
+
+  const fetchLatestPosts = async () => {
+    try {
+      const res = await API.get("/success-stories");
+
+      const publishedStories = res.data
+        .filter((story) => story.publishStatus === "Published")
+        .sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate))
+        .slice(0, 4); // latest 4
+
+      setLatestPosts(publishedStories);
+
+      // Extract unique tags
+      const allTags = [];
+      publishedStories.forEach((story) => {
+        if (story.blogTags && story.blogTags.length > 0) {
+          allTags.push(...story.blogTags);
+        }
+      });
+
+      const uniqueTags = [...new Set(allTags)];
+      setTags(uniqueTags.slice(0, 8));
+    } catch (err) {
+      console.error("LATEST POSTS FETCH ERROR:", err);
+    }
+  };
 
   return (
     <div className="successstory-sidebar-wrapper">
@@ -61,10 +66,10 @@ const SuccessStorySidebar = () => {
         <h3 className="successstory-sidebar-title">Categories</h3>
 
         <ul className="successstory-sidebar-category-list">
-          {categories.map((category, index) => (
-            <li key={index}>
+          {categories.map((category) => (
+            <li key={category._id}>
               <FiChevronRight />
-              <span>{category}</span>
+              <span>{category.name}</span>
             </li>
           ))}
         </ul>
@@ -75,20 +80,36 @@ const SuccessStorySidebar = () => {
         <h3 className="successstory-sidebar-title">Latest Post</h3>
 
         {latestPosts.map((post) => (
-          <div key={post.id} className="successstory-sidebar-post-item">
-            
+          <div
+            key={post._id}
+            className="successstory-sidebar-post-item"
+            style={{ cursor: "pointer" }}
+            onClick={() =>
+              navigate(`/SuccessStory/details/${post._id}`)
+            }
+          >
             <div className="successstory-sidebar-post-image">
-              <img src={post.image} alt={post.title} />
+              <img
+                src={
+                  post.image
+                    ? getImageUrl(post.image)
+                    : "/placeholder.png"
+                }
+                alt={post.title}
+              />
             </div>
 
             <div className="successstory-sidebar-post-content">
               <div className="successstory-sidebar-post-date">
                 <FiCalendar />
-                <span>{post.date}</span>
+                <span>
+                  {post.publishDate
+                    ? new Date(post.publishDate).toLocaleDateString()
+                    : ""}
+                </span>
               </div>
               <h4>{post.title}</h4>
             </div>
-
           </div>
         ))}
       </div>
@@ -99,7 +120,10 @@ const SuccessStorySidebar = () => {
 
         <div className="successstory-sidebar-tags">
           {tags.map((tag, index) => (
-            <span key={index} className="successstory-sidebar-tag">
+            <span
+              key={index}
+              className="successstory-sidebar-tag"
+            >
               {tag}
             </span>
           ))}
