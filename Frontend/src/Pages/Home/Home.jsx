@@ -15,6 +15,7 @@ import Footer from '../../Components/Footer/Footer'
 import ImageGrid from '../../Components/ImageGrid/ImageGrid'
 import WorkshopSection from '../../Components/WorkshopSection/WorkshopSection'
 import WhyChooseUs from '../../Components/WhyChooseUs/WhyChooseUs'
+import Newsletter from '../../Components/Newsletter/Newsletter'
 
 const Home = () => {
   return (
@@ -26,13 +27,14 @@ const Home = () => {
         <WorkshopSection/>
         <Info/>
         <WhyChooseUs/>
-        <Testimonials/>
+        <Testimonials/> 
         <ImageGrid />
         <ContactBanner/>
         <CourseInstructors/>
         <CertificateSection/>
         <Partners/>
         <News/>
+        <Newsletter />
     </div>
   )
 }

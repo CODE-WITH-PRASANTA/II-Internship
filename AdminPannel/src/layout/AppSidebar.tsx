@@ -84,7 +84,16 @@ const navItems = [
       { name: "Attendance Management", path: "/instructor/attendance" },
     ],
   },
-
+// ================= NOTICE MANAGEMENT =================
+  
+ {
+  icon: <BellIcon />,
+  name: "Notice Management",
+  subItems: [
+    { name: "Post Notice", path: "/admin/notices/post" },
+    { name: "Notice Preview", path: "/admin/notices/preview" },
+  ],
+},
   // ================= CATEGORY =================
   {
     icon: <FolderPlusIcon />,
@@ -186,16 +195,7 @@ const navItems = [
     ],
   },
 
-  // ================= NOTICE MANAGEMENT =================
   
- {
-  icon: <BellIcon />,
-  name: "Notice Management",
-  subItems: [
-    { name: "Post Notice", path: "/admin/notices/post" },
-    { name: "Manage Notices", path: "/admin/notices/manage" },
-  ],
-},
 
   // ================= MEDIA =================
   {

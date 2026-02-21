@@ -58,11 +58,13 @@ import VideoManagement from "./components/VideoManagement/VideoManagement";
 import PhotoManagement from "./components/PhotoManagement/PhotoManagement";
 import OnlineMediaManagement from "./components/OnlineMediaManagement/OnlineMediaManagement";
 import NewsManagement from "./components/NewsManagement/NewsManagement";
-import AdminNoticeManager from "./pages/AdminNoticeManager/AdminNoticeManager";
+
 
 /*==============  Notice Management  ===============*/
 import NoticeManagement from "./pages/NoticeManagement/NoticeManagement";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import PostNotice from "./pages/PostNotice/PostNotice";
+import NoticePreview from "./pages/NoticePreview/NoticePreview";
 
 export default function App() {
   return (
@@ -136,7 +138,10 @@ export default function App() {
           {/*====================Notice Management=======================*/}
           <Route path="/notice/Management" element={<NoticeManagement />} />
 
-          <Route path="/admin/notices/post" element={<AdminNoticeManager />} />
+          <Route path="/admin/notices/post" element={<PostNotice />} />
+          <Route path="/admin/notices/preview" element={<NoticePreview />} />
+
+         
 
 
         </Route>
