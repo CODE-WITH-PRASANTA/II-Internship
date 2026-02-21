@@ -10,15 +10,15 @@ import "./StoryPreeview.css";
 interface Story {
   _id: string;
   title: string;
-  category: string;
+  category: string | { _id: string; name: string };
   description: string;
   author: string;
-  designation?: string;   // ✅ safe optional
+  designation?: string;
   quotes?: string;
   blogTags?: string[];
   address?: string;
   contact?: string;
-  image: string;
+  image?: string;
   publishStatus?: string;
 }
 
@@ -58,11 +58,11 @@ const StoryPreeview: React.FC = () => {
       const newStatus =
         story.publishStatus === "Published" ? "Draft" : "Published";
 
-      await API.put(`/success-stories/${story._id}`, {
-        publishStatus: newStatus,
-      });
+      const formData = new FormData();
+      formData.append("publishStatus", newStatus);
 
-      // ✅ Optimistic update (designation + tags remain intact)
+      await API.put(`/success-stories/${story._id}`, formData);
+
       setStories((prev) =>
         prev.map((item) =>
           item._id === story._id
@@ -75,11 +75,18 @@ const StoryPreeview: React.FC = () => {
     }
   };
 
+  /* ================= SAFE DESCRIPTION PREVIEW ================= */
+  const getShortDescription = (html: string) => {
+    const plainText = html.replace(/<[^>]+>/g, "");
+    return plainText.length > 150
+      ? plainText.slice(0, 150) + "..."
+      : plainText;
+  };
+
   return (
     <div className="story-preview-container">
       <h1 className="page-title">STORY PREVIEW</h1>
 
-      {/* VIEW TOGGLE */}
       <div className="view-toggle">
         <HiOutlineViewGrid
           size={28}
@@ -100,21 +107,28 @@ const StoryPreeview: React.FC = () => {
             <div className="premium-card" key={story._id}>
               <div className="image-wrapper">
                 <img
-                  src={getImageUrl(story.image)}
+                  src={
+                    story.image
+                      ? getImageUrl(story.image)
+                      : "/placeholder.png"
+                  }
                   alt={story.title}
                 />
               </div>
 
               <div className="card-body">
                 <h3>{story.title}</h3>
-                <p className="category">{story.category}</p>
 
-                <div
-                  className="description"
-                  dangerouslySetInnerHTML={{ __html: story.description }}
-                />
+                <p className="category">
+                  {typeof story.category === "object"
+                    ? story.category.name
+                    : story.category}
+                </p>
 
-                {/* ✅ Designation Safe Render */}
+                <div className="description">
+                  {getShortDescription(story.description)}
+                </div>
+
                 <div className="author-block">
                   <span>{story.author}</span>
                   {story.designation && (
@@ -122,7 +136,6 @@ const StoryPreeview: React.FC = () => {
                   )}
                 </div>
 
-                {/* ✅ Tags Safe Render */}
                 <div className="tags">
                   {story.blogTags && story.blogTags.length > 0 ? (
                     story.blogTags.map((tag, index) => (
@@ -175,28 +188,28 @@ const StoryPreeview: React.FC = () => {
                 <tr key={story._id}>
                   <td>
                     <img
-                      src={getImageUrl(story.image)}
+                      src={
+                        story.image
+                          ? getImageUrl(story.image)
+                          : "/placeholder.png"
+                      }
                       alt={story.title}
                       className="table-img"
                     />
                   </td>
                   <td>{story.title}</td>
-                  <td>{story.category}</td>
+                  <td>
+                    {typeof story.category === "object"
+                      ? story.category.name
+                      : story.category}
+                  </td>
                   <td>{story.author}</td>
                   <td>{story.designation || "-"}</td>
-
                   <td>
-                    {story.blogTags && story.blogTags.length > 0 ? (
-                      story.blogTags.map((tag, index) => (
-                        <span key={index} className="tag-chip">
-                          {tag}
-                        </span>
-                      ))
-                    ) : (
-                      "-"
-                    )}
+                    {story.blogTags && story.blogTags.length > 0
+                      ? story.blogTags.join(", ")
+                      : "-"}
                   </td>
-
                   <td>
                     <button
                       className={`publish-toggle-btn ${
@@ -211,7 +224,6 @@ const StoryPreeview: React.FC = () => {
                         : "Publish"}
                     </button>
                   </td>
-
                   <td>
                     <button
                       className="delete"

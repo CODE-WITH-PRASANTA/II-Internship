@@ -48,7 +48,18 @@ const navItems = [
     name: "Learning Partners",
     path: "/learning-partners",
   },
+ 
+  {
+  icon: <UserCircleIcon />,
+  name: "Instructor Management",
+  path: "/instructor-management",
+},
 
+{
+  icon: <ClipboardListIcon />,
+  name: "Career Management",
+  path: "/career-management",
+},
   // ================= COURSE MANAGEMENT =================
   {
     icon: <BookOpenIcon />,
@@ -84,7 +95,29 @@ const navItems = [
       { name: "Attendance Management", path: "/instructor/attendance" },
     ],
   },
+<<<<<<< HEAD
 
+ // ================= CAREER MANAGEMENT =================
+{
+  icon: <ClipboardListIcon />,
+  name: "Career Management",
+  subItems: [
+    { name: "Post Job", path: "/career/post-job" },
+    { name: "Manage Jobs", path: "/career/manage-jobs" },
+    { name: "Applications", path: "/career/applications" },
+    { name: "Career Settings", path: "/career/settings" },
+=======
+// ================= NOTICE MANAGEMENT =================
+  
+ {
+  icon: <BellIcon />,
+  name: "Notice Management",
+  subItems: [
+    { name: "Post Notice", path: "/admin/notices/post" },
+    { name: "Notice Preview", path: "/admin/notices/preview" },
+>>>>>>> 150aabe9894bfb8275a514b934aca0ee8ef967ee
+  ],
+},
   // ================= CATEGORY =================
   {
     icon: <FolderPlusIcon />,
@@ -186,16 +219,7 @@ const navItems = [
     ],
   },
 
-  // ================= NOTICE MANAGEMENT =================
   
- {
-  icon: <BellIcon />,
-  name: "Notice Management",
-  subItems: [
-    { name: "Post Notice", path: "/admin/notices/post" },
-    { name: "Manage Notices", path: "/admin/notices/manage" },
-  ],
-},
 
   // ================= MEDIA =================
   {

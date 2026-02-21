@@ -1,0 +1,84 @@
+.running-internship-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.main-layout-body {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+/* Sidebar Column */
+.sidebar-column {
+  flex: 0 0 320px;
+}
+
+/* Content Column */
+.content-column {
+  flex: 1;
+}
+
+/* Sidebar Cards Styling */
+.sidebar-card {
+  background: #fff;
+  border: 1px solid #eef0f3;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.sidebar-card h3 {
+  color: #0d47a1;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+/* Dropdown Menu Overlay */
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #0d47a1;
+  z-index: 10;
+  list-style: none;
+  border-radius: 0 0 10px 10px;
+}
+
+
+/* ---------------------------------------------------------
+   📱 MOBILE & TABLET RESPONSIVE FIX
+---------------------------------------------------------- */
+@media (max-width: 991px) {
+  .main-layout-body {
+    flex-direction: column; /* Stack vertically */
+  }
+
+  .sidebar-column {
+    width: 100%;
+    flex: none;
+  }
+
+  .content-column {
+    width: 100%;
+  }
+}
+
+/* Mobile-Small Screens */
+@media (max-width: 576px) {
+  .running-internship-container {
+    padding: 10px;
+  }
+
+  .sidebar-card {
+    padding: 15px;
+  }
+}

@@ -1,0 +1,262 @@
+/* PAGE BACKGROUND */
+.cd-wrapper {
+  background: linear-gradient(180deg,#f6f8fc,#eef3fb);
+  padding: 70px 8%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  font-family: "Inter", sans-serif;
+}
+
+/* CARD (Glass Effect) */
+.cd-card {
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 38px;
+  box-shadow:
+    0 10px 25px rgba(18,38,63,0.06),
+    0 2px 6px rgba(18,38,63,0.04);
+  border: 1px solid rgba(255,255,255,0.7);
+  transition: 0.3s ease;
+}
+
+.cd-card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 18px 40px rgba(18,38,63,0.12),
+    0 4px 12px rgba(18,38,63,0.05);
+}
+
+/* TITLES */
+.cd-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f2a5f;
+  margin-bottom: 20px;
+}
+
+.cd-subtitle {
+  margin-top: 25px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #12284c;
+}
+
+/* TEXT */
+.cd-text {
+  color: #6b7280;
+  line-height: 1.85;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+/* LIST */
+.cd-list {
+  padding-left: 22px;
+  display: grid;
+  gap: 12px;
+}
+
+.cd-list li::marker {
+  color: #2563eb;
+}
+
+/* ACCORDION */
+.cd-accordion {
+  border-radius: 15px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  border: 1px solid #edf1f7;
+  background: #ffffff;
+  transition: 0.25s;
+}
+
+.cd-acc-head {
+  padding: 20px 22px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.cd-acc-head:hover {
+  background: #f2f6ff;
+}
+
+/* LECTURE LIST */
+.cd-acc-body {
+  background: #fbfdff;
+  border-top: 1px solid #eef2f7;
+}
+
+.cd-lecture {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  padding: 16px 22px;
+  border-bottom: 1px dashed #e5e9f2;
+}
+
+.cd-lecture-left {
+  display: flex;
+  gap: 12px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.cd-lecture-title {
+  color: #0f172a;
+  font-weight: 500;
+}
+
+/* RATING SECTION */
+.cd-rating {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.cd-rating-score h1 {
+  font-size: 60px;
+  font-weight: 800;
+  color: #0f2a5f;
+}
+
+.cd-rating-score p {
+  color: #6b7280;
+}
+
+/* BARS */
+.cd-bar {
+  display: grid;
+  grid-template-columns: 90px 1fr 50px;
+  gap: 16px;
+  align-items: center;
+}
+
+.cd-bar-track {
+  height: 11px;
+  background: #edf2f7;
+  border-radius: 999px;
+}
+
+.cd-bar-track div {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg,#22c55e,#4ade80);
+}
+
+/* INSTRUCTOR */
+.cd-instructor {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.cd-instructor img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* REVIEWS */
+.cd-review {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 20px;
+  padding: 25px 0;
+  border-top: 1px solid #e6eaf1;
+}
+
+.cd-review img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.cd-review-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cd-review-actions {
+  display: flex;
+  gap: 22px;
+  margin-top: 12px;
+  color: #64748b;
+}
+
+.cd-review-actions svg:hover {
+  color: #2563eb;
+  transform: scale(1.2);
+}
+
+/* ------------------------- RESPONSIVE ------------------------- */
+@media (max-width: 1100px) {
+  .cd-wrapper { padding: 60px 6%; }
+  .cd-card { padding: 32px; }
+}
+
+@media (max-width: 900px) {
+  .cd-rating {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .cd-instructor {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .cd-lecture {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .cd-wrapper { padding: 45px 5%; gap: 24px; }
+
+  .cd-card {
+    padding: 26px;
+    border-radius: 16px;
+  }
+
+  .cd-title {
+    font-size: 22px;
+  }
+
+  .cd-rating-score h1 {
+    font-size: 48px;
+  }
+
+  .cd-bar {
+    grid-template-columns: 80px 1fr 40px;
+  }
+
+  .cd-instructor img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cd-review {
+    grid-template-columns: 55px 1fr;
+    gap: 12px;
+  }
+
+  .cd-review img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .cd-lecture {
+    padding: 14px 15px;
+  }
+}

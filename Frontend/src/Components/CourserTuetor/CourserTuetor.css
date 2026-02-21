@@ -1,0 +1,190 @@
+/* ===============================
+   SIDEBAR MAIN WRAPPER
+================================== */
+.filter-sidebar {
+  width: 320px;
+  padding: 20px;
+  background: #f7f9fc;
+  font-family: "Segoe UI", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  height: auto;
+}
+
+/* ===============================
+   LAPTOP / LARGE SCREEN
+================================== */
+@media (max-width: 1200px) {
+  .filter-sidebar {
+    width: 300px;
+  }
+}
+
+/* ===============================
+   TABLET LANDSCAPE
+================================== */
+@media (max-width: 992px) {
+  .filter-sidebar {
+    width: 260px;
+  }
+}
+
+/* ===============================
+   TABLET PORTRAIT
+================================== */
+@media (max-width: 768px) {
+  .filter-sidebar {
+    width: 100%;
+    padding: 15px;
+    position: relative;
+    top: 0;
+  }
+}
+
+/* ===============================
+   MOBILE
+================================== */
+@media (max-width: 480px) {
+  .filter-sidebar {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+
+/* ===============================
+   CARD BASE
+================================== */
+.filter-sidebar .filter-card {
+  background: #fff;
+  border: 1px solid #e8edf3;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.filter-sidebar .filter-card h3 {
+  color: #0d47a1;
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .filter-sidebar .filter-card {
+    padding: 15px;
+  }
+}
+
+
+/* ===============================
+   SEARCH INPUT
+================================== */
+.filter-sidebar .search-input {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.filter-sidebar .search-input input {
+  width: 100%;
+  padding: 12px 12px 12px 38px;
+  border: 1px solid #e3e7ee;
+  border-radius: 10px;
+}
+
+.filter-sidebar .search-input svg {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #9aa6b2;
+}
+
+
+/* ===============================
+   DROPDOWN
+================================== */
+.filter-sidebar .dropdown {
+  position: relative;
+}
+
+.filter-sidebar .dropdown-btn {
+  border: 1px solid #e3e7ee;
+  padding: 12px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.filter-sidebar .dropdown-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #e3e7ee;
+  border-radius: 10px;
+  list-style: none;
+  padding: 0;
+  margin-top: 6px;
+  z-index: 10;
+}
+
+.filter-sidebar .dropdown-menu li {
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.filter-sidebar .dropdown-menu li:hover {
+  background: #f1f5ff;
+}
+
+.filter-sidebar .rotate {
+  transform: rotate(180deg);
+}
+
+
+/* ===============================
+   CHECKBOX
+================================== */
+.filter-sidebar .check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.filter-sidebar .check input {
+  display: none;
+}
+
+.filter-sidebar .check span {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #d6dde6;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.filter-sidebar .check input:checked + span {
+  background: #0d47a1;
+  border-color: #0d47a1;
+}
+
+
+/* ===============================
+   STAR RATING
+================================== */
+.filter-sidebar .stars {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+}
+
+@media (max-width: 480px) {
+  .filter-sidebar .stars {
+    font-size: 13px;
+  }
+}

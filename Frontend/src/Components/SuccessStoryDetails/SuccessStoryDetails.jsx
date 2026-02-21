@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./SuccessStoryDetails.css";
 import {
   FiCalendar,
@@ -10,79 +10,106 @@ import {
   FiLinkedin,
   FiArrowRight
 } from "react-icons/fi";
+import { useParams } from "react-router-dom";
+import API, { getImageUrl } from "../../api/api";
 
-import storyImage from "../../assets/Hero-1.webp";
 import authorImage from "../../assets/Author-1.webp";
 import comment1 from "../../assets/Author-2.webp";
 import comment2 from "../../assets/Author-3.webp";
 
 const SuccessStoryDetails = () => {
+  const { id } = useParams();
+  const [story, setStory] = useState(null);
+
+  /* ================= FETCH STORY ================= */
+  useEffect(() => {
+    const fetchStory = async () => {
+      try {
+        const res = await API.get(`/success-stories/${id}`);
+        setStory(res.data);
+      } catch (err) {
+        console.error("FETCH STORY ERROR:", err);
+      }
+    };
+
+    if (id) fetchStory();
+  }, [id]);
+
+  if (!story) return <div>Loading...</div>;
+
   return (
     <div className="successstorydetails-main-wrapper">
 
       {/* FEATURE IMAGE */}
       <div className="successstorydetails-feature-image">
-        <img src={storyImage} alt="Story" />
+        <img
+          src={
+            story.image
+              ? getImageUrl(story.image)
+              : "/placeholder.png"
+          }
+          alt="Story"
+        />
       </div>
 
       {/* META INFO */}
       <div className="successstorydetails-meta-info">
-        <span><FiCalendar /> 20 July, 2024</span>
-        <span><FiUser /> by Admin</span>
-        <span><FiClock /> 5 Min Read</span>
-        <span><FiMessageCircle /> 05 Comments</span>
+        <span>
+          <FiCalendar />{" "}
+          {story.publishDate
+            ? new Date(story.publishDate).toLocaleDateString()
+            : ""}
+        </span>
+        <span>
+          <FiUser /> {story.author}
+        </span>
+        <span>
+          <FiClock /> 5 Min Read
+        </span>
+        <span>
+          <FiMessageCircle /> 05 Comments
+        </span>
       </div>
 
       {/* TITLE */}
       <h1 className="successstorydetails-main-title">
-        How To Become Ridiculously Self-Aware In 20 Minutes
+        {story.title}
       </h1>
 
-      {/* PARAGRAPHS */}
-      <p className="successstorydetails-paragraph">
-        Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper bibendum.
-        Ut ac nisi porta, malesuada risus nonra dolo areay Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae in tristique libero.
-      </p>
-
-      <p className="successstorydetails-paragraph">
-        Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper bibendum.
-        Ut ac nisi porta, malesuada risus nonra dolo areay Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.
-      </p>
+      {/* DESCRIPTION */}
+      <div
+        className="successstorydetails-paragraph"
+        dangerouslySetInnerHTML={{ __html: story.description }}
+      />
 
       {/* QUOTE BOX */}
-      <div className="successstorydetails-quote-section">
-        <p>
-          “ urabitur varius eros rutrum consequat Mauris areathe sollicitudin
-          enim condimentum luctus enim justo non molestie nisl ”
-        </p>
-      </div>
-
-      <p className="successstorydetails-paragraph">
-        Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper bibendum.
-      </p>
+      {story.quotes && (
+        <div className="successstorydetails-quote-section">
+          <p>{story.quotes}</p>
+        </div>
+      )}
 
       {/* SUB HEADING */}
-      <h2 className="successstorydetails-sub-title">
-        What Will I Learn From This Course?
-      </h2>
+      {story.features && story.features.length > 0 && (
+        <>
+          <h2 className="successstorydetails-sub-title">
+            What Will I Learn From This Course?
+          </h2>
 
-      <p className="successstorydetails-paragraph">
-        Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper bibendum.
-      </p>
+          <ul className="successstorydetails-learning-list">
+            {story.features.map((item, index) => (
+              <li key={index}>
+                <span className="successstorydetails-yellow-icon">
+                  <FiArrowRight />
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
 
-      {/* LIST */}
-      <ul className="successstorydetails-learning-list">
-        <li><span className="successstorydetails-yellow-icon"><FiArrowRight /></span> Work with color & Gradients & Grids</li>
-        <li><span className="successstorydetails-yellow-icon"><FiArrowRight /></span> All the useful shortcuts</li>
-        <li><span className="successstorydetails-yellow-icon"><FiArrowRight /></span> Be able to create Flyers, Brochures, Advertisements</li>
-        <li><span className="successstorydetails-yellow-icon"><FiArrowRight /></span> How to work with Images & Text</li>
-      </ul>
-
-      <p className="successstorydetails-paragraph">
-        Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper bibendum.
-      </p>
-
-      {/* TAGS & SHARE */}
+      {/* TAGS & SHARE (UNCHANGED) */}
       <div className="successstorydetails-tag-share">
         <div className="successstorydetails-tags">
           <span>Bath Cleaning</span>
@@ -102,14 +129,14 @@ const SuccessStoryDetails = () => {
         <img src={authorImage} alt="Author" />
         <div>
           <span className="successstorydetails-author-role">Author</span>
-          <h3>Brooklyn Simmons</h3>
+          <h3>{story.author}</h3>
           <p>
-            Finanappreciate your trust greatly Our clients choose dentace ducts a curae in tristique liberois ultrices diamraesent varius diam dui.
+            Thank you for reading this inspiring success story.
           </p>
         </div>
       </div>
 
-      {/* COMMENTS */}
+      {/* STATIC COMMENTS (UI SAME) */}
       <h2 className="successstorydetails-comments-title">02 Comments</h2>
 
       <div className="successstorydetails-comment-box">
@@ -117,9 +144,7 @@ const SuccessStoryDetails = () => {
         <div>
           <h4>Jessica Rose</h4>
           <span>20 July, 2024</span>
-          <p>
-            Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper bibendum.
-          </p>
+          <p>Amazing and inspiring story.</p>
           <button>REPLY</button>
         </div>
       </div>
@@ -129,9 +154,7 @@ const SuccessStoryDetails = () => {
         <div>
           <h4>Parker Willy</h4>
           <span>20 July, 2024</span>
-          <p>
-            Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper bibendum.
-          </p>
+          <p>Very motivating content.</p>
           <button>REPLY</button>
         </div>
       </div>
@@ -149,20 +172,19 @@ const SuccessStoryDetails = () => {
           <input type="text" placeholder="Website" />
         </div>
 
-       <div className="successstorydetails-checkbox">
-  <input
-    type="checkbox"
-    id="saveinfo"
-    className="successstorydetails-checkbox-input"
-  />
-  <label
-    htmlFor="saveinfo"
-    className="successstorydetails-checkbox-label"
-  >
-    Save my name, email, and website in this browser for the next time I comment.
-  </label>
-</div>
-
+        <div className="successstorydetails-checkbox">
+          <input
+            type="checkbox"
+            id="saveinfo"
+            className="successstorydetails-checkbox-input"
+          />
+          <label
+            htmlFor="saveinfo"
+            className="successstorydetails-checkbox-label"
+          >
+            Save my name, email, and website in this browser for the next time I comment.
+          </label>
+        </div>
 
         <button className="successstorydetails-submit-btn">
           Post Comment <FiArrowRight />

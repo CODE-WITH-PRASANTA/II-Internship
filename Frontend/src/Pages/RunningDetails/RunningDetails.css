@@ -1,0 +1,79 @@
+/* HEADER */
+.running-details-header {
+  width: 100%;
+  margin-bottom: 50px; /* same top gap for both columns */
+}
+
+/* MAIN WRAPPER */
+.running-details-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+
+  padding: 0 80px 60px; /* equal left/right padding like example */
+
+  max-width: 1800px;   /* keeps alignment clean on large screens */
+  margin: 0 auto;       /* centers whole layout */
+  box-sizing: border-box;
+}
+
+/* LEFT COLUMN */
+.running-details-left {
+  flex: 1;                  /* perfect auto width */
+  max-width: 1200px;        /* matches your white content card width */
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+/* RIGHT SIDEBAR */
+.running-details-right {
+  width: 420px;
+  position: sticky;
+  top: 40px;
+  height: fit-content;
+}
+
+/* -------------------------
+      RESPONSIVE LAPTOP
+--------------------------*/
+@media (max-width: 1440px) {
+  .running-details-wrapper {
+    padding: 0 60px 60px;
+    gap: 35px;
+  }
+
+  .running-details-right {
+    width: 380px;
+  }
+}
+
+/* -------------------------
+      RESPONSIVE TABLET
+--------------------------*/
+@media (max-width: 1024px) {
+  .running-details-wrapper {
+    flex-direction: column;
+    padding: 0 30px 50px;
+  }
+
+  .running-details-right {
+    width: 100%;
+    position: static;
+    margin-top: 25px;
+  }
+}
+
+/* -------------------------
+      RESPONSIVE MOBILE
+--------------------------*/
+@media (max-width: 600px) {
+  .running-details-wrapper {
+    padding: 0 18px 40px;
+  }
+
+  .running-details-left {
+    gap: 25px;
+  }
+}
