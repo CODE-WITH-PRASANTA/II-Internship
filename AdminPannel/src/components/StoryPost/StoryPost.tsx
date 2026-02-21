@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import API, { getImageUrl } from "../../api/api";
 import { Editor } from "@tinymce/tinymce-react";
 
+interface CategoryType {
+  _id: string;
+  name: string;
+  published: boolean;
+}
 
 interface FormDataType {
   title: string;
@@ -13,9 +18,9 @@ interface FormDataType {
   designation: string;
   quotes: string;
   tags: string;
-  blogTags: string[]; // ✅ changed to array
+  blogTags: string[];
+  features: string[];
   address: string;
-  contact: string;
   publishDate: string;
   publishStatus: string;
 }
@@ -25,17 +30,22 @@ interface RecordType {
   title: string;
   description: string;
   image?: string;
-  category: string;
+  category: string | { _id: string; name: string };
   author: string;
   authorEmail?: string;
-  designation?: string;   // ✅ ADD THIS
+  designation?: string;
   blogTags?: string[] | string;
+  features?: string[] | string;
   publishDate?: string;
   publishStatus?: string;
-  contact: string;
 }
 
 export default function AddSuccessStory() {
+  const [categories, setCategories] = useState<CategoryType[]>([]);
+  const [records, setRecords] = useState<RecordType[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [step, setStep] = useState(1);
 
   const [form, setForm] = useState<FormDataType>({
     title: "",
@@ -47,39 +57,39 @@ export default function AddSuccessStory() {
     designation: "",
     quotes: "",
     tags: "",
-    blogTags: [], // ✅ array
+    blogTags: [],
+    features: [],
     address: "",
-    contact: "",
     publishDate: new Date().toISOString().slice(0, 16),
     publishStatus: "Draft",
   });
 
-  const [tagInput, setTagInput] = useState(""); // ✅ new
-  const [records, setRecords] = useState<RecordType[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [editingId, setEditingId] = useState<string | null>(null);
+  const [tagInput, setTagInput] = useState("");
+  const [featureInput, setFeatureInput] = useState("");
 
-  const categories = [
-    "Technology",
-    "Business",
-    "Education",
-    "Health",
-    "Lifestyle",
-    "Finance",
-  ];
+  /* ================= FETCH CATEGORIES ================= */
+  const fetchCategories = async () => {
+    try {
+      const res = await API.get("/categories");
+
+      const publishedCategories = res.data.filter(
+        (cat: CategoryType) => cat.published === true,
+      );
+
+      setCategories(publishedCategories);
+    } catch (err) {
+      console.error("CATEGORY FETCH ERROR:", err);
+    }
+  };
 
   /* ================= FETCH STORIES ================= */
   const fetchStories = async () => {
     try {
       setLoading(true);
       const res = await API.get("/success-stories");
-      const stories = Array.isArray(res.data)
-        ? res.data
-        : res.data.data || [];
-      setRecords(stories);
+      setRecords(res.data || []);
     } catch (err) {
       console.error("FETCH ERROR:", err);
-      setRecords([]);
     } finally {
       setLoading(false);
     }
@@ -87,13 +97,14 @@ export default function AddSuccessStory() {
 
   useEffect(() => {
     fetchStories();
+    fetchCategories();
   }, []);
 
   /* ================= HANDLE CHANGE ================= */
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     const { name, value, type } = e.target as HTMLInputElement;
 
@@ -106,18 +117,37 @@ export default function AddSuccessStory() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  /* ================= TAG LOGIC ================= */
+  /* ================= FEATURES ================= */
+  const addFeature = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && featureInput.trim()) {
+      e.preventDefault();
+      if (!form.features.includes(featureInput.trim())) {
+        setForm((prev) => ({
+          ...prev,
+          features: [...prev.features, featureInput.trim()],
+        }));
+      }
+      setFeatureInput("");
+    }
+  };
+
+  const removeFeature = (index: number) => {
+    setForm((prev) => ({
+      ...prev,
+      features: prev.features.filter((_, i) => i !== index),
+    }));
+  };
+
+  /* ================= TAGS ================= */
   const addTag = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && tagInput.trim()) {
       e.preventDefault();
-
       if (!form.blogTags.includes(tagInput.trim())) {
         setForm((prev) => ({
           ...prev,
           blogTags: [...prev.blogTags, tagInput.trim()],
         }));
       }
-
       setTagInput("");
     }
   };
@@ -136,15 +166,40 @@ export default function AddSuccessStory() {
     try {
       const formData = new FormData();
 
-      Object.entries(form).forEach(([key, value]) => {
-        if (value !== null && value !== "") {
-          if (key === "blogTags") {
-            formData.append("blogTags", JSON.stringify(value));
-          } else {
-            formData.append(key, value as any);
-          }
-        }
-      });
+      // Required Fields
+      formData.append("title", form.title.trim());
+      if (!form.description || form.description === "<p><br></p>") {
+        alert("Story content is required");
+        return;
+      }
+      formData.append("description", form.description);
+      formData.append("category", form.category);
+      formData.append("author", form.author.trim());
+      formData.append("authorEmail", form.authorEmail.trim());
+      if (form.publishDate) {
+        formData.append("publishDate", form.publishDate);
+      }
+      formData.append("publishStatus", form.publishStatus);
+
+      // Optional Fields (ONLY append if exists)
+      if (form.designation) formData.append("designation", form.designation);
+      if (form.quotes) formData.append("quotes", form.quotes); // ✅ QUOTES FIX
+      if (form.tags) formData.append("tags", form.tags);
+      if (form.address) formData.append("address", form.address);
+
+      // Arrays
+      if (form.blogTags.length > 0) {
+        formData.append("blogTags", JSON.stringify(form.blogTags));
+      }
+
+      if (form.features.length > 0) {
+        formData.append("features", JSON.stringify(form.features));
+      }
+
+      // Image
+      if (form.image) {
+        formData.append("image", form.image);
+      }
 
       if (editingId) {
         await API.put(`/success-stories/${editingId}`, formData);
@@ -154,7 +209,6 @@ export default function AddSuccessStory() {
 
       fetchStories();
       resetForm();
-
     } catch (err) {
       console.error("SUBMIT ERROR:", err);
     }
@@ -162,32 +216,38 @@ export default function AddSuccessStory() {
 
   /* ================= EDIT ================= */
   const handleEdit = (rec: RecordType) => {
-
-    let parsedTags: string[] = [];
-
-    if (typeof rec.blogTags === "string") {
-      try {
-        parsedTags = JSON.parse(rec.blogTags);
-      } catch {
-        parsedTags = [];
-      }
-    } else if (Array.isArray(rec.blogTags)) {
-      parsedTags = rec.blogTags;
-    }
-
     setForm({
       title: rec.title,
       description: rec.description,
       image: null,
-      category: rec.category,
+      category:
+        typeof rec.category === "object" ? rec.category._id : rec.category,
       author: rec.author,
       authorEmail: rec.authorEmail || "",
       designation: rec.designation || "",
       quotes: "",
       tags: "",
-      blogTags: parsedTags,
+      blogTags:
+        typeof rec.blogTags === "string"
+          ? (() => {
+              try {
+                return JSON.parse(rec.blogTags);
+              } catch {
+                return [];
+              }
+            })()
+          : rec.blogTags || [],
+      features:
+        typeof rec.features === "string"
+          ? (() => {
+              try {
+                return JSON.parse(rec.features);
+              } catch {
+                return [];
+              }
+            })()
+          : rec.features || [],
       address: "",
-      contact: rec.contact,
       publishDate: rec.publishDate
         ? rec.publishDate.slice(0, 16)
         : new Date().toISOString().slice(0, 16),
@@ -195,6 +255,7 @@ export default function AddSuccessStory() {
     });
 
     setEditingId(rec._id);
+    setStep(1);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -210,6 +271,7 @@ export default function AddSuccessStory() {
     }
   };
 
+  /* ================= RESET ================= */
   const resetForm = () => {
     setForm({
       title: "",
@@ -222,18 +284,17 @@ export default function AddSuccessStory() {
       quotes: "",
       tags: "",
       blogTags: [],
+      features: [],
       address: "",
-      contact: "",
       publishDate: new Date().toISOString().slice(0, 16),
       publishStatus: "Draft",
     });
     setEditingId(null);
+    setStep(1);
   };
-
 
   return (
     <div className="min-h-screen flex flex-col bg-[#f3f4f6]">
-
       {/* HEADER */}
       <div className="bg-gradient-to-r from-indigo-500 to-purple-500 px-6 py-5 text-white">
         <h1 className="text-xl md:text-2xl font-semibold">
@@ -243,7 +304,6 @@ export default function AddSuccessStory() {
 
       {/* MAIN */}
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-4 md:p-6">
-
         {/* LEFT FORM */}
         <div className="lg:col-span-2 bg-white rounded-lg shadow-sm border flex flex-col">
           <div className="border-b px-6 py-4 font-semibold text-lg">
@@ -252,176 +312,248 @@ export default function AddSuccessStory() {
 
           <div className="p-6 overflow-y-auto">
             <form onSubmit={handleSubmit} className="space-y-5">
+              {/* ================= STEP 1 ================= */}
+              {step === 1 && (
+                <>
+                  <div>
+                    <label className="label">Story Title</label>
+                    <input
+                      type="text"
+                      name="title"
+                      value={form.title}
+                      onChange={handleChange}
+                      className="input"
+                      required
+                    />
+                  </div>
 
-              <div>
-                <label className="label">Story Title</label>
-                <input
-                  type="text"
-                  name="title"
-                  value={form.title}
-                  onChange={handleChange}
-                  className="input"
-                  required
-                />
-              </div>
-              <div>
-  <label className="label">Author Name</label>
-  <input
-    type="text"
-    name="author"
-    value={form.author}
-    onChange={handleChange}
-    className="input"
-    required
-  />
-</div>
-<div>
-  <label className="label">Author Email</label>
-  <input
-    type="email"
-    name="authorEmail"
-    value={form.authorEmail}
-    onChange={handleChange}
-    className="input"
-    required
-  />
-</div>
-<div>
-  <label className="label">Author Designation</label>
-  <input
-    type="text"
-    name="designation"
-    value={form.designation}
-    onChange={handleChange}
-    className="input"
-    placeholder="e.g. Software Engineer, CEO"
-  />
-</div>
-<div>
-  <label className="label">Blog Tags</label>
-  <input
-              type="text"
-              value={tagInput}
-              onChange={(e) => setTagInput(e.target.value)}
-              onKeyDown={addTag}
-              className="input"
-              placeholder="Type tag and press Enter"
-            />
-<div className="flex flex-wrap gap-2 mt-2">
-              {form.blogTags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="px-3 py-1 text-xs bg-indigo-100 text-indigo-700 rounded-full flex items-center gap-2"
-                >
-                  {tag}
-                  <button
-                    type="button"
-                    onClick={() => removeTag(index)}
-                    className="text-red-500"
-                  >
-                    ✕
-                  </button>
-                </span>
-              ))}
-            </div>
-</div>
-<div>
-  <label className="label">Publish Date & Time</label>
-  <input
-    type="datetime-local"
-    name="publishDate"
-    value={form.publishDate}
-    onChange={handleChange}
-    className="input"
-  />
-</div>
-<div>
-  <label className="label">Publish Status</label>
-  <select
-    name="publishStatus"
-    value={form.publishStatus}
-    onChange={handleChange}
-    className="input"
-  >
-    <option value="Draft">Draft</option>
-    <option value="Published">Published</option>
-    <option value="Archived">Archived</option>
-  </select>
-</div>
+                  <div>
+                    <label className="label">Author Name</label>
+                    <input
+                      type="text"
+                      name="author"
+                      value={form.author}
+                      onChange={handleChange}
+                      className="input"
+                      required
+                    />
+                  </div>
 
-              <div>
-                <label className="label">Story Category</label>
-                <select
-                  name="category"
-                  value={form.category}
-                  onChange={handleChange}
-                  className="input"
-                  required
-                >
-                  <option value="">Select Category</option>
-                  {categories.map((cat, i) => (
-                    <option key={i} value={cat}>{cat}</option>
-                  ))}
-                </select>
-              </div>
+                  <div>
+                    <label className="label">Author Email</label>
+                    <input
+                      type="email"
+                      name="authorEmail"
+                      value={form.authorEmail}
+                      onChange={handleChange}
+                      className="input"
+                      required
+                    />
+                  </div>
 
-              <div>
-                <label className="label">Upload Image</label>
-                <input
-                  type="file"
-                  name="image"
-                  accept="image/*"
-                  onChange={handleChange}
-                  className="input"
-                />
-              </div>
+                  <div>
+                    <label className="label">Author Designation</label>
+                    <input
+                      type="text"
+                      name="designation"
+                      value={form.designation}
+                      onChange={handleChange}
+                      className="input"
+                    />
+                  </div>
 
-             <div>
-  <label className="label">Story Content</label>
+                  <div>
+                    <label className="label">Author Quote</label>
+                    <textarea
+                      name="quotes"
+                      value={form.quotes}
+                      onChange={handleChange}
+                      className="w-full p-4 border border-indigo-200 rounded-lg bg-indigo-50 italic text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                      rows={3}
+                      placeholder="“Success is not final, failure is not fatal — it is the courage to continue that counts.”"
+                    />
+                  </div>
 
-  <Editor
-    apiKey="jeq7g2k84sqpi9364o8x9ptqf09aoesaq8jxmp49dl4sh57z"
-    value={form.description}
-    onEditorChange={(content) =>
-      setForm((prev) => ({ ...prev, description: content }))
-    }
-    init={{
-      height: 400,
-      menubar: false,
-      plugins: [
-        "anchor", "autolink", "charmap", "codesample",
-        "emoticons", "link", "lists", "media",
-        "searchreplace", "table", "visualblocks",
-        "wordcount", "checklist", "mediaembed",
-        "advtable", "advcode", "markdown"
-      ],
-      toolbar:
-        "undo redo | blocks | bold italic underline strikethrough | " +
-        "link media table | bullist numlist | align | removeformat",
-      branding: false,
-    }}
-  />
-</div>
+                  <div>
+                    <label className="label">Story Category</label>
+                    <select
+                      name="category"
+                      value={form.category}
+                      onChange={handleChange}
+                      className="input"
+                      required
+                    >
+                      <option value="">Select Category</option>
+                      {categories.map((cat) => (
+                        <option key={cat._id} value={cat._id}>
+                          {cat.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
-              <div className="flex gap-3 flex-wrap">
-                <button
-                  type="submit"
-                  className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
-                >
-                  {editingId ? "Update Story" : "Publish Success Story"}
-                </button>
+                  <div>
+                    <label className="label">Publish Date & Time</label>
+                    <input
+                      type="datetime-local"
+                      name="publishDate"
+                      value={form.publishDate}
+                      onChange={handleChange}
+                      className="input"
+                    />
+                  </div>
 
-                {editingId && (
-                  <button
-                    type="button"
-                    onClick={resetForm}
-                    className="px-6 py-2 bg-gray-400 text-white rounded"
-                  >
-                    Cancel
-                  </button>
-                )}
-              </div>
+                  <div>
+                    <label className="label">Publish Status</label>
+                    <select
+                      name="publishStatus"
+                      value={form.publishStatus}
+                      onChange={handleChange}
+                      className="input"
+                    >
+                      <option value="Draft">Draft</option>
+                      <option value="Published">Published</option>
+                      <option value="Archived">Archived</option>
+                    </select>
+                  </div>
 
+                  <div>
+                    <label className="label">Upload Image</label>
+                    <input
+                      type="file"
+                      name="image"
+                      accept="image/*"
+                      onChange={handleChange}
+                      className="input"
+                    />
+                  </div>
+
+                  <div className="flex justify-end">
+                    <button
+                      type="button"
+                      onClick={() => setStep(2)}
+                      className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+                    >
+                      Next →
+                    </button>
+                  </div>
+                </>
+              )}
+
+              {/* ================= STEP 2 ================= */}
+              {step === 2 && (
+                <>
+                  <div>
+                    <label className="label">List Features</label>
+                    <input
+                      type="text"
+                      value={featureInput}
+                      onChange={(e) => setFeatureInput(e.target.value)}
+                      onKeyDown={addFeature}
+                      className="input"
+                      placeholder="Type feature and press Enter"
+                    />
+
+                    <div className="feature-wrapper">
+                      {form.features.map((feature, index) => (
+                        <div key={index} className="feature-item">
+                          <span>✔ {feature}</span>
+                          <button
+                            type="button"
+                            onClick={() => removeFeature(index)}
+                          >
+                            ✕
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <label className="label">Blog Tags</label>
+                    <input
+                      type="text"
+                      value={tagInput}
+                      onChange={(e) => setTagInput(e.target.value)}
+                      onKeyDown={addTag}
+                      className="input"
+                      placeholder="Type tag and press Enter"
+                    />
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {form.blogTags.map((tag, index) => (
+                        <span
+                          key={index}
+                          className="px-3 py-1 text-xs bg-indigo-100 text-indigo-700 rounded-full flex items-center gap-2"
+                        >
+                          {tag}
+                          <button
+                            type="button"
+                            onClick={() => removeTag(index)}
+                            className="text-red-500"
+                          >
+                            ✕
+                          </button>
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="label">Story Content</label>
+
+                    <Editor
+                      apiKey="jeq7g2k84sqpi9364o8x9ptqf09aoesaq8jxmp49dl4sh57z"
+                      value={form.description}
+                      onEditorChange={(content) =>
+                        setForm((prev) => ({ ...prev, description: content }))
+                      }
+                      init={{
+                        height: 400,
+                        menubar: false,
+                        plugins: [
+                          "anchor",
+                          "autolink",
+                          "charmap",
+                          "codesample",
+                          "emoticons",
+                          "link",
+                          "lists",
+                          "media",
+                          "searchreplace",
+                          "table",
+                          "visualblocks",
+                          "wordcount",
+                          "checklist",
+                          "mediaembed",
+                          "advtable",
+                          "advcode",
+                          "markdown",
+                        ],
+                        toolbar:
+                          "undo redo | blocks | bold italic underline strikethrough | " +
+                          "link media table | bullist numlist | align | removeformat",
+                        branding: false,
+                      }}
+                    />
+                  </div>
+
+                  <div className="flex justify-between">
+                    <button
+                      type="button"
+                      onClick={() => setStep(1)}
+                      className="px-6 py-2 bg-gray-400 text-white rounded"
+                    >
+                      ← Previous
+                    </button>
+
+                    <button
+                      type="submit"
+                      className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+                    >
+                      {editingId ? "Update Story" : "Publish Success Story"}
+                    </button>
+                  </div>
+                </>
+              )}
             </form>
           </div>
         </div>
@@ -433,20 +565,14 @@ export default function AddSuccessStory() {
           </div>
 
           <div className="flex-1 overflow-y-auto p-5 space-y-4">
-
-            {loading && (
-              <p className="text-sm text-gray-400">Loading...</p>
-            )}
+            {loading && <p className="text-sm text-gray-400">Loading...</p>}
 
             {!loading && records.length === 0 && (
-              <p className="text-gray-500 text-sm">
-                No recent success stories
-              </p>
+              <p className="text-gray-500 text-sm">No recent success stories</p>
             )}
 
             {records.map((rec) => (
               <div key={rec._id} className="flex gap-3 border-b pb-3">
-
                 {rec.image ? (
                   <img
                     src={getImageUrl(rec.image)}
@@ -459,8 +585,11 @@ export default function AddSuccessStory() {
 
                 <div className="flex-1">
                   <h3 className="font-semibold text-sm">{rec.title}</h3>
-                  <p className="text-xs text-gray-500">{rec.category}</p>
-
+                  <p className="text-xs text-gray-500">
+                    {typeof rec.category === "object"
+                      ? rec.category.name
+                      : rec.category}
+                  </p>
                   <div className="flex gap-4 mt-1 text-xs">
                     <button
                       onClick={() => handleEdit(rec)}
@@ -477,13 +606,10 @@ export default function AddSuccessStory() {
                     </button>
                   </div>
                 </div>
-
               </div>
             ))}
-
           </div>
         </div>
-
       </div>
 
       <style>{`

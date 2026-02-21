@@ -1,10 +1,16 @@
+const mongoose = require("mongoose");
 const SuccessStory = require("../models/successStory.model");
+const Category = require("../models/category.model");
 
-/* ================= CREATE ================= */
+/* =====================================================
+   CREATE STORY
+===================================================== */
 exports.createStory = async (req, res) => {
   try {
     let blogTags = [];
+    let features = [];
 
+    // Parse Arrays Safely
     if (req.body.blogTags) {
       try {
         blogTags = JSON.parse(req.body.blogTags);
@@ -13,12 +19,54 @@ exports.createStory = async (req, res) => {
       }
     }
 
+    if (req.body.features) {
+      try {
+        features = JSON.parse(req.body.features);
+      } catch {
+        features = [];
+      }
+    }
+
+    // Validate Required Fields
+    if (!req.body.title || !req.body.description || !req.body.category) {
+      return res.status(400).json({
+        success: false,
+        message: "Title, Description and Category are required",
+      });
+    }
+
+    // Validate Category ObjectId
+    if (!mongoose.Types.ObjectId.isValid(req.body.category)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid category ID",
+      });
+    }
+
+    const categoryExists = await Category.findById(req.body.category);
+    if (!categoryExists) {
+      return res.status(404).json({
+        success: false,
+        message: "Category not found",
+      });
+    }
+
     const newStory = new SuccessStory({
-      ...req.body,
+      title: req.body.title.trim(),
+      description: req.body.description,
+      category: req.body.category,
+      author: req.body.author || "",
+      authorEmail: req.body.authorEmail || "",
+      designation: req.body.designation || "",
+      quotes: req.body.quotes || "",
+      tags: req.body.tags || "",
       blogTags,
+      features,
+      address: req.body.address || "",
       publishDate: req.body.publishDate
         ? new Date(req.body.publishDate)
         : null,
+      publishStatus: req.body.publishStatus || "Draft",
       image: req.file ? req.file.path : null,
     });
 
@@ -26,43 +74,132 @@ exports.createStory = async (req, res) => {
 
     res.status(201).json({
       success: true,
-      message: "Success Story Created",
+      message: "Success Story Created Successfully",
       data: newStory,
     });
   } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+    console.error("CREATE STORY ERROR:", error);
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+    });
   }
 };
 
-/* ================= GET ALL ================= */
+
+
+/* =====================================================
+   GET SINGLE STORY
+===================================================== */
+exports.getSingleStory = async (req, res) => {
+  try {
+    const story = await SuccessStory.findById(req.params.id)
+      .populate("category", "name type");
+
+    if (!story) {
+      return res.status(404).json({
+        success: false,
+        message: "Story not found",
+      });
+    }
+
+    res.status(200).json(story);
+  } catch (error) {
+    console.error("GET SINGLE STORY ERROR:", error);
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+    });
+  }
+};
+
+/* =====================================================
+   GET ALL STORIES (Admin)
+===================================================== */
 exports.getAllStories = async (req, res) => {
   try {
-    const stories = await SuccessStory.find().sort({ createdAt: -1 });
-    res.json(stories);
+    const stories = await SuccessStory.find()
+      .populate("category", "name type")
+      .sort({ createdAt: -1 });
+
+    res.status(200).json(stories);
   } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+    console.error("GET STORIES ERROR:", error);
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+    });
   }
 };
 
-/* ================= UPDATE ================= */
+/* =====================================================
+   GET ONLY PUBLISHED STORIES (Public)
+===================================================== */
+exports.getPublishedStories = async (req, res) => {
+  try {
+    const stories = await SuccessStory.find({
+      publishStatus: "Published",
+    })
+      .populate("category", "name type")
+      .sort({ publishDate: -1 });
+
+    res.status(200).json(stories);
+  } catch (error) {
+    console.error("GET PUBLISHED ERROR:", error);
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+    });
+  }
+};
+
+/* =====================================================
+   UPDATE STORY
+===================================================== */
 exports.updateStory = async (req, res) => {
   try {
     const updateData = {};
 
-    // ✅ Only update fields if they exist
-    if (req.body.title) updateData.title = req.body.title;
-    if (req.body.description) updateData.description = req.body.description;
-    if (req.body.category) updateData.category = req.body.category;
-    if (req.body.author) updateData.author = req.body.author;
-    if (req.body.designation) updateData.designation = req.body.designation;
-    if (req.body.quotes) updateData.quotes = req.body.quotes;
-    if (req.body.address) updateData.address = req.body.address;
-    if (req.body.contact) updateData.contact = req.body.contact;
-    if (req.body.publishStatus)
-      updateData.publishStatus = req.body.publishStatus;
+    const allowedFields = [
+      "title",
+      "description",
+      "author",
+      "authorEmail",
+      "designation",
+      "quotes",
+      "tags",
+      "address",
+      "publishStatus",
+    ];
 
-    // ✅ Handle blogTags safely
-    if (req.body.blogTags) {
+    allowedFields.forEach((field) => {
+      if (req.body[field] !== undefined) {
+        updateData[field] = req.body[field];
+      }
+    });
+
+    // Update Category
+    if (req.body.category) {
+      if (!mongoose.Types.ObjectId.isValid(req.body.category)) {
+        return res.status(400).json({
+          success: false,
+          message: "Invalid category ID",
+        });
+      }
+
+      const categoryExists = await Category.findById(req.body.category);
+      if (!categoryExists) {
+        return res.status(404).json({
+          success: false,
+          message: "Category not found",
+        });
+      }
+
+      updateData.category = req.body.category;
+    }
+
+    // Update blogTags
+    if (req.body.blogTags !== undefined) {
       try {
         updateData.blogTags = JSON.parse(req.body.blogTags);
       } catch {
@@ -70,42 +207,77 @@ exports.updateStory = async (req, res) => {
       }
     }
 
-    // ✅ Handle publishDate safely
+    // Update features
+    if (req.body.features !== undefined) {
+      try {
+        updateData.features = JSON.parse(req.body.features);
+      } catch {
+        updateData.features = [];
+      }
+    }
+
+    // Update publishDate
     if (req.body.publishDate) {
       updateData.publishDate = new Date(req.body.publishDate);
     }
 
-    // ✅ Handle image update
+    // Update Image
     if (req.file) {
       updateData.image = req.file.path;
     }
 
     const updatedStory = await SuccessStory.findByIdAndUpdate(
       req.params.id,
-      { $set: updateData },   // 🔥 IMPORTANT
+      { $set: updateData },
       { new: true }
-    );
+    ).populate("category", "name type");
 
-    res.json({
+    if (!updatedStory) {
+      return res.status(404).json({
+        success: false,
+        message: "Story not found",
+      });
+    }
+
+    res.status(200).json({
       success: true,
       message: "Story Updated Successfully",
       data: updatedStory,
     });
   } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+    console.error("UPDATE STORY ERROR:", error);
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+    });
   }
 };
 
-/* ================= DELETE ================= */
+/* =====================================================
+   DELETE STORY
+===================================================== */
 exports.deleteStory = async (req, res) => {
   try {
-    await SuccessStory.findByIdAndDelete(req.params.id);
+    const story = await SuccessStory.findById(req.params.id);
 
-    res.json({
+    if (!story) {
+      return res.status(404).json({
+        success: false,
+        message: "Story not found",
+      });
+    }
+
+    await story.deleteOne();
+
+    res.status(200).json({
       success: true,
       message: "Story Deleted Successfully",
     });
   } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+    console.error("DELETE STORY ERROR:", error);
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+    });
   }
 };

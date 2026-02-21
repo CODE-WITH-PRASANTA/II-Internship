@@ -5,27 +5,30 @@ const successStorySchema = new mongoose.Schema(
     title: { type: String, required: true },
     description: { type: String, required: true },
 
-    category: { type: String },
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
+      required: true,
+    },
 
     author: { type: String },
-    authorEmail: { type: String }, // ✅ added
-
+    authorEmail: { type: String },
     designation: { type: String },
     quotes: { type: String },
-
     tags: { type: String },
 
-    blogTags: { type: [String], default: [] }, // ✅ array
+    blogTags: { type: [String], default: [] },
+    features: { type: [String], default: [] },
 
     address: { type: String },
-    contact: { type: String },
 
-    publishDate: { type: Date }, // ✅ added
+    publishDate: { type: Date },
+
     publishStatus: {
       type: String,
       enum: ["Draft", "Published", "Archived"],
       default: "Draft",
-    }, // ✅ added
+    },
 
     image: { type: String },
   },
