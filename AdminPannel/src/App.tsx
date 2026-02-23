@@ -46,7 +46,7 @@ import InstructorPage from "./pages/InstructorPage/InstructorPage";
 import ManageInstructors from "./components/ManageInstructors/ManageInstructors";
 
 /* ================= COURSE ================= */
-import CourseDetails from "./components/CourseDetails/CourseDetails";
+import CourseApproval from "./components/CourseApproval/CourseApproval";
 import CourseManage from "./components/CourseManage/CourseManage";
 import AddNewCourseMain from "./components/AddNewCourseMain/AddNewCourseMain";
 
@@ -103,7 +103,7 @@ export default function App() {
           {/* ================= COURSE ================= */}
           <Route path="/course/post" element={<AddNewCourseMain />} />
           <Route path="/course/manage" element={<CourseManage />} />
-          <Route path="/course/preview" element={<CourseDetails />} />
+          <Route path="/course/approval" element={<CourseApproval/>} />
 
           {/* ================= Video Management ================= */}
           <Route path="/gallery/videos" element={<VideoManagement/>}/>
