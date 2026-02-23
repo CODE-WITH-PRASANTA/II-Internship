@@ -1,6 +1,6 @@
 import React from "react";
 import "./BIBreadcrum.css";
-import { motion } from "framer-motion";
+//import { motion } from "framer-motion";
 
 // Assets
 import BreadcrumBg from "../../assets/mini-header.webp";
