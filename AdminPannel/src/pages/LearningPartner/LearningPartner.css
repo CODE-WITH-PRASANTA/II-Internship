@@ -129,10 +129,71 @@
   display:flex;
   gap:8px;
 }
+/* ================= MOBILE IMPROVEMENTS ================= */
 
-/* RESPONSIVE */
-@media(max-width:900px){
+@media (max-width: 768px){
+
+  /* Wrapper padding smaller */
+  .tsk-partner-wrapper{
+    padding:16px;
+  }
+
+  /* Stack form & list */
   .tsk-partner-grid{
     grid-template-columns:1fr;
+    gap:18px;
   }
+
+  /* Card padding smaller */
+  .tsk-partner-form,
+  .tsk-partner-list{
+    padding:18px;
+    border-radius:12px;
+  }
+
+  /* Upload box compact */
+  .tsk-partner-upload{
+    padding:18px;
+    font-size:14px;
+  }
+
+  /* Preview image smaller */
+  .tsk-partner-preview img{
+    width:100px;
+    height:70px;
+  }
+
+  /* TABLE HEADER */
+  .tsk-partner-head{
+    grid-template-columns:60px 1fr 110px;
+    padding:10px;
+    font-size:14px;
+  }
+
+  /* TABLE ROW */
+  .tsk-partner-row{
+    grid-template-columns:60px 1fr 110px;
+    padding:10px;
+    font-size:14px;
+  }
+
+  /* Image smaller */
+  .tsk-partner-image img{
+    width:70px;
+    height:45px;
+  }
+
+  /* Stack action buttons vertically */
+  .tsk-partner-actions{
+    flex-direction:column;
+    gap:6px;
+  }
+
+  .tsk-partner-edit,
+  .tsk-partner-delete{
+    width:100%;
+    padding:6px;
+    font-size:13px;
+  }
+
 }
