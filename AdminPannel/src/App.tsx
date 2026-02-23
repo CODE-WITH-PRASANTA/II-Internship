@@ -38,9 +38,12 @@ import StoryPreview from "./components/StoryPreview/StoryPreview";
 import StoryPost from "./components/StoryPost/StoryPost";
 import StoryPreeview from "./components/StoryPreeview/StoryPreeview";
 
-/* ================= INSTRUCTOR ================= */
+/* ================= INSTRUCTOR PROFILE================= */
+import InstructorPage from "./pages/InstructorPage/InstructorPage";
+
+
+/* ================= INSTRUCTOR MANAGEMENT================= */
 import ManageInstructors from "./components/ManageInstructors/ManageInstructors";
-import TSKInstructorPage from "./pages/InstructorPage/InstructorPage";
 
 /* ================= COURSE ================= */
 import CourseDetails from "./components/CourseDetails/CourseDetails";
@@ -58,11 +61,15 @@ import VideoManagement from "./components/VideoManagement/VideoManagement";
 import PhotoManagement from "./components/PhotoManagement/PhotoManagement";
 import OnlineMediaManagement from "./components/OnlineMediaManagement/OnlineMediaManagement";
 import NewsManagement from "./components/NewsManagement/NewsManagement";
-import AdminNoticeManager from "./pages/AdminNoticeManager/AdminNoticeManager";
+
 
 /*==============  Notice Management  ===============*/
 import NoticeManagement from "./pages/NoticeManagement/NoticeManagement";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import InstructorManagement from "./pages/InstructorManagement/InstructorManagment";
+import CareerManagement from "./pages/CareerManagement/CareerManagement";
+import PostNotice from "./pages/PostNotice/PostNotice";
+import NoticePreview from "./pages/NoticePreview/NoticePreview";
 
 export default function App() {
   return (
@@ -90,10 +97,13 @@ export default function App() {
           <Route path="line-chart" element={<LineChart />} />
           <Route path="bar-chart" element={<BarChart />} />
 
+          <Route path="/instructor-management" element={<InstructorManagement />} />
+          <Route path="/career-management" element={<CareerManagement />} />
+
           {/* ================= COURSE ================= */}
-          <Route path="course/post" element={<AddNewCourseMain />} />
-          <Route path="course/manage" element={<CourseManage />} />
-          <Route path="course/preview" element={<CourseDetails />} />
+          <Route path="/course/post" element={<AddNewCourseMain />} />
+          <Route path="/course/manage" element={<CourseManage />} />
+          <Route path="/course/preview" element={<CourseDetails />} />
 
           {/* ================= Video Management ================= */}
           <Route path="/gallery/videos" element={<VideoManagement/>}/>
@@ -112,11 +122,13 @@ export default function App() {
           <Route path="category/preview" element={<CategoryPreview />} />
 
           {/* ================= INSTRUCTOR ================= */}
-          <Route path="main-instructor" element={<TSKInstructorPage />} />
+          <Route path="/main-instructor" element={<InstructorPage />} />
           <Route path="instructor/add" element={<ManageInstructors />} />
 
           {/* ================= EVENTS ================= */}
-          <Route path="events/upload" element={<EventPicturePage />} />
+          <Route path="/events/upload" element={<EventPicturePage />} />
+
+          
           <Route path="learning-partners" element={<LearningPartner />} />
 
           {/* ================= TESTIMONIAL ================= */}
@@ -136,7 +148,10 @@ export default function App() {
           {/*====================Notice Management=======================*/}
           <Route path="/notice/Management" element={<NoticeManagement />} />
 
-          <Route path="/admin/notices/post" element={<AdminNoticeManager />} />
+          <Route path="/admin/notices/post" element={<PostNotice />} />
+          <Route path="/admin/notices/preview" element={<NoticePreview />} />
+
+         
 
 
         </Route>
