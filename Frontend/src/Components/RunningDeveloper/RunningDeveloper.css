@@ -1,0 +1,210 @@
+/* WRAPPER */
+.running-dev-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 28px; /* slightly improved spacing */
+  width: 100%;
+}
+
+/* Cards */
+.running-dev-card,
+.running-dev-features-card {
+  background: #ffffff;
+  border-radius: 20px;            /* smoother modern look */
+  padding: 28px 30px;             /* improved padding */
+  box-shadow: 0px 5px 25px rgba(0,0,0,0.10);
+  transition: 0.3s ease;
+}
+
+.running-dev-card:hover,
+.running-dev-features-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Profile */
+.running-dev-profile {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.running-dev-img {
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+.running-dev-name {
+  font-size: 21px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.running-dev-role {
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* Divider */
+.running-dev-divider {
+  border: none;
+  height: 1px;
+  background: #e2e8f0;
+  margin: 18px 0;
+}
+
+/* Discount + Price */
+.running-dev-discount {
+  display: inline-block;
+  background: #ff4d4d;
+  color: #fff;
+  padding: 7px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  margin: 12px 0 14px;
+}
+
+.running-dev-price {
+  font-size: 34px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+/* Section Title */
+.running-dev-section-title {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 20px 0 12px;
+  color: #1e293b;
+}
+
+/* Feature List */
+.running-dev-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 25px;
+}
+
+.running-dev-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  font-size: 16px;
+  color: #334155;
+}
+
+.running-dev-icon {
+  color: #16a34a;
+  font-size: 19px;
+}
+
+/* Buttons */
+.running-dev-cart-btn,
+.running-dev-enroll-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 14px;
+  font-size: 17px;
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+}
+
+.running-dev-cart-btn {
+  background: #2563eb;
+  color: #fff;
+}
+
+.running-dev-enroll-btn {
+  background: #16a34a;
+  color: #fff;
+}
+
+/* Features grid */
+.running-dev-features-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.running-dev-feature-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.running-dev-feature-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.running-dev-feature-icon {
+  font-size: 20px;
+  color: #2563eb;
+}
+
+.running-dev-feature-value {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 16px;
+}
+
+/* ---------------------------------------
+      RESPONSIVE DESIGN
+----------------------------------------*/
+
+/* Tablets + Small Laptops */
+@media (max-width: 1024px) {
+  .running-dev-card,
+  .running-dev-features-card {
+    padding: 26px;
+  }
+
+  .running-dev-wrapper {
+    gap: 24px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .running-dev-wrapper {
+    flex-direction: column;
+  }
+
+  .running-dev-card,
+  .running-dev-features-card {
+    width: 100%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .running-dev-card,
+  .running-dev-features-card {
+    padding: 22px 18px;
+  }
+
+  .running-dev-img {
+    width: 65px;
+    height: 65px;
+  }
+
+  .running-dev-name {
+    font-size: 19px;
+  }
+
+  .running-dev-price {
+    font-size: 30px;
+  }
+
+  .running-dev-cart-btn,
+  .running-dev-enroll-btn {
+    font-size: 16px;
+    padding: 12px;
+  }
+}

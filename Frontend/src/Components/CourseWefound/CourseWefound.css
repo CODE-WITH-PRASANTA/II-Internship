@@ -1,0 +1,276 @@
+/* ===============================
+   WRAPPER
+================================== */
+.course-cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* ===============================
+   CARD
+================================== */
+.course-horizontal-card {
+  display: flex;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  overflow: hidden;
+  padding: 18px;
+  gap: 28px;
+  transition: 0.25s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.course-horizontal-card:hover {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+/* ===============================
+   IMAGE CONTAINER
+================================== */
+.card-image-container {
+  position: relative;
+  width: 420px;
+  min-width: 420px;
+  height: 240px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* FREE BADGE */
+.badge-free {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: #22c55e;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ===============================
+   CONTENT
+================================== */
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOP ROW */
+.content-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.category-tag {
+  background: #eaf2ff;
+  color: #2563eb;
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.star {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+.heart {
+  color: #ef4444;
+  margin-left: 12px;
+  cursor: pointer;
+}
+
+/* TITLE */
+.course-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.35;
+  margin: 6px 0 12px;
+}
+
+/* DESC */
+.course-desc {
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 18px;
+  max-width: 620px;
+}
+
+/* META */
+.course-meta {
+  display: flex;
+  gap: 24px;
+  color: #64748b;
+  font-size: 14px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+/* FOOTER */
+.card-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.instructor {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.instructor img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.view-btn {
+  background: #0f2f57;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.view-btn:hover {
+  background: #0b2545;
+}
+
+/* ===============================
+   RESPONSIVE — LARGE SCREENS
+================================== */
+@media (max-width: 1400px) {
+  .card-image-container {
+    width: 380px;
+    min-width: 380px;
+  }
+}
+
+/* ===============================
+   RESPONSIVE — LAPTOP
+================================== */
+@media (max-width: 1200px) {
+  .card-image-container {
+    width: 340px;
+    min-width: 340px;
+    height: 210px;
+  }
+}
+
+/* ===============================
+   RESPONSIVE — TABLETS (768px–1024px)
+================================== */
+@media (max-width: 1024px) {
+  .course-horizontal-card {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card-image-container {
+    width: 100%;
+    min-width: 100%;
+    height: 230px;
+  }
+
+  .course-desc {
+    max-width: 100%;
+  }
+}
+
+/* ===============================
+   RESPONSIVE — MOBILE (480px–768px)
+================================== */
+@media (max-width: 768px) {
+  .course-horizontal-card {
+    padding: 16px;
+  }
+
+  .course-title {
+    font-size: 20px;
+  }
+
+  .course-meta {
+    gap: 14px;
+    font-size: 13px;
+  }
+
+  .view-btn {
+    padding: 10px 22px;
+  }
+}
+
+/* ===============================
+   SMALL MOBILE
+================================== */
+@media (max-width: 480px) {
+  .course-horizontal-card {
+    padding: 14px;
+  }
+
+  .card-image-container {
+    height: 200px;
+  }
+
+  .course-title {
+    font-size: 18px;
+  }
+
+  .course-desc {
+    font-size: 14px;
+  }
+
+  .badge-free {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .view-btn {
+    padding: 9px 18px;
+    font-size: 14px;
+  }
+}
+
+/* ===============================
+   EXTRA SMALL PHONES (360px–410px)
+================================== */
+@media (max-width: 410px) {
+  .course-meta span {
+    font-size: 12px;
+  }
+
+  .course-title {
+    font-size: 17px;
+  }
+
+  .content-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}

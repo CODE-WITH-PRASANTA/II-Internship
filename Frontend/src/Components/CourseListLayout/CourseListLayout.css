@@ -1,0 +1,68 @@
+/* Full Width Gradient Section */
+.courses-header {
+  width: 100%;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+
+  /* Exact gradient look */
+  background: linear-gradient(
+    90deg,
+    #d96a98 0%,
+    #b374b6 45%,
+    #6c79d8 100%
+  );
+
+  color: white;
+}
+
+/* Content alignment */
+.courses-header-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 28px;
+  opacity: 0.95;
+}
+
+.breadcrumb span {
+  margin-right: 10px;
+}
+
+.breadcrumb .slash {
+  margin-right: 10px;
+  opacity: 0.7;
+}
+
+.breadcrumb .active {
+  font-weight: 600;
+}
+
+/* Heading */
+.title {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .courses-header {
+    min-height: 240px;
+  }
+
+  .title {
+    font-size: 40px;
+  }
+
+  .breadcrumb {
+    font-size: 14px;
+  }
+}
