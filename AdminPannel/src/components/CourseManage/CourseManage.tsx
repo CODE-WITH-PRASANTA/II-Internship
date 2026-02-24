@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./CourseManage.css";
-import API from "../../api/api";
+import API, { getImageUrl } from "../../api/api";
 import { Link } from "react-router";
 
 interface Course {
@@ -54,15 +54,20 @@ const ManageCourses: React.FC = () => {
   };
 
   return (
-    <div className="manage-course-wrapper">
-      <div className="manage-course-header">
-        <h2>Manage Courses</h2>
-        <Link to="/course/post" className="add-course-btn">Create Course</Link>
+    <div className="mc-wrapper">
+      <div className="mc-header">
+        <h2 className="mc-title">Manage Courses</h2>
+
+        <div className="mc-header-right">
+          <Link to="/course/post" className="mc-add-btn">
+            Create Course
+          </Link>
+        </div>
       </div>
 
-      <div className="table-wrapper">
-        <table>
-          <thead>
+      <div className="mc-table-wrapper">
+        <table className="mc-table">
+          <thead className="mc-thead">
             <tr>
               <th>Course</th>
               <th>Level</th>
@@ -93,53 +98,72 @@ const ManageCourses: React.FC = () => {
             ) : (
               courses.map((course) => (
                 <tr key={course._id}>
-                  <td className="course-info">
-                    <img
-                      src={
-                        course.thumbnail
-                          ? `http://localhost:5000/${course.thumbnail}`
-                          : "https://via.placeholder.com/100"
-                      }
-                      alt={course.title}
-                    />
-                    <span>{course.title}</span>
+                  {/* ================= COURSE INFO ================= */}
+                  <td>
+                    <div className="mc-course-info">
+                      <img
+                        className="mc-course-img"
+                        src={
+                          course.thumbnail
+                            ? getImageUrl(course.thumbnail)
+                            : "https://via.placeholder.com/100"
+                        }
+                        alt={course.title}
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src =
+                            "https://via.placeholder.com/100";
+                        }}
+                      />
+                      <span>{course.title}</span>
+                    </div>
                   </td>
 
+                  {/* ================= LEVEL ================= */}
                   <td>{course.skillLevel || "N/A"}</td>
 
-                  <td className="teacher-info">
-                    <strong>
-                      {course.instructor?.name || "N/A"}
-                    </strong>
-                    <small>
-                      {course.instructor?.designation || ""}
-                    </small>
+                  {/* ================= TEACHER ================= */}
+                  <td>
+                    <div className="mc-teacher-info">
+                      <strong>{course.instructor?.name || "N/A"}</strong>
+                      <small>
+                        {course.instructor?.designation || ""}
+                      </small>
+                    </div>
                   </td>
 
+                  {/* ================= LANGUAGE ================= */}
                   <td>{course.language || "N/A"}</td>
 
-                  <td className="rating">
+                  {/* ================= RATING ================= */}
+                  <td className="mc-rating">
                     {"★".repeat(Math.round(course.rating || 0))}
                     {"☆".repeat(5 - Math.round(course.rating || 0))}
                   </td>
 
+                  {/* ================= PRICE ================= */}
                   <td>₹{course.pricing || 0}</td>
 
+                  {/* ================= TIMELINE ================= */}
                   <td>{course.timeline || "N/A"}</td>
 
+                  {/* ================= STUDENTS (Static for now) ================= */}
                   <td>0</td>
 
+                  {/* ================= LESSONS ================= */}
                   <td>{course.totalLectures || 0}</td>
 
-                  <td className="actions">
-                    <button className="edit">✏️</button>
-                    <button
-                      className="delete"
-                      onClick={() => handleDelete(course._id)}
-                    >
-                      🗑️
-                    </button>
-                    <button className="view">👁️</button>
+                  {/* ================= ACTIONS ================= */}
+                  <td>
+                    <div className="mc-actions">
+                      <button className="mc-edit">✏️</button>
+                      <button
+                        className="mc-delete"
+                        onClick={() => handleDelete(course._id)}
+                      >
+                        🗑️
+                      </button>
+                      <button className="mc-view">👁️</button>
+                    </div>
                   </td>
                 </tr>
               ))
