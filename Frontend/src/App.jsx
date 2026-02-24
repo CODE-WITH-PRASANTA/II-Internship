@@ -58,7 +58,7 @@ function App() {
           <Route path="/OnlineMedia" element={<OnlineMedia />} />
           <Route path="/NewsPaper" element={<NewsPaper />} />
           <Route path="/MediaPhotos" element={<MediaPhoto />} />
-          <Route path="/SuccessStory/Details" element={<SuccessStoryDetails />} />
+          <Route path="/SuccessStory/Details/:id" element={<SuccessStoryDetails />} />
           <Route path="/SuccessStory" element={<SuccessStory />} />
           <Route path="/Recruitment" element={<Recruitment />} />
           <Route path="/CourseDetails" element={<CourseDetails />} />

@@ -19,23 +19,6 @@
 }
 
 /* ==============================
-   HEADER
-   ============================== */
-.instructorslist-header {
-  text-align: center;
-  background: #212529;
-  color: #fff;
-  padding: 2rem;
-  border-radius: 10px;
-  margin-bottom: 2rem;
-}
-
-.instructorslist-header h2 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-/* ==============================
    FILTERS
    ============================== */
 .instructorslist-filters {

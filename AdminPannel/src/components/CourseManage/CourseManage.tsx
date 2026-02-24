@@ -1,4 +1,7 @@
-import React from "react";
+//tsx//
+
+import React, { useState } from "react";
+import { FiGrid, FiList } from "react-icons/fi";
 import "./CourseManage.css";
 
 interface Course {
@@ -19,7 +22,7 @@ interface Course {
 const courses: Course[] = [
   {
     id: 1,
-    image: "https://picsum.photos/100?1",
+    image: "https://picsum.photos/200?1",
     title: "Web Design Fundamentals",
     level: "Beginner",
     teacher: "Lori Stevens",
@@ -33,7 +36,7 @@ const courses: Course[] = [
   },
   {
     id: 2,
-    image: "https://picsum.photos/100?2",
+    image: "https://picsum.photos/200?2",
     title: "Bootstrap 5 From Scratch",
     level: "Intermediate",
     teacher: "Billy Vasquez",
@@ -47,7 +50,7 @@ const courses: Course[] = [
   },
   {
     id: 3,
-    image: "https://picsum.photos/100?3",
+    image: "https://picsum.photos/200?3",
     title: "Graphic Design Masterclass",
     level: "All Level",
     teacher: "Carolyn Ortiz",
@@ -62,67 +65,142 @@ const courses: Course[] = [
 ];
 
 const ManageCourses: React.FC = () => {
+  const [view, setView] = useState<"grid" | "list">("list");
+
   return (
-    <div className="manage-course-wrapper">
-      <div className="manage-course-header">
-        <h2>Manage Courses</h2>
-        <button className="add-course-btn">Create Course</button>
+    <div className="mc-wrapper">
+
+      {/* Header */}
+      <div className="mc-header">
+        <h2 className="mc-title">Manage Courses</h2>
+
+        <div className="mc-header-right">
+          <div className="mc-view-toggle">
+            <button
+              className={`mc-toggle-btn ${view === "grid" ? "mc-active" : ""}`}
+              onClick={() => setView("grid")}
+            >
+              <FiGrid />
+            </button>
+            <button
+              className={`mc-toggle-btn ${view === "list" ? "mc-active" : ""}`}
+              onClick={() => setView("list")}
+            >
+              <FiList />
+            </button>
+          </div>
+
+          <button className="mc-add-btn">Create Course</button>
+        </div>
       </div>
 
-      <div className="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>Course</th>
-              <th>Level</th>
-              <th>Teacher</th>
-              <th>Language</th>
-              <th>Rating</th>
-              <th>Price</th>
-              <th>Timeline</th>
-              <th>Students</th>
-              <th>Lessons</th>
-              <th>Action</th>
-            </tr>
-          </thead>
+      {/* ================= LIST VIEW ================= */}
+      {view === "list" && (
+        <div className="mc-table-wrapper">
+          <table className="mc-table">
+            <thead className="mc-thead">
+              <tr>
+                <th>Course</th>
+                <th>Level</th>
+                <th>Teacher</th>
+                <th>Language</th>
+                <th>Rating</th>
+                <th>Price</th>
+                <th>Timeline</th>
+                <th>Students</th>
+                <th>Lessons</th>
+                <th>Action</th>
+              </tr>
+            </thead>
 
-          <tbody>
-            {courses.map(course => (
-              <tr key={course.id}>
-                <td className="course-info">
-                  <img src={course.image} alt={course.title} />
-                  <span>{course.title}</span>
-                </td>
+            <tbody>
+              {courses.map((course) => (
+                <tr key={course.id} className="mc-row">
+                  <td className="mc-course-info">
+                    <img
+                      src={course.image}
+                      alt={course.title}
+                      className="mc-course-img"
+                    />
+                    <span>{course.title}</span>
+                  </td>
 
-                <td>{course.level}</td>
+                  <td>{course.level}</td>
 
-                <td className="teacher-info">
+                  <td className="mc-teacher-info">
+                    <strong>{course.teacher}</strong>
+                    <small>{course.designation}</small>
+                  </td>
+
+                  <td>{course.language}</td>
+
+                  <td className="mc-rating">
+                    {"★".repeat(course.rating)}
+                    {"☆".repeat(5 - course.rating)}
+                  </td>
+
+                  <td>₹{course.price}</td>
+                  <td>{course.timeline}</td>
+                  <td>{course.students.toLocaleString()}</td>
+                  <td>{course.lessons}</td>
+
+                  <td className="mc-actions">
+                    <button className="mc-edit">✏️</button>
+                    <button className="mc-delete">🗑️</button>
+                    <button className="mc-view">👁️</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {/* ================= GRID VIEW ================= */}
+      {view === "grid" && (
+        <div className="mc-grid-wrapper">
+          {courses.map((course) => (
+            <div className="mc-card" key={course.id}>
+              <img
+                src={course.image}
+                alt={course.title}
+                className="mc-card-img"
+              />
+
+              <div className="mc-card-body">
+                <h3 className="mc-card-title">{course.title}</h3>
+                <p className="mc-card-level">{course.level}</p>
+
+                <div className="mc-card-teacher">
                   <strong>{course.teacher}</strong>
-                  <small>{course.designation}</small>
-                </td>
+                  <span>{course.designation}</span>
+                </div>
 
-                <td>{course.language}</td>
-
-                <td className="rating">
+                <div className="mc-rating">
                   {"★".repeat(course.rating)}
                   {"☆".repeat(5 - course.rating)}
-                </td>
+                </div>
 
-                <td>₹{course.price}</td>
-                <td>{course.timeline}</td>
-                <td>{course.students.toLocaleString()}</td>
-                <td>{course.lessons}</td>
+                <div className="mc-card-meta">
+                  <span>₹{course.price}</span>
+                  <span>{course.timeline}</span>
+                </div>
 
-                <td className="actions">
-                  <button className="edit">✏️</button>
-                  <button className="delete">🗑️</button>
-                  <button className="view">👁️</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+                <div className="mc-card-meta-small">
+                  <span>{course.students.toLocaleString()} Students</span>
+                  <span>{course.lessons} Lessons</span>
+                </div>
+
+                <div className="mc-actions">
+                  <button className="mc-edit">✏️</button>
+                  <button className="mc-delete">🗑️</button>
+                  <button className="mc-view">👁️</button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

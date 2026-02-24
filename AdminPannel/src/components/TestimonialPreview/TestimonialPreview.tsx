@@ -1,103 +1,106 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./TestimonialPreview.css";
 import { Star } from "lucide-react";
+import API from "../../api/api";
+import { getImageUrl } from "../../api/api";
 
 interface Testimonial {
-  id: number;
+  _id: string;
   name: string;
   rating: number;
   message: string;
-  imageUrl: string;
+  image?: string;
   published: boolean;
 }
 
 const TestimonialPreview: React.FC = () => {
-  const [testimonials] = useState<Testimonial[]>([
-    {
-      id: 1,
-      name: "Amit Sharma",
-      rating: 5,
-      message:
-        "Absolutely loved the service! The process was smooth and very professional. Highly recommended.",
-      imageUrl:
-        "https://randomuser.me/api/portraits/men/75.jpg",
-      published: true,
-    },
-    {
-      id: 2,
-      name: "Priya Patel",
-      rating: 4,
-      message:
-        "Very satisfied with the customer support and overall experience. Will use again!",
-      imageUrl:
-        "https://randomuser.me/api/portraits/women/65.jpg",
-      published: true,
-    },
-    {
-      id: 3,
-      name: "Rahul Verma",
-      rating: 3,
-      message:
-        "Good experience but there’s still room for improvement in response time.",
-      imageUrl:
-        "https://randomuser.me/api/portraits/men/60.jpg",
-      published: false,
-    },
-    {
-      id: 4,
-      name: "Neha Singh",
-      rating: 5,
-      message:
-        "Fantastic experience! Everything went perfectly from start to finish.",
-      imageUrl:
-        "https://randomuser.me/api/portraits/women/48.jpg",
-      published: true,
-    },
-  ]);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const res = await API.get("/testimonials");
+console.log(res.data.data);
+        const allTestimonials: Testimonial[] = res.data.data || [];
+
+        // Only show published
+        const published = allTestimonials.filter(
+          (t) => t.published === true
+        );
+
+        setTestimonials(published);
+      } catch (error) {
+        console.error("FETCH ERROR:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTestimonials();
+  }, []);
 
   return (
     <div className="testimonial-preview-container">
-      <h2 className="testimonial-preview-title">🌟 Client Testimonials Preview</h2>
+      <h2 className="testimonial-preview-title">
+        🌟 Client Testimonials Preview
+      </h2>
 
-      <div className="testimonial-grid">
-        {testimonials.map((t) => (
-          <div
-            key={t.id}
-            className={`testimonial-card ${
-              t.published ? "published" : "draft"
-            }`}
-          >
-            <div className="testimonial-top">
-              <img src={t.imageUrl} alt={t.name} className="testimonial-avatar" />
-              <div>
-                <h3>{t.name}</h3>
-                <div className="testimonial-rating">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <Star
-                      key={star}
-                      size={18}
-                      color={star <= t.rating ? "#facc15" : "#cbd5e1"}
-                      fill={star <= t.rating ? "#facc15" : "none"}
-                    />
-                  ))}
+      {loading ? (
+        <p style={{ textAlign: "center" }}>Loading testimonials...</p>
+      ) : (
+        <div className="testimonial-grid">
+          {testimonials.map((t) => (
+            <div
+              key={t._id}
+              className={`testimonial-card ${
+                t.published ? "published" : "draft"
+              }`}
+            >
+              <div className="testimonial-top">
+                <img
+                  src={t.image ? getImageUrl(t.image) : ""}
+                  alt={t.name}
+                  className="testimonial-avatar"
+                />
+                <div>
+                  <h3>{t.name}</h3>
+                  <div className="testimonial-rating">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star
+                        key={star}
+                        size={18}
+                        color={star <= t.rating ? "#facc15" : "#cbd5e1"}
+                        fill={star <= t.rating ? "#facc15" : "none"}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <p className="testimonial-message">“{t.message}”</p>
+              <p className="testimonial-message">
+                “{t.message}”
+              </p>
 
-            <div className="testimonial-footer">
-              <span
-                className={`testimonial-status ${
-                  t.published ? "active" : "inactive"
-                }`}
-              >
-                {t.published ? "Published" : "Draft"}
-              </span>
+              <div className="testimonial-footer">
+                <span
+                  className={`testimonial-status ${
+                    t.published ? "active" : "inactive"
+                  }`}
+                >
+                  {t.published ? "Published" : "Draft"}
+                </span>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+
+          {testimonials.length === 0 && (
+            <p style={{ textAlign: "center" }}>
+              No published testimonials yet.
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 };
