@@ -50,6 +50,8 @@ import CourseApproval from "./components/CourseApproval/CourseApproval";
 import CourseManage from "./components/CourseManage/CourseManage";
 import AddNewCourseMain from "./components/AddNewCourseMain/AddNewCourseMain";
 
+/* ================= INTERNSHIP ================= */
+
 /* ================= FEEDBACK ================= */
 import UserFeedback from "./components/UserFeedback/UserFeedback";
 import FeedbackOverview from "./components/FeedbackOverview/FeedbackOverview";
@@ -70,6 +72,10 @@ import InstructorManagement from "./pages/InstructorManagement/InstructorManagme
 import CareerManagement from "./pages/CareerManagement/CareerManagement";
 import PostNotice from "./pages/PostNotice/PostNotice";
 import NoticePreview from "./pages/NoticePreview/NoticePreview";
+
+/*==================   Intenship =========================*/ 
+import PostInternship from "./pages/PostInternship/PostInternship";
+import PreviewInternship from "./pages/PreviewInternship/PreviewInternship";
 
 export default function App() {
   return (
@@ -105,7 +111,10 @@ export default function App() {
           <Route path="/course/manage" element={<CourseManage />} />
           <Route path="/course/approval" element={<CourseApproval/>} />
 
-          {/* ================= COURSE ================= */}
+          {/* ================= INTERNSHIP ================= */}
+          <Route path="/internship/post" element={<PostInternship/>}/>
+          <Route path="/internship/preview" element={<PreviewInternship/>}/>
+
 
           {/* ================= Video Management ================= */}
           <Route path="/gallery/videos" element={<VideoManagement/>}/>
