@@ -105,6 +105,8 @@ export default function App() {
           <Route path="/course/manage" element={<CourseManage />} />
           <Route path="/course/approval" element={<CourseApproval/>} />
 
+          {/* ================= COURSE ================= */}
+
           {/* ================= Video Management ================= */}
           <Route path="/gallery/videos" element={<VideoManagement/>}/>
            
