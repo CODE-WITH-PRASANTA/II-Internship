@@ -38,12 +38,16 @@ import StoryPreview from "./components/StoryPreview/StoryPreview";
 import StoryPost from "./components/StoryPost/StoryPost";
 import StoryPreeview from "./components/StoryPreeview/StoryPreeview";
 
-/* ================= INSTRUCTOR ================= */
+/* ================= INSTRUCTOR PROFILE================= */
+import InstructorPage from "./pages/InstructorPage/InstructorPage";
+
+
+/* ================= INSTRUCTOR MANAGEMENT================= */
 import ManageInstructors from "./components/ManageInstructors/ManageInstructors";
-import TSKInstructorPage from "./pages/InstructorPage/InstructorPage";
 
 /* ================= COURSE ================= */
 // import CourseDetails from "./components/CourseDetails/CourseDetails";
+import CourseApproval from "./components/CourseApproval/CourseApproval";
 import CourseManage from "./components/CourseManage/CourseManage";
 import AddNewCourseMain from "./components/AddNewCourseMain/AddNewCourseMain";
 
@@ -63,6 +67,8 @@ import NewsManagement from "./components/NewsManagement/NewsManagement";
 /*==============  Notice Management  ===============*/
 import NoticeManagement from "./pages/NoticeManagement/NoticeManagement";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import InstructorManagement from "./pages/InstructorManagement/InstructorManagment";
+import CareerManagement from "./pages/CareerManagement/CareerManagement";
 import PostNotice from "./pages/PostNotice/PostNotice";
 import NoticePreview from "./pages/NoticePreview/NoticePreview";
 
@@ -92,6 +98,14 @@ export default function App() {
           <Route path="line-chart" element={<LineChart />} />
           <Route path="bar-chart" element={<BarChart />} />
 
+          <Route path="/instructor-management" element={<InstructorManagement />} />
+          <Route path="/career-management" element={<CareerManagement />} />
+
+          {/* ================= COURSE ================= */}
+          <Route path="/course/post" element={<AddNewCourseMain />} />
+          <Route path="/course/manage" element={<CourseManage />} />
+          <Route path="/course/approval" element={<CourseApproval/>} />
+
           {/* ================= COURSE ================= */}
           <Route path="course/post" element={<AddNewCourseMain />} />
           <Route path="course/manage" element={<CourseManage />} />
@@ -114,11 +128,13 @@ export default function App() {
           <Route path="category/preview" element={<CategoryPreview />} />
 
           {/* ================= INSTRUCTOR ================= */}
-          <Route path="main-instructor" element={<TSKInstructorPage />} />
+          <Route path="/main-instructor" element={<InstructorPage />} />
           <Route path="instructor/add" element={<ManageInstructors />} />
 
           {/* ================= EVENTS ================= */}
-          <Route path="events/upload" element={<EventPicturePage />} />
+          <Route path="/events/upload" element={<EventPicturePage />} />
+
+          
           <Route path="learning-partners" element={<LearningPartner />} />
 
           {/* ================= TESTIMONIAL ================= */}

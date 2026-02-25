@@ -39,7 +39,7 @@ const navItems = [
 
   {
     icon: <PhotographIcon />,
-    name: "Event Gallery",
+    name: "Home Event Gallery",
     path: "/events/upload",
   },
 
@@ -48,15 +48,26 @@ const navItems = [
     name: "Learning Partners",
     path: "/learning-partners",
   },
+ 
+  {
+  icon: <UserCircleIcon />,
+  name: "Instructor Management",
+  path: "/instructor-management",
+},
 
+{
+  icon: <ClipboardListIcon />,
+  name: "Career Management",
+  path: "/career-management",
+},
   // ================= COURSE MANAGEMENT =================
   {
     icon: <BookOpenIcon />,
     name: "Course Management",
     subItems: [
-      { name: "Create Course", path: "/course/post" },
+      { name: "Course Posting", path: "/course/post" },
       { name: "Manage Courses", path: "/course/manage" },
-      { name: "Course Preview", path: "/course/preview" },
+      { name: "Course Approval", path: "/course/approval" },
     ],
   },
 
@@ -84,6 +95,17 @@ const navItems = [
       { name: "Attendance Management", path: "/instructor/attendance" },
     ],
   },
+
+ // ================= CAREER MANAGEMENT =================
+{
+  icon: <ClipboardListIcon />,
+  name: "Career Management",
+  subItems: [
+    { name: "Post Job", path: "/career/post-job" },
+    { name: "Manage Jobs", path: "/career/manage-jobs" },
+    { name: "Applications", path: "/career/applications" },
+    { name: "Career Settings", path: "/career/settings" },
+  ]},
 // ================= NOTICE MANAGEMENT =================
   
  {

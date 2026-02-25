@@ -843,4 +843,55 @@ color: #ffffff;   /* WHITE TEXT */
 .Navbar-mobile-drawer::-webkit-scrollbar{
   width:0;
   height:0;
+} 
+/* ===== MOBILE DRAWER BOTTOM CONTACT ===== */
+
+.Navbar-mobile-bottom-contact{
+  display:none;
+}
+
+/* MOBILE + TABLET */
+.Navbar-mobile-bottom-contact{
+  display:block;
+}
+
+/* MOBILE + TABLET */
+@media (max-width:991px){
+
+  .Navbar-mobile-bottom-contact{
+    display:flex;
+    flex-direction:column;   /* ⭐ force vertical */
+    gap:12px;                /* space between rows */
+  }
+/* ICON CIRCLE */
+.Navbar-mobile-contact-row svg{
+  width:34px;
+  height:34px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;                /* ⭐ circle */
+  background:linear-gradient(135deg,#f28b44,#f6a96d);
+  color:#fff;
+
+  font-size:14px;
+  padding:8px;
+
+  box-shadow:0 6px 16px rgba(242,139,68,.35);
+}
+  .Navbar-mobile-contact-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:14px;
+    color:#334155;
+    width:100%;              /* ⭐ full line */
+  }
+
+  .Navbar-mobile-contact-row span{
+    display:block;           /* ⭐ prevents inline merge */
+    word-break:break-word;   /* safe for email */
+  }
 }

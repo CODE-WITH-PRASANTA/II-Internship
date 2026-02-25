@@ -438,6 +438,23 @@ const Navbar = () => {
     🚀 Apply Now
   </Link>
 </li>
+
+{/* ===== MOBILE DRAWER CONTACT (BOTTOM) ===== */}
+<li className="Navbar-mobile-bottom-contact">
+
+  <div className="Navbar-mobile-contact-row">
+    <FaPhoneAlt />
+    <span>+91 7014627894</span>
+  </div>
+
+  <div className="Navbar-mobile-contact-row">
+    <FaEnvelope />
+    <span>learningstep19@gmail.com</span>
+  </div>
+
+  
+
+</li>
         </ul>
       </div>
     </>
