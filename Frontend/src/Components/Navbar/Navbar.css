@@ -780,3 +780,67 @@ color: #ffffff;   /* WHITE TEXT */
 .Navbar-visit-btn li {
   list-style: none;
 }
+/* ================= MOBILE ACTION BUTTONS ================= */
+
+/* hidden by default (desktop + tablet navbar) */
+.Navbar-mobile-actions{
+  display:none;
+  list-style:none;
+  margin-top:14px;
+}
+
+/* show only on mobile */
+@media (max-width:768px){
+
+  .Navbar-mobile-actions{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .Navbar-mobile-login{
+    padding:12px;
+    text-align:center;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:600;
+    color:#fff;
+
+    background: rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.15);
+    transition:0.25s;
+  }
+
+  .Navbar-mobile-login:hover{
+    background:#2d2d2d;
+  }
+
+  .Navbar-mobile-apply{
+    padding:13px;
+    text-align:center;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:600;
+    color:#fff;
+
+    background: linear-gradient(135deg,#ff4b2b,#ff416c);
+    transition:0.25s;
+  }
+
+  .Navbar-mobile-apply:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 22px rgba(255,65,108,.45);
+  }
+}
+
+
+/* ================= HIDDEN SCROLLBAR (DRAWER) ================= */
+.Navbar-mobile-drawer{
+  overflow-y:auto;
+  scrollbar-width:none; /* firefox */
+}
+
+.Navbar-mobile-drawer::-webkit-scrollbar{
+  width:0;
+  height:0;
+}

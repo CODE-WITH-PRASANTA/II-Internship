@@ -418,6 +418,26 @@ const Navbar = () => {
               Donate
             </Link>
           </li>
+         
+
+{/* ===== MOBILE ONLY ACTION BUTTONS ===== */}
+<li className="Navbar-mobile-actions">
+  <Link
+    to="/Login"
+    className="Navbar-mobile-login"
+    onClick={() => setDrawerOpen(false)}
+  >
+    🔑 Login / Register
+  </Link>
+
+  <Link
+    to="/Apply"
+    className="Navbar-mobile-apply"
+    onClick={() => setDrawerOpen(false)}
+  >
+    🚀 Apply Now
+  </Link>
+</li>
         </ul>
       </div>
     </>
