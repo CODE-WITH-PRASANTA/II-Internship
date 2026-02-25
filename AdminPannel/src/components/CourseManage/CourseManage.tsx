@@ -1,206 +1,176 @@
-//tsx//
-
-import React, { useState } from "react";
-import { FiGrid, FiList } from "react-icons/fi";
+import React, { useEffect, useState } from "react";
 import "./CourseManage.css";
+import API, { getImageUrl } from "../../api/api";
+import { Link } from "react-router";
 
 interface Course {
-  id: number;
-  image: string;
+  _id: string;
+  thumbnail?: string;
   title: string;
-  level: string;
-  teacher: string;
-  designation: string;
+  skillLevel: string;
+  instructor?: {
+    name?: string;
+    designation?: string;
+  };
   language: string;
   rating: number;
-  price: string;
+  pricing: number;
   timeline: string;
-  students: number;
-  lessons: number;
+  totalLectures: number;
 }
 
-const courses: Course[] = [
-  {
-    id: 1,
-    image: "https://picsum.photos/200?1",
-    title: "Web Design Fundamentals",
-    level: "Beginner",
-    teacher: "Lori Stevens",
-    designation: "UI/UX Designer",
-    language: "English",
-    rating: 5,
-    price: "4,999",
-    timeline: "6 Weeks",
-    students: 15567,
-    lessons: 32,
-  },
-  {
-    id: 2,
-    image: "https://picsum.photos/200?2",
-    title: "Bootstrap 5 From Scratch",
-    level: "Intermediate",
-    teacher: "Billy Vasquez",
-    designation: "Frontend Engineer",
-    language: "English",
-    rating: 4,
-    price: "3,999",
-    timeline: "4 Weeks",
-    students: 16584,
-    lessons: 24,
-  },
-  {
-    id: 3,
-    image: "https://picsum.photos/200?3",
-    title: "Graphic Design Masterclass",
-    level: "All Level",
-    teacher: "Carolyn Ortiz",
-    designation: "Graphic Designer",
-    language: "Hindi",
-    rating: 3,
-    price: "5,499",
-    timeline: "8 Weeks",
-    students: 6458,
-    lessons: 40,
-  },
-];
-
 const ManageCourses: React.FC = () => {
-  const [view, setView] = useState<"grid" | "list">("list");
+  const [courses, setCourses] = useState<Course[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  /* ================= FETCH COURSES ================= */
+  const fetchCourses = async () => {
+    try {
+      setLoading(true);
+      const res = await API.get("/courses");
+      setCourses(res.data || []);
+    } catch (error) {
+      console.error("FETCH COURSES ERROR:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCourses();
+  }, []);
+
+  /* ================= DELETE COURSE ================= */
+  const handleDelete = async (id: string) => {
+    if (!window.confirm("Are you sure you want to delete this course?"))
+      return;
+
+    try {
+      await API.delete(`/courses/${id}`);
+      fetchCourses();
+    } catch (error) {
+      console.error("DELETE COURSE ERROR:", error);
+    }
+  };
 
   return (
     <div className="mc-wrapper">
-
-      {/* Header */}
       <div className="mc-header">
         <h2 className="mc-title">Manage Courses</h2>
 
         <div className="mc-header-right">
-          <div className="mc-view-toggle">
-            <button
-              className={`mc-toggle-btn ${view === "grid" ? "mc-active" : ""}`}
-              onClick={() => setView("grid")}
-            >
-              <FiGrid />
-            </button>
-            <button
-              className={`mc-toggle-btn ${view === "list" ? "mc-active" : ""}`}
-              onClick={() => setView("list")}
-            >
-              <FiList />
-            </button>
-          </div>
-
-          <button className="mc-add-btn">Create Course</button>
+          <Link to="/course/post" className="mc-add-btn">
+            Create Course
+          </Link>
         </div>
       </div>
 
-      {/* ================= LIST VIEW ================= */}
-      {view === "list" && (
-        <div className="mc-table-wrapper">
-          <table className="mc-table">
-            <thead className="mc-thead">
+      <div className="mc-table-wrapper">
+        <table className="mc-table">
+          <thead className="mc-thead">
+            <tr>
+              <th>Course</th>
+              <th>Level</th>
+              <th>Teacher</th>
+              <th>Language</th>
+              <th>Rating</th>
+              <th>Price</th>
+              <th>Timeline</th>
+              <th>Students</th>
+              <th>Lessons</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {loading ? (
               <tr>
-                <th>Course</th>
-                <th>Level</th>
-                <th>Teacher</th>
-                <th>Language</th>
-                <th>Rating</th>
-                <th>Price</th>
-                <th>Timeline</th>
-                <th>Students</th>
-                <th>Lessons</th>
-                <th>Action</th>
+                <td colSpan={10} style={{ textAlign: "center" }}>
+                  Loading...
+                </td>
               </tr>
-            </thead>
-
-            <tbody>
-              {courses.map((course) => (
-                <tr key={course.id} className="mc-row">
-                  <td className="mc-course-info">
-                    <img
-                      src={course.image}
-                      alt={course.title}
-                      className="mc-course-img"
-                    />
-                    <span>{course.title}</span>
+            ) : courses.length === 0 ? (
+              <tr>
+                <td colSpan={10} style={{ textAlign: "center" }}>
+                  No courses found
+                </td>
+              </tr>
+            ) : (
+              courses.map((course) => (
+                <tr key={course._id}>
+                  {/* ================= COURSE INFO ================= */}
+                  <td>
+                    <div className="mc-course-info">
+                      <img
+                        className="mc-course-img"
+                        src={
+                          course.thumbnail
+                            ? getImageUrl(course.thumbnail)
+                            : "https://via.placeholder.com/100"
+                        }
+                        alt={course.title}
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src =
+                            "https://via.placeholder.com/100";
+                        }}
+                      />
+                      <span>{course.title}</span>
+                    </div>
                   </td>
 
-                  <td>{course.level}</td>
+                  {/* ================= LEVEL ================= */}
+                  <td>{course.skillLevel || "N/A"}</td>
 
-                  <td className="mc-teacher-info">
-                    <strong>{course.teacher}</strong>
-                    <small>{course.designation}</small>
+                  {/* ================= TEACHER ================= */}
+                  <td>
+                    <div className="mc-teacher-info">
+                      <strong>{course.instructor?.name || "N/A"}</strong>
+                      <small>
+                        {course.instructor?.designation || ""}
+                      </small>
+                    </div>
                   </td>
 
-                  <td>{course.language}</td>
+                  {/* ================= LANGUAGE ================= */}
+                  <td>{course.language || "N/A"}</td>
 
+                  {/* ================= RATING ================= */}
                   <td className="mc-rating">
-                    {"★".repeat(course.rating)}
-                    {"☆".repeat(5 - course.rating)}
+                    {"★".repeat(Math.round(course.rating || 0))}
+                    {"☆".repeat(5 - Math.round(course.rating || 0))}
                   </td>
 
-                  <td>₹{course.price}</td>
-                  <td>{course.timeline}</td>
-                  <td>{course.students.toLocaleString()}</td>
-                  <td>{course.lessons}</td>
+                  {/* ================= PRICE ================= */}
+                  <td>₹{course.pricing || 0}</td>
 
-                  <td className="mc-actions">
-                    <button className="mc-edit">✏️</button>
-                    <button className="mc-delete">🗑️</button>
-                    <button className="mc-view">👁️</button>
+                  {/* ================= TIMELINE ================= */}
+                  <td>{course.timeline || "N/A"}</td>
+
+                  {/* ================= STUDENTS (Static for now) ================= */}
+                  <td>0</td>
+
+                  {/* ================= LESSONS ================= */}
+                  <td>{course.totalLectures || 0}</td>
+
+                  {/* ================= ACTIONS ================= */}
+                  <td>
+                    <div className="mc-actions">
+                      <button className="mc-edit">✏️</button>
+                      <button
+                        className="mc-delete"
+                        onClick={() => handleDelete(course._id)}
+                      >
+                        🗑️
+                      </button>
+                      <button className="mc-view">👁️</button>
+                    </div>
                   </td>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
-
-      {/* ================= GRID VIEW ================= */}
-      {view === "grid" && (
-        <div className="mc-grid-wrapper">
-          {courses.map((course) => (
-            <div className="mc-card" key={course.id}>
-              <img
-                src={course.image}
-                alt={course.title}
-                className="mc-card-img"
-              />
-
-              <div className="mc-card-body">
-                <h3 className="mc-card-title">{course.title}</h3>
-                <p className="mc-card-level">{course.level}</p>
-
-                <div className="mc-card-teacher">
-                  <strong>{course.teacher}</strong>
-                  <span>{course.designation}</span>
-                </div>
-
-                <div className="mc-rating">
-                  {"★".repeat(course.rating)}
-                  {"☆".repeat(5 - course.rating)}
-                </div>
-
-                <div className="mc-card-meta">
-                  <span>₹{course.price}</span>
-                  <span>{course.timeline}</span>
-                </div>
-
-                <div className="mc-card-meta-small">
-                  <span>{course.students.toLocaleString()} Students</span>
-                  <span>{course.lessons} Lessons</span>
-                </div>
-
-                <div className="mc-actions">
-                  <button className="mc-edit">✏️</button>
-                  <button className="mc-delete">🗑️</button>
-                  <button className="mc-view">👁️</button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
