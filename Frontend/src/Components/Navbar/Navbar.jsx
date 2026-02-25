@@ -418,6 +418,43 @@ const Navbar = () => {
               Donate
             </Link>
           </li>
+         
+
+{/* ===== MOBILE ONLY ACTION BUTTONS ===== */}
+<li className="Navbar-mobile-actions">
+  <Link
+    to="/Login"
+    className="Navbar-mobile-login"
+    onClick={() => setDrawerOpen(false)}
+  >
+    🔑 Login / Register
+  </Link>
+
+  <Link
+    to="/Apply"
+    className="Navbar-mobile-apply"
+    onClick={() => setDrawerOpen(false)}
+  >
+    🚀 Apply Now
+  </Link>
+</li>
+
+{/* ===== MOBILE DRAWER CONTACT (BOTTOM) ===== */}
+<li className="Navbar-mobile-bottom-contact">
+
+  <div className="Navbar-mobile-contact-row">
+    <FaPhoneAlt />
+    <span>+91 7014627894</span>
+  </div>
+
+  <div className="Navbar-mobile-contact-row">
+    <FaEnvelope />
+    <span>learningstep19@gmail.com</span>
+  </div>
+
+  
+
+</li>
         </ul>
       </div>
     </>
