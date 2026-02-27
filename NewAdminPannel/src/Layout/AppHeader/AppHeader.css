@@ -1,0 +1,151 @@
+.AppHeader {
+  height: 85px;
+  background: #0f172a;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+/* LEFT */
+.AppHeader-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.AppHeader-menuBtn {
+  font-size: 22px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Search */
+.AppHeader-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #1f2835;
+  padding: 10px 14px;
+  border-radius: 30px;
+  width: 320px;
+  transition: .25s;
+}
+
+.AppHeader-search:focus-within {
+  background: #273449;
+}
+
+.AppHeader-search input {
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  width: 100%;
+}
+
+/* RIGHT */
+.AppHeader-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Icons */
+.AppHeader-icon {
+  position: relative;
+  font-size: 20px;
+  background: #1e293b;
+  border: none;
+  color: #fff;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: .25s;
+}
+
+/* ⭐ Hover color effects */
+.AppHeader-icon:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+}
+
+/* Notification special hover */
+.AppHeader-icon.notification:hover {
+  background: #f59e0b;
+}
+
+/* Dot */
+.dot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  background: orange;
+  border-radius: 50%;
+}
+
+/* Profile */
+.AppHeader-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.AppHeader-profile img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: .25s;
+}
+
+.AppHeader-profile img:hover {
+  transform: scale(1.05);
+}
+
+.profile-name {
+  font-weight: 500;
+}
+
+/* ========================= */
+/* ✅ Tablet */
+@media (max-width: 1024px) {
+  .AppHeader-search {
+    width: 220px;
+  }
+}
+
+/* ========================= */
+/* ✅ Mobile */
+@media (max-width: 768px) {
+  .AppHeader-search {
+    display: none;
+  }
+
+  .profile-name {
+    display: none;
+  }
+}
+
+/* ========================= */
+/* ✅ Small mobile */
+@media (max-width: 480px) {
+  .AppHeader {
+    padding: 0 12px;
+  }
+
+  .AppHeader-icon {
+    width: 38px;
+    height: 38px;
+  }
+}

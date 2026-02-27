@@ -1,0 +1,49 @@
+/* ===== Root layout ===== */
+.AppLayout {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background: #f5f7fb;
+  overflow: hidden; /* prevent page scroll */
+}
+
+/* ===== Main column ===== */
+.AppLayout-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* important */
+  transition: all .3s ease;
+}
+
+/* ===== Scrollable white page ⭐ */
+.AppLayout-content {
+  flex: 1;
+  min-height: 0;        /* ⭐ REQUIRED */
+  overflow-y: scroll;     /* only this scrolls */
+  padding: 20px;
+  background: #f5f7fb;
+}
+
+/* Scrollbar */
+.AppLayout-content::-webkit-scrollbar {
+  width: 8px;
+}
+.AppLayout-content::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 6px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .AppLayout-content { padding: 16px; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .AppLayout-content { padding: 14px; }
+}
+
+@media (max-width: 480px) {
+  .AppLayout-content { padding: 12px; }
+}
