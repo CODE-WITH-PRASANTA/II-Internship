@@ -6,6 +6,7 @@ import {
   FolderPlusIcon,
   TrophyIcon,
   MessageSquareIcon,
+  
 } from "lucide-react";
 
 // React Icons (Heroicons)
@@ -23,6 +24,7 @@ import {
   HiOutlineCog as CogIcon,
   HiOutlineDotsHorizontal as HorizontaLDots,
   HiChevronDown as ChevronDownIcon,
+  HiOutlineBriefcase as BriefcaseIcon,
 } from "react-icons/hi";
 
 import { useSidebar } from "../context/SidebarContext";
@@ -68,6 +70,16 @@ const navItems = [
       { name: "Course Posting", path: "/course/post" },
       { name: "Manage Courses", path: "/course/manage" },
       { name: "Course Approval", path: "/course/approval" },
+    ],
+  },
+
+  // ================= INTERNSHIP MANAGEMENT =================
+  {
+    icon: <BriefcaseIcon/>,
+    name: "Internship Management",
+    subItems:[
+      {name: "Post Internship" , path: "/internship/post"},
+      {name: "Preview Internship", path: "/internship/preview"},
     ],
   },
 
