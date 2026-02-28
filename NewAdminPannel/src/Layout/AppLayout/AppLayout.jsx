@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Outlet } from "react-router-dom";   // 👈 ADD THIS
 import "./AppLayout.css";
 import AppSidebar from "../AppSidebar/AppSidebar";
 import AppHeader from "../AppHeader/AppHeader";
@@ -18,7 +19,7 @@ const AppLayout = () => {
 
         {/* Scrollable middle page */}
         <div className="AppLayout-content">
-          {/* YOUR PAGE CONTENT HERE */}
+          <Outlet />   {/* 👈 THIS IS REQUIRED */}
         </div>
       </div>
     </div>

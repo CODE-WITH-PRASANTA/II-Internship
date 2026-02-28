@@ -1,0 +1,229 @@
+/* ================= WRAPPER ================= */
+.mc-wrapper {
+  background: #f8fafc;
+  padding: 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ================= HEADER ================= */
+.mc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.mc-title {
+  font-size: 22px;
+  color: #0f172a;
+}
+
+.mc-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ================= VIEW TOGGLE ================= */
+.mc-view-toggle {
+  display: flex;
+  background: #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.mc-toggle-btn {
+  border: none;
+  padding: 8px 12px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.mc-active {
+  background: #2563eb;
+  color: #fff;
+}
+
+/* ================= ADD BUTTON ================= */
+.mc-add-btn {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.mc-add-btn:hover {
+  background: #1e40af;
+}
+
+/* ================= TABLE ================= */
+.mc-table-wrapper {
+  background: #fff;
+  border-radius: 12px;
+  overflow-x: auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.mc-table {
+  width: 100%;
+  min-width: 1100px;
+  border-collapse: collapse;
+}
+
+.mc-thead {
+  background: #1e40af;
+  color: #fff;
+}
+
+.mc-table th,
+.mc-table td {
+  padding: 14px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.mc-table td {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* COURSE INFO */
+.mc-course-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mc-course-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.mc-teacher-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.mc-teacher-info small {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.mc-rating {
+  color: #facc15;
+}
+
+.mc-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.mc-actions button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.mc-edit { color: #22c55e; }
+.mc-delete { color: #ef4444; }
+.mc-view { color: #2563eb; }
+
+/* ================= GRID ================= */
+.mc-grid-wrapper {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.mc-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+  transition: 0.3s;
+}
+
+.mc-card:hover {
+  transform: translateY(-5px);
+}
+
+.mc-card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.mc-card-body {
+  padding: 16px;
+}
+
+.mc-card-title {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.mc-card-level {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 10px;
+}
+
+.mc-card-teacher {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.mc-card-teacher span {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.mc-card-meta,
+.mc-card-meta-small {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.mc-card-meta-small {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .mc-wrapper {
+    padding: 14px;
+  }
+
+  .mc-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .mc-header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .mc-table {
+    min-width: 900px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mc-grid-wrapper {
+    grid-template-columns: 1fr;
+  }
+}

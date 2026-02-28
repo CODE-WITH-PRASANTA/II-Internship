@@ -43,7 +43,47 @@
 .AppSidebar.collapsed .AppSidebar-logo img {
   width: 42px;
 }
+.AppSidebar-item.active {
+  background: #2563eb;
+  color: #fff;
+}
 
+.AppSidebar-subItem.activeSub {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.AppSidebar-subItem {
+  display: block;
+  padding: 8px 40px;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+
+.AppSidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.AppSidebar-item:hover {
+  background: #f1f5f9;
+}
+
+.arrow {
+  margin-left: auto;
+  transition: 0.3s;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
 /* ===============================
    Menu container
 ================================= */
@@ -63,7 +103,7 @@
   border-radius: 10px;
   cursor: pointer;
   transition: .25s;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .AppSidebar-item:hover {
@@ -98,7 +138,7 @@
   margin-top: 4px;
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 9px;
   animation: sidebarDropdown .25s ease;
 }
 
@@ -110,7 +150,7 @@
 .AppSidebar-subItem {
   padding: 8px 10px;
   border-radius: 8px;
-  font-size: 13px;
+  font-size: 15px;
   cursor: pointer;
   opacity: .85;
   transition: .2s;

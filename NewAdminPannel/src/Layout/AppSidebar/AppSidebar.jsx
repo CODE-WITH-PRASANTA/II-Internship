@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./AppSidebar.css";
 import logo from "../../assets/IIIT LOGO (2).png";
 
-/* ICONS */
 import {
   LayoutDashboard,
   UserCircle,
@@ -21,16 +21,11 @@ import {
   ChevronDown
 } from "lucide-react";
 
-/* MENU */
 const menuItems = [
   { icon: <LayoutDashboard size={20} />, name: "Dashboard", path: "/" },
-
   { icon: <UserCircle size={20} />, name: "Instructor Profile", path: "/main-instructor" },
-
   { icon: <Image size={20} />, name: "Home Event Gallery", path: "/events/upload" },
-
   { icon: <Users size={20} />, name: "Learning Partners", path: "/learning-partners" },
-
   { icon: <ClipboardList size={20} />, name: "Career Management", path: "/career-management" },
 
   {
@@ -117,7 +112,7 @@ const menuItems = [
   },
 
   {
-    icon: <MessageSquare size={20} />,  /* ⭐ FIXED */
+    icon: <MessageSquare size={20} />,
     name: "Feedback Management",
     subItems: [
       { name: "Submit Feedback", path: "/feedback/add" },
@@ -157,33 +152,54 @@ const AppSidebar = ({ collapsed }) => {
         {menuItems.map((item, i) => (
           <div key={i}>
             
-            <div
-              className="AppSidebar-item"
-              onClick={() => toggle(i, item.subItems)}
-            >
-              <span className="icon">{item.icon}</span>
-
-              {!collapsed && (
-                <>
-                  <span className="label">{item.name}</span>
-                  {item.subItems && (
-                    <ChevronDown
-                      size={16}
-                      className={`arrow ${openIndex === i ? "open" : ""}`}
-                    />
+            {/* NORMAL LINK ITEM */}
+            {!item.subItems ? (
+              <NavLink
+                to={item.path}
+                end
+                className={({ isActive }) =>
+                  `AppSidebar-item ${isActive ? "active" : ""}`
+                }
+              >
+                <span className="icon">{item.icon}</span>
+                {!collapsed && <span className="label">{item.name}</span>}
+              </NavLink>
+            ) : (
+              <>
+                {/* PARENT WITH DROPDOWN */}
+                <div
+                  className="AppSidebar-item"
+                  onClick={() => toggle(i, item.subItems)}
+                >
+                  <span className="icon">{item.icon}</span>
+                  {!collapsed && (
+                    <>
+                      <span className="label">{item.name}</span>
+                      <ChevronDown
+                        size={16}
+                        className={`arrow ${openIndex === i ? "open" : ""}`}
+                      />
+                    </>
                   )}
-                </>
-              )}
-            </div>
+                </div>
 
-            {!collapsed && item.subItems && openIndex === i && (
-              <div className="AppSidebar-sub">
-                {item.subItems.map((sub, idx) => (
-                  <div key={idx} className="AppSidebar-subItem">
-                    {sub.name}
+                {/* SUBMENU */}
+                {!collapsed && openIndex === i && (
+                  <div className="AppSidebar-sub">
+                    {item.subItems.map((sub, idx) => (
+                      <NavLink
+                        key={idx}
+                        to={sub.path}
+                        className={({ isActive }) =>
+                          `AppSidebar-subItem ${isActive ? "activeSub" : ""}`
+                        }
+                      >
+                        {sub.name}
+                      </NavLink>
+                    ))}
                   </div>
-                ))}
-              </div>
+                )}
+              </>
             )}
           </div>
         ))}

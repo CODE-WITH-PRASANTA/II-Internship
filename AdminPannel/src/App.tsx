@@ -100,10 +100,7 @@ export default function App() {
           {/* Tables */}
           <Route path="basic-tables" element={<BasicTables />} />
 
-          {/* Charts */}
-          <Route path="line-chart" element={<LineChart />} />
-          <Route path="bar-chart" element={<BarChart />} />
-
+      
           <Route path="/instructor-management" element={<InstructorManagement />} />
           <Route path="/career-management" element={<CareerManagement />} />
 
@@ -152,7 +149,7 @@ export default function App() {
           <Route path="testimonial/view" element={<TestimonialPreview />} />
 
           {/* ================= SUCCESS STORY ================= */}
-          <Route path="success-story/create" element={<CreateStory />} />
+          {/* <Route path="success-story/create" element={<CreateStory />} /> */}
           <Route path="success-story/review" element={<StoryPreview />} />
           <Route path="success-story/post" element={<StoryPost />} />
           <Route path="success-story/preview" element={<StoryPreeview />} />
