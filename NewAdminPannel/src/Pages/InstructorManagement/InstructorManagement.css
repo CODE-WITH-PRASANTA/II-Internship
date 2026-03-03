@@ -1,8 +1,5 @@
 /* ===== LAYOUT ===== */
-html,body{
-  height: 100%;
-  overflow: hidden;
-}
+
 .instMng-wrapper{
   display:flex;
   gap:24px;
@@ -62,7 +59,7 @@ html,body{
 
 .instMng-row{
   display:flex;
-  gap:16px;
+  gap:35px;
 }
 .instMng-row .instMng-field{flex:1;}
 

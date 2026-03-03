@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./AppHeader.css";
-import avatar from "../../assets/User-4.webp"; // ✅ import profile image
+import avatar from "../../assets/User-4.webp";
 
 import {
   FiMenu,
@@ -10,17 +10,25 @@ import {
   FiSearch
 } from "react-icons/fi";
 
-const AppHeader = ({ collapsed, setCollapsed }) => {
+const AppHeader = ({ collapsed, setCollapsed, setMobileOpen }) => {
   const [dark, setDark] = useState(false);
+
+  const handleMenuClick = () => {
+    if (window.innerWidth <= 768) {
+      setMobileOpen(true);   // 📱 Open drawer on mobile
+    } else {
+      setCollapsed(!collapsed); // 💻 Collapse on desktop
+    }
+  };
 
   return (
     <header className="AppHeader">
-      
+
       {/* LEFT */}
       <div className="AppHeader-left">
         <button
           className="AppHeader-menuBtn"
-          onClick={() => setCollapsed(!collapsed)}
+          onClick={handleMenuClick}
         >
           <FiMenu />
         </button>

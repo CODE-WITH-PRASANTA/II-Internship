@@ -18,7 +18,7 @@ import {
   CreditCard,
   BarChart3,
   Cog,
-  ChevronDown
+  ChevronDown,
 } from "lucide-react";
 
 const menuItems = [
@@ -131,7 +131,7 @@ const menuItems = [
   },
 ];
 
-const AppSidebar = ({ collapsed }) => {
+const AppSidebar = ({ collapsed, mobileOpen, setMobileOpen }) => {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggle = (i, hasSub) => {
@@ -139,72 +139,89 @@ const AppSidebar = ({ collapsed }) => {
     setOpenIndex(openIndex === i ? null : i);
   };
 
-  return (
-    <aside className={`AppSidebar ${collapsed ? "collapsed" : ""}`}>
-      
-      {/* Logo */}
-      <div className="AppSidebar-logo">
-        <img src={logo} alt="logo" />
-      </div>
+  const closeMobile = () => {
+    if (window.innerWidth <= 768) {
+      setMobileOpen(false);
+    }
+  };
 
-      {/* Menu */}
-      <div className="AppSidebar-menu">
-        {menuItems.map((item, i) => (
-          <div key={i}>
-            
-            {/* NORMAL LINK ITEM */}
-            {!item.subItems ? (
-              <NavLink
-                to={item.path}
-                end
-                className={({ isActive }) =>
-                  `AppSidebar-item ${isActive ? "active" : ""}`
-                }
-              >
-                <span className="icon">{item.icon}</span>
-                {!collapsed && <span className="label">{item.name}</span>}
-              </NavLink>
-            ) : (
-              <>
-                {/* PARENT WITH DROPDOWN */}
-                <div
-                  className="AppSidebar-item"
-                  onClick={() => toggle(i, item.subItems)}
+  return (
+    <>
+      <aside
+        className={`AppSidebar 
+        ${collapsed ? "collapsed" : ""} 
+        ${mobileOpen ? "mobile-open" : ""}`}
+      >
+        {/* Logo */}
+        <div className="AppSidebar-logo">
+          <img src={logo} alt="logo" />
+        </div>
+
+        {/* Menu */}
+        <div className="AppSidebar-menu">
+          {menuItems.map((item, i) => (
+            <div key={i}>
+              {!item.subItems ? (
+                <NavLink
+                  to={item.path}
+                  end
+                  onClick={closeMobile}
+                  className={({ isActive }) =>
+                    `AppSidebar-item ${isActive ? "active" : ""}`
+                  }
                 >
                   <span className="icon">{item.icon}</span>
-                  {!collapsed && (
-                    <>
-                      <span className="label">{item.name}</span>
-                      <ChevronDown
-                        size={16}
-                        className={`arrow ${openIndex === i ? "open" : ""}`}
-                      />
-                    </>
-                  )}
-                </div>
-
-                {/* SUBMENU */}
-                {!collapsed && openIndex === i && (
-                  <div className="AppSidebar-sub">
-                    {item.subItems.map((sub, idx) => (
-                      <NavLink
-                        key={idx}
-                        to={sub.path}
-                        className={({ isActive }) =>
-                          `AppSidebar-subItem ${isActive ? "activeSub" : ""}`
-                        }
-                      >
-                        {sub.name}
-                      </NavLink>
-                    ))}
+                  {!collapsed && <span className="label">{item.name}</span>}
+                </NavLink>
+              ) : (
+                <>
+                  <div
+                    className="AppSidebar-item"
+                    onClick={() => toggle(i, item.subItems)}
+                  >
+                    <span className="icon">{item.icon}</span>
+                    {!collapsed && (
+                      <>
+                        <span className="label">{item.name}</span>
+                        <ChevronDown
+                          size={16}
+                          className={`arrow ${openIndex === i ? "open" : ""}`}
+                        />
+                      </>
+                    )}
                   </div>
-                )}
-              </>
-            )}
-          </div>
-        ))}
-      </div>
-    </aside>
+
+                  {!collapsed && openIndex === i && (
+                    <div className="AppSidebar-sub">
+                      {item.subItems.map((sub, idx) => (
+                        <NavLink
+                          key={idx}
+                          to={sub.path}
+                          onClick={closeMobile}
+                          className={({ isActive }) =>
+                            `AppSidebar-subItem ${isActive ? "activeSub" : ""}`
+                          }
+                        >
+                          {sub.name}
+                        </NavLink>
+                      ))}
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+          ))}
+        </div>
+      </aside>
+
+      {/* Overlay for Mobile */}
+      {mobileOpen && (
+        <div
+          className="sidebarOverlay"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
+    </>
   );
 };
 
