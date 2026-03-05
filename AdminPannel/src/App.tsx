@@ -2,7 +2,7 @@
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AppLayout from "./layout/AppLayout";
-import { ScrollToTop } from "./components/common/ScrollToTop";
+// import { ScrollToTop } from "./components/common/ScrollToTop";
 
 /* ================= AUTH PAGES ================= */
 import SignIn from "./pages/AuthPages/SignIn";
@@ -49,7 +49,7 @@ import ManageInstructors from "./components/ManageInstructors/ManageInstructors"
 // import CourseDetails from "./components/CourseDetails/CourseDetails";
 import CourseApproval from "./components/CourseApproval/CourseApproval";
 import CourseManage from "./components/CourseManage/CourseManage";
-import AddNewCourseMain from "./components/AddNewCourseMain/AddNewCourseMain";
+// import AddNewCourseMain from "./components/AddNewCourseMain/AddNewCourseMain";
 
 /* ================= INTERNSHIP ================= */
 
@@ -81,7 +81,7 @@ import PreviewInternship from "./pages/PreviewInternship/PreviewInternship";
 export default function App() {
   return (
     <Router>
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
 
       <Routes>
         {/* ================= MAIN LAYOUT ================= */}
@@ -105,7 +105,7 @@ export default function App() {
           <Route path="/career-management" element={<CareerManagement />} />
 
           {/* ================= COURSE ================= */}
-          <Route path="/course/post" element={<AddNewCourseMain />} />
+          {/* <Route path="/course/post" element={<AddNewCourseMain />} /> */}
           <Route path="/course/manage" element={<CourseManage />} />
           <Route path="/course/approval" element={<CourseApproval/>} />
 
@@ -114,7 +114,7 @@ export default function App() {
           <Route path="/internship/preview" element={<PreviewInternship/>}/>
 
           {/* ================= COURSE ================= */}
-          <Route path="course/post" element={<AddNewCourseMain />} />
+          {/* <Route path="course/post" element={<AddNewCourseMain />} /> */}
           <Route path="course/manage" element={<CourseManage />} />
           {/* <Route path="course/preview" element={<CourseDetails />} /> */}
 
