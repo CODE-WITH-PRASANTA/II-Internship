@@ -1,38 +1,53 @@
+/* =====================================
+   HEADER BASE
+===================================== */
 .AppHeader {
-  height: 85px;
+  height: 80px;
   background: #0f172a;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 18px;
+  padding: 0 20px;
   position: sticky;
   top: 0;
   z-index: 50;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-/* LEFT */
+/* =====================================
+   LEFT SECTION
+===================================== */
 .AppHeader-left {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
+/* Menu Button */
 .AppHeader-menuBtn {
   font-size: 22px;
   background: none;
   border: none;
   color: #fff;
   cursor: pointer;
+  transition: .25s;
 }
 
-/* Search */
+.AppHeader-menuBtn:hover {
+  color: #3b82f6;
+  transform: scale(1.1);
+}
+
+/* =====================================
+   SEARCH BAR
+===================================== */
 .AppHeader-search {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #1f2835;
-  padding: 10px 14px;
+  background: #1e293b;
+  padding: 10px 16px;
   border-radius: 30px;
   width: 320px;
   transition: .25s;
@@ -40,6 +55,7 @@
 
 .AppHeader-search:focus-within {
   background: #273449;
+  box-shadow: 0 0 0 2px rgba(59,130,246,.3);
 }
 
 .AppHeader-search input {
@@ -48,9 +64,12 @@
   outline: none;
   color: #fff;
   width: 100%;
+  font-size: 14px;
 }
 
-/* RIGHT */
+/* =====================================
+   RIGHT SECTION
+===================================== */
 .AppHeader-right {
   display: flex;
   align-items: center;
@@ -68,21 +87,20 @@
   height: 42px;
   border-radius: 50%;
   cursor: pointer;
-  transition: .25s;
+  transition: .25s ease;
 }
 
-/* ⭐ Hover color effects */
 .AppHeader-icon:hover {
   background: #2563eb;
   transform: translateY(-2px);
 }
 
-/* Notification special hover */
+/* Notification Hover */
 .AppHeader-icon.notification:hover {
   background: #f59e0b;
 }
 
-/* Dot */
+/* Notification Dot */
 .dot {
   position: absolute;
   top: 8px;
@@ -93,7 +111,9 @@
   border-radius: 50%;
 }
 
-/* Profile */
+/* =====================================
+   PROFILE
+===================================== */
 .AppHeader-profile {
   display: flex;
   align-items: center;
@@ -115,37 +135,55 @@
 
 .profile-name {
   font-weight: 500;
+  font-size: 14px;
 }
 
-/* ========================= */
-/* ✅ Tablet */
+/* =====================================
+   TABLET
+===================================== */
 @media (max-width: 1024px) {
   .AppHeader-search {
     width: 220px;
   }
 }
 
-/* ========================= */
-/* ✅ Mobile */
+/* =====================================
+   MOBILE
+===================================== */
 @media (max-width: 768px) {
+
+  .AppHeader {
+    height: 70px;
+    padding: 0 14px;
+  }
+
   .AppHeader-search {
-    display: none;
+    display: none; /* hide search */
   }
 
   .profile-name {
-    display: none;
-  }
-}
-
-/* ========================= */
-/* ✅ Small mobile */
-@media (max-width: 480px) {
-  .AppHeader {
-    padding: 0 12px;
+    display: none; /* hide name */
   }
 
   .AppHeader-icon {
     width: 38px;
     height: 38px;
+  }
+}
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+@media (max-width: 480px) {
+  .AppHeader {
+    padding: 0 10px;
+  }
+
+  .AppHeader-left {
+    gap: 10px;
+  }
+
+  .AppHeader-right {
+    gap: 10px;
   }
 }

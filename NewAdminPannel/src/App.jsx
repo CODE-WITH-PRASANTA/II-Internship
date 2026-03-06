@@ -22,6 +22,7 @@ import PostTestimonial from './Components/PostTestimonial/PostTestimonial';
 import TestimonialPreview from './Components/TestimonialPreview/TestimonialPreview';
 import UserFeedback from './Components/UserFeedback/UserFeedback';
 import FeedbackOverview from './Components/FeedbackOverview/FeedbackOverview';
+import PostRunningInternships from './Components/PostRunningInternships/PostRunningInternships';
 
 function App() {
   return (
@@ -49,23 +50,16 @@ function App() {
         <Route path="/testimonial/view" element={<TestimonialPreview />} />
         <Route path="/feedback/add" element={<UserFeedback />} />
         <Route path="/feedback/view" element={<FeedbackOverview />} />
-        
-
+        <Route path="/running-internships/post" element={<PostRunningInternships />} />
         {/* Admin Section */}
         <Route path="admin">
-
           <Route path="notices">
-
             {/* /admin/notices */}
             <Route index element={<NoticeManagement />} />
-
             {/* /admin/notices/preview */}
             <Route path="preview" element={<NoticePreview />} />
-
           </Route>
-
         </Route>
-
       </Route>
 
     </Routes>

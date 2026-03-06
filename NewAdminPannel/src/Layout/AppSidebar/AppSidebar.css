@@ -1,127 +1,107 @@
-/* ===============================
-   Sidebar base
-================================= */
+/* =========================================
+   SIDEBAR BASE
+========================================= */
 .AppSidebar {
-  width: 290px;
+  width: 280px;
   background: #0f172a;
-  color: #fff;
-  transition: all .35s cubic-bezier(.4,0,.2,1);
+  color: #e2e8f0;
   display: flex;
   flex-direction: column;
+  transition: width .35s cubic-bezier(.4,0,.2,1),
+              transform .35s cubic-bezier(.4,0,.2,1);
   position: relative;
-  z-index: 100;
+  z-index: 1000;
 }
 
-/* Collapsed */
+/* Desktop Collapse */
 .AppSidebar.collapsed {
   width: 80px;
 }
 
-/* ===============================
-   Logo
-================================= */
+/* =========================================
+   LOGO
+========================================= */
 .AppSidebar-logo {
   height: 70px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding: 10px 20px;
-  transition: all .3s ease;
+  padding: 0 20px;
+  transition: .3s ease;
 }
 
 .AppSidebar-logo img {
   width: 150px;
   object-fit: contain;
-  transition: all .35s ease;
+  transition: .3s ease;
 }
 
 .AppSidebar.collapsed .AppSidebar-logo {
   justify-content: center;
-  padding: 10px 0;
+  padding: 0;
 }
 
 .AppSidebar.collapsed .AppSidebar-logo img {
-  width: 42px;
-}
-.AppSidebar-item.active {
-  background: #2563eb;
-  color: #fff;
+  width: 40px;
 }
 
-.AppSidebar-subItem.activeSub {
-  color: #2563eb;
-  font-weight: 600;
-}
-
-.AppSidebar-subItem {
-  display: block;
-  padding: 8px 40px;
-  font-size: 14px;
-  cursor: pointer;
-  text-decoration: none;
-  color: #fff;
-}
-
-.AppSidebar-item {
-  display: flex;
-  align-items: center;
-  padding: 12px 20px;
-  cursor: pointer;
-  text-decoration: none;
-  color: #fff;
-  transition: 0.3s;
-}
-
-.AppSidebar-item:hover {
-  background: #f1f5f9;
-}
-
-.arrow {
-  margin-left: auto;
-  transition: 0.3s;
-}
-
-.arrow.open {
-  transform: rotate(180deg);
-}
-/* ===============================
-   Menu container
-================================= */
+/* =========================================
+   MENU CONTAINER
+========================================= */
 .AppSidebar-menu {
-  padding: 10px;
+  flex: 1;
+  padding: 12px;
   overflow-y: auto;
 }
 
-/* ===============================
-   Parent item
-================================= */
+/* Scrollbar */
+.AppSidebar-menu::-webkit-scrollbar {
+  width: 5px;
+}
+.AppSidebar-menu::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 6px;
+}
+
+/* =========================================
+   MENU ITEM
+========================================= */
 .AppSidebar-item {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
   padding: 12px 14px;
   border-radius: 10px;
   cursor: pointer;
-  transition: .25s;
   font-size: 15px;
+  color: #cbd5e1;
+  transition: all .25s ease;
+  text-decoration: none;
 }
 
+/* Hover */
 .AppSidebar-item:hover {
-  background: #809bc7;
+  background: rgba(255,255,255,0.06);
+  color: #ffffff;
+}
+
+/* Active */
+.AppSidebar-item.active {
+  background: linear-gradient(135deg,#2563eb,#1e40af);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(37,99,235,.4);
 }
 
 /* Icon */
-.AppSidebar-item .icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.icon {
   min-width: 22px;
+  display: flex;
+  justify-content: center;
 }
 
 /* Label */
-.AppSidebar-item .label {
+.label {
   white-space: nowrap;
-  transition: opacity .25s;
+  transition: opacity .25s ease;
 }
 
 /* Hide label when collapsed */
@@ -130,19 +110,29 @@
   pointer-events: none;
 }
 
-/* ===============================
-   Dropdown (sub items)
-================================= */
-.AppSidebar-sub {
-  padding-left: 48px;
-  margin-top: 4px;
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-  animation: sidebarDropdown .25s ease;
+/* Arrow */
+.arrow {
+  margin-left: auto;
+  transition: transform .3s ease;
 }
 
-@keyframes sidebarDropdown {
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+/* =========================================
+   SUB MENU
+========================================= */
+.AppSidebar-sub {
+  padding-left: 46px;
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  animation: dropdownAnim .25s ease;
+}
+
+@keyframes dropdownAnim {
   from { opacity: 0; transform: translateY(-6px); }
   to { opacity: 1; transform: translateY(0); }
 }
@@ -150,75 +140,94 @@
 .AppSidebar-subItem {
   padding: 8px 10px;
   border-radius: 8px;
-  font-size: 15px;
-  cursor: pointer;
-  opacity: .85;
-  transition: .2s;
+  font-size: 14px;
+  color: #94a3b8;
+  text-decoration: none;
+  transition: all .2s ease;
 }
 
+/* Sub Hover */
 .AppSidebar-subItem:hover {
-  background: #2f4b7d;
-  opacity: 1;
+  background: rgba(255,255,255,0.05);
+  color: #ffffff;
 }
 
-/* ===============================
-   Active state (future routing)
-================================= */
-.AppSidebar-item.active {
-  background: #2563eb;
+/* Sub Active */
+.activeSub {
+  background: #1e293b;
+  color: #3b82f6;
+  font-weight: 600;
 }
 
-.AppSidebar-subItem.active {
-  background: #1e40af;
-}
-
-/* ===============================
-   Scrollbar (sidebar)
-================================= */
-.AppSidebar-menu::-webkit-scrollbar {
-  width: 6px;
-}
-
-.AppSidebar-menu::-webkit-scrollbar-thumb {
-  background: #334155;
-  border-radius: 6px;
-}
-
-/* ===============================
-   Tablet
-================================= */
+/* =========================================
+   TABLET
+========================================= */
 @media (max-width: 1024px) {
-  .AppSidebar { width: 220px; }
-  .AppSidebar.collapsed { width: 70px; }
+  .AppSidebar {
+    width: 240px;
+  }
 
-  .AppSidebar-logo img { width: 130px; }
-  .AppSidebar.collapsed .AppSidebar-logo img { width: 38px; }
+  .AppSidebar.collapsed {
+    width: 70px;
+  }
+
+  .AppSidebar-logo img {
+    width: 130px;
+  }
+
+  .AppSidebar.collapsed .AppSidebar-logo img {
+    width: 36px;
+  }
 }
 
-/* ===============================
-   Mobile → drawer
-================================= */
+/* =========================================
+   MOBILE DRAWER
+========================================= */
 @media (max-width: 768px) {
+
   .AppSidebar {
     position: fixed;
     left: 0;
     top: 0;
     height: 100vh;
-    transform: translateX(0);
-    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    width: 260px;
+    transform: translateX(-100%);
+    box-shadow: 0 20px 40px rgba(0,0,0,.45);
   }
 
+  /* When mobile open class is added */
+  .AppSidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  /* Disable collapse width behavior on mobile */
   .AppSidebar.collapsed {
-    transform: translateX(-100%);
     width: 260px;
   }
 }
 
-/* ===============================
-   Small mobile
-================================= */
+/* =========================================
+   SMALL MOBILE
+========================================= */
 @media (max-width: 480px) {
   .AppSidebar-logo img {
     width: 120px;
   }
+}
+
+/* =========================================
+   MOBILE OVERLAY
+========================================= */
+.sidebarOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  backdrop-filter: blur(2px);
+  z-index: 999;
+  animation: fadeIn .3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
