@@ -1,321 +1,205 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./PostInternship.css";
-import Swal from "sweetalert2";
 
 const PostInternship = () => {
-  const [step, setStep] = useState(1);
 
-  const [formData, setFormData] = useState({
-    advertisementId: "",
-    internshipTitle: "",
-    internshipDescription: "",
-    department: "",
-    modules: "",
-    project: "",
-    tools: "",
-    internshipMode: "",
-    credits: "",
-    location: "",
-    duration: "",
-    qualification: "",
-    skills: "",
-    internshipType: "",
-    facilities: "",
-    careerOpportunity: "",
-    startDate: "",
-    fee: "",
-    lastDate: "",
-    mentor: "",
-    contact: "",
-    organizer: "",
-  });
+const [step,setStep] = useState(1)
 
-  /* AUTO GENERATE ID */
-  useEffect(() => {
-    const id = "ADV-" + Math.floor(100000 + Math.random() * 900000);
-    setFormData((prev) => ({ ...prev, advertisementId: id }));
-  }, []);
+const nextStep = () => {
+if(step < 5){
+setStep(step + 1)
+}
+}
 
-  /* HANDLE INPUT CHANGE */
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+const prevStep = () => {
+if(step > 1){
+setStep(step - 1)
+}
+}
 
-  const nextStep = () => setStep(2);
-  const prevStep = () => setStep(1);
+return (
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+<div className="internship-wrapper">
 
-    console.log(formData);
+{/* ================= FORM SECTION ================= */}
 
-    Swal.fire({
-      position: "top-end",
-      icon: "success",
-      title: "Internship Posted Successfully!",
-      showConfirmButton: false,
-      timer: 1500,
-      toast: true,
-    });
-  };
+<div className="internship-form">
 
-  return (
-    <div className="pi-container">
-      {/* LEFT SIDE FORM */}
-      <div className="pi-form-section">
-        <div className="pi-form-header">
-          <h2>Post Internship</h2>
-          <div className="pi-step-indicator">
-            <span className={step === 1 ? "pi-active-step" : ""}>1</span>
-            <span className={step === 2 ? "pi-active-step" : ""}>2</span>
-          </div>
-        </div>
+<h2 className="form-title">Post Internship</h2>
 
-        <form onSubmit={handleSubmit} className="pi-form-scroll">
-          {step === 1 && (
-            <>
-              <div className="pi-form-group">
-                <label>Advertisement ID *</label>
-                <input
-                  type="text"
-                  name="advertisementId"
-                  value={formData.advertisementId}
-                  readOnly
-                />
-              </div>
+<div className="form-scroll">
 
-              <div className="pi-two-column">
-                <div>
-                  <label>Internship Title *</label>
-                  <input
-                    name="internshipTitle"
-                    value={formData.internshipTitle}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div>
-                  <label>Department</label>
-                  <input
-                    name="department"
-                    value={formData.department}
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
+{/* STEP 1 */}
 
-              <div className="pi-form-group">
-                <label>Internship Description *</label>
-                <textarea
-                  name="internshipDescription"
-                  value={formData.internshipDescription}
-                  onChange={handleChange}
-                />
-              </div>
+{step === 1 && (
+<div className="form-step">
 
-              <div className="pi-two-column">
-                <input
-                  placeholder="Modules"
-                  name="modules"
-                  value={formData.modules}
-                  onChange={handleChange}
-                />
-                <input
-                  placeholder="Project"
-                  name="project"
-                  value={formData.project}
-                  onChange={handleChange}
-                />
-              </div>
+<label>Internship Title *</label>
+<input type="text" placeholder="Enter Internship Title"/>
 
-              <div className="pi-two-column">
-                <input
-                  placeholder="Tools"
-                  name="tools"
-                  value={formData.tools}
-                  onChange={handleChange}
-                />
-                <input
-                  placeholder="Credits"
-                  name="credits"
-                  value={formData.credits}
-                  onChange={handleChange}
-                />
-              </div>
+<label>Internship Description *</label>
+<textarea placeholder="Enter Internship Description"></textarea>
 
-              <div className="pi-form-group">
-                <label>Internship Mode *</label>
-                <select
-                  name="internshipMode"
-                  value={formData.internshipMode}
-                  onChange={handleChange}
-                >
-                  <option value="">Select ▼</option>
-                  <option>Full Time</option>
-                  <option>Part Time</option>
-                  <option>Virtual</option>
-                </select>
-              </div>
+</div>
+)}
 
-              <div className="pi-two-column">
-                <input
-                  placeholder="Location"
-                  name="location"
-                  value={formData.location}
-                  onChange={handleChange}
-                />
-                <input
-                  placeholder="Duration"
-                  name="duration"
-                  value={formData.duration}
-                  onChange={handleChange}
-                />
-              </div>
+{/* STEP 2 */}
 
-              <div className="pi-two-column">
-                <input
-                  placeholder="Qualification"
-                  name="qualification"
-                  value={formData.qualification}
-                  onChange={handleChange}
-                />
-                <input
-                  placeholder="Skills"
-                  name="skills"
-                  value={formData.skills}
-                  onChange={handleChange}
-                />
-              </div>
+{step === 2 && (
+<div className="form-step">
 
-              <button type="button" className="pi-next-btn" onClick={nextStep}>
-                Next →
-              </button>
-            </>
-          )}
+<label>Time Duration *</label>
+<input type="text" placeholder="Example : 3 Months"/>
 
-          {step === 2 && (
-            <>
-              <div className="pi-form-group">
-                <label>Internship Type *</label>
-                <select
-                  name="internshipType"
-                  value={formData.internshipType}
-                  onChange={handleChange}
-                >
-                  <option value="">Select ▼</option>
-                  <option>By Paying Fees</option>
-                  <option>Free of Cost</option>
-                  <option>Stipend</option>
-                </select>
-              </div>
+<label>Department</label>
+<input type="text" placeholder="Enter Department"/>
 
-              <div className="pi-two-column">
-                <div className="pi-form-group">
-                  <label>Facilities Provided</label>
-                  <textarea
-                    name="facilities"
-                    value={formData.facilities}
-                    onChange={handleChange}
-                  />
-                </div>
+</div>
+)}
 
-                <div className="pi-form-group">
-                  <label>Career Opportunity</label>
-                  <input
-                    name="careerOpportunity"
-                    value={formData.careerOpportunity}
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
+{/* STEP 3 */}
 
-              <div className="pi-two-column">
-                <input
-                  type="date"
-                  name="startDate"
-                  value={formData.startDate}
-                  onChange={handleChange}
-                />
-                <input
-                  placeholder="Fee"
-                  name="fee"
-                  value={formData.fee}
-                  onChange={handleChange}
-                />
-              </div>
+{step === 3 && (
+<div className="form-step">
 
-              <div className="pi-two-column">
-                <input
-                  type="date"
-                  name="lastDate"
-                  value={formData.lastDate}
-                  onChange={handleChange}
-                />
-                <input
-                  placeholder="Mentor"
-                  name="mentor"
-                  value={formData.mentor}
-                  onChange={handleChange}
-                />
-              </div>
+<label>Modules</label>
+<textarea placeholder="Enter Modules"></textarea>
 
-              <div className="pi-two-column">
-                <input
-                  placeholder="Contact"
-                  name="contact"
-                  value={formData.contact}
-                  onChange={handleChange}
-                />
-                <input
-                  placeholder="Organizer"
-                  name="organizer"
-                  value={formData.organizer}
-                  onChange={handleChange}
-                />
-              </div>
+<label>Project</label>
+<textarea placeholder="Enter Project Details"></textarea>
 
-              <div className="pi-button-row">
-                <button type="button" className="pi-back-btn" onClick={prevStep}>
-                  ← Back
-                </button>
-                <button type="submit" className="pi-submit-btn">
-                  Apply
-                </button>
-              </div>
-            </>
-          )}
-        </form>
-      </div>
+</div>
+)}
 
-      {/* RIGHT SIDE PREVIEW */}
-      <div className="pi-preview-section">
-        <div className="pi-preview-card">
-          <h3>{formData.internshipTitle || "Internship Title"}</h3>
-          <p className="pi-preview-id">{formData.advertisementId}</p>
+{/* STEP 4 */}
 
-          <p className="pi-preview-description">
-            {formData.internshipDescription ||
-              "Internship description preview will appear here."}
-          </p>
+{step === 4 && (
+<div className="form-step">
 
-          <div className="pi-preview-grid">
-            {Object.entries(formData).map(([key, value]) =>
-              key !== "advertisementId" &&
-              key !== "internshipTitle" &&
-              key !== "internshipDescription" ? (
-                <div key={key}>
-                  <strong>{key}:</strong> {value || "-"}
-                </div>
-              ) : null
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+<label>Tools</label>
+<input type="text" placeholder="Example : React, Python"/>
+
+</div>
+)}
+
+{/* STEP 5 */}
+
+{step === 5 && (
+<div className="form-step">
+
+<label>Internship Type *</label>
+
+<div className="radio-group">
+
+<label>
+<input type="radio" name="type"/> On Campus Internship
+</label>
+
+<label>
+<input type="radio" name="type"/> Virtual Internship
+</label>
+
+<label>
+<input type="radio" name="type"/> Both
+</label>
+
+</div>
+
+</div>
+)}
+
+</div>
+
+{/* STEP BUTTONS */}
+
+<div className="step-buttons">
+
+<button
+className="prev-btn"
+onClick={prevStep}
+disabled={step === 1}
+>
+Previous
+</button>
+
+<button
+className="next-btn"
+onClick={nextStep}
+>
+{step === 5 ? "Submit" : "Next"}
+</button>
+
+</div>
+
+</div>
+
+{/* ================= TABLE SECTION ================= */}
+
+<div className="internship-table">
+
+<h2 className="table-title">Posted Internships</h2>
+
+<div className="table-scroll">
+
+<table>
+
+<thead>
+<tr>
+<th>Title</th>
+<th>Duration</th>
+<th>Department</th>
+<th>Type</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Frontend Developer</td>
+<td>3 Months</td>
+<td>Web Development</td>
+<td>Virtual</td>
+<td>
+<button className="edit-btn">Edit</button>
+<button className="delete-btn">Delete</button>
+</td>
+</tr>
+
+<tr>
+<td>UI UX Design</td>
+<td>2 Months</td>
+<td>Design</td>
+<td>On Campus</td>
+<td>
+<button className="edit-btn">Edit</button>
+<button className="delete-btn">Delete</button>
+</td>
+</tr>
+
+<tr>
+<td>Data Science</td>
+<td>6 Months</td>
+<td>AI</td>
+<td>Both</td>
+<td>
+<button className="edit-btn">Edit</button>
+<button className="delete-btn">Delete</button>
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+);
+
 };
 
 export default PostInternship;
