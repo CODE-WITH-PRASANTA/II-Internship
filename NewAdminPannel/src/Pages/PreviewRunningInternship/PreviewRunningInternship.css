@@ -1,0 +1,209 @@
+.PreviewRunningInternship-container{
+padding:25px;
+width:100%;
+box-sizing:border-box;
+}
+
+/* HEADER */
+
+.PreviewRunningInternship-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.PreviewRunningInternship-title{
+font-size:22px;
+font-weight:600;
+}
+
+/* VIEW TOGGLE */
+
+.PreviewRunningInternship-viewToggle{
+display:flex;
+gap:10px;
+}
+
+.PreviewRunningInternship-viewToggle button{
+border:none;
+background:#f1f5f9;
+padding:8px 10px;
+border-radius:6px;
+cursor:pointer;
+font-size:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.PreviewRunningInternship-viewToggle button.active{
+background:#4f46e5;
+color:white;
+}
+
+/* GRID VIEW */
+
+.PreviewRunningInternship-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.PreviewRunningInternship-card{
+background:#fff;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+padding:20px;
+position:relative;
+transition:all .3s;
+}
+
+.PreviewRunningInternship-card:hover{
+transform:translateY(-3px);
+}
+
+/* CARD MENU */
+
+.PreviewRunningInternship-cardMenu{
+position:absolute;
+top:12px;
+right:12px;
+}
+
+.PreviewRunningInternship-cardMenu button{
+border:none;
+background:none;
+font-size:18px;
+cursor:pointer;
+}
+
+/* DROPDOWN */
+
+.PreviewRunningInternship-dropdown{
+position:absolute;
+top:30px;
+right:0;
+background:#fff;
+border-radius:6px;
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
+display:flex;
+flex-direction:column;
+min-width:120px;
+z-index:10;
+}
+
+.PreviewRunningInternship-dropdown button{
+border:none;
+background:none;
+padding:10px;
+display:flex;
+align-items:center;
+gap:8px;
+cursor:pointer;
+font-size:14px;
+}
+
+.PreviewRunningInternship-dropdown button:hover{
+background:#f1f5f9;
+}
+
+.PreviewRunningInternship-dropdown .delete{
+color:#dc2626;
+}
+
+/* CARD BODY */
+
+.PreviewRunningInternship-cardBody h3{
+margin-bottom:10px;
+font-size:18px;
+}
+
+.PreviewRunningInternship-cardBody p{
+font-size:14px;
+margin-bottom:6px;
+color:#555;
+}
+
+/* LIST VIEW */
+
+.PreviewRunningInternship-list{
+overflow-x:auto;
+}
+
+.PreviewRunningInternship-table{
+width:100%;
+border-collapse:collapse;
+background:#fff;
+}
+
+.PreviewRunningInternship-table th{
+background:#091322;
+color:white;
+padding:12px;
+text-align:left;
+font-size:14px;
+}
+
+.PreviewRunningInternship-table td{
+padding:12px;
+border-bottom:1px solid #eee;
+font-size:14px;
+}
+
+/* ACTION BUTTONS */
+
+.PreviewRunningInternship-tableActions{
+display:flex;
+gap:8px;
+}
+
+.PreviewRunningInternship-tableActions button{
+border:none;
+padding:6px 8px;
+border-radius:5px;
+cursor:pointer;
+font-size:16px;
+}
+
+.PreviewRunningInternship-tableActions .edit{
+background:#2563eb;
+color:white;
+}
+
+.PreviewRunningInternship-tableActions .delete{
+background:#dc2626;
+color:white;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.PreviewRunningInternship-header{
+flex-direction:column;
+align-items:flex-start;
+gap:10px;
+}
+
+.PreviewRunningInternship-title{
+font-size:18px;
+}
+
+}
+
+@media(max-width:480px){
+
+.PreviewRunningInternship-card{
+padding:15px;
+}
+
+.PreviewRunningInternship-cardBody h3{
+font-size:16px;
+}
+
+.PreviewRunningInternship-cardBody p{
+font-size:13px;
+}
+
+}
