@@ -23,6 +23,7 @@ import TestimonialPreview from './Components/TestimonialPreview/TestimonialPrevi
 import UserFeedback from './Components/UserFeedback/UserFeedback';
 import FeedbackOverview from './Components/FeedbackOverview/FeedbackOverview';
 import PostRunningInternships from './Components/PostRunningInternships/PostRunningInternships';
+import PreviewRunningInternship from './Pages/PreviewRunningInternship/PreviewRunningInternship';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
         <Route path="/feedback/add" element={<UserFeedback />} />
         <Route path="/feedback/view" element={<FeedbackOverview />} />
         <Route path="/running-internships/post" element={<PostRunningInternships />} />
+        <Route path="/running-internships/preview" element={<PreviewRunningInternship />} />
         {/* Admin Section */}
         <Route path="admin">
           <Route path="notices">

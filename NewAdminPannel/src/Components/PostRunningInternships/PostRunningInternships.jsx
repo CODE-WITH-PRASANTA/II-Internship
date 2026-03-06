@@ -6,23 +6,30 @@ const PostRunningInternships = () => {
   const [step, setStep] = useState(1);
 
   const [data, setData] = useState([]);
+
   const [form, setForm] = useState({
     title: "",
-    quote: "",
-    category: "",
-    rating: "",
-    timing: "",
-    lecture: "",
-    level: "",
-    author: "",
-    designation: "",
-    experience: "",
-    lifetimeLecture: "",
-    about: "",
-    overview: "",
-    price: "",
-    discount: "",
-    timeline: "",
+    description: "",
+    department: "",
+    modules: "",
+    project: "",
+    tools: "",
+    internshipType: "",
+    credits: "",
+    location: "",
+    duration: "",
+    qualification: "",
+    skills: "",
+    internshipCostType: "",
+    timePeriod: "",
+    facilities: "",
+    career: "",
+    startDate: "",
+    fee: "",
+    lastDate: "",
+    mentor: "",
+    contact: "",
+    organizer: ""
   });
 
   const handleChange = (e) => {
@@ -38,14 +45,13 @@ const PostRunningInternships = () => {
   return (
     <div className="RunningInternship-container">
 
-      {/* LEFT SIDE FORM */}
+      {/* LEFT FORM */}
       <div className="RunningInternship-formSection">
 
         <h2 className="RunningInternship-heading">
           Post Running Internship
         </h2>
 
-        {/* STEP INDICATOR */}
         <div className="RunningInternship-steps">
           Step {step} / 5
         </div>
@@ -54,55 +60,59 @@ const PostRunningInternships = () => {
         {step === 1 && (
           <div className="RunningInternship-form">
 
-            <input
-              type="text"
-              name="title"
-              placeholder="Internship Title"
-              onChange={handleChange}
-            />
+            <div className="RunningInternship-field">
+              <label>Internship Title *</label>
+              <input
+                name="title"
+                placeholder="Enter Internship Title"
+                onChange={handleChange}
+              />
+            </div>
 
-            <input
-              type="text"
-              name="quote"
-              placeholder="Short Quote"
-              onChange={handleChange}
-            />
+            <div className="RunningInternship-field">
+              <label>Internship Description *</label>
+              <textarea
+                name="description"
+                placeholder="Write internship description"
+                onChange={handleChange}
+              />
+            </div>
 
-            <select name="category" onChange={handleChange}>
-              <option>Select Category</option>
-              <option>Web Development</option>
-              <option>AI / ML</option>
-              <option>UI UX</option>
-            </select>
+            <div className="RunningInternship-field">
+              <label>Department</label>
+              <input
+                name="department"
+                placeholder="Department name"
+                onChange={handleChange}
+              />
+            </div>
 
-            <input
-              type="number"
-              name="rating"
-              placeholder="Rating (1.0 - 5.0)"
-              step="0.1"
-              onChange={handleChange}
-            />
+            <div className="RunningInternship-field">
+              <label>Modules</label>
+              <input
+                name="modules"
+                placeholder="Modules included"
+                onChange={handleChange}
+              />
+            </div>
 
-            <input
-              type="text"
-              name="timing"
-              placeholder="Hour Timing"
-              onChange={handleChange}
-            />
+            <div className="RunningInternship-field">
+              <label>Project</label>
+              <input
+                name="project"
+                placeholder="Project details"
+                onChange={handleChange}
+              />
+            </div>
 
-            <input
-              type="number"
-              name="lecture"
-              placeholder="Lectures (1-100)"
-              onChange={handleChange}
-            />
-
-            <select name="level" onChange={handleChange}>
-              <option>Skill Level</option>
-              <option>Beginner</option>
-              <option>Intermediate</option>
-              <option>Pro</option>
-            </select>
+            <div className="RunningInternship-field">
+              <label>Tools</label>
+              <input
+                name="tools"
+                placeholder="Tools used"
+                onChange={handleChange}
+              />
+            </div>
 
           </div>
         )}
@@ -111,35 +121,60 @@ const PostRunningInternships = () => {
         {step === 2 && (
           <div className="RunningInternship-form">
 
-            <input
-              name="author"
-              placeholder="Author Name"
-              onChange={handleChange}
-            />
+            <div className="RunningInternship-field">
+              <label>Internship Type *</label>
+              <select name="internshipType" onChange={handleChange}>
+                <option>Select Type</option>
+                <option>Full Time</option>
+                <option>Part Time</option>
+                <option>Virtual</option>
+              </select>
+            </div>
 
-            <input
-              name="designation"
-              placeholder="Author Designation"
-              onChange={handleChange}
-            />
+            <div className="RunningInternship-field">
+              <label>No. of Credits</label>
+              <input
+                name="credits"
+                placeholder="Number of credits"
+                onChange={handleChange}
+              />
+            </div>
 
-            <input
-              name="experience"
-              placeholder="Experience"
-              onChange={handleChange}
-            />
+            <div className="RunningInternship-field">
+              <label>Internship Location *</label>
+              <input
+                name="location"
+                placeholder="Internship location"
+                onChange={handleChange}
+              />
+            </div>
 
-            <input
-              name="lifetimeLecture"
-              placeholder="Total Lifetime Lectures"
-              onChange={handleChange}
-            />
+            <div className="RunningInternship-field">
+              <label>Duration *</label>
+              <input
+                name="duration"
+                placeholder="Internship duration"
+                onChange={handleChange}
+              />
+            </div>
 
-            <textarea
-              name="about"
-              placeholder="About Author"
-              onChange={handleChange}
-            />
+            <div className="RunningInternship-field">
+              <label>Qualification Required *</label>
+              <input
+                name="qualification"
+                placeholder="Required qualification"
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="RunningInternship-field">
+              <label>Skills Required</label>
+              <input
+                name="skills"
+                placeholder="Skills required"
+                onChange={handleChange}
+              />
+            </div>
 
           </div>
         )}
@@ -148,29 +183,42 @@ const PostRunningInternships = () => {
         {step === 3 && (
           <div className="RunningInternship-form">
 
-            <textarea
-              name="overview"
-              placeholder="Course Overview"
-              onChange={handleChange}
-            />
+            <div className="RunningInternship-field">
+              <label>Internship Cost Type *</label>
+              <select name="internshipCostType" onChange={handleChange}>
+                <option>Select</option>
+                <option>By Paying Fees</option>
+                <option>Free of Cost</option>
+                <option>Stipend</option>
+              </select>
+            </div>
 
-            <input
-              name="price"
-              placeholder="Course Price"
-              onChange={handleChange}
-            />
+            <div className="RunningInternship-field">
+              <label>Time Period</label>
+              <select name="timePeriod" onChange={handleChange}>
+                <option>Select</option>
+                <option>Residential</option>
+                <option>Non-Residential</option>
+              </select>
+            </div>
 
-            <input
-              name="discount"
-              placeholder="Discount %"
-              onChange={handleChange}
-            />
+            <div className="RunningInternship-field">
+              <label>Facilities Provided</label>
+              <textarea
+                name="facilities"
+                placeholder="Facilities during internship"
+                onChange={handleChange}
+              />
+            </div>
 
-            <input
-              name="timeline"
-              placeholder="Course Timeline"
-              onChange={handleChange}
-            />
+            <div className="RunningInternship-field">
+              <label>Career Opportunity</label>
+              <textarea
+                name="career"
+                placeholder="Career opportunity"
+                onChange={handleChange}
+              />
+            </div>
 
           </div>
         )}
@@ -179,13 +227,32 @@ const PostRunningInternships = () => {
         {step === 4 && (
           <div className="RunningInternship-form">
 
-            <input
-              placeholder="Phase Title"
-            />
+            <div className="RunningInternship-field">
+              <label>Internship Start Date *</label>
+              <input
+                type="date"
+                name="startDate"
+                onChange={handleChange}
+              />
+            </div>
 
-            <input
-              placeholder="Lecture URL"
-            />
+            <div className="RunningInternship-field">
+              <label>Internship Fee *</label>
+              <input
+                name="fee"
+                placeholder="Internship fee"
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="RunningInternship-field">
+              <label>Last Date To Apply *</label>
+              <input
+                type="date"
+                name="lastDate"
+                onChange={handleChange}
+              />
+            </div>
 
           </div>
         )}
@@ -194,18 +261,32 @@ const PostRunningInternships = () => {
         {step === 5 && (
           <div className="RunningInternship-form">
 
-            <input placeholder="Students Enrolled" />
-            <input placeholder="Lectures" />
-            <input placeholder="Quizzes" />
-            <input placeholder="Duration" />
-            <input placeholder="Skill Level" />
-            <input placeholder="Language" />
+            <div className="RunningInternship-field">
+              <label>Mentor / Instructor Name</label>
+              <input
+                name="mentor"
+                placeholder="Mentor name"
+                onChange={handleChange}
+              />
+            </div>
 
-            <select>
-              <option>Certification</option>
-              <option>Yes</option>
-              <option>No</option>
-            </select>
+            <div className="RunningInternship-field">
+              <label>Contact Person & Mobile</label>
+              <input
+                name="contact"
+                placeholder="Contact number"
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="RunningInternship-field">
+              <label>Organizer *</label>
+              <input
+                name="organizer"
+                placeholder="Organizer name"
+                onChange={handleChange}
+              />
+            </div>
 
           </div>
         )}
@@ -244,7 +325,8 @@ const PostRunningInternships = () => {
 
       </div>
 
-      {/* RIGHT SIDE TABLE */}
+
+      {/* RIGHT TABLE */}
       <div className="RunningInternship-tableSection">
 
         <h2>Running Internships</h2>
@@ -253,9 +335,9 @@ const PostRunningInternships = () => {
           <thead>
             <tr>
               <th>Title</th>
-              <th>Category</th>
-              <th>Rating</th>
-              <th>Level</th>
+              <th>Location</th>
+              <th>Duration</th>
+              <th>Type</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -265,9 +347,9 @@ const PostRunningInternships = () => {
             {data.map((item, index) => (
               <tr key={index}>
                 <td>{item.title}</td>
-                <td>{item.category}</td>
-                <td>{item.rating}</td>
-                <td>{item.level}</td>
+                <td>{item.location}</td>
+                <td>{item.duration}</td>
+                <td>{item.internshipType}</td>
 
                 <td className="RunningInternship-actions">
 
@@ -280,12 +362,10 @@ const PostRunningInternships = () => {
                   </button>
 
                 </td>
-
               </tr>
             ))}
 
           </tbody>
-
         </table>
 
       </div>
