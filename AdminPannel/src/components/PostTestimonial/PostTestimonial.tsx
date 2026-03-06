@@ -1,76 +1,180 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, {
+  useState,
+  ChangeEvent,
+  FormEvent,
+  useRef,
+  useEffect,
+} from "react";
 import "./PostTestimonial.css";
+import API from "../../api/api";
+import { getImageUrl } from "../../api/api";
 
 interface Testimonial {
-  id: number;
+  _id: string;
   name: string;
+  designation: string;
   rating: number;
   message: string;
-  image?: File | null;
-  imageUrl?: string;
+  image?: string;
   published: boolean;
 }
 
 const PostTestimonial: React.FC = () => {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const [editingId, setEditingId] = useState<string | null>(null);
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
-  const [newTestimonial, setNewTestimonial] = useState<
-    Omit<Testimonial, "id" | "published" | "imageUrl">
-  >({
+  const [loading, setLoading] = useState(false);
+
+  const [newTestimonial, setNewTestimonial] = useState({
     name: "",
+    designation: "",
     rating: 0,
     message: "",
-    image: null,
+    image: null as File | null,
   });
 
-  // Handle input changes
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value, files } = e.target as HTMLInputElement;
-    if (name === "image" && files) {
-      setNewTestimonial({ ...newTestimonial, image: files[0] });
-    } else {
-      setNewTestimonial({ ...newTestimonial, [name]: value });
+  /* ================= FETCH ================= */
+  const fetchTestimonials = async () => {
+    try {
+      const res = await API.get("/testimonials");
+      setTestimonials(res.data.data || []);
+    } catch (error) {
+      console.error("FETCH ERROR:", error);
     }
   };
 
-  // Handle star rating
+  useEffect(() => {
+    fetchTestimonials();
+  }, []);
+
+  /* ================= HANDLE INPUT ================= */
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const target = e.target as HTMLInputElement;
+
+    if (target.type === "file" && target.files) {
+      setNewTestimonial({ ...newTestimonial, image: target.files[0] });
+    } else {
+      setNewTestimonial({
+        ...newTestimonial,
+        [target.name]: target.value,
+      });
+    }
+  };
+
+  /* ================= HANDLE EDIT ================= */
+  const handleEdit = (testimonial: Testimonial) => {
+    setEditingId(testimonial._id);
+
+    setNewTestimonial({
+      name: testimonial.name,
+      designation: testimonial.designation,
+      rating: testimonial.rating,
+      message: testimonial.message,
+      image: null,
+    });
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  /* ================= RATING ================= */
   const handleRating = (rating: number) => {
     setNewTestimonial({ ...newTestimonial, rating });
   };
 
-  // Handle submit
-  const handleSubmit = (e: FormEvent) => {
+  /* ================= CREATE / UPDATE ================= */
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!newTestimonial.name || !newTestimonial.message) {
-      alert("Please fill all fields!");
+
+    if (
+      !newTestimonial.name ||
+      !newTestimonial.designation ||
+      !newTestimonial.message ||
+      newTestimonial.rating === 0
+    ) {
+      alert("Please complete all fields !");
       return;
     }
 
-    const newEntry: Testimonial = {
-      ...newTestimonial,
-      id: Date.now(),
-      published: false,
-      imageUrl: newTestimonial.image ? URL.createObjectURL(newTestimonial.image) : "",
-    };
+    try {
+      setLoading(true);
 
-    setTestimonials((prev) => [...prev, newEntry]);
+      const formData = new FormData();
+      formData.append("name", newTestimonial.name);
+      formData.append("designation", newTestimonial.designation);
+      formData.append("rating", String(newTestimonial.rating));
+      formData.append("message", newTestimonial.message);
+
+      if (newTestimonial.image) {
+        formData.append("image", newTestimonial.image);
+      }
+
+      if (editingId) {
+        await API.put(`/testimonials/${editingId}`, formData);
+        setEditingId(null);
+      } else {
+        await API.post("/testimonials", formData);
+      }
+
+      // Reset form
+      setNewTestimonial({
+        name: "",
+        designation: "",
+        rating: 0,
+        message: "",
+        image: null,
+      });
+
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+
+      fetchTestimonials();
+    } catch (error) {
+      console.error("SUBMIT ERROR:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  /* ================= TOGGLE PUBLISH ================= */
+  const togglePublish = async (id: string) => {
+    try {
+      await API.put(`/testimonials/toggle/${id}`);
+      fetchTestimonials();
+    } catch (error) {
+      console.error("TOGGLE ERROR:", error);
+    }
+  };
+
+  /* ================= DELETE ================= */
+  const deleteTestimonial = async (id: string) => {
+    if (!window.confirm("Delete this testimonial?")) return;
+
+    try {
+      await API.delete(`/testimonials/${id}`);
+      fetchTestimonials();
+    } catch (error) {
+      console.error("DELETE ERROR:", error);
+    }
+  };
+
+  /* ================= CANCEL EDIT ================= */
+  const cancelEdit = () => {
+    setEditingId(null);
     setNewTestimonial({
       name: "",
+      designation: "",
       rating: 0,
       message: "",
       image: null,
     });
-  };
 
-  // Toggle publish
-  const togglePublish = (id: number) => {
-    setTestimonials((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, published: !t.published } : t))
-    );
-  };
-
-  // Delete testimonial
-  const deleteTestimonial = (id: number) => {
-    setTestimonials((prev) => prev.filter((t) => t.id !== id));
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
   };
 
   return (
@@ -78,8 +182,8 @@ const PostTestimonial: React.FC = () => {
       {/* Left Panel */}
       <div className="postTestimonial-left">
         <h2 className="postTestimonial-title">💬 Post a New Testimonial</h2>
+
         <form className="postTestimonial-form" onSubmit={handleSubmit}>
-          {/* Name */}
           <div className="postTestimonial-formGroup">
             <label className="postTestimonial-label">Name *</label>
             <input
@@ -88,12 +192,22 @@ const PostTestimonial: React.FC = () => {
               className="postTestimonial-input"
               value={newTestimonial.name}
               onChange={handleChange}
-              placeholder="Enter full name"
               required
             />
           </div>
 
-          {/* Upload Photo */}
+          <div className="postTestimonial-formGroup">
+            <label className="postTestimonial-label">Designation *</label>
+            <input
+              type="text"
+              name="designation"
+              className="postTestimonial-input"
+              value={newTestimonial.designation}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
           <div className="postTestimonial-formGroup">
             <label className="postTestimonial-label">Upload Photo</label>
             <input
@@ -102,10 +216,10 @@ const PostTestimonial: React.FC = () => {
               accept="image/*"
               className="postTestimonial-fileInput"
               onChange={handleChange}
+              ref={fileInputRef}
             />
           </div>
 
-          {/* Star Rating */}
           <div className="postTestimonial-formGroup">
             <label className="postTestimonial-label">Rating</label>
             <div className="postTestimonial-starRating">
@@ -123,7 +237,6 @@ const PostTestimonial: React.FC = () => {
             </div>
           </div>
 
-          {/* Message */}
           <div className="postTestimonial-formGroup">
             <label className="postTestimonial-label">Your Message *</label>
             <textarea
@@ -131,25 +244,37 @@ const PostTestimonial: React.FC = () => {
               className="postTestimonial-textarea"
               value={newTestimonial.message}
               onChange={handleChange}
-              placeholder="Write your testimonial..."
               rows={4}
               required
             />
           </div>
 
-          {/* Submit */}
           <button type="submit" className="postTestimonial-submitBtn">
-            🚀 Post Testimonial
+            {editingId ? "✏ Update Testimonial" : "🚀 Post Testimonial"}
           </button>
+
+          {editingId && (
+            <button
+              type="button"
+              className="postTestimonial-btn delete"
+              onClick={cancelEdit}
+              style={{ marginTop: "10px", width: "100%" }}
+            >
+              Cancel Edit
+            </button>
+          )}
         </form>
       </div>
 
       {/* Right Panel */}
       <div className="postTestimonial-right">
         <h2 className="postTestimonial-title">📋 Manage Testimonials</h2>
+
         <div className="postTestimonial-tableWrapper">
           {testimonials.length === 0 ? (
-            <p className="postTestimonial-noData">No testimonials yet 💬</p>
+            <p className="postTestimonial-noData">
+              No testimonials yet 💬
+            </p>
           ) : (
             <table className="postTestimonial-table">
               <thead>
@@ -157,6 +282,7 @@ const PostTestimonial: React.FC = () => {
                   <th>#</th>
                   <th>Photo</th>
                   <th>Name</th>
+                  <th>Designation</th>
                   <th>Rating</th>
                   <th>Status</th>
                   <th>Action</th>
@@ -164,12 +290,12 @@ const PostTestimonial: React.FC = () => {
               </thead>
               <tbody>
                 {testimonials.map((t, index) => (
-                  <tr key={t.id}>
+                  <tr key={t._id}>
                     <td>{index + 1}</td>
                     <td>
-                      {t.imageUrl ? (
+                      {t.image ? (
                         <img
-                          src={t.imageUrl}
+                          src={getImageUrl(t.image)}
                           alt={t.name}
                           className="postTestimonial-photo"
                         />
@@ -178,6 +304,7 @@ const PostTestimonial: React.FC = () => {
                       )}
                     </td>
                     <td>{t.name}</td>
+                    <td>{t.designation}</td>
                     <td>
                       {"★".repeat(t.rating)}
                       {"☆".repeat(5 - t.rating)}
@@ -193,18 +320,26 @@ const PostTestimonial: React.FC = () => {
                     </td>
                     <td className="postTestimonial-actions">
                       <button
+                        className="postTestimonial-btn edit"
+                        onClick={() => handleEdit(t)}
+                      >
+                        ✏ Edit
+                      </button>
+
+                      <button
                         className={`postTestimonial-btn ${
                           t.published ? "unpublish" : "publish"
                         }`}
-                        onClick={() => togglePublish(t.id)}
+                        onClick={() => togglePublish(t._id)}
                       >
                         {t.published ? "Unpublish" : "Publish"}
                       </button>
+
                       <button
                         className="postTestimonial-btn delete"
-                        onClick={() => deleteTestimonial(t.id)}
+                        onClick={() => deleteTestimonial(t._id)}
                       >
-                        🗑
+                        🗑 Delete
                       </button>
                     </td>
                   </tr>

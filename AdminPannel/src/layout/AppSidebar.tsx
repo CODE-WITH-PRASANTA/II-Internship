@@ -6,6 +6,7 @@ import {
   FolderPlusIcon,
   TrophyIcon,
   MessageSquareIcon,
+  
 } from "lucide-react";
 
 // React Icons (Heroicons)
@@ -23,6 +24,7 @@ import {
   HiOutlineCog as CogIcon,
   HiOutlineDotsHorizontal as HorizontaLDots,
   HiChevronDown as ChevronDownIcon,
+  HiOutlineBriefcase as BriefcaseIcon,
 } from "react-icons/hi";
 
 import { useSidebar } from "../context/SidebarContext";
@@ -39,7 +41,7 @@ const navItems = [
 
   {
     icon: <PhotographIcon />,
-    name: "Event Gallery",
+    name: "Home Event Gallery",
     path: "/events/upload",
   },
 
@@ -65,9 +67,19 @@ const navItems = [
     icon: <BookOpenIcon />,
     name: "Course Management",
     subItems: [
-      { name: "Create Course", path: "/course/post" },
+      { name: "Course Posting", path: "/course/post" },
       { name: "Manage Courses", path: "/course/manage" },
-      { name: "Course Preview", path: "/course/preview" },
+      { name: "Course Approval", path: "/course/approval" },
+    ],
+  },
+
+  // ================= INTERNSHIP MANAGEMENT =================
+  {
+    icon: <BriefcaseIcon/>,
+    name: "Internship Management",
+    subItems:[
+      {name: "Post Internship" , path: "/internship/post"},
+      {name: "Preview Internship", path: "/internship/preview"},
     ],
   },
 
@@ -95,7 +107,6 @@ const navItems = [
       { name: "Attendance Management", path: "/instructor/attendance" },
     ],
   },
-<<<<<<< HEAD
 
  // ================= CAREER MANAGEMENT =================
 {
@@ -106,7 +117,7 @@ const navItems = [
     { name: "Manage Jobs", path: "/career/manage-jobs" },
     { name: "Applications", path: "/career/applications" },
     { name: "Career Settings", path: "/career/settings" },
-=======
+  ]},
 // ================= NOTICE MANAGEMENT =================
   
  {
@@ -115,7 +126,6 @@ const navItems = [
   subItems: [
     { name: "Post Notice", path: "/admin/notices/post" },
     { name: "Notice Preview", path: "/admin/notices/preview" },
->>>>>>> 150aabe9894bfb8275a514b934aca0ee8ef967ee
   ],
 },
   // ================= CATEGORY =================

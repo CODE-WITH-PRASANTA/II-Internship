@@ -1,27 +1,32 @@
 import React, { useState, useEffect } from "react";
+import { getImageUrl } from "../../api/api";
 
 interface PartnerType{
-  id?:number;
+  _id?: string;
   image:string | null;
 }
 
 interface Props{
-  onSubmit:(data:PartnerType)=>void;
+  onSubmit:(file:File | null)=>void;
   editItem:PartnerType | null;
 }
 
 const LearningPartnerForm:React.FC<Props> = ({onSubmit,editItem})=>{
 
-  const [image,setImage] = useState<string | null>(null);
+  const [file,setFile] = useState<File | null>(null);
+  const [preview,setPreview] = useState<string | null>(null);
 
   useEffect(()=>{
-    if(editItem) setImage(editItem.image);
+    if(editItem?.image){
+      setPreview(getImageUrl(editItem.image));
+    }
   },[editItem]);
 
   const handleSubmit=(e:React.FormEvent)=>{
     e.preventDefault();
-    onSubmit({id:editItem?.id,image});
-    setImage(null);
+    onSubmit(file);
+    setFile(null);
+    setPreview(null);
   };
 
   return(
@@ -35,20 +40,24 @@ const LearningPartnerForm:React.FC<Props> = ({onSubmit,editItem})=>{
           type="file"
           onChange={(e)=>{
             if(e.target.files){
-              setImage(URL.createObjectURL(e.target.files[0]));
+              const selectedFile = e.target.files[0];
+              setFile(selectedFile);
+              setPreview(URL.createObjectURL(selectedFile));
             }
           }}
         />
         <span>Select Partner Logo</span>
       </label>
 
-      {image && (
+      {preview && (
         <div className="tsk-partner-preview">
-          <img src={image} alt="preview"/>
+          <img src={preview} alt="preview"/>
         </div>
       )}
 
-      <button className="tsk-partner-btn">Submit</button>
+      <button className="tsk-partner-btn">
+        {editItem ? "Update" : "Submit"}
+      </button>
     </form>
   );
 };

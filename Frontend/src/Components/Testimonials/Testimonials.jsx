@@ -1,25 +1,38 @@
 import React, { useState, useEffect } from "react";
 import "./Testimonials.css";
 
-import Profilepic from "../../assets/Profile 0001.webp";
 import DotShape from "../../assets/shape-2.png";
-
-const testimonialsData = [
-  { id: 1, name: "Thomas Lopez", role: "Designer", img: Profilepic, rating: 5,
-    review: "Lorem ipsum dolor sit amet consectetur elit adicing sed do usmod zx tempor enim minim veniam quis nostrud exer citation." },
-  { id: 2, name: "Amber Page", role: "Developer", img: Profilepic, rating: 5,
-    review: "Lorem ipsum dolor sit amet consectetur elit adicing sed do usmod zx tempor enim minim veniam quis nostrud exer citation." },
-  { id: 3, name: "John Doe", role: "Designer", img: Profilepic, rating: 5,
-    review: "Lorem ipsum dolor sit amet consectetur elit adicing sed do usmod zx tempor enim minim veniam quis nostrud exer citation." },
-  { id: 4, name: "Jane Smith", role: "Developer", img: Profilepic, rating: 5,
-    review: "Lorem ipsum dolor sit amet consectetur elit adicing sed do usmod zx tempor enim minim veniam quis nostrud exer citation." },
-];
+import API from "../../api/api";
+import { getImageUrl } from "../../api/api";
 
 const Testimonials = () => {
+  const [testimonialsData, setTestimonialsData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage, setCardsPerPage] = useState(2);
 
-  // Responsive cards per page
+  /* ================= FETCH FROM BACKEND ================= */
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const res = await API.get("/testimonials");
+
+        const allTestimonials = res.data.data || [];
+
+        // Show only published testimonials
+        const published = allTestimonials.filter(
+          (t) => t.published === true
+        );
+
+        setTestimonialsData(published);
+      } catch (error) {
+        console.error("FETCH ERROR:", error);
+      }
+    };
+
+    fetchTestimonials();
+  }, []);
+
+  /* ================= RESPONSIVE CARDS ================= */
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 768) {
@@ -60,32 +73,51 @@ const Testimonials = () => {
       <div className="testimonial-right">
         <div className="testimonial-slider">
           {visibleCards.map((item) => (
-            <div className="testimonial-card" key={item.id}>
+            <div className="testimonial-card" key={item._id}>
               <img src={DotShape} alt="dots" className="testimonial-dot" />
               <div className="testimonial-header">
-                <img src={item.img} alt={item.name} className="testimonial-avatar" />
+                <img
+                  src={
+                    item.image
+                      ? getImageUrl(item.image)
+                      : ""
+                  }
+                  alt={item.name}
+                  className="testimonial-avatar"
+                />
                 <span className="testimonial-quote">"</span>
               </div>
-              <p className="testimonial-review">{item.review}</p>
-              <div className="testimonial-stars">{"★".repeat(item.rating)}</div>
+              <p className="testimonial-review">{item.message}</p>
+              <div className="testimonial-stars">
+                {"★".repeat(item.rating)}
+              </div>
               <h3 className="testimonial-name">{item.name}</h3>
-              <p className="testimonial-role">{item.role}</p>
+              <p className="testimonial-role">
+                {item.designation}
+              </p>
             </div>
           ))}
         </div>
 
-        {/* Pagination */}
-        <div className="testimonial-pagination">
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index}
-              className={currentPage === index + 1 ? "active" : ""}
-              onClick={() => setCurrentPage(index + 1)}
-            >
-              {index + 1}
-            </button>
-          ))}
-        </div>
+        {totalPages > 1 && (
+          <div className="testimonial-pagination">
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index}
+                className={currentPage === index + 1 ? "active" : ""}
+                onClick={() => setCurrentPage(index + 1)}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {testimonialsData.length === 0 && (
+          <p style={{ textAlign: "center", marginTop: "20px" }}>
+            No testimonials available.
+          </p>
+        )}
       </div>
     </section>
   );

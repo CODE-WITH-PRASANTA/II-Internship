@@ -3,7 +3,7 @@
 /* ============================= */
 
 .i3mentor-container {
-  height: 100vh;
+ 
   background: #f3f4f6;
   display: flex;
   justify-content: center;
@@ -273,49 +273,105 @@
 /* RESPONSIVE */
 /* ============================= */
 
+/* Large laptops / small desktops */
+@media (max-width: 1400px) {
+  .i3mentor-card {
+    gap: 40px;
+  }
+}
+
+/* Tablet landscape */
 @media (max-width: 1200px) {
   .i3mentor-card {
     flex-direction: column;
-    gap: 40px;
   }
 
   .i3mentor-left,
   .i3mentor-right {
     width: 100%;
-  }
-
-  .i3mentor-right {
+    height: auto;
     min-height: auto;
+    margin-left: 0;
   }
 }
 
-@media (max-width: 768px) {
+/* Tablet */
+@media (max-width: 992px) {
   .i3mentor-container {
-    padding: 20px;
+    padding: 30px 20px;
   }
 
   .i3mentor-overlay {
-    padding: 40px 30px;
+    padding: 30px;
   }
 
   .i3mentor-right {
-    padding: 40px 30px;
+    padding: 30px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .i3mentor-left {
+    min-height: 360px;
   }
 
   .i3mentor-left-content h2 {
     font-size: 24px;
   }
-}
 
-@media (max-width: 480px) {
   .i3mentor-buttons {
     flex-direction: column;
-    gap: 15px;
+    gap: 14px;
   }
 
   .i3mentor-prev,
   .i3mentor-next,
   .i3mentor-submit {
     width: 100%;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .i3mentor-container {
+    padding: 20px 14px;
+  }
+
+  .i3mentor-overlay {
+    padding: 22px;
+  }
+
+  .i3mentor-left {
+    min-height: 320px;
+  }
+
+  .i3mentor-social-icons {
+    gap: 10px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .i3mentor-left {
+    min-height: 280px;
+  }
+
+  .i3mentor-left-content h2 {
+    font-size: 20px;
+  }
+}
+
+/* Landscape mobile (short height devices) */
+@media (max-height: 450px) and (orientation: landscape) {
+  .i3mentor-left {
+    min-height: 240px;
+  }
+}
+
+/* Ultra wide screens */
+@media (min-width: 1800px) {
+  .i3mentor-card {
+    max-width: 1600px;
   }
 }

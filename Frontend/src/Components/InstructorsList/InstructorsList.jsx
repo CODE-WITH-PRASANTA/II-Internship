@@ -23,10 +23,7 @@ const instructors = [
 const InstructorsList = () => {
   return (
     <div className="instructorslist-container">
-      <div className="instructorslist-header">
-        <h2>Instructors List</h2>
-        <p>Home &nbsp; &gt; &nbsp; Instructor List</p>
-      </div>
+      
 
       {/* Filters Section */}
       <div className="instructorslist-filters">
