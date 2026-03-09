@@ -130,13 +130,13 @@ const Navbar = () => {
               >
                Running Internships
               </Link>
-              <Link
+              {/* <Link
                 to="/RunningDetails"
                 className="Navbar-dropdown-item"
               >
                 Running Details
                
-              </Link>
+              </Link> */}
 
             </div>
           </li>

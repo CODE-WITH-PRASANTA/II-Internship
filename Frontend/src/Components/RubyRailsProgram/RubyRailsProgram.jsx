@@ -4,10 +4,11 @@ import { CheckSquare, BookOpen, Users, X } from "lucide-react";
 
 import courseImg from "../../assets/category-1.webp";
 
-const RubyRailsProgram = () => {
+const RubyRailsProgram = ({course}) => {
+
   const [open, setOpen] = useState(false);
 
-  const videoUrl = "https://www.youtube.com/embed/fis26HvvDII"; // Random YouTube Video
+  const videoUrl = "https://www.youtube.com/embed/fis26HvvDII";
 
   return (
     <>
@@ -31,17 +32,24 @@ const RubyRailsProgram = () => {
               <span className="badge pro">Pro</span>
             </div>
 
-            <h1>Ruby On Rails Program</h1>
+            <h1>{course.title}</h1>
 
             <div className="meta-row">
-              <span><CheckSquare size={18}/> 10 - 20 weeks</span>
-              <span><BookOpen size={18}/> 102 Lectures</span>
-              <span><Users size={18}/> 502 Student Enrolled</span>
+              <span>
+                <CheckSquare size={18}/> {course.duration}
+              </span>
+
+              <span>
+                <BookOpen size={18}/> 30 Lectures
+              </span>
+
+              <span>
+                <Users size={18}/> 500 Students
+              </span>
             </div>
 
             <p className="description">
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.
+              {course.description}
             </p>
 
             <div className="rating">
@@ -51,16 +59,24 @@ const RubyRailsProgram = () => {
             </div>
 
           </div>
+
         </div>
       </section>
 
+
       {/* VIDEO MODAL */}
+
       {open && (
         <div className="video-modal">
           <div className="video-content">
-            <button className="close-btn" onClick={() => setOpen(false)}>
+
+            <button
+              className="close-btn"
+              onClick={() => setOpen(false)}
+            >
               <X size={22} />
             </button>
+
             <iframe
               width="100%"
               height="450"
@@ -69,10 +85,12 @@ const RubyRailsProgram = () => {
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-            ></iframe>
+            />
+
           </div>
         </div>
       )}
+
     </>
   );
 };

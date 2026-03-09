@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import API from "../../api/api";
 import "./PreviewRunningInternship.css";
 import {
   FiGrid,
@@ -12,41 +13,50 @@ const PreviewRunningInternship = () => {
 
   const [view, setView] = useState("grid");
   const [menuOpen, setMenuOpen] = useState(null);
+  const [internships, setInternships] = useState([]);
 
-  const internships = [
-    {
-      id:1,
-      title:"Web Development Internship",
-      department:"Computer Science",
-      duration:"3 Months",
-      location:"Remote",
-      type:"Virtual"
-    },
-    {
-      id:2,
-      title:"AI & Machine Learning Internship",
-      department:"Artificial Intelligence",
-      duration:"6 Months",
-      location:"Bangalore",
-      type:"Full Time"
-    },
-    {
-      id:3,
-      title:"UI UX Design Internship",
-      department:"Design",
-      duration:"4 Months",
-      location:"Remote",
-      type:"Part Time"
-    },
-    {
-      id:4,
-      title:"Data Science Internship",
-      department:"Data Analytics",
-      duration:"5 Months",
-      location:"Delhi",
-      type:"Full Time"
+  /* ================= FETCH INTERNSHIPS ================= */
+
+  const fetchInternships = async () => {
+    try {
+
+      const res = await API.get("/internships/all");
+
+      setInternships(res.data);
+
+    } catch (error) {
+      console.log(error);
     }
-  ];
+  };
+
+
+  /* ================= DELETE INTERNSHIP ================= */
+
+  const deleteInternship = async (id) => {
+
+    if(!window.confirm("Are you sure you want to delete this internship?")) return;
+
+    try {
+
+      await API.delete(`/internships/delete/${id}`);
+
+      setInternships((prev)=>
+        prev.filter((item)=>item._id !== id)
+      );
+
+    } catch (error) {
+      console.log(error);
+    }
+
+  };
+
+
+  /* ================= LOAD DATA ================= */
+
+  useEffect(()=>{
+    fetchInternships();
+  },[]);
+
 
   return (
 
@@ -89,7 +99,7 @@ const PreviewRunningInternship = () => {
 
           {internships.map((item)=>(
             <div
-              key={item.id}
+              key={item._id}
               className="PreviewRunningInternship-card"
             >
 
@@ -98,12 +108,12 @@ const PreviewRunningInternship = () => {
               <div className="PreviewRunningInternship-cardMenu">
 
                 <button
-                  onClick={()=>setMenuOpen(menuOpen === item.id ? null : item.id)}
+                  onClick={()=>setMenuOpen(menuOpen === item._id ? null : item._id)}
                 >
                   <FiMoreVertical/>
                 </button>
 
-                {menuOpen === item.id && (
+                {menuOpen === item._id && (
 
                   <div className="PreviewRunningInternship-dropdown">
 
@@ -111,7 +121,10 @@ const PreviewRunningInternship = () => {
                       <FiEdit/> Edit
                     </button>
 
-                    <button className="delete">
+                    <button
+                      className="delete"
+                      onClick={()=>deleteInternship(item._id)}
+                    >
                       <FiTrash2/> Delete
                     </button>
 
@@ -138,7 +151,7 @@ const PreviewRunningInternship = () => {
                 </p>
 
                 <p>
-                  <strong>Type:</strong> {item.type}
+                  <strong>Type:</strong> {item.internshipType}
                 </p>
 
               </div>
@@ -173,13 +186,13 @@ const PreviewRunningInternship = () => {
             <tbody>
 
               {internships.map((item)=>(
-                <tr key={item.id}>
+                <tr key={item._id}>
 
                   <td>{item.title}</td>
                   <td>{item.department}</td>
                   <td>{item.duration}</td>
                   <td>{item.location}</td>
-                  <td>{item.type}</td>
+                  <td>{item.internshipType}</td>
 
                   <td className="PreviewRunningInternship-tableActions">
 
@@ -187,7 +200,10 @@ const PreviewRunningInternship = () => {
                       <FiEdit/>
                     </button>
 
-                    <button className="delete">
+                    <button
+                      className="delete"
+                      onClick={()=>deleteInternship(item._id)}
+                    >
                       <FiTrash2/>
                     </button>
 

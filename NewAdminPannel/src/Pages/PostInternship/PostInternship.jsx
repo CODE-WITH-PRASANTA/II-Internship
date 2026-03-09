@@ -1,205 +1,319 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import API from "../../api/api";
 import "./PostInternship.css";
 
 const PostInternship = () => {
 
-const [step,setStep] = useState(1)
+  const [step, setStep] = useState(1);
 
-const nextStep = () => {
-if(step < 5){
-setStep(step + 1)
-}
-}
+  const [data,setData] = useState([]);
 
-const prevStep = () => {
-if(step > 1){
-setStep(step - 1)
-}
-}
+  const [form,setForm] = useState({
+    title:"",
+    description:"",
+    duration:"",
+    department:"",
+    modules:"",
+    project:"",
+    tools:"",
+    type:""
+  });
 
-return (
+  const handleChange = (e)=>{
+    setForm({...form,[e.target.name]:e.target.value});
+  };
 
-<div className="internship-wrapper">
+  const nextStep = async () => {
 
-{/* ================= FORM SECTION ================= */}
+    if(step === 5){
+      await submitData();
+      return;
+    }
 
-<div className="internship-form">
+    if (step < 5) {
+      setStep(step + 1);
+    }
+  };
 
-<h2 className="form-title">Post Internship</h2>
+  const prevStep = () => {
+    if (step > 1) {
+      setStep(step - 1);
+    }
+  };
 
-<div className="form-scroll">
 
-{/* STEP 1 */}
+  /* CREATE INTERNSHIP */
 
-{step === 1 && (
-<div className="form-step">
+  const submitData = async ()=>{
 
-<label>Internship Title *</label>
-<input type="text" placeholder="Enter Internship Title"/>
+    try{
 
-<label>Internship Description *</label>
-<textarea placeholder="Enter Internship Description"></textarea>
+      const res = await API.post("/interns/create",form);
 
-</div>
-)}
+      setData([...data,res.data]);
 
-{/* STEP 2 */}
+      setForm({
+        title:"",
+        description:"",
+        duration:"",
+        department:"",
+        modules:"",
+        project:"",
+        tools:"",
+        type:""
+      });
 
-{step === 2 && (
-<div className="form-step">
+      setStep(1);
 
-<label>Time Duration *</label>
-<input type="text" placeholder="Example : 3 Months"/>
+    }catch(error){
+      console.log(error);
+    }
 
-<label>Department</label>
-<input type="text" placeholder="Enter Department"/>
+  };
 
-</div>
-)}
 
-{/* STEP 3 */}
+  /* GET INTERNSHIPS */
 
-{step === 3 && (
-<div className="form-step">
+  const fetchInternships = async ()=>{
 
-<label>Modules</label>
-<textarea placeholder="Enter Modules"></textarea>
+    try{
 
-<label>Project</label>
-<textarea placeholder="Enter Project Details"></textarea>
+      const res = await API.get("/interns/all");
 
-</div>
-)}
+      setData(res.data);
 
-{/* STEP 4 */}
+    }catch(error){
+      console.log(error);
+    }
 
-{step === 4 && (
-<div className="form-step">
+  };
 
-<label>Tools</label>
-<input type="text" placeholder="Example : React, Python"/>
 
-</div>
-)}
+  /* DELETE */
 
-{/* STEP 5 */}
+  const deleteInternship = async (id)=>{
 
-{step === 5 && (
-<div className="form-step">
+    try{
 
-<label>Internship Type *</label>
+      await API.delete(`/interns/delete/${id}`);
 
-<div className="radio-group">
+      setData(data.filter((item)=>item._id !== id));
 
-<label>
-<input type="radio" name="type"/> On Campus Internship
-</label>
+    }catch(error){
+      console.log(error);
+    }
 
-<label>
-<input type="radio" name="type"/> Virtual Internship
-</label>
+  };
 
-<label>
-<input type="radio" name="type"/> Both
-</label>
 
-</div>
+  useEffect(()=>{
+    fetchInternships();
+  },[]);
 
-</div>
-)}
 
-</div>
 
-{/* STEP BUTTONS */}
+  return (
+    <div className="internship-wrapper">
 
-<div className="step-buttons">
+      <div className="internship-form">
+        <h2 className="form-title">Post Internship</h2>
 
-<button
-className="prev-btn"
-onClick={prevStep}
-disabled={step === 1}
->
-Previous
-</button>
+        <div className="form-scroll">
 
-<button
-className="next-btn"
-onClick={nextStep}
->
-{step === 5 ? "Submit" : "Next"}
-</button>
+          {step === 1 && (
+            <div className="form-step">
 
-</div>
+              <label>Internship Title *</label>
+              <input
+                name="title"
+                value={form.title}
+                onChange={handleChange}
+                placeholder="Enter Internship Title"
+              />
 
-</div>
+              <label>Internship Description *</label>
+              <textarea
+                name="description"
+                value={form.description}
+                onChange={handleChange}
+                placeholder="Enter Internship Description"
+              />
 
-{/* ================= TABLE SECTION ================= */}
+            </div>
+          )}
 
-<div className="internship-table">
 
-<h2 className="table-title">Posted Internships</h2>
+          {step === 2 && (
+            <div className="form-step">
 
-<div className="table-scroll">
+              <label>Time Duration *</label>
+              <input
+                name="duration"
+                value={form.duration}
+                onChange={handleChange}
+                placeholder="Example : 3 Months"
+              />
 
-<table>
+              <label>Department</label>
+              <input
+                name="department"
+                value={form.department}
+                onChange={handleChange}
+                placeholder="Enter Department"
+              />
 
-<thead>
-<tr>
-<th>Title</th>
-<th>Duration</th>
-<th>Department</th>
-<th>Type</th>
-<th>Action</th>
-</tr>
-</thead>
+            </div>
+          )}
 
-<tbody>
 
-<tr>
-<td>Frontend Developer</td>
-<td>3 Months</td>
-<td>Web Development</td>
-<td>Virtual</td>
-<td>
-<button className="edit-btn">Edit</button>
-<button className="delete-btn">Delete</button>
-</td>
-</tr>
+          {step === 3 && (
+            <div className="form-step">
 
-<tr>
-<td>UI UX Design</td>
-<td>2 Months</td>
-<td>Design</td>
-<td>On Campus</td>
-<td>
-<button className="edit-btn">Edit</button>
-<button className="delete-btn">Delete</button>
-</td>
-</tr>
+              <label>Modules</label>
+              <textarea
+                name="modules"
+                value={form.modules}
+                onChange={handleChange}
+                placeholder="Enter Modules"
+              />
 
-<tr>
-<td>Data Science</td>
-<td>6 Months</td>
-<td>AI</td>
-<td>Both</td>
-<td>
-<button className="edit-btn">Edit</button>
-<button className="delete-btn">Delete</button>
-</td>
-</tr>
+              <label>Project</label>
+              <textarea
+                name="project"
+                value={form.project}
+                onChange={handleChange}
+                placeholder="Enter Project Details"
+              />
 
-</tbody>
+            </div>
+          )}
 
-</table>
 
-</div>
+          {step === 4 && (
+            <div className="form-step">
 
-</div>
+              <label>Tools</label>
+              <input
+                name="tools"
+                value={form.tools}
+                onChange={handleChange}
+                placeholder="Example : React, Python"
+              />
 
-</div>
+            </div>
+          )}
 
-);
 
+          {step === 5 && (
+            <div className="form-step">
+
+              <label>Internship Type *</label>
+
+              <div className="radio-group">
+
+                <label>
+                  <input
+                    type="radio"
+                    name="type"
+                    value="On Campus"
+                    onChange={handleChange}
+                  />
+                  On Campus Internship
+                </label>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="type"
+                    value="Virtual"
+                    onChange={handleChange}
+                  />
+                  Virtual Internship
+                </label>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="type"
+                    value="Both"
+                    onChange={handleChange}
+                  />
+                  Both
+                </label>
+
+              </div>
+
+            </div>
+          )}
+
+        </div>
+
+
+        <div className="step-buttons">
+
+          <button className="prev-btn" onClick={prevStep} disabled={step === 1}>
+            Previous
+          </button>
+
+          <button className="next-btn" onClick={nextStep}>
+            {step === 5 ? "Submit" : "Next"}
+          </button>
+
+        </div>
+      </div>
+
+
+
+      <div className="internship-table">
+
+        <h2 className="table-title">Posted Internships</h2>
+
+        <div className="table-scroll">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Duration</th>
+                <th>Department</th>
+                <th>Type</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              {data.map((item)=>(
+                <tr key={item._id}>
+
+                  <td>{item.title}</td>
+                  <td>{item.duration}</td>
+                  <td>{item.department}</td>
+                  <td>{item.type}</td>
+
+                  <td>
+                    <button
+                      className="delete-btn"
+                      onClick={()=>deleteInternship(item._id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+
+                </tr>
+              ))}
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </div>
+  );
 };
 
 export default PostInternship;

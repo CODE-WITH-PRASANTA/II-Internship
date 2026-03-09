@@ -1,55 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./PreviewInternship.css";
 import { FiGrid, FiList, FiMapPin, FiCalendar } from "react-icons/fi";
-
-const dummyData = [
-  {
-    id: "ADV-100231",
-    title: "Frontend Developer Intern",
-    department: "IT Department",
-    location: "Mumbai",
-    duration: "3 Months",
-    type: "Stipend",
-    description: "Work with React, TypeScript and modern UI systems.",
-    startDate: "01-07-2026",
-  },
-  {
-    id: "ADV-100232",
-    title: "Marketing Intern",
-    department: "Marketing",
-    location: "Delhi",
-    duration: "6 Months",
-    type: "Free of Cost",
-    description: "Assist in digital marketing campaigns and SEO.",
-    startDate: "15-07-2026",
-  },
-  {
-    id: "ADV-100233",
-    title: "Marketing Intern",
-    department: "Marketing",
-    location: "Delhi",
-    duration: "6 Months",
-    type: "Free of Cost",
-    description: "Assist in digital marketing campaigns and SEO.",
-    startDate: "15-07-2026",
-  },
-  {
-    id: "ADV-100234",
-    title: "Marketing Intern",
-    department: "Marketing",
-    location: "Delhi",
-    duration: "6 Months",
-    type: "Free of Cost",
-    description: "Assist in digital marketing campaigns and SEO.",
-    startDate: "15-07-2026",
-  },
-];
+import API from "../../api/api";   // axios instance
 
 const PreviewInternship = () => {
   const [view, setView] = useState("grid");
+  const [dummyData, setDummyData] = useState([]);
+
+  /* ================= FETCH INTERNSHIPS ================= */
+
+  const fetchInternships = async () => {
+    try {
+
+      const res = await API.get("/interns/all");
+
+      setDummyData(res.data);
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchInternships();
+  }, []);
 
   return (
     <div className="ip-container">
+
       {/* Header */}
       <div className="ip-header">
         <h2>Internship Listings</h2>
@@ -61,6 +39,7 @@ const PreviewInternship = () => {
           >
             <FiGrid />
           </button>
+
           <button
             className={view === "list" ? "active" : ""}
             onClick={() => setView("list")}
@@ -70,23 +49,29 @@ const PreviewInternship = () => {
         </div>
       </div>
 
+
       {/* Cards */}
       <div className={view === "grid" ? "ip-grid" : "ip-list"}>
+
         {dummyData.map((item) => (
-          <div key={item.id} className="ip-card">
+          <div key={item._id} className="ip-card">
+
             <div className="ip-card-header">
               <h3>{item.title}</h3>
               <span className="ip-badge">{item.type}</span>
             </div>
 
-            <p className="ip-description">{item.description}</p>
+            <p className="ip-description">
+              {item.description}
+            </p>
 
             <div className="ip-meta">
               <span>
-                <FiMapPin /> {item.location}
+                <FiMapPin /> {item.location || "Location"}
               </span>
+
               <span>
-                <FiCalendar /> {item.startDate}
+                <FiCalendar /> {item.startDate || "Start Date"}
               </span>
             </div>
 
@@ -95,10 +80,15 @@ const PreviewInternship = () => {
               <span>{item.duration}</span>
             </div>
 
-            <button className="ip-apply-btn">Apply Now</button>
+            <button className="ip-apply-btn">
+              Apply Now
+            </button>
+
           </div>
         ))}
+
       </div>
+
     </div>
   );
 };
