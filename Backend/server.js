@@ -14,6 +14,7 @@ const learningPartnerRoutes = require("./routes/learningPartner.routes");
 const courseRoutes = require("./routes/course.routes");
 const internshipRoutes = require("./routes/runningInternship.routes");
 const internship = require("./routes/internship.routes");
+const reviewRoutes = require("./routes/review.routes");
 
 dotenv.config();
 connectDB();
@@ -38,12 +39,12 @@ app.use("/api/comments", commentRoutes);
 app.use("/api/testimonials", testimonialRoutes);
 app.use("/api/learning-partners", learningPartnerRoutes);
 app.use("/api/courses", courseRoutes);
-
 // runing intern
 app.use("/api/internships", internshipRoutes);
-
 // internship
 app.use("/api/interns", internship);
+app.use("/api/reviews", reviewRoutes);
+
 
 
 

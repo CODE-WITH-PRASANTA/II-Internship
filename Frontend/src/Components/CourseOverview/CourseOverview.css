@@ -1,6 +1,6 @@
 /* PAGE BACKGROUND */
 .cd-wrapper {
-  background: linear-gradient(180deg,#f6f8fc,#eef3fb);
+  background: linear-gradient(180deg, #f6f8fc, #eef3fb);
   padding: 70px 8%;
   display: flex;
   flex-direction: column;
@@ -10,22 +10,22 @@
 
 /* CARD (Glass Effect) */
 .cd-card {
-  background: rgba(255,255,255,0.8);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 38px;
   box-shadow:
-    0 10px 25px rgba(18,38,63,0.06),
-    0 2px 6px rgba(18,38,63,0.04);
-  border: 1px solid rgba(255,255,255,0.7);
+    0 10px 25px rgba(18, 38, 63, 0.06),
+    0 2px 6px rgba(18, 38, 63, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   transition: 0.3s ease;
 }
 
 .cd-card:hover {
   transform: translateY(-3px);
   box-shadow:
-    0 18px 40px rgba(18,38,63,0.12),
-    0 4px 12px rgba(18,38,63,0.05);
+    0 18px 40px rgba(18, 38, 63, 0.12),
+    0 4px 12px rgba(18, 38, 63, 0.05);
 }
 
 /* TITLES */
@@ -145,7 +145,7 @@
 .cd-bar-track div {
   height: 100%;
   border-radius: 999px;
-  background: linear-gradient(90deg,#22c55e,#4ade80);
+  background: linear-gradient(90deg, #22c55e, #4ade80);
 }
 
 /* INSTRUCTOR */
@@ -161,8 +161,30 @@
   height: 150px;
   object-fit: cover;
   border-radius: 18px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
+
+/* Review scroll */
+.cd-review-container {
+  max-height: 420px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 6px;
+}
+.cd-review-container::-webkit-scrollbar{
+  width:6px;
+}
+
+.cd-review-container::-webkit-scrollbar-thumb{
+  background:#cbd5f5;
+  border-radius:6px;
+}
+
+.cd-review-container::-webkit-scrollbar-thumb:hover{
+  background:#2563eb;
+}
+
+
 
 /* REVIEWS */
 .cd-review {
@@ -173,11 +195,12 @@
   border-top: 1px solid #e6eaf1;
 }
 
+
 .cd-review img {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .cd-review-top {
@@ -199,8 +222,13 @@
 
 /* ------------------------- RESPONSIVE ------------------------- */
 @media (max-width: 1100px) {
-  .cd-wrapper { padding: 60px 6%; }
-  .cd-card { padding: 32px; }
+  .cd-wrapper {
+    padding: 60px 6%;
+  }
+
+  .cd-card {
+    padding: 32px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -220,7 +248,10 @@
 }
 
 @media (max-width: 600px) {
-  .cd-wrapper { padding: 45px 5%; gap: 24px; }
+  .cd-wrapper {
+    padding: 45px 5%;
+    gap: 24px;
+  }
 
   .cd-card {
     padding: 26px;

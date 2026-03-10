@@ -4,6 +4,7 @@ const RunningInternshipSchema = new mongoose.Schema(
   {
     title: String,
     description: String,
+     image: String,
     department: String,
     modules: String,
     project: String,

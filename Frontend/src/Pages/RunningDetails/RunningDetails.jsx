@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import API from "../../api/api";
-
+import API, { getImageUrl } from "../../api/api";
 import RubyRailsProgram from "../../Components/RubyRailsProgram/RubyRailsProgram";
 import CourseOverview from "../../Components/CourseOverview/CourseOverview";
 import SubmitReview from "../../Components/SubmitReview/SubmitReview";

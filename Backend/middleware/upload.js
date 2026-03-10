@@ -13,13 +13,8 @@ const ensureDir = (dir) => {
 
 /* ================= ROUTE → FOLDER MAP ================= */
 const routeFolderMap = {
-  //   "/blogs": "uploads/blogs",
-  //   "/team": "uploads/team",
-  //   "/client-logos": "uploads/client-logos",
-  //   "/photo-gallery": "uploads/gallery",
-  //   "/teachers": "uploads/teachers",
-  //   "/notices": "uploads/notices",
-  //   "/awards": "uploads/awards",
+  "/internships": "uploads/internships",
+  "/interns": "uploads/interns",
   "/courses": "uploads/courses",
   "/learning-partners": "uploads/learning-partners",
   "/testimonials": "uploads/testimonials",

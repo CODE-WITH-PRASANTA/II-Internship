@@ -4,39 +4,43 @@ const internshipSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: true
+      required: true,
     },
 
     description: {
       type: String,
-      required: true
+      required: true,
+    },
+
+    image: {
+      type: String,
     },
 
     duration: {
-      type: String
+      type: String,
     },
 
     department: {
-      type: String
+      type: String,
     },
 
     modules: {
-      type: String
+      type: String,
     },
 
     project: {
-      type: String
+      type: String,
     },
 
     tools: {
-      type: String
+      type: String,
     },
 
     type: {
-      type: String
-    }
+      type: String,
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 module.exports = mongoose.model("Internship", internshipSchema);

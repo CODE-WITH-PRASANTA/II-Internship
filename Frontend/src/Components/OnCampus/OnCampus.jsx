@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./OnCampus.css";
-import API from "../../api/api";
-
+import API, { getImageUrl } from "../../api/api";
 import {
   FaStar,
   FaUserGraduate,
@@ -40,32 +39,30 @@ const OnCampus = () => {
 
   /* ================= FETCH INTERNSHIPS ================= */
 
-  const fetchCourses = async () => {
-    try {
+const fetchCourses = async () => {
+  try {
+    const res = await API.get("/interns/all");
 
-      const res = await API.get("/interns/all");
+    const data = res.data.map((item) => ({
+      ...item,
+      image: item.image ? getImageUrl(item.image) : images[0],
+      category: item.department || "Public",
+      rating: "4.9",
+      tags: ["Engineering", "Data Analytics", "BCA"],
+      amenities: [
+        { name: "Playground", icon: <FaTree /> },
+        { name: "Canteen", icon: <FaUtensils /> },
+        { name: "Hostel", icon: <FaBed /> },
+        { name: "Library", icon: <FaBookOpen /> },
+        { name: "Stationary", icon: <FaRegStickyNote /> }
+      ]
+    }));
 
-      const data = res.data.map((item, i) => ({
-        ...item,
-        image: images[i % images.length],
-        category: item.department || "Public",
-        rating: "4.9",
-        tags: ["Engineering", "Data Analytics", "BCA"],
-        amenities: [
-          { name: "Playground", icon: <FaTree /> },
-          { name: "Canteen", icon: <FaUtensils /> },
-          { name: "Hostel", icon: <FaBed /> },
-          { name: "Library", icon: <FaBookOpen /> },
-          { name: "Stationary", icon: <FaRegStickyNote /> }
-        ]
-      }));
-
-      setAllCourses(data);
-
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    setAllCourses(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 
   useEffect(() => {

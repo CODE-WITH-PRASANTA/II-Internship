@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./CourseOverview.css";
+import API from "../../api/api";
 import {
   FiChevronDown,
   FiChevronUp,
@@ -9,8 +10,34 @@ import {
   FiHeart,
 } from "react-icons/fi";
 
-function CourseOverview() {
+function CourseOverview({ course }) {
   const [open, setOpen] = useState(1);
+
+  const [reviews, setReviews] = useState([]);
+
+  const fetchReviews = async () => {
+    try {
+      if (!course?._id) return;
+
+      const res = await API.get(`/reviews/internship/${course._id}`);
+
+      setReviews(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (!course?._id) return;
+
+    fetchReviews();
+
+    const interval = setInterval(() => {
+      fetchReviews();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [course]);
 
   const toggle = (id) => {
     setOpen(open === id ? null : id);
@@ -22,32 +49,35 @@ function CourseOverview() {
       <div className="cd-card">
         <h2 className="cd-title">Course Overview</h2>
 
-        <p className="cd-text">
-          Learn the fundamental principles and practices of modern web design in
-          this comprehensive course. Whether you're a beginner or looking to
-          refresh your skills, you'll dive into HTML5, CSS3, responsive design,
-          and more.
-        </p>
-
-        <p className="cd-text">
-          Unlock your creativity and master the art of web design with this
-          all-in-one course. This course blends theory with real-world projects
-          to ensure you're job-ready by the end.
-        </p>
+        <p
+          className="cd-text"
+          dangerouslySetInnerHTML={{ __html: course.description }}
+        ></p>
+        {/* <p className="cd-text">{course.description}</p> */}
 
         <h3 className="cd-subtitle">Who Should Enroll?</h3>
 
         <ul className="cd-list">
-          <li>Beginners interested in starting a career in web design</li>
-          <li>Developers looking to expand their skills into design</li>
-          <li>Students pursuing careers in tech, design, or media</li>
-          <li>Freelancers who want to expand their service offerings</li>
-          <li>Entrepreneurs and business owners</li>
+          <li>
+            <strong>Department:</strong> {course.department}
+          </li>
+          <li>
+            <strong>Duration:</strong> {course.duration}
+          </li>
+          <li>
+            <strong>Location:</strong> {course.location}
+          </li>
+          <li>
+            <strong>Qualification:</strong> {course.qualification}
+          </li>
+          <li>
+            <strong>Skills Required:</strong> {course.skills}
+          </li>
         </ul>
       </div>
 
       {/* ================= CURRICULUM ================= */}
-      <div className="cd-card">
+      {/* <div className="cd-card">
         <h2 className="cd-title">Course Curriculum</h2>
 
         <div className="cd-accordion">
@@ -89,7 +119,7 @@ function CourseOverview() {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
 
       {/* ================= RATING ================= */}
       <div className="cd-card cd-rating">
@@ -136,36 +166,35 @@ function CourseOverview() {
 
       {/* ================= REVIEWS ================= */}
       <div className="cd-card">
-        <h2 className="cd-title">Item Reviews - 3</h2>
+        <h2 className="cd-title">Item Reviews - {reviews.length}</h2>
 
-        {["Josaph Manrty", "Rita Chawla", "Adam Wilson"].map((n, i) => (
-          <div className="cd-review" key={i}>
-            <img
-              src={`https://randomuser.me/api/portraits/${
-                i === 1 ? "women" : "men"
-              }/${40 + i}.jpg`}
-              alt={n}
-            />
+        <div className="cd-review-container">
+          {reviews.map((review, i) => (
+            <div className="cd-review" key={review._id || i}>
+              <img
+                src={`https://randomuser.me/api/portraits/${i % 2 === 0 ? "men" : "women"}/${40 + i}.jpg`}
+                alt={review.name}
+              />
 
-            <div className="cd-review-content">
-              <div className="cd-review-top">
-                <h4>{n}</h4>
-                <span className="cd-date">27 Oct 2025</span>
-              </div>
+              <div className="cd-review-content">
+                <div className="cd-review-top">
+                  <h4>{review.name}</h4>
+                  <span className="cd-date">
+                    {new Date(review.createdAt).toLocaleDateString()}
+                  </span>
+                </div>
 
-              <p className="cd-text">
-                Commodo est luctus eget. Proin in nunc laoreet justo volutpat
-                blandit enim.
-              </p>
+                <p className="cd-text">{review.review}</p>
 
-              <div className="cd-review-actions">
-                <FiThumbsUp /> 12
-                <FiThumbsDown /> 1
-                <FiHeart /> 7
+                <div className="cd-review-actions">
+                  <FiThumbsUp /> 12
+                  <FiThumbsDown /> 1
+                  <FiHeart /> 7
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

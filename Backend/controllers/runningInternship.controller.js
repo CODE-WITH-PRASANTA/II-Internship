@@ -4,10 +4,17 @@ const RunningInternship = require("../models/RunningInternship.model");
 // CREATE Internship
 exports.createInternship = async (req, res) => {
   try {
-    const internship = new RunningInternship(req.body);
+
+    const data = {
+      ...req.body,
+      image: req.file ? req.file.path : null
+    };
+
+    const internship = new RunningInternship(data);
     const saved = await internship.save();
 
     res.status(201).json(saved);
+
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -47,18 +54,27 @@ exports.getInternshipById = async (req, res) => {
 // UPDATE Internship
 exports.updateInternship = async (req, res) => {
   try {
+
+    const updateData = {
+      ...req.body
+    };
+
+    if (req.file) {
+      updateData.image = req.file.path;
+    }
+
     const updated = await RunningInternship.findByIdAndUpdate(
       req.params.id,
-      req.body,
+      updateData,
       { new: true }
     );
 
     res.json(updated);
+
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
-
 
 // DELETE Internship
 exports.deleteInternship = async (req, res) => {

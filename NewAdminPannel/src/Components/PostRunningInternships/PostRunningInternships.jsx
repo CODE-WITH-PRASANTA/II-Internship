@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import API from "../../api/api";
+import API, { getImageUrl } from "../../api/api";
 import "./PostRunningInternships.css";
+import { Editor } from "@tinymce/tinymce-react";
 
 const PostRunningInternships = () => {
   const [step, setStep] = useState(1);
@@ -10,6 +11,8 @@ const PostRunningInternships = () => {
   const [form, setForm] = useState({
     title: "",
     description: "",
+    image: null,
+    imagePreview: "",
     department: "",
     modules: "",
     project: "",
@@ -37,6 +40,18 @@ const PostRunningInternships = () => {
       ...prev,
       [e.target.name]: e.target.value,
     }));
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+
+    if (file) {
+      setForm((prev) => ({
+        ...prev,
+        image: file,
+        imagePreview: URL.createObjectURL(file),
+      }));
+    }
   };
 
   const editInternship = (item) => {
@@ -73,8 +88,18 @@ const PostRunningInternships = () => {
   /* ================= CREATE INTERNSHIP ================= */
   const submitData = async () => {
     try {
+      const formData = new FormData();
+
+      Object.keys(form).forEach((key) => {
+        formData.append(key, form[key]);
+      });
+
       if (editId) {
-        const res = await API.put(`/internships/update/${editId}`, form);
+        const res = await API.put(`/internships/update/${editId}`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
 
         setData((prev) =>
           prev.map((item) => (item._id === editId ? res.data : item)),
@@ -82,7 +107,11 @@ const PostRunningInternships = () => {
 
         setEditId(null);
       } else {
-        const res = await API.post("/internships/create", form);
+        const res = await API.post("/internships/create", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
 
         setData((prev) => [...prev, res.data]);
       }
@@ -90,6 +119,8 @@ const PostRunningInternships = () => {
       setForm({
         title: "",
         description: "",
+        image: null,
+        imagePreview: "",
         department: "",
         modules: "",
         project: "",
@@ -172,12 +203,64 @@ const PostRunningInternships = () => {
 
             <div className="RunningInternship-field">
               <label>Internship Description *</label>
-              <textarea
-                name="description"
+
+              <Editor
+                apiKey="jeq7g2k84sqpi9364o8x9ptqf09aoesaq8jxmp49dl4sh57z
+
+"
                 value={form.description}
-                placeholder="Write internship description"
-                onChange={handleChange}
+                init={{
+                  height: 300,
+                  menubar: false,
+                  plugins: [
+                    "advlist",
+                    "autolink",
+                    "lists",
+                    "link",
+                    "image",
+                    "charmap",
+                    "preview",
+                    "anchor",
+                    "searchreplace",
+                    "visualblocks",
+                    "code",
+                    "fullscreen",
+                    "insertdatetime",
+                    "media",
+                    "table",
+                    "help",
+                    "wordcount",
+                  ],
+                  toolbar:
+                    "undo redo | blocks | bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help",
+                }}
+                onEditorChange={(content) =>
+                  setForm((prev) => ({ ...prev, description: content }))
+                }
               />
+            </div>
+
+            <div className="RunningInternship-field">
+              <label>Internship Image *</label>
+
+              <input
+                type="file"
+                name="image"
+                accept="image/*"
+                onChange={handleImageChange}
+              />
+
+              {form.imagePreview && (
+                <img
+                  src={form.imagePreview}
+                  alt="preview"
+                  style={{
+                    marginTop: "10px",
+                    width: "150px",
+                    borderRadius: "6px",
+                  }}
+                />
+              )}
             </div>
 
             <div className="RunningInternship-field">
@@ -451,6 +534,7 @@ const PostRunningInternships = () => {
         <table className="RunningInternship-table">
           <thead>
             <tr>
+              <th>Image</th>
               <th>Title</th>
               <th>Location</th>
               <th>Duration</th>
@@ -462,6 +546,21 @@ const PostRunningInternships = () => {
           <tbody>
             {data.map((item) => (
               <tr key={item._id}>
+                <td>
+                  {item.image && (
+                    <img
+                      src={getImageUrl(item.image)}
+                      alt="internship"
+                      style={{
+                        width: "60px",
+                        height: "40px",
+                        objectFit: "cover",
+                        borderRadius: "4px",
+                      }}
+                    />
+                  )}
+                </td>
+
                 <td>{item.title}</td>
                 <td>{item.location}</td>
                 <td>{item.duration}</td>

@@ -28,6 +28,15 @@
   object-fit: cover;
 }
 
+.course-header-img {
+  width: 100%;
+  max-width: 420px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
 /* PLAY BUTTON */
 .play-button {
   position: absolute;
@@ -48,7 +57,7 @@
   justify-content: center;
   font-size: 28px;
   color: #0d3558;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   position: relative;
 }
 
@@ -63,8 +72,13 @@
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* RIGHT CONTENT */
@@ -144,7 +158,7 @@
 .video-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;

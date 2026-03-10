@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./RubyRailsProgram.css";
 import { CheckSquare, BookOpen, Users, X } from "lucide-react";
+import { getImageUrl } from "../../api/api";
 
 import courseImg from "../../assets/category-1.webp";
 
-const RubyRailsProgram = ({course}) => {
-
+const RubyRailsProgram = ({ course }) => {
   const [open, setOpen] = useState(false);
 
   const videoUrl = "https://www.youtube.com/embed/fis26HvvDII";
@@ -14,7 +14,6 @@ const RubyRailsProgram = ({course}) => {
     <>
       <section className="course-hero">
         <div className="course-hero-wrapper">
-
           {/* LEFT VIDEO */}
           <div className="video-box">
             <img src={courseImg} alt="course" />
@@ -26,6 +25,11 @@ const RubyRailsProgram = ({course}) => {
 
           {/* RIGHT CONTENT */}
           <div className="course-info">
+            <img
+              src={course.image ? getImageUrl(course.image) : courseImg}
+              alt={course.title}
+              className="course-header-img"
+            />
 
             <div className="badges">
               <span className="badge beginner">Beginner</span>
@@ -36,44 +40,38 @@ const RubyRailsProgram = ({course}) => {
 
             <div className="meta-row">
               <span>
-                <CheckSquare size={18}/> {course.duration}
+                <CheckSquare size={18} /> {course.duration}
               </span>
 
               <span>
-                <BookOpen size={18}/> 30 Lectures
+                <BookOpen size={18} /> {course.modules || "Training Modules"}
               </span>
 
               <span>
-                <Users size={18}/> 500 Students
+                <Users size={18} /> Mentor: {course.mentor}
               </span>
             </div>
 
-            <p className="description">
-              {course.description}
-            </p>
+            <div
+              className="description"
+              dangerouslySetInnerHTML={{ __html: course.description }}
+            />
 
             <div className="rating">
               <div className="stars">★★★★★</div>
               <span className="rating-value">4.9</span>
               <span className="reviews">(2.24k Reviews)</span>
             </div>
-
           </div>
-
         </div>
       </section>
-
 
       {/* VIDEO MODAL */}
 
       {open && (
         <div className="video-modal">
           <div className="video-content">
-
-            <button
-              className="close-btn"
-              onClick={() => setOpen(false)}
-            >
+            <button className="close-btn" onClick={() => setOpen(false)}>
               <X size={22} />
             </button>
 
@@ -86,11 +84,9 @@ const RubyRailsProgram = ({course}) => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
-
           </div>
         </div>
       )}
-
     </>
   );
 };

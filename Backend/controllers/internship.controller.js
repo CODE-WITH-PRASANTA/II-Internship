@@ -3,21 +3,22 @@ const Internship = require("../models/Internship.model");
 
 // CREATE INTERNSHIP
 exports.createInternship = async (req, res) => {
-
   try {
 
-    const internship = new Internship(req.body);
+    const data = {
+      ...req.body,
+      image: req.file ? req.file.path : null
+    };
+
+    const internship = new Internship(data);
 
     const saved = await internship.save();
 
     res.status(201).json(saved);
 
   } catch (error) {
-
     res.status(500).json({ error: error.message });
-
   }
-
 };
 
 
@@ -62,23 +63,27 @@ exports.getInternshipById = async (req, res) => {
 
 // UPDATE INTERNSHIP
 exports.updateInternship = async (req, res) => {
-
   try {
+
+    const updateData = {
+      ...req.body
+    };
+
+    if (req.file) {
+      updateData.image = req.file.path;
+    }
 
     const updated = await Internship.findByIdAndUpdate(
       req.params.id,
-      req.body,
+      updateData,
       { new: true }
     );
 
     res.json(updated);
 
   } catch (error) {
-
     res.status(500).json({ error: error.message });
-
   }
-
 };
 
 
