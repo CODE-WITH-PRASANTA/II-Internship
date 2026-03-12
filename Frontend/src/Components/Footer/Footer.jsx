@@ -49,6 +49,7 @@ const Footer = () => {
             <li><a href="#">Events</a></li>
             <li><a href="#">Instructor Details</a></li>
             <li><a href="#">Purchase Guide</a></li>
+            <li><a herf="#">Privacy Policy</a> </li>
           </ul>
         </div>
 
@@ -62,6 +63,8 @@ const Footer = () => {
             <li><a href="#">FAQ’s</a></li>
             <li><a href="#">Coming Soon</a></li>
             <li><a href="#">Sign In/Registration</a></li>
+            <li><a herf="#">Terms and Conditions</a></li>
+            <li><a herf="#">Cancellation and Refund Policy</a></li>
           </ul>
         </div>
 

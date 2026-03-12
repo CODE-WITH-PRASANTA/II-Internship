@@ -1,0 +1,109 @@
+/* SECTION */
+
+.CAPPolicy-section{
+  width:100%;
+  background:#f3f3f3;
+  padding:60px 20px;
+  display:flex;
+  justify-content:center;
+}
+
+/* CONTAINER */
+
+.CAPPolicy-container{
+  max-width:1100px;
+  width:100%;
+  background:#f8f8f8;
+  padding:40px;
+  border-radius:10px;
+}
+
+/* TITLE */
+
+.CAPPolicy-title{
+  text-align:center;
+  font-size:28px;
+  font-weight:700;
+  color:#e63956;
+  margin-bottom:20px;
+  padding-bottom:10px;
+  border-bottom:2px solid #e63956;
+}
+
+/* INTRO */
+
+.CAPPolicy-intro{
+  font-size:16px;
+  line-height:1.7;
+  margin-bottom:30px;
+}
+
+/* BLOCK */
+
+.CAPPolicy-block{
+  margin-bottom:30px;
+}
+
+/* HEADING */
+
+.CAPPolicy-heading{
+  font-size:20px;
+  font-weight:700;
+  margin-bottom:10px;
+  padding-left:12px;
+  border-left:4px solid #e63956;
+}
+
+/* LIST */
+
+.CAPPolicy-block ul{
+  padding-left:20px;
+}
+
+.CAPPolicy-block li{
+  margin-bottom:12px;
+  line-height:1.7;
+  color:#333;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.CAPPolicy-container{
+padding:25px;
+}
+
+.CAPPolicy-title{
+font-size:24px;
+}
+
+.CAPPolicy-heading{
+font-size:18px;
+}
+
+}
+
+@media(max-width:480px){
+
+.CAPPolicy-section{
+padding:40px 15px;
+}
+
+.CAPPolicy-title{
+font-size:22px;
+}
+
+.CAPPolicy-heading{
+font-size:16px;
+}
+
+.CAPPolicy-intro{
+font-size:14px;
+}
+
+.CAPPolicy-block li{
+font-size:14px;
+}
+
+}

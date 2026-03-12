@@ -33,6 +33,8 @@ import MentorRegistration from "./Pages/MentorRegistration/MentorRegistration";
 import ApplicationSubmited from "./Components/ApplicationSubmited/ApplicationSubmited";
 import  RunningInternship  from "./Pages/RunningInternship/RunningInternship";
 import RunningDetails from "./Pages/RunningDetails/RunningDetails";
+import TermAndCondition from "./Pages/TermAndCondition/TermAndCondition";
+import CancellationPolicy from "./Pages/CancellationPolicy/CancellationPolicy";
 
 function App() {
   return (
@@ -73,6 +75,11 @@ function App() {
            
            <Route path="/Mentor-registration-form" element={<MentorRegistration />} />
            <Route path="/Application-submited" element={<ApplicationSubmited />} />
+
+           
+           <Route path="/Term-And-Condition" element={<TermAndCondition />} />
+           <Route path="/Cancellation-and-Refund-Policy" element={<CancellationPolicy />} />
+           
           
         </Routes>
       <Footer />
